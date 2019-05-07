@@ -1,4 +1,4 @@
-# mug_club
+# Mug Club
 A full stack React Native app that checks you into Mug Club at the Madison Bear Garden
 
 Tech Stack:
