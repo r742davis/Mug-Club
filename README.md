@@ -1,7 +1,7 @@
 # Mug Club
 
 ### Current Development Stage (as of May 15th, 2019)
-Right now, I am putting together wireframes of the app and figuring out the UX and functionality of the app. I personally believe tha UX design should come before functionality. This is especially true since most people who use this app will be inebriated at a bar, so ease of use is critical to the app's overall success.
+Right now, I am putting together wireframes of the app and figuring out the UX and functionality of the app. I personally believe that UX design should come before functionality. This is especially true since most people who will use this app will be inebriated at a bar, so ease of use is critical to the app's overall success.
 
 I will be having a meeting with one of the managers at the Madison Bear Garden about what they want from the app and the interface they need on their desktop side.
 
