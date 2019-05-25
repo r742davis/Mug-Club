@@ -13,4 +13,4 @@ A full stack React Native app that checks you into Mug Club at the Madison Bear 
 The app is simple but it requires both an easy-to-use frontend UI and a backend database to store the customer information securely. There are many features I would like to add to the app, BUT the first and only focus for now is the 'Mug Club ID lookup' functionality.
 
 ### Tech Stack:
-React Native, Ruby on Rails, Sass, Authentication-JWTs
+React Native, Express, Mongoose, Node.js, Sass, Authentication-JWTs
