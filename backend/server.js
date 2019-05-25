@@ -28,7 +28,7 @@ app.listen(port, () => {
 
 //  Connect to Mongooose  //
 //------------------------//
-mongoose.connect('mongodd://localhost:27017/club', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost:27017/club', { useNewUrlParser: true })
 
 //  Error Messages //
 //-----------------//
