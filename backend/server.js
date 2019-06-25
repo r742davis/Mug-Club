@@ -1,22 +1,26 @@
 //  Dependencies  //
 //----------------//
 const express = require('express');
+const app = express();
 const mongoose = require('mongoose');
 const db = mongoose.connection;
-const app = express();
-
 
 //  Routes  //
 //----------//
 app.get('/', (req, res) => {
-  res.send('root route')
+  res.send('Root Route Works!')
 });
 
+app.get('/users', (req, res) => {
+  res.send('You have reached the users page.')
+})
 
-//  Environment Variables  //
-//-------------------------//
+
+// //  Environment Variables  //
+// //-------------------------//
 const port = process.env.PORT || 5000;
-// const MONGODB_URI = process.env.MONGODB_URI;
+const database = 'mugClubUsers';
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/' + database
 
 
 //  App Listener: Port 5000  //
@@ -26,12 +30,14 @@ app.listen(port, () => {
 });
 
 
-//  Connect to Mongooose  //
-//------------------------//
-mongoose.connect('mongodb://localhost:27017/club', { useNewUrlParser: true })
-
+// //  Connect to Mongooose  //
+// //------------------------//
+mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
+  console.log('The connection with mongod is established');
+})
+//
 //  Error Messages //
 //-----------------//
-db.on('ERROR', (err) => console.log(err.message + 'Is MongoD not running?'))
-db.on('Connected', () => console.log('Mongo connected: ', MONGODB_URI))
+db.on('Error!', (err) => console.log(err.message + 'Is mongod not running?'))
+db.on('Connected', () => console.log('Mongo connected: ', mongoURI))
 db.on('Disconnected', () => console.log('Mongo Disconnected'))
