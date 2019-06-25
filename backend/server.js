@@ -5,6 +5,8 @@ const app = express();
 const mongoose = require('mongoose');
 const db = mongoose.connection;
 
+const User = require('./models/userSchema.js')
+
 //  Routes  //
 //----------//
 app.get('/', (req, res) => {
@@ -38,3 +40,18 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 db.on('Error!', (err) => console.log(err.message + 'Is mongod not running?'))
 db.on('Connected', () => console.log('Mongo connected: ', mongoURI))
 db.on('Disconnected', () => console.log('Mongo Disconnected'))
+
+
+//Test Section
+const firstUser = {
+  FirstName: 'Jacob',
+  LastName: 'Burger'
+};
+
+User.create(firstUser, (error, user) => {
+  if(error) {
+    console.log(error);
+  } else {
+    console.log(user);
+  }
+})
