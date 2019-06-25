@@ -18,6 +18,9 @@ A full stack React Native app that checks you into Mug Club at the Madison Bear 
 * [React](https://reactjs.org/)
 * [Node.js](https://nodejs.org/en/)
 
+## Versioning
+#### Version 1.0 - Backend Suite with React UI (In Development)
+
 ## Authors
 * Richard Davis
 
