@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const db = mongoose.connection;
 const methodOverride = require('method-override');
 
-const User = require('./models/userSchema.js')
+const Customer = require('./models/CustomerSchema.js')
 
 //--------------//
 //  Middleware  //
