@@ -20,12 +20,12 @@ const mongoose = require('mongoose');
 
 //GET route
 router.get('/', (req, res) => {
-    // Customer.find((error, data) => {
-    //     res.send(data)
-    //     if(error) return res.status(404).json({
-    //       message: 'Customers not found'
-    //     })
-    // })
+    Customer.find((error, data) => {
+        res.send(data)
+        if(error) return res.status(404).json({
+          message: 'Customers not found'
+        })
+    })
 });
 
 //CREATE route
