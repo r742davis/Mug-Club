@@ -28,8 +28,8 @@ app.get('/users', (req, res) => {
 
 //  Customers Controller  //
 //------------------------//
-// const customersController = require('./controllers/Customers.js');
-// app.use('/customers', customersController);
+const customersController = require('./controllers/Customers.js');
+app.use('/customers', customersController);
 
 
 //  Environment Variables  //
