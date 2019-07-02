@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
 const customerSchema = new Schema({
-  FirstName: { type: String, required: true },
-  LastName: { type: String, required: true }
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true }
 }, {timestamps: true});
 
 const Customer = mongoose.model('Customer', customerSchema)
