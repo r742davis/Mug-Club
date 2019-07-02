@@ -17,8 +17,14 @@ app.get('/users', (req, res) => {
   res.send('You have reached the users page.')
 })
 
-// //  Environment Variables  //
-// //-------------------------//
+//  Customers Controller  //
+//------------------------//
+const customersController = require('./controllers/Customers.js');
+app.use('/customers', customersController);
+
+
+//  Environment Variables  //
+//-------------------------//
 const port = process.env.PORT || 5000;
 const database = 'mugClubUsers';
 const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/' + database
@@ -42,16 +48,16 @@ db.on('Connected', () => console.log('Mongo connected: ', mongoURI))
 db.on('Disconnected', () => console.log('Mongo Disconnected'))
 
 
-//Test Section
-const firstUser = {
-  FirstName: 'Jacob',
-  LastName: 'Burger'
-};
-
-User.create(firstUser, (error, user) => {
-  if(error) {
-    console.log(error);
-  } else {
-    console.log(user);
-  }
-})
+// //Test Section
+// const firstUser = {
+//   FirstName: 'Jacob',
+//   LastName: 'Burger'
+// };
+//
+// User.create(firstUser, (error, user) => {
+//   if(error) {
+//     console.log(error);
+//   } else {
+//     console.log(user);
+//   }
+// })
