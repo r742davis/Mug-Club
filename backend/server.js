@@ -4,8 +4,17 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const db = mongoose.connection;
+const methodOverride = require('method-override');
 
 const User = require('./models/userSchema.js')
+
+//--------------//
+//  Middleware  //
+//--------------//
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(express.static('public'))
+app.use(methodOverride('_method'));
 
 //  Routes  //
 //----------//
@@ -19,14 +28,14 @@ app.get('/users', (req, res) => {
 
 //  Customers Controller  //
 //------------------------//
-const customersController = require('./controllers/Customers.js');
-app.use('/customers', customersController);
+// const customersController = require('./controllers/Customers.js');
+// app.use('/customers', customersController);
 
 
 //  Environment Variables  //
 //-------------------------//
 const port = process.env.PORT || 5000;
-const database = 'mugClubUsers';
+const database = 'mug_club';
 const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/' + database
 
 //  App Listener: Port 5000  //

@@ -5,6 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "express": "^4.17.0",
+    "method-override": "^3.0.0",
     "mongoose": "^5.4.17"
   },
   "devDependencies": {},
