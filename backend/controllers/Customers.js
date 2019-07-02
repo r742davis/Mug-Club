@@ -14,17 +14,9 @@ router.get('/', (req, res) => {
           message: 'Customers not found'
         })
     })
+});
 
-
-    // mongoose.connection.db.collection('customers', {}, (error, results) => {
-    //     collection.find({}).toArray((error, data) => {
-    //       res.send(data)
-    //     })
-    // })
-
-})
 //CREATE route
-
 
 //DELETE route
 
