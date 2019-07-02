@@ -10,6 +10,9 @@ const db = require('../db.js');
 router.get('/', (req, res) => {
     Customer.find((error, data) => {
         res.send(data)
+        if(error) return res.status(404).json({
+          message: 'Customers not found'
+        })
     })
 
 
@@ -19,12 +22,6 @@ router.get('/', (req, res) => {
     //     })
     // })
 
-
-    // Customer.find()
-    //   .then(customers => res.send(customers))
-    //   .catch(error => res.status(404).json({
-    //     success: false
-    //   }))
 })
 //CREATE route
 
