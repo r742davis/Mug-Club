@@ -2,6 +2,7 @@
 //----------------//
 const express = require('express');
 const app = express();
+const path = require('path');
 const mongoose = require('mongoose');
 const db = mongoose.connection;
 const methodOverride = require('method-override');
