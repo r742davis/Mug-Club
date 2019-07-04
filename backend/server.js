@@ -26,7 +26,7 @@ app.get('/users', (req, res) => {
 
 //  Customers Controller  //
 //------------------------//
-const customersController = require('./controllers/Customers.js');
+const customersController = require('./controllers/customers.js');
 app.use('/customers', customersController);
 
 
