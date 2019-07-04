@@ -4,20 +4,6 @@ const Customer = require('../models/customer.js');
 const mongoose = require('mongoose');
 // const db = require('../db.js');
 
-
-// MongoClient.connect('mongodb://localhost:27017/mug_club', function (err, client) {
-//   if (err) throw err
-//
-//   const db = client.db('mug_club')
-//
-//   db.collection('customers').find().toArray(function (err, result) {
-//     if (err) throw err
-//
-//     console.log(result)
-//   })
-// })
-
-
 //GET route
 router.get('/', (req, res) => {
     Customer.find((error, data) => {

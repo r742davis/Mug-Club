@@ -23,7 +23,7 @@ app.use('/customers', customersController);
 //  Routes  //
 //----------//
 app.get('/', (req, res) => {
-  res.send('Root Route Works!')
+  res.status(200).send('Root Route Works!')
 });
 
 app.get('/users', (req, res) => {
