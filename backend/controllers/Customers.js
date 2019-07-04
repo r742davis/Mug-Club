@@ -39,6 +39,13 @@ router.post('/', (req, res) => {
 })
 
 //DELETE route
+router.delete('/:id', (req, res) => {
+    Customer.findById(req.params.id)
+        .then(customer => customer.remove().then(() => {
+            res.json({ success: true })
+        }))
+        .catch(error => res.status(404).json({ success: false }))
+})
 
 //SHOW route
 
