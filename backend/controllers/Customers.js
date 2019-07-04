@@ -21,7 +21,7 @@ const mongoose = require('mongoose');
 //GET route
 router.get('/', (req, res) => {
     Customer.find((error, data) => {
-        res.send(data)
+        res.json(data)
         if(error) return res.status(404).json({
           message: 'Customers not found'
         })
@@ -29,6 +29,14 @@ router.get('/', (req, res) => {
 });
 
 //CREATE route
+router.post('/', (req, res) => {
+    const newCustomer = new Customer({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName
+    })
+
+    newCustomer.save().then(customer => res.json(customer))
+})
 
 //DELETE route
 
@@ -38,6 +46,7 @@ router.get('/', (req, res) => {
 
 module.exports = router;
 
+//Code for Entering Data into Mongo Database
 // var customers = [
 //   {
 //     'firstName': 'Jessica',
