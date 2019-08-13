@@ -4,6 +4,7 @@
 const app = require('./app.js');
 const mongoose = require('mongoose');
 const db = mongoose.connection;
+const cors = require('cors');
 
 //-------------------------//
 //  Environment Variables  //
