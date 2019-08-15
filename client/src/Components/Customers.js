@@ -20,7 +20,7 @@ class Customers extends Component {
       .then(() => console.log(this.state.customers))
   }
 
-  setClick() {
+  handleClick() {
     this.setState({ clicked: true })
   }
 
@@ -28,7 +28,7 @@ class Customers extends Component {
     return (
       <div>
         <Button
-          setClicked={this.setClick}
+          setClicked={this.handleClick}
         />
       </div>
     );
