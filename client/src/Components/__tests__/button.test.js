@@ -1,5 +1,7 @@
 import React from 'react';
 import Button from '../Button';
+
+//Enzyme Adapter setup
 const Enzyme = require('enzyme');
 const EnzymeAdapter = require('enzyme-adapter-react-16');
 Enzyme.configure({ adapter: new EnzymeAdapter() });
