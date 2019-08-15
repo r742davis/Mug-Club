@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from './Button';
 
 class Customers extends Component {
   constructor(props) {
@@ -19,28 +20,29 @@ class Customers extends Component {
       .then(() => console.log(this.state.customers))
   }
 
+  setClick() {
+    this.setState({ clicked: true })
+  }
+
   render() {
     return (
       <div>
-        <h1>Customers Component</h1>
-        <button onClick={() => {
-          this.setState({ clicked: true })
-        }}
-        >Click to List People</button>
-        {this.state.clicked ?
-          this.state.customers.map((person, index) => {
-            return (
-              <div>
-                <h1>{person._id}</h1>
-                <h3>{person.firstName}</h3>
-                <h3>{person.lastName}</h3>
-              </div>
-            )
-          })
-          : null}
+        <Button
+          setClicked={this.setClick}
+        />
       </div>
     );
   };
 };
 
 export default Customers;
+
+// {this.state.clicked ?
+//   this.state.customers.map((person, index) => {
+//     return (
+//       <Customer
+//         firstName={}
+//       />
+//     )
+//   })
+//   : null}
