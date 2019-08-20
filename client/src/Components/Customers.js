@@ -8,7 +8,8 @@ class Customers extends Component {
     super(props);
     this.state = {
       clicked: false,
-      customers: null
+      customers: [],
+      value: ''
     }
   };
 
@@ -27,11 +28,24 @@ class Customers extends Component {
     console.log(this.state.clicked)
   }
 
+  handleChange = (event) => {
+    this.setState({ value: event.target.value})
+    console.log(this.state.value);
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(this.state.value)
+  }
+
   render() {
     return (
       <>
         <Button handleClick={this.handleClick} />
-        <Search />
+        <Search
+          value={this.state.value}
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange} />
         {this.state.clicked
           ? this.state.customers.map((person, index) => {
             return (
