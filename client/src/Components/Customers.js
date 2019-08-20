@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Button from './Button';
-import Customer from './Customer.js';
+import Customer from './Customer';
+import Search from './Search';
 
 class Customers extends Component {
   constructor(props) {
@@ -28,8 +29,9 @@ class Customers extends Component {
 
   render() {
     return (
-      <div>
+      <>
         <Button handleClick={this.handleClick} />
+        <Search />
         {this.state.clicked
           ? this.state.customers.map((person, index) => {
             return (
@@ -41,7 +43,7 @@ class Customers extends Component {
             )
           })
           : null}
-      </div>
+      </>
     );
   };
 };
