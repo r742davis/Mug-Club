@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from './Button';
+import Customer from './Customer.js';
 
 class Customers extends Component {
   constructor(props) {
@@ -20,29 +21,31 @@ class Customers extends Component {
       .then(() => console.log(this.state.customers))
   }
 
-  handleClick() {
-    this.setState({ clicked: true })
+  handleClick = () => {
+    this.setState({ clicked: !this.state.clicked })
+    console.log(this.state.clicked)
   }
 
   render() {
     return (
       <div>
         <Button
-          setClicked={this.handleClick}
+          handleClick={this.handleClick}
         />
+        {this.state.clicked ?
+          this.state.customers.map((person, index) => {
+            return (
+              <Customer
+                key={index}
+                firstName={person.firstName}
+                lastName={person.lastName}
+              />
+            )
+          })
+          : null}
       </div>
     );
   };
 };
 
 export default Customers;
-
-// {this.state.clicked ?
-//   this.state.customers.map((person, index) => {
-//     return (
-//       <Customer
-//         firstName={}
-//       />
-//     )
-//   })
-//   : null}
