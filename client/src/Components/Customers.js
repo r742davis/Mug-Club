@@ -29,11 +29,9 @@ class Customers extends Component {
   render() {
     return (
       <div>
-        <Button
-          handleClick={this.handleClick}
-        />
-        {this.state.clicked ?
-          this.state.customers.map((person, index) => {
+        <Button handleClick={this.handleClick} />
+        {this.state.clicked
+          ? this.state.customers.map((person, index) => {
             return (
               <Customer
                 key={index}
