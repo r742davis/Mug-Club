@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from './Button/Button';
 import Customer from './Customer/Customer';
-import Search from './Search';
+import Search from './Search/Search';
 
 class Customers extends Component {
   constructor(props) {
