@@ -1,7 +1,11 @@
 import React from 'react';
 
-const login = (props) => {
-
+const logIn = (props) => {
+  return (
+    <div>
+      <h3>Log In Modal</h3>
+    </div>
+  )
 };
 
-export default login;
+export default logIn;
