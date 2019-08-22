@@ -38,8 +38,6 @@ class Customers extends Component {
     console.log(this.state.value)
   }
 
-
-
   render() {
     const displayCustomer = (
       this.state.customers.map((person, index) => {
