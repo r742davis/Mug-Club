@@ -38,7 +38,21 @@ class Customers extends Component {
     console.log(this.state.value)
   }
 
+
+
   render() {
+    const displayCustomer = (
+      this.state.customers.map((person, index) => {
+        return (
+          <Customer
+            key={index}
+            firstName={person.firstName}
+            lastName={person.lastName}
+          />
+        )
+      })
+    );
+
     return (
       <>
         <Button handleClick={this.handleClick} />
@@ -46,17 +60,7 @@ class Customers extends Component {
           value={this.state.value}
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange} />
-        {this.state.clicked
-          ? this.state.customers.map((person, index) => {
-            return (
-              <Customer
-                key={index}
-                firstName={person.firstName}
-                lastName={person.lastName}
-              />
-            )
-          })
-          : null}
+        {this.state.clicked ? displayCustomer : null}
       </>
     );
   };
