@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Customers from '../components/Customers';
+import Customers from './Customers/Customers';
 
 function App() {
   return (
