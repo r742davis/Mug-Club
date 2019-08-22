@@ -4,6 +4,7 @@
   padding: 10px;
   margin: 20px;
   font: inherit;
+  transition: 0.2s;
 }
 
 .Button:hover {
