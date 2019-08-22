@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Button from './Button/Button';
-import Customer from './Customer';
+import Customer from './Customer/Customer';
 import Search from './Search';
 
 class Customers extends Component {
