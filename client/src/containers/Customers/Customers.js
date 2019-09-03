@@ -62,12 +62,6 @@ class Customers extends Component {
         <NavBar
           active={this.state.active}
           menuToggle={this.handleNavToggle} />
-
-        <main>
-        </main>
-
-        <footer>
-        </footer>
         <Button handleClick={this.handleClick} />
         <Search
           value={this.state.value}
