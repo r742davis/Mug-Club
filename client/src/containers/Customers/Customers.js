@@ -36,6 +36,13 @@ class Customers extends Component {
     console.log(this.state.value)
   }
 
+  handleNavToggle = () => {
+
+
+    const menu = document.querySelectorAll('.menu');
+    menu.classList.add('active');
+  }
+
   render() {
     const displayCustomer = (
       this.state.customers.map((person, index) => {
@@ -51,7 +58,8 @@ class Customers extends Component {
 
     return (
       <>
-        <NavBar />
+        <NavBar
+          menuToggle={this.handleNavToggle}/>
 
         <main>
         </main>

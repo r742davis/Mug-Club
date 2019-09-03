@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './NavBar.module.css';
+import './NavBar.css';
 
 const navbar = (props) => {
   return (
@@ -21,6 +21,9 @@ const navbar = (props) => {
           </li>
         </ul>
       </div>
+      <a className="menu-toggle" onClick={props.menuToggle}>
+        <span className="menu-hamburger"></span>
+      </a>
     </nav>
   )
 };
