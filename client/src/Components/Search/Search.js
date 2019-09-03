@@ -10,7 +10,7 @@ const search = (props) => {
         onChange={props.handleChange} />
       <input
         type="submit"
-        value="Submit" />
+        value="Search" />
       </form>
     </>
   )

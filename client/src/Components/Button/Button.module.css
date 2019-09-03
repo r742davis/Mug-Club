@@ -1,10 +1,11 @@
 .Button {
-  border: 1px solid #ccc;
+  color: white;
+  background: rebeccapurple;
   border-radius: 10px;
   padding: 10px;
   margin: 20px;
   font: inherit;
-  transition: 0.2s;
+  transition: 0.1s;
 }
 
 .Button:hover {

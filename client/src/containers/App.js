@@ -4,11 +4,9 @@ import Customers from './Customers/Customers';
 
 function App() {
   return (
-    <div className="App">
-      <header>
-        <Customers />
-      </header>
-    </div>
+    <>
+      <Customers />
+    </>
   );
 }
 

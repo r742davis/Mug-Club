@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import Button from '../../components/Button/Button';
 import Customer from '../../components/Customer/Customer';
 import Search from '../../components/Search/Search';
+import NavBar from '../../components/Navigation/NavBar';
 
 class Customers extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      clicked: false,
-      customers: [],
-      value: ''
-    }
+  state = {
+    clicked: false,
+    customers: [],
+    value: ''
   };
 
   componentDidMount() {
@@ -53,6 +51,13 @@ class Customers extends Component {
 
     return (
       <>
+        <NavBar />
+
+        <main>
+        </main>
+
+        <footer>
+        </footer>
         <Button handleClick={this.handleClick} />
         <Search
           value={this.state.value}
