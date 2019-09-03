@@ -8,7 +8,8 @@ class Customers extends Component {
   state = {
     clicked: false,
     customers: [],
-    value: ''
+    value: '',
+    active: false
   };
 
   componentDidMount() {
@@ -37,10 +38,10 @@ class Customers extends Component {
   }
 
   handleNavToggle = () => {
-
-
-    const menu = document.querySelectorAll('.menu');
-    menu.classList.add('active');
+    this.setState({ active: !this.state.active })
+    if (this.state.active) {
+      console.log('active')
+    }
   }
 
   render() {
@@ -59,7 +60,8 @@ class Customers extends Component {
     return (
       <>
         <NavBar
-          menuToggle={this.handleNavToggle}/>
+          active={this.state.active}
+          menuToggle={this.handleNavToggle} />
 
         <main>
         </main>

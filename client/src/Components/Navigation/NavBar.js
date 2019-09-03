@@ -3,8 +3,13 @@ import React from 'react';
 import './NavBar.css';
 
 const navbar = (props) => {
+  let navClass = ["menu"];
+  if (props.active) {
+    navClass.push('active')
+  }
+
   return (
-    <nav className="menu">
+    <nav className={navClass.join(' ')}>
       <div className="menu-container">
         <ul className="menu-list">
           <li className="menu-item">
@@ -18,6 +23,9 @@ const navbar = (props) => {
           </li>
           <li className="menu-item">
             <a href="#" className="menu-link">Edit Beer List</a>
+          </li>
+          <li className="menu-item">
+            <a href="#" className="menu-link">LOG OUT</a>
           </li>
         </ul>
       </div>
