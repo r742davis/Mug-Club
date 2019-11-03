@@ -5,13 +5,13 @@ const mongoose = require('mongoose');
 // const db = require('../db.js');
 
 //GET route
-router.get('/', (req, res) => {
-    Customer.find((error, data) => {
-        res.json(data)
-        if(error) return res.status(404).json({
-          message: 'Customers not found'
-        })
-    })
+router.get('/', async (req, res) => {
+    try {
+      const customers = await Customer.find();
+      res.status(200).json(customers);
+    } catch (error) {
+      res.status(400).json({error: error.message});
+    }
 });
 
 //CREATE route
@@ -50,7 +50,7 @@ router.delete('/:id', (req, res) => {
 
 //SHOW route
 
-//UPDATE route
+//UPDATE/EDIT route
 router.put('/:id', async (req, res) => {
   try {
     const updateCustomer = await Customer.findByIdAndUpdate(req.params.id, req.body, {new:true});
