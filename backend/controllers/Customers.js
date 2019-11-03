@@ -62,16 +62,3 @@ router.put('/:id', async (req, res) => {
 
 
 module.exports = router;
-
-//Code for Entering Data into Mongo Database
-// var customers = [
-//   {
-//     'firstName': 'Jessica',
-//     'lastName': 'Jones'
-//   },
-//   {
-//     'firstName': 'Bobby',
-//     'lastName': 'Newport'
-//   }
-// ];
-// db.customers.insert(customers);

@@ -24,15 +24,15 @@ const customerSchema = new Schema({
     required: [true, 'Email is required']
   },
   mugClub: {
-    completed: Boolean,
+    completed: { type: Boolean, default: false },
     cludId: Number,
     beers: {
-      coors: Boolean,
-      coorsLight: Boolean,
-      budweiser: Boolean,
-      budLight: Boolean,
-      sierraNevadaPaleAle: Boolean,
-      sierraNevadaTorpedo: Boolean
+      coors: { type: Boolean, default: false },
+      coorsLight: { type: Boolean, default: false },
+      budweiser: { type: Boolean, default: false },
+      budLight: { type: Boolean, default: false },
+      sierraNevadaPaleAle: { type: Boolean, default: false },
+      sierraNevadaTorpedo: { type: Boolean, default: false }
     }
   }
 
