@@ -15,37 +15,48 @@ router.get('/', async (req, res) => {
 });
 
 //CREATE route
-router.post('/', (req, res) => {
-    const newCustomer = new Customer({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      username: req.body.username,
-      password: req.body.password,
-      email: req.body.email,
-      mugClub: {
-        completed: req.body.mugClub.completed,
-        clubId: req.body.mugClub.clubId,
-        beers: {
-          coors: req.body.mugClub.beers.coors,
-          coorsLight: req.body.mugClub.beers.coorsLight,
-          budweiser: req.body.mugClub.beers.budweiser,
-          budLight: req.body.mugClub.beers.budLight,
-          sierraNevadaPaleAle: req.body.mugClub.beers.sierraNevadaPaleAle,
-          sierraNevadaTorpedo: req.body.mugClub.beers.sierraNevadaTorpedo
+router.post('/', async (req, res) => {
+    try {
+      //Customer Schema for adding to database: includes mugClub and beers nesting
+      const newCustomer = new Customer({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email,
+        mugClub: {
+          completed: req.body.mugClub.completed,
+          clubId: req.body.mugClub.clubId,
+          beers: {
+            coors: req.body.mugClub.beers.coors,
+            coorsLight: req.body.mugClub.beers.coorsLight,
+            budweiser: req.body.mugClub.beers.budweiser,
+            budLight: req.body.mugClub.beers.budLight,
+            sierraNevadaPaleAle: req.body.mugClub.beers.sierraNevadaPaleAle,
+            sierraNevadaTorpedo: req.body.mugClub.beers.sierraNevadaTorpedo
+          }
         }
-      }
-    })
-
-    newCustomer.save().then(customer => res.json(customer))
+      })
+      await newCustomer.save().then(customer => res.json(customer))
+    } catch (error) {
+      res.status(400).json({error: error.message})
+    }
 })
 
 //DELETE route
-router.delete('/:id', (req, res) => {
-    Customer.findById(req.params.id)
-        .then(customer => customer.remove().then(() => {
-            res.json({ success: true })
-        }))
-        .catch(error => res.status(404).json({ success: false }))
+router.delete('/:id', async (req, res) => {
+  try {
+    const findCustomer = await Customer.findById(req.params.id);
+    const foundCustomer = await findCustomer.remove()
+    return res.json({ success: true })
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
+    // Customer.findById(req.params.id)
+    //     .then(customer => customer.remove().then(() => {
+    //         res.json({ success: true })
+    //     }))
+    //     .catch(error => res.status(404).json({ success: false }))
 })
 
 //SHOW route
