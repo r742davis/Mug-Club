@@ -25,7 +25,7 @@ const customerSchema = new Schema({
   },
   mugClub: {
     completed: { type: Boolean, default: false },
-    cludId: Number,
+    clubId: { type: Number, default: 0 },
     beers: {
       coors: { type: Boolean, default: false },
       coorsLight: { type: Boolean, default: false },

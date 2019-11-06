@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
       const customers = await Customer.find();
       res.status(200).json(customers);
     } catch (error) {
-      res.status(400).json({error: error.message});
+        res.status(400).json({error: error.message});
     }
 });
 
@@ -40,7 +40,7 @@ router.post('/', async (req, res) => {
       const savedNewCustomer = await newCustomer.save();
       return res.json(savedNewCustomer);
     } catch (error) {
-      res.status(400).json({error: error.message})
+        res.status(400).json({error: error.message})
     }
 })
 
@@ -51,7 +51,7 @@ router.delete('/:id', async (req, res) => {
     const foundCustomer = await findCustomer.remove();
     return res.json({ Success: "Customer was successfully deleted from database" })
   } catch (error) {
-    res.status(400).json({ Error: "Uh oh! Could not delete customer." })
+      res.status(400).json({ Error: "Uh oh! Could not delete customer." })
   }
     // Customer.findById(req.params.id)
     //     .then(customer => customer.remove().then(() => {

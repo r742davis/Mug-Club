@@ -19,7 +19,6 @@ class Customers extends Component {
       const json = await response.json();
       this.setState({customers: json})
       await console.log(this.state.customers)
-
     } catch (error) {
         throw new Error('Cannot connect to database. Server may be busy or url unavailable.')
     }
@@ -49,13 +48,16 @@ class Customers extends Component {
   }
 
   render() {
-    const displayCustomer = (
+    const displayCustomers = (
       this.state.customers.map((person, index) => {
         return (
           <Customer
             key={index}
             firstName={person.firstName}
             lastName={person.lastName}
+            email={person.email}
+            username={person.username}
+            clubId={person.mugClub.clubId}
           />
         )
       })
@@ -63,18 +65,19 @@ class Customers extends Component {
 
     return (
       <>
-        <NavBar
-          active={this.state.active}
-          menuToggle={this.handleNavToggle} />
         <Button handleClick={this.handleClick} />
         <Search
           value={this.state.value}
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange} />
-        {this.state.clicked ? displayCustomer : null}
+        {this.state.clicked ? displayCustomers : null}
       </>
     );
   };
 };
 
 export default Customers;
+
+// <NavBar
+//   active={this.state.active}
+//   menuToggle={this.handleNavToggle} />
