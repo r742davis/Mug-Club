@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
       //Customer Schema for adding to database: includes mugClub and beers nesting
-      const newCustomer = new Customer({
+      const newCustomer = await new Customer({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         username: req.body.username,
@@ -37,7 +37,8 @@ router.post('/', async (req, res) => {
           }
         }
       })
-      await newCustomer.save().then(customer => res.json(customer))
+      const savedNewCustomer = await newCustomer.save();
+      return res.json(savedNewCustomer);
     } catch (error) {
       res.status(400).json({error: error.message})
     }
@@ -47,10 +48,10 @@ router.post('/', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     const findCustomer = await Customer.findById(req.params.id);
-    const foundCustomer = await findCustomer.remove()
-    return res.json({ success: true })
+    const foundCustomer = await findCustomer.remove();
+    return res.json({ Success: "Customer was successfully deleted from database" })
   } catch (error) {
-    res.status(400).json({error: error.message})
+    res.status(400).json({ Error: "Uh oh! Could not delete customer." })
   }
     // Customer.findById(req.params.id)
     //     .then(customer => customer.remove().then(() => {

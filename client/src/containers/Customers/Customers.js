@@ -12,14 +12,15 @@ class Customers extends Component {
     active: false
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     const url = 'http://localhost:5000/customers';
-    fetch(url, {
-      crossDomain: true
-    })
-      .then(response => response.json())
-      .then(data => this.setState({ customers: data}) )
-      .then(() => console.log(this.state.customers))
+    const response = await fetch(url, {crossDomain: true})
+    const json = await response.json();
+    this.setState({customers: json})
+    await console.log(this.state.customers)
+      // .then(response => response.json())
+      // .then(data => this.setState({ customers: data}) )
+      // .then(() => console.log(this.state.customers))
   }
 
   handleClick = () => {
