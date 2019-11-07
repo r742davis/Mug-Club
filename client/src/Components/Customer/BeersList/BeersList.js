@@ -8,6 +8,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Checkbox from '@material-ui/core/Checkbox';
 import Avatar from '@material-ui/core/Avatar';
 
+
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
@@ -16,9 +17,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function CheckboxListSecondary() {
+export default function CheckboxListSecondary(props) {
   const classes = useStyles();
-  const [checked, setChecked] = React.useState([1]);
+  const [checked, setChecked] = React.useState([-1]);
 
   const handleToggle = value => () => {
     const currentIndex = checked.indexOf(value);
@@ -45,7 +46,7 @@ export default function CheckboxListSecondary() {
                 src={`/static/images/avatar/${value + 1}.jpg`}
               />
             </ListItemAvatar>
-            <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
+            <ListItemText id={labelId} primary={`Line item ${props.beers.coors}`} />
             <ListItemSecondaryAction>
               <Checkbox
                 edge="end"

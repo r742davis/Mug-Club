@@ -16,32 +16,35 @@ router.get('/', async (req, res) => {
 
 //CREATE route
 router.post('/', async (req, res) => {
-    try {
-      //Customer Schema for adding to database: includes mugClub and beers nesting
-      const newCustomer = await new Customer({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        username: req.body.username,
-        password: req.body.password,
-        email: req.body.email,
-        mugClub: {
-          completed: req.body.mugClub.completed,
-          clubId: req.body.mugClub.clubId,
-          beers: {
-            coors: req.body.mugClub.beers.coors,
-            coorsLight: req.body.mugClub.beers.coorsLight,
-            budweiser: req.body.mugClub.beers.budweiser,
-            budLight: req.body.mugClub.beers.budLight,
-            sierraNevadaPaleAle: req.body.mugClub.beers.sierraNevadaPaleAle,
-            sierraNevadaTorpedo: req.body.mugClub.beers.sierraNevadaTorpedo
-          }
-        }
-      })
-      const savedNewCustomer = await newCustomer.save();
-      return res.json(savedNewCustomer);
-    } catch (error) {
-        res.status(400).json({error: error.message})
-    }
+  // Extracted beers list: for easier modification, cleaner CREATE route
+  const beersList = {
+    coors: req.body.mugClub.beers.coors,
+    coorsLight: req.body.mugClub.beers.coorsLight,
+    budweiser: req.body.mugClub.beers.budweiser,
+    budLight: req.body.mugClub.beers.budLight,
+    sierraNevadaPaleAle: req.body.mugClub.beers.sierraNevadaPaleAle,
+    sierraNevadaTorpedo: req.body.mugClub.beers.sierraNevadaTorpedo
+  }
+
+  try {
+    //Customer Schema for adding to database: includes mugClub and beers nesting
+    const newCustomer = await new Customer({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      username: req.body.username,
+      password: req.body.password,
+      email: req.body.email,
+      mugClub: {
+        completed: req.body.mugClub.completed,
+        clubId: req.body.mugClub.clubId,
+        beers: beersList
+      }
+    })
+    const savedNewCustomer = await newCustomer.save();
+    return res.json(savedNewCustomer);
+  } catch (error) {
+      res.status(400).json({error: error.message})
+  }
 })
 
 //DELETE route

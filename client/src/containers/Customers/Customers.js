@@ -58,6 +58,7 @@ class Customers extends Component {
             email={person.email}
             username={person.username}
             clubId={person.mugClub.clubId}
+            beers={person.mugClub.beers}
           />
         )
       })

@@ -25,7 +25,9 @@ const customer = (props) => {
           Beers:
         </Typography>
         {/* Import of Beers List with Clickable Action and Avatars */}
-        <BeersList />
+        <BeersList
+          beers={props.beers}
+        />
       </CardContent>
       <CardActions>
         <Button size="small">Edit Customer</Button>
