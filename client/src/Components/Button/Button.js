@@ -16,9 +16,3 @@ const button = (props) => {
 }
 
 export default button;
-
-// <button onClick={() => {
-//     this.setState({ clicked: true })
-//   }}
-//   >Click to List People
-// </button>
