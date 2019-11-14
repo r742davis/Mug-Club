@@ -12,13 +12,9 @@ const BeerSchema = new Schema({
 
 const CustomerSchema = new Schema({
   id: Schema.Types.ObjectId,
-  firstName: {
-    type: String,
-    required: [true, 'Yo, give me your first name']
-  },
-  lastName: {
-    type: String,
-    required: [true, 'Dude, you don\'t have a last name?']
+  name: {
+    first: {type: String, required: true},
+    last: {type: String, required: true}
   },
   username: {
     type: String,

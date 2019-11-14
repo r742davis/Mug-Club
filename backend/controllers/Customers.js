@@ -232,8 +232,10 @@ router.post('/', async (req, res) => {
   try {
     //Customer Schema for adding to database: includes mugClub and beers nesting
     const newCustomer = await new Customer({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
+      name: {
+        first: req.body.name.first,
+        last: req.body.name.last
+      },
       username: req.body.username,
       password: req.body.password,
       email: req.body.email,
