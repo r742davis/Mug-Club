@@ -8,7 +8,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Checkbox from '@material-ui/core/Checkbox';
 import Avatar from '@material-ui/core/Avatar';
 
-import testImage from '../../../assets/guinness.png';
+import guinnessLogo from '../../../assets/guinness.png';
 import sierraNevadaLogo from '../../../assets/sierra_nevada.png';
 
 
@@ -21,10 +21,15 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const checkName = (brewery) => {
-  const sierra = brewery.toLowerCase().includes('sierra')
+  const sierra = brewery.toLowerCase().includes('sierra');
+
+  const guinness = brewery.toLowerCase().includes('guinness');
 
   if (sierra) {
     return sierraNevadaLogo;
+  }
+  if (guinness) {
+    return guinnessLogo;
   }
 }
 
