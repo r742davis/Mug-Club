@@ -11,12 +11,13 @@ import BeersList from './BeersList/BeersList';
 import classes from './Customer.module.css';
 
 const customer = (props) => {
+  console.log(props);
   return (
     <div className={classes.CustomerBox}>
       <Card>
       <CardContent>
         <Typography variant="h4" color="textSecondary" gutterBottom>
-          {props.firstName} {props.lastName}
+          {props.name.first} {props.name.last}
         </Typography>
         <Typography variant="h5" color="textSecondary">
           Mug Club ID: {props.clubId}

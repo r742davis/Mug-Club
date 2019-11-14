@@ -53,12 +53,12 @@ class Customers extends Component {
         return (
           <Customer
             key={index}
-            firstName={person.firstName}
-            lastName={person.lastName}
+            name={person.name}
             email={person.email}
             username={person.username}
             clubId={person.mugClub.clubId}
             beers={person.mugClub.beers}
+            completed={person.mugClub.completed}
           />
         )
       })

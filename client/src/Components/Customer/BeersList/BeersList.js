@@ -8,6 +8,9 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Checkbox from '@material-ui/core/Checkbox';
 import Avatar from '@material-ui/core/Avatar';
 
+import testImage from '../../../assets/guinness.png';
+import sierraNevadaLogo from '../../../assets/sierra_nevada.png';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -16,6 +19,14 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper,
   },
 }));
+
+const checkName = (brewery) => {
+  const sierra = brewery.toLowerCase().includes('sierra')
+
+  if (sierra) {
+    return sierraNevadaLogo;
+  }
+}
 
 export default function CheckboxListSecondary(props) {
   const classes = useStyles();
@@ -34,19 +45,26 @@ export default function CheckboxListSecondary(props) {
     setChecked(newChecked);
   };
 
+  console.log(props);
+
   return (
     <List dense className={classes.root}>
-      {[0, 1, 2, 3].map(value => {
-        const labelId = `checkbox-list-secondary-label-${value}`;
+      {props.beers
+        .map(value => {
+        const labelId = `checkbox-list-secondary-label-${props.beers.id}`;
         return (
-          <ListItem key={value} button>
+          <ListItem key={value.id} button>
             <ListItemAvatar>
               <Avatar
-                alt={`Avatar n°${value + 1}`}
-                src={`/static/images/avatar/${value + 1}.jpg`}
+                alt={`Beer n°${value.id}`}
+                src={checkName(value.brewery)}
+                // src={`/static/images/avatar/${value + 1}.jpg`}
               />
             </ListItemAvatar>
-            <ListItemText id={labelId} primary={`Line item ${props.beers.coors}`} />
+            <ListItemText
+              id={labelId}
+              primary={`${value.name}`}
+              secondary={`${value.brewery}`} />
             <ListItemSecondaryAction>
               <Checkbox
                 edge="end"
