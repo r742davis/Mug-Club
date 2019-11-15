@@ -11,7 +11,7 @@ import BeersList from './BeersList/BeersList';
 import classes from './Customer.module.css';
 
 const customer = (props) => {
-  console.log(props);
+
   return (
     <div className={classes.CustomerBox}>
       <Card>
