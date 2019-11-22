@@ -2,25 +2,33 @@ import React, { Component } from 'react';
 import Button from '../../components/Button/Button';
 import Customer from '../../components/Customer/Customer';
 import Search from '../../components/Search/Search';
-import NavBar from '../../components/Navigation/NavBar';
+import Home from '../../components/Home/Home';
 
-class Customers extends Component {
+class Customers extends React.Component {
   state = {
     clicked: false,
     customers: [],
+    beers: [],
     value: '',
     active: false
   };
 
   async componentDidMount() {
     try {
-      const url = 'http://localhost:5000/customers';
-      const response = await fetch(url, {crossDomain: true})
-      const json = await response.json();
-      this.setState({customers: json})
-      await console.log(this.state.customers)
+      const customers = 'http://localhost:5000/customers';
+      const beers = 'http://localhost:5000/beers';
+      const customersResponse = await fetch(customers, {crossDomain: true});
+      const beersResponse = await fetch(beers, {crossDomain: true});
+      const customersJSON = await customersResponse.json();
+      const beersJSON = await beersResponse.json();
+
+      await this.setState({
+        customers: customersJSON,
+        beers: beersJSON
+      })
+      await console.log(this.state.customers, this.state.beers)
     } catch (error) {
-        throw new Error('Cannot connect to database. Server may be busy or url unavailable.')
+        throw new Error('Cannot connect to database. Server may be busy or unavailable.')
     }
 
   }
@@ -66,6 +74,7 @@ class Customers extends Component {
 
     return (
       <>
+        <Home />
         <Button handleClick={this.handleClick} />
         <Search
           customers={this.state.customers}
