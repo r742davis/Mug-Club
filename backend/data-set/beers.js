@@ -207,6 +207,6 @@ const beersList = [
     breweryLocation: "Dublin, Ireland",
     finished: false
   },
-];
+]
 
 module.exports = beersList;
