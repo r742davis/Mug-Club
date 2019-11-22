@@ -63,8 +63,8 @@ router.delete('/:id', async (req, res) => {
 //SHOW route
 router.get('/:id', async (req, res) => {
   try {
-    const findCustomer = await Customer.findById(req.params.id);
-    return res.send('User ' + req.params.id + ' ' + findCustomer.firstName)
+    const foundCustomer = await Customer.findById(req.params.id);
+    return res.send(foundCustomer);
   } catch (error) {
     res.status(400).json({
       Error: "Uh oh! Could not find customer."
