@@ -26,9 +26,13 @@ router.post('/', async (req, res) => {
       brewery: req.body.brewery,
       breweryLocation: req.body.breweryLocation,
       finished: req.body.finished
-    })
+    });
+    const savedNewBeer = await newBeer.save();
+    return res.json(savedNewBeer);
   } catch (error) {
-
+    res.status(400).json({
+      error: error.message
+    })
   }
 })
 
