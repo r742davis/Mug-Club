@@ -32,10 +32,30 @@ router.post('/', async (req, res) => {
   } catch (error) {
     res.status(400).json({
       error: error.message
-    })
+    });
+  };
+});
+
+//SHOW route
+router.get('/:id', async (req, res) => {
+  try {
+    const foundBeer = await Beer.findById(req.params.id);
+    return res.send(foundBeer);
+  } catch (e) {
+    res.status(400).json({
+      Error: "Uh oh! Could not find beer."
+    });
+  };
+});
+
+//DELETE route
+router.delete('/', async (req, res) => {
+  try {
+    
+  } catch (e) {
+
   }
 })
 
-//DELETE route
 
 module.exports = router;
