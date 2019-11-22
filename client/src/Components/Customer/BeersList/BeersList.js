@@ -29,9 +29,8 @@ import lostCoastLogo from '../../../assets/lost_coast.png';
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-    maxWidth: 360,
     backgroundColor: theme.palette.background.paper
-  },
+  }
 }));
 
 const checkName = (brewery) => {
@@ -99,9 +98,6 @@ export default function CheckboxListSecondary(props) {
   const [checked, setChecked] = React.useState([-1]);
 
   const handleToggle = value => () => {
-
-
-
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
     console.log(newChecked, currentIndex, checked)
@@ -127,7 +123,9 @@ export default function CheckboxListSecondary(props) {
             key={beer.id}
             onClick={handleToggle(beer)}
             dense
-            button>
+            button
+            css={{ maxWidth: 360 }}
+            >
             <ListItemAvatar>
               <Avatar
                 alt={`${beer.brewery}`}

@@ -68,9 +68,11 @@ class Customers extends Component {
       <>
         <Button handleClick={this.handleClick} />
         <Search
-          value={this.state.value}
-          handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange} />
+          customers={this.state.customers}
+          // value={this.state.value}
+          // handleSubmit={this.handleSubmit}
+          // handleChange={this.handleChange}
+          />
         {this.state.clicked ? displayCustomers : null}
       </>
     );

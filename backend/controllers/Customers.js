@@ -244,7 +244,7 @@ router.post('/', async (req, res) => {
         clubId: req.body.mugClub.clubId,
         beers: beersList
       }
-    })
+    });
     const savedNewCustomer = await newCustomer.save();
     return res.json(savedNewCustomer);
   } catch (error) {
