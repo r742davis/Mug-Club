@@ -20,8 +20,8 @@ router.get('/', async (req, res) => {
 //CREATE route
 router.post('/', async (req, res) => {
   try {
-    //Customer Schema for adding to database: includes mugClub and beers nesting
-    const beersList = await Beer.find();
+    //Pulled from 'beers' collection on Mongo database
+    const beerList = await Beer.find();
     const newCustomer = await new Customer({
       name: {
         first: req.body.name.first,
@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
       mugClub: {
         completed: req.body.mugClub.completed,
         clubId: req.body.mugClub.clubId,
-        beers: beersList
+        beers: beerList
       }
     });
     const savedNewCustomer = await newCustomer.save();

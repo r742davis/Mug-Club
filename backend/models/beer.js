@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const beerSchema = new Schema({
-  breweryName: String,
+const BeerSchema = new Schema({
+  name: String,
+  type: String,
+  brewery: String,
   breweryLocation: String,
-  beerName: String,
-  imageURL: String,
-}, {timestamps: true});
+  finished: Boolean
+});
 
-const Beer = mongoose.model('Beer', beerSchema)
+const Beer = mongoose.model('Beer', BeerSchema)
 
 module.exports = Beer;

@@ -1,14 +1,16 @@
 const mongoose = require('mongoose');
+const Beer = require('./beer.js');
+const BeerSchema = mongoose.model('Beer').schema;
 const Schema = mongoose.Schema;
 
-const BeerSchema = new Schema({
-  id: Number,
-  name: String,
-  type: String,
-  brewery: String,
-  breweryLocation: String,
-  finished: Boolean
-}, { _id: false });
+// const BeerSchema = new Schema({
+//   id: Number,
+//   name: String,
+//   type: String,
+//   brewery: String,
+//   breweryLocation: String,
+//   finished: Boolean
+// }, { _id: false });
 
 const CustomerSchema = new Schema({
   id: Schema.Types.ObjectId,
@@ -30,7 +32,7 @@ const CustomerSchema = new Schema({
   },
   mugClub: {
     completed: { type: Boolean, default: false },
-    clubId: Number,
+    clubId: { type: Number, default: null },
     beers: [BeerSchema]
   }
 
