@@ -49,13 +49,31 @@ router.get('/:id', async (req, res) => {
 });
 
 //DELETE route
-router.delete('/', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
-    
+    const findBeer = await Beer.findById(req.params.id);
+    const foundBeer = await findBeer.remove();
+    return res.json({
+      Success: "Beer was successfully deleted from database"
+    })
   } catch (e) {
+    res.status(400).json({
+      Error: "Uh oh! Could not delete beer."
+    });
+  };
+});
 
-  }
-})
+//UPDATE route
+router.put('/:id', async (req, res) => {
+  try {
+    const updateBeer = await Beer.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.status(200).json(updateBeer);
+  } catch (e) {
+    res.status(400).json({
+      Error: "Oh my, your beer could not be updated."
+    });
+  };
+});
 
 
 module.exports = router;
