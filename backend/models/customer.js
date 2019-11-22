@@ -18,18 +18,18 @@ const CustomerSchema = new Schema({
     first: {type: String, required: true},
     last: {type: String, required: true}
   },
-  username: {
-    type: String,
-    required: [true, 'Username is required']
-  },
-  password: {
-    type: String,
-    required: [true, 'Password is required']
-  },
-  email: {
-    type: String,
-    required: [true, 'Email is required']
-  },
+  // username: {
+  //   type: String,
+  //   required: [true, 'Username is required']
+  // },
+  // password: {
+  //   type: String,
+  //   required: [true, 'Password is required']
+  // },
+  // email: {
+  //   type: String,
+  //   required: [true, 'Email is required']
+  // },
   mugClub: {
     completed: { type: Boolean, default: false },
     clubId: { type: Number, default: null },
