@@ -223,7 +223,7 @@ router.get('/', async (req, res) => {
       const customers = await Customer.find();
       res.status(200).json(customers);
     } catch (error) {
-        res.status(400).json({error: error.message});
+        res.status(400).json({ error: error.message });
     }
 });
 
