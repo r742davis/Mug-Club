@@ -1,6 +1,5 @@
 const beersList = [
   {
-    id: 1,
     name: "Pale Ale",
     type: "American Pale Ale",
     brewery: "Sierra Nevada",
@@ -8,7 +7,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 2,
     name: "Kellerweis Hefeweizen",
     type: "Weissbier",
     brewery: "Sierra Nevada",
@@ -16,7 +14,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 3,
     name: "Stout",
     type: "American Stout",
     brewery: "Sierra Nevada",
@@ -24,7 +21,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 4,
     name: "Porter",
     type: "American Porter",
     brewery: "Sierra Nevada",
@@ -32,7 +28,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 5,
     name: "Knightro",
     type: "Irish Stout",
     brewery: "Sierra Nevada",
@@ -40,7 +35,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 6,
     name: "Seasonal",
     type: "Seasonal Variety",
     brewery: "Sierra Nevada",
@@ -48,7 +42,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 7,
     name: "Hop Hunter IPA",
     type: "American IPA",
     brewery: "Sierra Nevada",
@@ -56,7 +49,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 8,
     name: "Otra Vez",
     type: "Gose",
     brewery: "Sierra Nevada",
@@ -64,7 +56,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 9,
     name: "Hop Bullet",
     type: "Double IPA",
     brewery: "Sierra Nevada",
@@ -72,7 +63,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 10,
     name: "Sierraveza",
     type: "American Lager",
     brewery: "Sierra Nevada",
@@ -80,7 +70,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 11,
     name: "Torpedo Extra IPA",
     type: "American IPA",
     brewery: "Sierra Nevada",
@@ -88,7 +77,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 12,
     name: "Tropical Torpedo IPA",
     type: "American IPA",
     brewery: "Sierra Nevada",
@@ -96,7 +84,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 13,
     name: "Mind Haze",
     type: "Hazy IPA",
     brewery: "Firestone Walker",
@@ -104,7 +91,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 14,
     name: "Shock Top Belgian White",
     type: "Witbier",
     brewery: "Blue Moon",
@@ -112,7 +98,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 15,
     name: "Big Wave Golden Ale",
     type: "Blonde Ale",
     brewery: "Kona",
@@ -120,7 +105,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 16,
     name: "Macadamia Nut Porter On Nitro",
     type: "American Porter",
     brewery: "Six Rivers",
@@ -128,7 +112,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 17,
     name: "Stella Artois Lager",
     type: "International Pale Lager",
     brewery: "Stella Artois",
@@ -136,7 +119,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 18,
     name: "805",
     type: "Blonde Ale",
     brewery: "Firestone Walker",
@@ -144,7 +126,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 19,
     name: "Scrimshaw Pilsner",
     type: "German Pilsner",
     brewery: "North Coast",
@@ -152,7 +133,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 20,
     name: "Lagunitas IPA",
     type: "American IPA",
     brewery: "Lagunitas",
@@ -160,7 +140,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 21,
     name: "Fruitlands Passion Fruit & Guava",
     type: "Gose",
     brewery: "Modern Times",
@@ -168,7 +147,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 22,
     name: "Gummy Worms Hazy Pale",
     type: "American Pale Ale",
     brewery: "New Glory",
@@ -176,7 +154,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 23,
     name: "Panic IPA",
     type: "American IPA",
     brewery: "Track 7",
@@ -184,7 +161,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 24,
     name: "Great White",
     type: "Witbier",
     brewery: "Lost Coast",
@@ -192,7 +168,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 25,
     name: "Modelo Especial",
     type: "International Pale Lager",
     brewery: "Grupo Modelo",
@@ -200,7 +175,6 @@ const beersList = [
     finished: false
   },
   {
-    id: 26,
     name: "Guinness Draught",
     type: "Irish Stout",
     brewery: "St. James Gate (Guinness)",
