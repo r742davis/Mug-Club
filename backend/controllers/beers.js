@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
   try {
     const beers = await Beer.find();
     res.status(200).json(beers);
-  } catch (e) {
+  } catch (error) {
     res.status(400).json({
       error: error.message
     })
@@ -17,9 +17,20 @@ router.get('/', async (req, res) => {
 })
 
 //CREATE route
-// router.post('/', async (req, res) => {
-//
-// })
+router.post('/', async (req, res) => {
+  try {
+    const beerList = await Beer.find();
+    const newBeer = await new Beer({
+      name: req.body.name,
+      type: req.body.type,
+      brewery: req.body.brewery,
+      breweryLocation: req.body.breweryLocation,
+      finished: req.body.finished
+    })
+  } catch (error) {
+
+  }
+})
 
 //DELETE route
 
