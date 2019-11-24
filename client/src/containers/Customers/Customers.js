@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import Button from '../../components/Button/Button';
+import React from 'react';
+// import Button from '../../components/Button/Button';
 import Customer from '../../components/Customer/Customer';
-import Search from '../../components/Search/Search';
-import Home from '../../components/Home/Home';
-import EditBeer from '../../components/Beer/EditBeer';
+// import Search from '../../components/Search/Search';
+// import Home from '../../components/Home/Home';
+import BeerModal from '../../components/Beer/BeerModal';
 
 class Customers extends React.Component {
   state = {
@@ -39,14 +39,16 @@ class Customers extends React.Component {
     console.log(this.state.clicked)
   }
 
-  handleChange = (event) => {
-    this.setState({ value: event.target.value})
-    console.log(this.state.value);
+  handleInputChange = (event) => {
+    const target = event.target;
+    const name = target.name;
+
+    this.setState({ [name]: event.target.value})
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state.value)
+    
   }
 
   handleNavToggle = () => {
@@ -75,7 +77,14 @@ class Customers extends React.Component {
 
     return (
       <>
-        <EditBeer />
+        <BeerModal
+          handleSubmit={this.handleSubmit}
+          handleInputChange={this.handleInputChange}
+          beerName={this.state.beerName}
+          beerType={this.state.beerType}
+          brewery={this.state.brewery}
+          breweryLocation={this.state.breweryLocation}
+          />
         {/*<Button handleClick={this.handleClick} />
         <Search
           customers={this.state.customers}

@@ -1,0 +1,47 @@
+.ModalContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Modal {
+  padding: 100px;
+}
+
+.ModalTitle {
+  text-align: center;
+}
+
+.ModalForm {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.ModalForm > label {
+  margin-top: 10px;
+}
+
+.ModalForm input[type=submit] {
+  margin-top: 30px;
+  height: 30px;
+  border: none;
+  color: white;
+  background-color: blue;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.ModalForm input[type=submit]:hover {
+  background-color: lightblue;
+  transition: 0.5s;
+}
