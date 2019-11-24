@@ -3,6 +3,7 @@ import Button from '../../components/Button/Button';
 import Customer from '../../components/Customer/Customer';
 import Search from '../../components/Search/Search';
 import Home from '../../components/Home/Home';
+import EditBeer from '../../components/Beer/EditBeer';
 
 class Customers extends React.Component {
   state = {
@@ -74,15 +75,15 @@ class Customers extends React.Component {
 
     return (
       <>
-        <Home />
-        <Button handleClick={this.handleClick} />
+        <EditBeer />
+        {/*<Button handleClick={this.handleClick} />
         <Search
           customers={this.state.customers}
           // value={this.state.value}
           // handleSubmit={this.handleSubmit}
           // handleChange={this.handleChange}
           />
-        {this.state.clicked ? displayCustomers : null}
+        {this.state.clicked ? displayCustomers : null}*/}
       </>
     );
   };
