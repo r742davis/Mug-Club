@@ -1,12 +1,12 @@
 import React from 'react';
 import classes from './BeerModal.module.css';
 
-const BeerModal = (props) => {
+const NewBeerModal = (props) => {
   return (
     <>
       <section className={classes.ModalContainer}>
         <div className={classes.Modal}>
-        <h2 className={classes.ModalTitle}>Edit Beer</h2>
+        <h2 className={classes.ModalTitle}>Create New Beer</h2>
         <form
           className={classes.ModalForm}
           onSubmit={props.handleSubmit}>
@@ -26,4 +26,4 @@ const BeerModal = (props) => {
   )
 };
 
-export default BeerModal;
+export default NewBeerModal;

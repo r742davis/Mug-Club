@@ -4,6 +4,8 @@ import Customer from '../../components/Customer/Customer';
 // import Search from '../../components/Search/Search';
 // import Home from '../../components/Home/Home';
 import BeerModal from '../../components/Beer/BeerModal';
+import NewBeerModal from '../../components/Beer/NewBeerModal';
+import axios from 'axios';
 
 class Customers extends React.Component {
   state = {
@@ -48,7 +50,15 @@ class Customers extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    
+    const newBeer = {
+      name: this.state.beerName,
+      type: this.state.beerType,
+      brewery: this.state.brewery,
+      breweryLocation: this.state.breweryLocation
+    }
+
+    axios.post('localhost:5000/beers', newBeer, {headers: {"Access-Control-Allow-Origin": "*"}});
+    console.log(newBeer)
   }
 
   handleNavToggle = () => {
@@ -77,14 +87,22 @@ class Customers extends React.Component {
 
     return (
       <>
-        <BeerModal
+        {/*<BeerModal
           handleSubmit={this.handleSubmit}
           handleInputChange={this.handleInputChange}
           beerName={this.state.beerName}
           beerType={this.state.beerType}
           brewery={this.state.brewery}
           breweryLocation={this.state.breweryLocation}
-          />
+          />*/}
+        <NewBeerModal
+          handleSubmit={this.handleSubmit}
+          handleInputChange={this.handleInputChange}
+          beerName={this.state.beerName}
+          beerType={this.state.beerType}
+          brewery={this.state.brewery}
+          breweryLocation={this.state.breweryLocation}
+        />
         {/*<Button handleClick={this.handleClick} />
         <Search
           customers={this.state.customers}
