@@ -18,7 +18,7 @@ app.use(methodOverride('_method'));
 const customersController = require('./controllers/customers.js');
 app.use('/customers', customersController);
 
-//  Customers Controller  //
+//  Beers Controller  //
 //------------------------//
 const beersController = require('./controllers/beers.js');
 app.use('/beers', beersController)
