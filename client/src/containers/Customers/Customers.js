@@ -17,7 +17,7 @@ class Customers extends React.Component {
     brewery: '',
     breweryLocation: '',
     active: false,
-    selectedBeerType: null
+    selectedBeerType: ''
   };
 
   async componentDidMount() {
@@ -124,7 +124,6 @@ class Customers extends React.Component {
           handleSubmit={this.handleSubmit}
           handleInputChange={this.handleInputChange}
           beerName={this.state.beerName}
-          handleTypeChange={this.handleTypeChange}
           selectedBeerType={this.state.selectedBeerType}
           brewery={this.state.brewery}
           breweryLocation={this.state.breweryLocation}
