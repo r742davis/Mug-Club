@@ -12,8 +12,12 @@ class Customers extends React.Component {
     clicked: false,
     customers: [],
     beers: [],
-    value: '',
-    active: false
+    beerName: '',
+    beerType: '',
+    brewery: '',
+    breweryLocation: '',
+    active: false,
+    selectedBeerType: null
   };
 
   async componentDidMount() {
@@ -41,11 +45,11 @@ class Customers extends React.Component {
     console.log(this.state.clicked)
   }
 
-  handleInputChange = (event) => {
+  handleInputChange = async (event) => {
     const target = event.target;
     const name = target.name;
 
-    this.setState({ [name]: event.target.value})
+    await this.setState({ [name]: event.target.value})
   }
 
   handleSubmit = async (event) => {
@@ -60,25 +64,34 @@ class Customers extends React.Component {
 
     try {
       const beersURL = 'http://localhost:5000/beers';
-      const config = {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Accept': 'application/json'
-        }
-      };
-      await axios.post(beersURL, newBeer, {crossDomain: true}, config);
-      console.log(newBeer)
+      // const config = {
+      //   headers: {
+      //     'Content-Type': 'application/x-www-form-urlencoded',
+      //     'Accept': 'application/json'
+      //   }
+      // };
+      // await axios.post(beersURL, newBeer, {crossDomain: true}, config);
+      console.log(newBeer);
+      await alert('New Beer has been created 🍺');
+
+      //Reset initial state for beer field values
+      await this.setState({
+        beerName: '',
+        beerType: '',
+        brewery: '',
+        breweryLocation: ''
+      })
     } catch (e) {
       console.error(e)
     }
   }
 
-  handleNavToggle = () => {
-    this.setState({ active: !this.state.active })
-    if (this.state.active) {
-      console.log('active')
-    }
-  }
+  // handleNavToggle = () => {
+  //   this.setState({ active: !this.state.active })
+  //   if (this.state.active) {
+  //     console.log('active')
+  //   }
+  // }
 
   render() {
     const displayCustomers = (
@@ -111,7 +124,8 @@ class Customers extends React.Component {
           handleSubmit={this.handleSubmit}
           handleInputChange={this.handleInputChange}
           beerName={this.state.beerName}
-          beerType={this.state.beerType}
+          handleTypeChange={this.handleTypeChange}
+          selectedBeerType={this.state.selectedBeerType}
           brewery={this.state.brewery}
           breweryLocation={this.state.breweryLocation}
         />
