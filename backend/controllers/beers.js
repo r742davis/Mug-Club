@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 //CREATE route
 router.post('/', async (req, res) => {
   try {
-    const beerList = await Beer.find();
+    // const beerList = await Beer.find();
     const newBeer = await new Beer({
       name: req.body.name,
       type: req.body.type,

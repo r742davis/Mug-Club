@@ -48,17 +48,36 @@ class Customers extends React.Component {
     this.setState({ [name]: event.target.value})
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
+  handleSubmit = async (event) => {
+    await event.preventDefault();
     const newBeer = {
       name: this.state.beerName,
       type: this.state.beerType,
       brewery: this.state.brewery,
-      breweryLocation: this.state.breweryLocation
+      breweryLocation: this.state.breweryLocation,
+      finished: false
     }
 
-    axios.post('localhost:5000/beers', newBeer, {headers: {"Access-Control-Allow-Origin": "*"}});
-    console.log(newBeer)
+    // const beersURL = 'http://localhost:5000/beers';
+    // return fetch(beersURL, {
+    //   method: 'POST',
+    //   body: newBeer,
+    //   crossDomain: true
+    // });
+
+    try {
+      const beersURL = 'http://localhost:5000/beers';
+      const config = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json'
+        }
+      };
+      await axios.post(beersURL, newBeer, {crossDomain: true}, config);
+      console.log(newBeer)
+    } catch (e) {
+      console.error(e)
+    }
   }
 
   handleNavToggle = () => {
