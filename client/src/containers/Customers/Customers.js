@@ -58,13 +58,6 @@ class Customers extends React.Component {
       finished: false
     }
 
-    // const beersURL = 'http://localhost:5000/beers';
-    // return fetch(beersURL, {
-    //   method: 'POST',
-    //   body: newBeer,
-    //   crossDomain: true
-    // });
-
     try {
       const beersURL = 'http://localhost:5000/beers';
       const config = {
