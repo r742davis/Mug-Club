@@ -3,8 +3,9 @@ import React from 'react';
 import Customer from '../../components/Customer/Customer';
 // import Search from '../../components/Search/Search';
 // import Home from '../../components/Home/Home';
-import BeerModal from '../../components/Beer/BeerModal';
-import NewBeerModal from '../../components/Beer/NewBeerModal';
+import BeerDisplay from '../../components/Beer/BeerDisplay';
+// import BeerModal from '../../components/Beer/BeerModal';
+// import NewBeerModal from '../../components/Beer/NewBeerModal';
 import axios from 'axios';
 
 class Customers extends React.Component {
@@ -112,6 +113,7 @@ class Customers extends React.Component {
 
     return (
       <>
+      <BeerDisplay />
         {/*<BeerModal
           handleSubmit={this.handleSubmit}
           handleInputChange={this.handleInputChange}
@@ -119,7 +121,7 @@ class Customers extends React.Component {
           beerType={this.state.beerType}
           brewery={this.state.brewery}
           breweryLocation={this.state.breweryLocation}
-          />*/}
+          />
         <NewBeerModal
           handleSubmit={this.handleSubmit}
           handleInputChange={this.handleInputChange}
@@ -127,7 +129,7 @@ class Customers extends React.Component {
           selectedBeerType={this.state.selectedBeerType}
           brewery={this.state.brewery}
           breweryLocation={this.state.breweryLocation}
-        />
+        />*/}
         {/*<Button handleClick={this.handleClick} />
         <Search
           customers={this.state.customers}
