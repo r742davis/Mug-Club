@@ -35,7 +35,6 @@ const BeerDisplay = (props) => {
                 id={labelId}
                 primary={`${beer.name}`}
                 secondary={`${beer.brewery}`} />
-
             </ListItem>
           );
         })}

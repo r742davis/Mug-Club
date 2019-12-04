@@ -35,8 +35,8 @@ const NewBeerModal = (props) => {
           <label htmlFor="breweryLocation">Brewery Location</label>
           <input type="text" name="breweryLocation" placeholder="Brewery Location" value={props.breweryLocation} onChange={props.handleInputChange} required/>
 
-          <label htmlFor="imageUrl">Beer/Brewery Image URL</label>
-          <input type="text" name="imageUrl" placeholder="URL" value={props.url} onChange={props.handleInputChange} required/>
+          <label htmlFor="beerUrl">Beer/Brewery Image URL</label>
+          <input type="text" name="beerUrl" placeholder="URL Address" value={props.beerUrl} onChange={props.handleInputChange} required/>
           <input type="submit" value="Submit" />
         </form>
         </div>

@@ -5,7 +5,7 @@ import Customer from '../../components/Customer/Customer';
 // import Home from '../../components/Home/Home';
 import BeerDisplay from '../../components/Beer/BeerDisplay';
 // import BeerModal from '../../components/Beer/BeerModal';
-// import NewBeerModal from '../../components/Beer/NewBeerModal';
+import NewBeerModal from '../../components/Beer/NewBeerModal';
 import axios from 'axios';
 
 class Customers extends React.Component {
@@ -17,6 +17,7 @@ class Customers extends React.Component {
     beerType: '',
     brewery: '',
     breweryLocation: '',
+    beerUrl: '',
     active: false,
     selectedBeerType: ''
   };
@@ -60,18 +61,19 @@ class Customers extends React.Component {
       type: this.state.beerType,
       brewery: this.state.brewery,
       breweryLocation: this.state.breweryLocation,
+      beerUrl: this.state.beerUrl,
       finished: false
     }
 
     try {
       const beersURL = 'http://localhost:5000/beers';
-      // const config = {
-      //   headers: {
-      //     'Content-Type': 'application/x-www-form-urlencoded',
-      //     'Accept': 'application/json'
-      //   }
-      // };
-      // await axios.post(beersURL, newBeer, {crossDomain: true}, config);
+      const config = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json'
+        }
+      };
+      await axios.post(beersURL, newBeer, {crossDomain: true}, config);
       console.log(newBeer);
       await alert('New Beer has been created 🍺');
 
@@ -80,7 +82,8 @@ class Customers extends React.Component {
         beerName: '',
         beerType: '',
         brewery: '',
-        breweryLocation: ''
+        breweryLocation: '',
+        beerUrl: ''
       })
     } catch (e) {
       console.error(e)
@@ -123,7 +126,7 @@ class Customers extends React.Component {
           beerType={this.state.beerType}
           brewery={this.state.brewery}
           breweryLocation={this.state.breweryLocation}
-          />
+          />*/}
         <NewBeerModal
           handleSubmit={this.handleSubmit}
           handleInputChange={this.handleInputChange}
@@ -131,7 +134,8 @@ class Customers extends React.Component {
           selectedBeerType={this.state.selectedBeerType}
           brewery={this.state.brewery}
           breweryLocation={this.state.breweryLocation}
-        />*/}
+          beerUrl={this.state.beerUrl}
+        />
         {/*<Button handleClick={this.handleClick} />
         <Search
           customers={this.state.customers}
