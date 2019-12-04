@@ -25,6 +25,7 @@ router.post('/', async (req, res) => {
       type: req.body.type,
       brewery: req.body.brewery,
       breweryLocation: req.body.breweryLocation,
+      url: req.body.url,
       finished: req.body.finished
     });
     const savedNewBeer = await newBeer.save();
