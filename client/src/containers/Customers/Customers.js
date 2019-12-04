@@ -113,7 +113,9 @@ class Customers extends React.Component {
 
     return (
       <>
-      <BeerDisplay />
+      <BeerDisplay
+        beers={this.state.beers}
+      />
         {/*<BeerModal
           handleSubmit={this.handleSubmit}
           handleInputChange={this.handleInputChange}
