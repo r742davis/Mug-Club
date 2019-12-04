@@ -28,8 +28,7 @@ const BeerDisplay = (props) => {
               <ListItemAvatar>
                 <Avatar
                   alt={`${beer.brewery}`}
-
-                  // src={`/static/images/avatar/${beer + 1}.jpg`}
+                  src={beer.url}
                 />
               </ListItemAvatar>
               <ListItemText
