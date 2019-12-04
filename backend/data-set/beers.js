@@ -4,7 +4,7 @@ const beersList = [
     type: "American Pale Ale",
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
-    url: "https://drive.google.com/file/d/134aecjHHFQXqVkGlcnx33uJicRDafwLp/view?usp=sharing",
+    url: "https://i.imgur.com/OCie6ls.png",
     finished: false
   },
   {
@@ -12,7 +12,7 @@ const beersList = [
     type: "Weissbier",
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
-    url: "https://drive.google.com/file/d/134aecjHHFQXqVkGlcnx33uJicRDafwLp/view?usp=sharing",
+    url: "https://i.imgur.com/OCie6ls.png",
     finished: false
   },
   {
@@ -20,7 +20,7 @@ const beersList = [
     type: "American Stout",
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
-    url: "https://drive.google.com/file/d/134aecjHHFQXqVkGlcnx33uJicRDafwLp/view?usp=sharing",
+    url: "https://i.imgur.com/OCie6ls.png",
     finished: false
   },
   {
@@ -28,7 +28,7 @@ const beersList = [
     type: "American Porter",
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
-    url: "https://drive.google.com/file/d/134aecjHHFQXqVkGlcnx33uJicRDafwLp/view?usp=sharing",
+    url: "https://i.imgur.com/OCie6ls.png",
     finished: false
   },
   {
@@ -36,7 +36,7 @@ const beersList = [
     type: "Irish Stout",
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
-    url: "https://drive.google.com/file/d/134aecjHHFQXqVkGlcnx33uJicRDafwLp/view?usp=sharing",
+    url: "https://i.imgur.com/OCie6ls.png",
     finished: false
   },
   {
@@ -44,7 +44,7 @@ const beersList = [
     type: "Seasonal Variety",
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
-    url: "https://drive.google.com/file/d/134aecjHHFQXqVkGlcnx33uJicRDafwLp/view?usp=sharing",
+    url: "https://i.imgur.com/OCie6ls.png",
     finished: false
   },
   {
@@ -52,7 +52,7 @@ const beersList = [
     type: "American IPA",
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
-    url: "https://drive.google.com/file/d/134aecjHHFQXqVkGlcnx33uJicRDafwLp/view?usp=sharing",
+    url: "https://i.imgur.com/OCie6ls.png",
     finished: false
   },
   {
@@ -60,7 +60,7 @@ const beersList = [
     type: "Gose",
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
-    url: "https://drive.google.com/file/d/134aecjHHFQXqVkGlcnx33uJicRDafwLp/view?usp=sharing",
+    url: "https://i.imgur.com/OCie6ls.png",
     finished: false
   },
   {
@@ -68,7 +68,7 @@ const beersList = [
     type: "Double IPA",
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
-    url: "https://drive.google.com/file/d/134aecjHHFQXqVkGlcnx33uJicRDafwLp/view?usp=sharing",
+    url: "https://i.imgur.com/OCie6ls.png",
     finished: false
   },
   {
@@ -76,7 +76,7 @@ const beersList = [
     type: "American Lager",
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
-    url: "https://drive.google.com/file/d/134aecjHHFQXqVkGlcnx33uJicRDafwLp/view?usp=sharing",
+    url: "https://i.imgur.com/OCie6ls.png",
     finished: false
   },
   {
@@ -84,7 +84,7 @@ const beersList = [
     type: "American IPA",
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
-    url: "https://drive.google.com/file/d/134aecjHHFQXqVkGlcnx33uJicRDafwLp/view?usp=sharing",
+    url: "https://i.imgur.com/OCie6ls.png",
     finished: false
   },
   {
@@ -92,7 +92,7 @@ const beersList = [
     type: "American IPA",
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
-    url: "https://drive.google.com/file/d/134aecjHHFQXqVkGlcnx33uJicRDafwLp/view?usp=sharing",
+    url: "https://i.imgur.com/OCie6ls.png",
     finished: false
   },
   {
@@ -100,7 +100,7 @@ const beersList = [
     type: "Hazy IPA",
     brewery: "Firestone Walker",
     breweryLocation: "Paso Robles, CA",
-    url: "https://drive.google.com/file/d/1zw93Ek8smHQQieZn_33IDY28FHqvORJb/view?usp=sharing",
+    url: "https://i.imgur.com/whQInzT.png",
     finished: false
   },
   {
@@ -108,7 +108,7 @@ const beersList = [
     type: "Witbier",
     brewery: "Blue Moon",
     breweryLocation: "Golden, CO",
-    url: "https://drive.google.com/file/d/1WjOwSXobZrdn-Myr6ftrNjriea65D4Yg/view?usp=sharing",
+    url: "https://i.imgur.com/Xa3gSdK.png",
     finished: false
   },
   {
@@ -116,7 +116,7 @@ const beersList = [
     type: "Blonde Ale",
     brewery: "Kona",
     breweryLocation: "Kailua-Kona, HI",
-    url: "https://drive.google.com/open?id=1dLQ11QA6GrL75AoD6jBnUJHa-zoxGV9e",
+    url: "https://i.imgur.com/uvCAHxN.jpg",
     finished: false
   },
   {
@@ -124,7 +124,7 @@ const beersList = [
     type: "American Porter",
     brewery: "Six Rivers",
     breweryLocation: "McKinleyville, CA",
-    url: "https://drive.google.com/open?id=10DoleFUySr9iue-POTAYR2MEid5Hvgfb",
+    url: "https://i.imgur.com/fcBbxHh.png",
     finished: false
   },
   {
@@ -132,7 +132,7 @@ const beersList = [
     type: "International Pale Lager",
     brewery: "Stella Artois",
     breweryLocation: "Leuven, Belgium",
-    url: "https://drive.google.com/open?id=1FBhCsTyJ0QauoFSD3_iWO7HxABEB_8tS",
+    url: "https://i.imgur.com/qIJm7jT.png",
     finished: false
   },
   {
@@ -140,7 +140,7 @@ const beersList = [
     type: "Blonde Ale",
     brewery: "Firestone Walker",
     breweryLocation: "Paso Robles, CA",
-    url: "https://drive.google.com/file/d/1zw93Ek8smHQQieZn_33IDY28FHqvORJb/view?usp=sharing",
+    url: "https://i.imgur.com/whQInzT.png",
     finished: false
   },
   {
@@ -148,7 +148,7 @@ const beersList = [
     type: "German Pilsner",
     brewery: "North Coast",
     breweryLocation: "Fort Bragg, CA",
-    url: "https://drive.google.com/open?id=19Cq59SfTaukS2nLixM4reV0sYPbcF8EJ",
+    url: "https://i.imgur.com/44kFYnG.jpg",
     finished: false
   },
   {
@@ -156,7 +156,7 @@ const beersList = [
     type: "American IPA",
     brewery: "Lagunitas",
     breweryLocation: "Petaluma, CA",
-    url: "https://drive.google.com/open?id=1j0pSg90ip_zp_J8G7tLZotR6_uqF1PeC",
+    url: "https://i.imgur.com/9SBroXx.jpg",
     finished: false
   },
   {
@@ -164,7 +164,7 @@ const beersList = [
     type: "Gose",
     brewery: "Modern Times",
     breweryLocation: "San Diego, CA",
-    url: "https://drive.google.com/open?id=1Un19tXWHQaxVRfhyKITNs_n3FNJ2Vc2J",
+    url: "https://i.imgur.com/zHawXZz.png",
     finished: false
   },
   {
@@ -172,7 +172,7 @@ const beersList = [
     type: "American Pale Ale",
     brewery: "New Glory",
     breweryLocation: "Sacramento, CA",
-    url: "https://drive.google.com/open?id=1G05kN5eFVNpQdlJ_i0SIjYp7wM1czHdb",
+    url: "https://i.imgur.com/FESgirx.png",
     finished: false
   },
   {
@@ -180,7 +180,7 @@ const beersList = [
     type: "American IPA",
     brewery: "Track 7",
     breweryLocation: "Sacramento, CA",
-    url: "https://drive.google.com/open?id=1fAwlRlspWg0yVE3GrlwEoJMgtid09TTu",
+    url: "https://i.imgur.com/fbR4ag6.png",
     finished: false
   },
   {
@@ -188,7 +188,7 @@ const beersList = [
     type: "Witbier",
     brewery: "Lost Coast",
     breweryLocation: "Eureka, CA",
-    url: "https://drive.google.com/open?id=10UyssI7sYbZqJdy4mi4no5HW30-y24J_",
+    url: "https://i.imgur.com/arH05Oq.png",
     finished: false
   },
   {
@@ -196,7 +196,7 @@ const beersList = [
     type: "International Pale Lager",
     brewery: "Grupo Modelo",
     breweryLocation: "Mazatlan, Mexico",
-    url: "https://drive.google.com/open?id=10pL5RYXnKhPzZSLcvs-ZeveWbMMD4Xj2",
+    url: "https://i.imgur.com/sp1OlDb.png",
     finished: false
   },
   {
@@ -204,7 +204,7 @@ const beersList = [
     type: "Irish Stout",
     brewery: "St. James Gate (Guinness)",
     breweryLocation: "Dublin, Ireland",
-    url: "https://drive.google.com/open?id=1-e-Wx53bVzGEWgjJkBU7WVpslWeq5FYo",
+    url: "https://i.imgur.com/68Hj9dd.png",
     finished: false
   },
 ]
