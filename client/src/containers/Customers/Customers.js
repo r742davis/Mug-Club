@@ -91,7 +91,8 @@ class Customers extends React.Component {
         beerType: '',
         brewery: '',
         breweryLocation: '',
-        beerUrl: ''
+        beerUrl: '',
+        newModalOpen: false
       });
     } catch (e) {
       console.error(e)
