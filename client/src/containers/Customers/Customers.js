@@ -106,7 +106,7 @@ class Customers extends React.Component {
       type: this.state.beerType,
       brewery: this.state.brewery,
       breweryLocation: this.state.breweryLocation,
-      beerUrl: this.state.beerUrl
+      url: this.state.beerUrl
     };
 
     try {
@@ -186,6 +186,7 @@ class Customers extends React.Component {
           beerType={this.state.beerType}
           brewery={this.state.brewery}
           breweryLocation={this.state.breweryLocation}
+          beerUrl={this.state.beerUrl}
           />
         : null}
 
