@@ -22,6 +22,7 @@ class Customers extends React.Component {
     active: false,
     selectedBeerType: '',
     editModalOpen: false,
+    newModalOpen: false
   };
 
   async componentDidMount() {
@@ -79,8 +80,14 @@ class Customers extends React.Component {
       console.log(newBeer);
       await alert(`${this.state.beerName} has been created 🍺`);
 
+      //Retrieve beers and update state after submitting new beer
+      const beers = 'http://localhost:5000/beers';
+      const beersResponse = await fetch(beers, {crossDomain: true});
+      const beersJSON = await beersResponse.json();
+
       //Reset initial state for beer field values
       await this.setState({
+        beers: beersJSON,
         beerName: '',
         beerType: '',
         brewery: '',
@@ -100,7 +107,7 @@ class Customers extends React.Component {
       brewery: this.state.brewery,
       breweryLocation: this.state.breweryLocation,
       beerUrl: this.state.beerUrl
-    }
+    };
 
     try {
       const beerURL = 'http://localhost:5000/beers/' + this.state.beerId;
@@ -113,6 +120,15 @@ class Customers extends React.Component {
       await axios.put(beerURL, updatedBeer, {crossDomain: true}, config);
       console.log(updatedBeer);
       await alert(`${this.state.beerName} has been updated! 🍺`);
+
+      //Retrieve beers and update state after updating new beer
+      const beers = 'http://localhost:5000/beers';
+      const beersResponse = await fetch(beers, {crossDomain: true});
+      const beersJSON = await beersResponse.json();
+      this.setState({
+        beers: beersJSON,
+        editModalOpen: false
+      })
     } catch (e) {
       console.log(e);
     }
