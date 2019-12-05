@@ -4,7 +4,7 @@ import Customer from '../../components/Customer/Customer';
 // import Search from '../../components/Search/Search';
 // import Home from '../../components/Home/Home';
 import BeerDisplay from '../../components/Beer/BeerDisplay';
-// import BeerModal from '../../components/Beer/BeerModal';
+import BeerModal from '../../components/Beer/BeerModal';
 import NewBeerModal from '../../components/Beer/NewBeerModal';
 import axios from 'axios';
 
@@ -13,13 +13,15 @@ class Customers extends React.Component {
     clicked: false,
     customers: [],
     beers: [],
+    beerId: '',
     beerName: '',
     beerType: '',
     brewery: '',
     breweryLocation: '',
     beerUrl: '',
     active: false,
-    selectedBeerType: ''
+    selectedBeerType: '',
+    editModalOpen: false,
   };
 
   async componentDidMount() {
@@ -75,7 +77,7 @@ class Customers extends React.Component {
       };
       await axios.post(beersURL, newBeer, {crossDomain: true}, config);
       console.log(newBeer);
-      await alert('New Beer has been created 🍺');
+      await alert(`${this.state.beerName} has been created 🍺`);
 
       //Reset initial state for beer field values
       await this.setState({
@@ -84,10 +86,48 @@ class Customers extends React.Component {
         brewery: '',
         breweryLocation: '',
         beerUrl: ''
-      })
+      });
     } catch (e) {
       console.error(e)
     }
+  }
+
+  handleEditSubmit = async (event) => {
+    event.preventDefault();
+    const updatedBeer = {
+      name: this.state.beerName,
+      type: this.state.beerType,
+      brewery: this.state.brewery,
+      breweryLocation: this.state.breweryLocation,
+      beerUrl: this.state.beerUrl
+    }
+
+    try {
+      const beerURL = 'http://localhost:5000/beers/' + this.state.beerId;
+      const config = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json'
+        }
+      };
+      await axios.put(beerURL, updatedBeer, {crossDomain: true}, config);
+      console.log(updatedBeer);
+      await alert(`${this.state.beerName} has been updated! 🍺`);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  toggleEditModal = async (beer) => {
+    await this.setState({
+      editModalOpen: !this.state.editModalOpen,
+      beerId: beer._id,
+      beerName: beer.name,
+      beerType: beer.type,
+      brewery: beer.brewery,
+      breweryLocation: beer.breweryLocation,
+      beerUrl: beer.url
+    });
   }
 
   // handleNavToggle = () => {
@@ -118,15 +158,22 @@ class Customers extends React.Component {
       <>
       <BeerDisplay
         beers={this.state.beers}
+        toggleEditModal={this.toggleEditModal}
       />
-        {/*<BeerModal
-          handleSubmit={this.handleSubmit}
+      {this.state.editModalOpen ?
+        <BeerModal
+          handleEditSubmit={this.handleEditSubmit}
           handleInputChange={this.handleInputChange}
+          toggleEditModal={this.toggleEditModal}
+          handleEdit={this.handleEdit}
           beerName={this.state.beerName}
           beerType={this.state.beerType}
           brewery={this.state.brewery}
           breweryLocation={this.state.breweryLocation}
           />
+        : null}
+
+        {/*
         <NewBeerModal
           handleSubmit={this.handleSubmit}
           handleInputChange={this.handleInputChange}

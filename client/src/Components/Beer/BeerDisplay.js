@@ -1,15 +1,10 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import IconButton from '@material-ui/core/IconButton';
 import Avatar from '@material-ui/core/Avatar';
-import EditRoundedIcon from '@material-ui/icons/EditRounded';
-import DeleteIcon from '@material-ui/icons/Delete';
 import classes from './BeerDisplay.module.css';
 
 const BeerDisplay = (props) => {
@@ -27,6 +22,7 @@ const BeerDisplay = (props) => {
               dense
               button
               className={classes.ListItem}
+              onClick={() => props.toggleEditModal(beer)}
               >
               <ListItemAvatar>
                 <Avatar
@@ -38,8 +34,6 @@ const BeerDisplay = (props) => {
                 id={labelId}
                 primary={`${beer.name}`}
                 secondary={`${beer.brewery}`} />
-              <EditRoundedIcon className={classes.EditIcon}/>
-              <DeleteIcon className={classes.DeleteIcon} />
             </ListItem>
           );
         })}

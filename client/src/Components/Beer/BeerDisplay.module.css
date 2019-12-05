@@ -12,14 +12,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* border: 1px solid blue; */
 }
 
 .DisplayContainer .List {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  /* border: 1px solid red; */
   background: white;
   width: 100%;
   max-width: 750px;
@@ -29,10 +27,10 @@
   margin: 5px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: white;
-  /* border: 1px solid pink; */
 }
 
 .EditIcon {
+  z-index: 10;
   color: #757575;
 }
 
