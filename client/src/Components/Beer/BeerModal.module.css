@@ -18,20 +18,39 @@
 .Modal {
   padding: 100px;
   background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .ModalTitle {
   text-align: center;
 }
 
+.ModalImage {
+  width: 150px;
+  height: 150px;
+  border-radius: 5rem;
+}
+
 .ModalForm {
   display: flex;
   flex-direction: column;
   width: 300px;
+  font-size: 0.75rem;
 }
 
 .ModalForm > label {
   margin-top: 10px;
+}
+
+.ModalForm input,
+.ModalForm select {
+  font-size: 1rem;
+  color: #616161;
+  height: 25px;
+  border-radius: 0.5rem;
+  border: 1px solid #e0e0e0;
 }
 
 .ModalForm input[type=submit] {

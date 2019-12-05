@@ -42,7 +42,6 @@ class Customers extends React.Component {
     } catch (error) {
         throw new Error('Cannot connect to database. Server may be busy or unavailable.')
     }
-
   }
 
   handleClick = () => {
@@ -64,7 +63,7 @@ class Customers extends React.Component {
       type: this.state.beerType,
       brewery: this.state.brewery,
       breweryLocation: this.state.breweryLocation,
-      beerUrl: this.state.beerUrl,
+      url: this.state.beerUrl,
       finished: false
     }
 
@@ -146,6 +145,12 @@ class Customers extends React.Component {
     });
   }
 
+  toggleNewModal = async () => {
+    this.setState({
+      newModalOpen: !this.state.newModalOpen
+    })
+  }
+
   // handleNavToggle = () => {
   //   this.setState({ active: !this.state.active })
   //   if (this.state.active) {
@@ -175,6 +180,7 @@ class Customers extends React.Component {
       <BeerDisplay
         beers={this.state.beers}
         toggleEditModal={this.toggleEditModal}
+        toggleNewModal={this.toggleNewModal}
       />
       {this.state.editModalOpen ?
         <BeerModal
@@ -190,16 +196,20 @@ class Customers extends React.Component {
           />
         : null}
 
-        {/*
+      {this.state.newModalOpen ?
         <NewBeerModal
           handleSubmit={this.handleSubmit}
           handleInputChange={this.handleInputChange}
+          toggleNewModal={this.toggleNewModal}
           beerName={this.state.beerName}
           selectedBeerType={this.state.selectedBeerType}
           brewery={this.state.brewery}
           breweryLocation={this.state.breweryLocation}
           beerUrl={this.state.beerUrl}
-        />*/}
+        />
+      : null}
+
+
         {/*<Button handleClick={this.handleClick} />
         <Search
           customers={this.state.customers}

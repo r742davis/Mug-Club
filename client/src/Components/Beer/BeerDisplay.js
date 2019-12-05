@@ -12,7 +12,7 @@ const BeerDisplay = (props) => {
     <>
     <section className={classes.DisplayContainer}>
     <h1>Current Mug Club Beers</h1>
-    <button>Create New Beer</button>
+    <button onClick={props.toggleNewModal}>Create New Beer</button>
       <List dense className={classes.List}>
         {props.beers
           .map(beer => {
