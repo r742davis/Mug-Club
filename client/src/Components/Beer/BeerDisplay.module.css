@@ -1,22 +1,41 @@
 .DisplayContainer {
-  width: 75%;
+  width: 80%;
+  min-width: 550px;
   height: auto;
   margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  background: white;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
 
 .DisplayContainer .List {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  border: 1px solid red;
-  width: 550px;
+  /* border: 1px solid red; */
+  background: white;
+  width: 100%;
+  max-width: 750px;
 }
 .DisplayContainer .ListItem {
-  width: 250px;
-  border: 1px solid pink;
+  width: 45%;
+  margin: 5px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  background: white;
+  /* border: 1px solid pink; */
+}
+
+.EditIcon {
+  color: #757575;
+}
+
+.DeleteIcon {
+  color: #757575;
 }

@@ -126,7 +126,7 @@ class Customers extends React.Component {
           beerType={this.state.beerType}
           brewery={this.state.brewery}
           breweryLocation={this.state.breweryLocation}
-          />*/}
+          />
         <NewBeerModal
           handleSubmit={this.handleSubmit}
           handleInputChange={this.handleInputChange}
@@ -135,7 +135,7 @@ class Customers extends React.Component {
           brewery={this.state.brewery}
           breweryLocation={this.state.breweryLocation}
           beerUrl={this.state.beerUrl}
-        />
+        />*/}
         {/*<Button handleClick={this.handleClick} />
         <Search
           customers={this.state.customers}

@@ -8,12 +8,15 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import IconButton from '@material-ui/core/IconButton';
 import Avatar from '@material-ui/core/Avatar';
+import EditRoundedIcon from '@material-ui/icons/EditRounded';
+import DeleteIcon from '@material-ui/icons/Delete';
 import classes from './BeerDisplay.module.css';
 
 const BeerDisplay = (props) => {
   return (
     <>
     <section className={classes.DisplayContainer}>
+    <h1>Current Mug Club Beers</h1>
       <List dense className={classes.List}>
         {props.beers
           .map(beer => {
@@ -35,6 +38,8 @@ const BeerDisplay = (props) => {
                 id={labelId}
                 primary={`${beer.name}`}
                 secondary={`${beer.brewery}`} />
+              <EditRoundedIcon className={classes.EditIcon}/>
+              <DeleteIcon className={classes.DeleteIcon} />
             </ListItem>
           );
         })}
