@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './BeerModal.module.css';
 import beerTypes from './BeerTypes';
+import Grow from '@material-ui/core/Grow';
 const uniqid = require('uniqid');
 
 //Iterate over object, return the optgroup with the key name, then map each key's array to display the options within that optgroup
@@ -16,6 +17,7 @@ const NewBeerModal = (props) => {
   return (
     <>
       <section className={classes.ModalContainer}>
+        <Grow in={true}>
         <div className={classes.Modal}>
           <h2 className={classes.ModalTitle}>Create New Beer</h2>
           <form
@@ -40,6 +42,7 @@ const NewBeerModal = (props) => {
           </form>
           <button onClick={props.toggleNewModal}>Close</button>
         </div>
+        </Grow>
       </section>
     </>
   )

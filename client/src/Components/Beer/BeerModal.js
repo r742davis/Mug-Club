@@ -11,7 +11,7 @@ const typeMap = Object.entries(beerTypes)
         value.map(type => <option key={uniqid()} value={type}>{type}</option>)
       }</optgroup>
     }
-  )
+  );
 
 const BeerModal = (props) => {
   return (
@@ -28,10 +28,13 @@ const BeerModal = (props) => {
             <input type="text" name="beerName" placeholder="Beer Name" value={props.beerName} onChange={props.handleInputChange} />
             <label htmlFor="beerType">Type</label>
 
-            <select name="beerType" onChange={props.handleInputChange}>
+            <select name="beerType" onChange={props.handleInputChange} value={props.beerType}>
+              <optgroup label="Current Beer Type">
+                <option value={props.beerType}>{props.beerType}</option>
+              </optgroup>
               {typeMap}
             </select>
-            
+
             <label htmlFor="brewery">Brewery</label>
             <input type="text" name="brewery" placeholder="Brewery Name" value={props.brewery} onChange={props.handleInputChange} />
             <label htmlFor="breweryLocation">Brewery Location</label>
