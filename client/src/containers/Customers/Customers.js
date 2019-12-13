@@ -3,7 +3,7 @@ import React from 'react';
 import Customer from '../../components/Customer/Customer';
 // import Search from '../../components/Search/Search';
 // import Home from '../../components/Home/Home';
-import NavBar from '../../components/Navigation/NavBar';
+import Navigation from '../../components/Navigation/Navigation';
 import BeerDisplay from '../../components/Beer/BeerDisplay';
 import BeerModal from '../../components/Beer/BeerModal';
 import NewBeerModal from '../../components/Beer/NewBeerModal';
@@ -179,38 +179,37 @@ class Customers extends React.Component {
 
     return (
       <>
-      <NavBar />
-      <BeerDisplay
-        beers={this.state.beers}
-        toggleEditModal={this.toggleEditModal}
-        toggleNewModal={this.toggleNewModal}
-      />
-      {this.state.editModalOpen ?
-        <BeerModal
-          handleEditSubmit={this.handleEditSubmit}
-          handleInputChange={this.handleInputChange}
+        <Navigation />
+        <BeerDisplay
+          beers={this.state.beers}
           toggleEditModal={this.toggleEditModal}
-          handleEdit={this.handleEdit}
-          beerName={this.state.beerName}
-          beerType={this.state.beerType}
-          brewery={this.state.brewery}
-          breweryLocation={this.state.breweryLocation}
-          beerUrl={this.state.beerUrl}
+          toggleNewModal={this.toggleNewModal}
+        />
+        {this.state.editModalOpen ?
+          <BeerModal
+            handleEditSubmit={this.handleEditSubmit}
+            handleInputChange={this.handleInputChange}
+            toggleEditModal={this.toggleEditModal}
+            handleEdit={this.handleEdit}
+            beerName={this.state.beerName}
+            beerType={this.state.beerType}
+            brewery={this.state.brewery}
+            breweryLocation={this.state.breweryLocation}
+            beerUrl={this.state.beerUrl}
+            />
+          : null}
+        {this.state.newModalOpen ?
+          <NewBeerModal
+            handleSubmit={this.handleSubmit}
+            handleInputChange={this.handleInputChange}
+            toggleNewModal={this.toggleNewModal}
+            beerName={this.state.beerName}
+            selectedBeerType={this.state.selectedBeerType}
+            brewery={this.state.brewery}
+            breweryLocation={this.state.breweryLocation}
+            beerUrl={this.state.beerUrl}
           />
         : null}
-
-      {this.state.newModalOpen ?
-        <NewBeerModal
-          handleSubmit={this.handleSubmit}
-          handleInputChange={this.handleInputChange}
-          toggleNewModal={this.toggleNewModal}
-          beerName={this.state.beerName}
-          selectedBeerType={this.state.selectedBeerType}
-          brewery={this.state.brewery}
-          breweryLocation={this.state.breweryLocation}
-          beerUrl={this.state.beerUrl}
-        />
-      : null}
 
 
         {/*<Button handleClick={this.handleClick} />

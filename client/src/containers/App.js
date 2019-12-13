@@ -6,7 +6,6 @@ import Customers from './Customers/Customers';
 function App() {
   return (
     <>
-      <CssBaseline />
       <Customers />
     </>
   );

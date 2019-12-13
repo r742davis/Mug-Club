@@ -1,0 +1,26 @@
+nav {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.container {
+  background: #3196f3;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.list {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid red;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+  border: 1px solid yellow;
+}
