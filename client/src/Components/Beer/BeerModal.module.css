@@ -1,9 +1,9 @@
 .ModalContainer {
   position: fixed;
+  transform: translate3d(-50%,-50%,0);
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  height: 100vh;
+  height: 100%;
   width: 100%;
   margin: 0 auto;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -13,11 +13,14 @@
   background: rgba(0,0,0,0.4);
   overflow-y: hidden;
   z-index: 100;
+
 }
 
 .Modal {
-  padding: 100px;
+  padding: 2%;
   background: white;
+  height: auto;
+  border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,8 +51,7 @@
 .ModalForm select {
   font-size: 1rem;
   color: #616161;
-  height: 25px;
-  border-radius: 0.5rem;
+  height: 2rem;
   border: 1px solid #e0e0e0;
 }
 
@@ -58,7 +60,7 @@
   height: 30px;
   border: none;
   color: white;
-  background-color: blue;
+  background-color: #0288d1;
   font-size: 1.25rem;
   cursor: pointer;
   transition: 0.5s;
@@ -67,4 +69,8 @@
 .ModalForm input[type=submit]:hover {
   background-color: lightblue;
   transition: 0.5s;
+}
+
+.Button {
+  background: turquoise;
 }

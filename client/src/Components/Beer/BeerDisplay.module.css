@@ -1,10 +1,10 @@
 .DisplayContainer {
-  width: 80%;
+  width: 60%;
   min-width: 550px;
   height: auto;
   margin: 0 auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   padding: 10px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: white;
@@ -24,7 +24,8 @@
 }
 .DisplayContainer .ListItem {
   width: 45%;
-  margin: 5px;
+  margin: 1%;
+  border-radius: 0.5rem;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: white;
 }

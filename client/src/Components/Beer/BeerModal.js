@@ -1,5 +1,7 @@
 import React from 'react';
 import Grow from '@material-ui/core/Grow';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
 import classes from './BeerModal.module.css';
 import beerTypes from './BeerTypes';
 const uniqid = require('uniqid');
@@ -13,7 +15,15 @@ const typeMap = Object.entries(beerTypes)
     }
   );
 
+const useStyles = makeStyles(theme => ({
+  margin: {
+    margin: theme.spacing(1),
+  },
+}));
+
 const BeerModal = (props) => {
+  const styles = useStyles();
+
   return (
     <>
       <section className={classes.ModalContainer}>
@@ -43,9 +53,19 @@ const BeerModal = (props) => {
             <label htmlFor="beerUrl">Beer/Brewery Image URL</label>
             <input type="text" name="beerUrl" placeholder="URL Address" value={props.beerUrl} onChange={props.handleInputChange} required/>
 
-            <input type="submit" value="Submit" />
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              className={styles.margin}>Submit Edit</Button>
+            <Button
+              variant="outlined"
+              color="secondary"
+              size="medium"
+              onClick={props.toggleEditModal}
+              className={styles.margin}>Cancel</Button>
           </form>
-          <button onClick={props.toggleEditModal}>Close</button>
+
         </div>
         </Grow>
       </section>
