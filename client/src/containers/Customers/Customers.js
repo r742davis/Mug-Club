@@ -3,6 +3,7 @@ import React from 'react';
 import Customer from '../../components/Customer/Customer';
 // import Search from '../../components/Search/Search';
 // import Home from '../../components/Home/Home';
+import NavBar from '../../components/Navigation/NavBar';
 import BeerDisplay from '../../components/Beer/BeerDisplay';
 import BeerModal from '../../components/Beer/BeerModal';
 import NewBeerModal from '../../components/Beer/NewBeerModal';
@@ -178,6 +179,7 @@ class Customers extends React.Component {
 
     return (
       <>
+      <NavBar />
       <BeerDisplay
         beers={this.state.beers}
         toggleEditModal={this.toggleEditModal}
