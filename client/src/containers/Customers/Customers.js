@@ -6,8 +6,8 @@ import NewCustomerModal from '../../components/Modals/Customer/NewCustomer';
 import Home from '../../components/Home/Home';
 import Navigation from '../../components/Navigation/Navigation';
 import BeerDisplay from '../../components/Beer/BeerDisplay';
-import BeerModal from '../../components/Beer/BeerModal';
-import NewBeerModal from '../../components/Beer/NewBeerModal';
+import BeerModal from '../../components/Modals/Beer/BeerModal';
+import NewBeerModal from '../../components/Modals/Beer/NewBeerModal';
 import axios from 'axios';
 
 //React Router DOM Import
