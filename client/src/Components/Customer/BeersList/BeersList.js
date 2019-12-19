@@ -32,66 +32,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const checkName = (brewery) => {
-  const sierra = brewery.toLowerCase().includes('sierra');
-  const guinness = brewery.toLowerCase().includes('guinness');
-  const firestone = brewery.toLowerCase().includes('firestone');
-  const blueMoon = brewery.toLowerCase().includes('blue moon');
-  const kona = brewery.toLowerCase().includes('kona');
-  const sixRivers = brewery.toLowerCase().includes('six rivers');
-  const stellaArtois = brewery.toLowerCase().includes('stella artois');
-  const northCoast = brewery.toLowerCase().includes('north coast');
-  const lagunitas = brewery.toLowerCase().includes('lagunitas');
-  const modernTimes = brewery.toLowerCase().includes('modern times');
-  const trackSeven = brewery.toLowerCase().includes('track');
-  const newGlory = brewery.toLowerCase().includes('new glory');
-  const modelo = brewery.toLowerCase().includes('modelo');
-  const lostCoast = brewery.toLowerCase().includes('lost coast');
-
-  if (sierra) {
-    return sierraNevadaLogo;
-  }
-  if (guinness) {
-    return guinnessLogo;
-  }
-  if (firestone) {
-    return firestoneWalkerLogo;
-  }
-  if (blueMoon) {
-    return blueMoonLogo;
-  }
-  if (kona) {
-    return konaLogo
-  }
-  if (sixRivers) {
-    return sixRiversLogo
-  }
-  if (stellaArtois) {
-    return stellaArtoisLogo
-  }
-  if (northCoast) {
-    return northCoastLogo
-  }
-  if (lagunitas) {
-    return lagunitasLogo
-  }
-  if (modernTimes) {
-    return modernTimesLogo
-  }
-  if (trackSeven) {
-    return trackSevenLogo
-  }
-  if (newGlory) {
-    return newGloryLogo
-  }
-  if (modelo) {
-    return modeloLogo
-  }
-  if (lostCoast) {
-    return lostCoastLogo
-  }
-}
-
 export default function CheckboxListSecondary(props) {
   const classes = useStyles();
   const [checked, setChecked] = React.useState([-1]);
@@ -116,7 +56,7 @@ export default function CheckboxListSecondary(props) {
     <List dense className={classes.root}>
       {props.beers
         .map(beer => {
-        const labelId = `checkbox-list-secondary-label-${props.beers.id}`;
+        const labelId = `checkbox-list-secondary-label-${beer.id}`;
         return (
           <ListItem
             key={beer.id}
@@ -128,7 +68,7 @@ export default function CheckboxListSecondary(props) {
             <ListItemAvatar>
               <Avatar
                 alt={`${beer.brewery}`}
-                src={checkName(beer.brewery)}
+                src={`${beer.url}`}
                 // src={`/static/images/avatar/${beer + 1}.jpg`}
               />
             </ListItemAvatar>

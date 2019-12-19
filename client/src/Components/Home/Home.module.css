@@ -1,12 +1,11 @@
 h1,
 h3 {
-  font-family: 'Oleo Script', cursive;
+  font-family: 'Montserrat', sans-serif;
   color: #3196f3;
   text-align: center;
 }
 
 .container {
-  
   margin: 0 auto;
   border: 1px solid yellow;
 }
