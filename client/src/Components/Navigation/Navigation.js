@@ -1,31 +1,30 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+import Button from '@material-ui/core/Button';
 import classes from './Navigation.module.css';
 
-const navbar = (props) => {
-
+const navigation = (props) => {
   return (
-    <nav>
-      <div className={classes.container}>
-        <ul className={classes.list}>
-          <li className={classes.item}>
-            <a href="#" className={classes.link}>Home</a>
-          </li>
-          <li className={classes.item}>
-            <a href="#" className={classes.link}>Create New Customer</a>
-          </li>
-          <li className={classes.item}>
-            <a href="#" className={classes.link}>Search Customers</a>
-          </li>
-          <li className={classes.item}>
-            <a href="#" className={classes.link}>Edit Beer List</a>
-          </li>
-          <li className={classes.item}>
-            <a href="#" className={classes.link}>LOG OUT</a>
-          </li>
-        </ul>
-      </div>
+    <nav className={classes.container}>
+      <ul className={classes.list}>
+        <li className={classes.item}>
+          <Link to="/" className={classes.link}>Home</Link>
+        </li>
+        <li className={classes.item}>
+          <Link to="/newCustomer" className={classes.link}>Create New Customer</Link>
+        </li>
+        <li className={classes.item}>
+          <Link to="/searchCustomers" className={classes.link}>Search Customers</Link>
+        </li>
+        <li className={classes.item}>
+          <Link to="/beersList" className={classes.link}>Beers List</Link>
+        </li>
+        <li className={classes.item}>
+          <Button variant="outlined">LOG OUT</Button>
+        </li>
+      </ul>
     </nav>
   )
 };
 
-export default navbar;
+export default navigation;

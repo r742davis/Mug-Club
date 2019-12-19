@@ -2,12 +2,19 @@ import React from 'react';
 // import Button from '../../components/Button/Button';
 import Customer from '../../components/Customer/Customer';
 // import Search from '../../components/Search/Search';
-// import Home from '../../components/Home/Home';
+import Home from '../../components/Home/Home';
 import Navigation from '../../components/Navigation/Navigation';
 import BeerDisplay from '../../components/Beer/BeerDisplay';
 import BeerModal from '../../components/Beer/BeerModal';
 import NewBeerModal from '../../components/Beer/NewBeerModal';
 import axios from 'axios';
+
+//React Router DOM Import
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 class Customers extends React.Component {
   state = {
@@ -179,12 +186,32 @@ class Customers extends React.Component {
 
     return (
       <>
-        <Navigation />
-        <BeerDisplay
-          beers={this.state.beers}
-          toggleEditModal={this.toggleEditModal}
-          toggleNewModal={this.toggleNewModal}
-        />
+        <Router>
+          <div>
+            <Navigation />
+
+
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/newCustomer">
+                <h1>New Customer</h1>
+              </Route>
+              <Route path="/searchCustomers">
+                {displayCustomers}
+              </Route>
+              <Route path="/beersList">
+                <BeerDisplay
+                  beers={this.state.beers}
+                  toggleEditModal={this.toggleEditModal}
+                  toggleNewModal={this.toggleNewModal}
+                />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+
         {this.state.editModalOpen ?
           <BeerModal
             handleEditSubmit={this.handleEditSubmit}
@@ -226,7 +253,3 @@ class Customers extends React.Component {
 };
 
 export default Customers;
-
-// <NavBar
-//   active={this.state.active}
-//   menuToggle={this.handleNavToggle} />
