@@ -11,13 +11,13 @@ const navigation = (props) => {
           <Link to="/" className={classes.link}>Home</Link>
         </li>
         <li className={classes.item}>
-          <Link to="/newCustomer" className={classes.link}>Create New Customer</Link>
-        </li>
-        <li className={classes.item}>
           <Link to="/searchCustomers" className={classes.link}>Search Customers</Link>
         </li>
         <li className={classes.item}>
           <Link to="/beersList" className={classes.link}>Beers List</Link>
+        </li>
+        <li className={classes.item}>
+          <Button variant="outlined" onClick={props.toggleNewCustomerModal}>Add New Customer</Button>
         </li>
         <li className={classes.item}>
           <Button variant="outlined">LOG OUT</Button>

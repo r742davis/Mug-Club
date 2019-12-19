@@ -1,0 +1,68 @@
+import React from 'react';
+import classes from '../Modals.module.css';
+import Grow from '@material-ui/core/Grow';
+import Button from '@material-ui/core/Button';
+import { ThemeProvider } from '@material-ui/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  margin: {
+    margin: theme.spacing(1),
+  },
+}));
+
+//MUI Theme Creation - Button
+const theme = createMuiTheme({
+  palette: {
+    primary: { main: '#3196f3' },
+    secondary: { main: '#11cb5f' },
+  },
+});
+
+
+const NewCustomer = (props) => {
+  const styles = useStyles();
+
+  return (
+    <>
+      <section className={classes.ModalContainer}>
+        <Grow in={true}>
+        <div className={classes.Modal}>
+          <h2 className={classes.ModalTitle}>Edit Beer</h2>
+          <img className={classes.ModalImage} src={props.beerUrl} alt={props.beerName} />
+          <form
+            className={classes.ModalForm}
+            onSubmit={props.handleEditSubmit}>
+            <label htmlFor="beerName">Beer Name</label>
+            <input type="text" name="beerName" placeholder="Beer Name" value={props.beerName} onChange={props.handleInputChange} />
+            <label htmlFor="beerType">Type</label>
+            <label htmlFor="brewery">Brewery</label>
+            <input type="text" name="brewery" placeholder="Brewery Name" value={props.brewery} onChange={props.handleInputChange} />
+            <label htmlFor="breweryLocation">Brewery Location</label>
+            <input type="text" name="breweryLocation" placeholder="Brewery Location" value={props.breweryLocation} onChange={props.handleInputChange} />
+
+            <label htmlFor="beerUrl">Beer/Brewery Image URL</label>
+            <input type="text" name="beerUrl" placeholder="URL Address" value={props.beerUrl} onChange={props.handleInputChange} required/>
+
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              className={styles.margin}>Submit Edit</Button>
+            <Button
+              variant="outlined"
+              color="secondary"
+              size="medium"
+              onClick={props.toggleNewCustomerModal}
+              className={styles.margin}>Cancel</Button>
+          </form>
+
+        </div>
+        </Grow>
+      </section>
+    </>
+  )
+};
+
+export default NewCustomer;

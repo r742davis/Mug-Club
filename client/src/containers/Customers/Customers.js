@@ -1,7 +1,7 @@
 import React from 'react';
 // import Button from '../../components/Button/Button';
 import Customer from '../../components/Customer/Customer';
-import NewCustomer from '../../components/Customer/NewCustomer';
+import NewCustomerModal from '../../components/Modals/Customer/NewCustomer';
 // import Search from '../../components/Search/Search';
 import Home from '../../components/Home/Home';
 import Navigation from '../../components/Navigation/Navigation';
@@ -31,7 +31,8 @@ class Customers extends React.Component {
     active: false,
     selectedBeerType: '',
     editModalOpen: false,
-    newModalOpen: false
+    newModalOpen: false,
+    newCustomerModalOpen: false
   };
 
   async componentDidMount() {
@@ -161,12 +162,11 @@ class Customers extends React.Component {
     })
   }
 
-  // handleNavToggle = () => {
-  //   this.setState({ active: !this.state.active })
-  //   if (this.state.active) {
-  //     console.log('active')
-  //   }
-  // }
+  toggleNewCustomerModal = async (event) => {
+    this.setState({
+      newCustomerModalOpen: !this.state.newCustomerModalOpen
+    })
+  }
 
   render() {
     const displayCustomers = (
@@ -189,7 +189,9 @@ class Customers extends React.Component {
       <>
         <Router>
           <div>
-            <Navigation />
+            <Navigation
+              toggleNewCustomerModal={this.toggleNewCustomerModal}
+            />
 
 
             <Switch>
@@ -197,7 +199,9 @@ class Customers extends React.Component {
                 <Home />
               </Route>
               <Route path="/newCustomer">
-                <NewCustomer />
+                {this.state.newCustomerModalOpen ?
+                  <NewCustomerModal toggleNewCustomerModal={this.toggleNewCustomerModal}
+                  /> : null}
               </Route>
               <Route path="/searchCustomers">
                 {displayCustomers}
