@@ -33,7 +33,7 @@ const NewCustomer = (props) => {
           <h2 className={classes.ModalTitle}>Add New Customer</h2>
           <form
             className={classes.ModalForm}
-            onSubmit={props.handleEditSubmit}>
+            onSubmit={props.handleNewCustomerSubmit}>
             <label htmlFor="firstName">First Name</label>
             <input type="text" name="firstName" placeholder="First Name" value={props.firstName} onChange={props.handleInputChange} />
             <label htmlFor="lastName">Last Name</label>

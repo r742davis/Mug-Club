@@ -23,7 +23,7 @@ class Customers extends React.Component {
     customers: [],
     firstName: '',
     lastName: '',
-    clubCompleted: '',
+    completed: '',
     clubId: '',
     beers: [],
     beerId: '',
@@ -150,6 +150,34 @@ class Customers extends React.Component {
     }
   }
 
+  handleNewCustomerSubmit = async (event) => {
+    event.preventDefault();
+    const newCustomer = {
+      name: {
+        first: this.state.firstName,
+        last: this.state.lastName
+      },
+      mugClub: {
+        completed: false,
+        clubId: this.state.clubId
+      }
+    };
+    try {
+      const customerURL = 'http://localhost:5000/customers';
+      const config = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json'
+        }
+      };
+      await axios.post(customerURL, newCustomer, {crossDomain: true}, config);
+      console.log(newCustomer);
+      await alert(`${this.state.firstName} has been created! :D`);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   toggleEditModal = async (beer) => {
     await this.setState({
       editModalOpen: !this.state.editModalOpen,
@@ -220,6 +248,7 @@ class Customers extends React.Component {
           <NewCustomer
             toggleNewCustomerModal={this.toggleNewCustomerModal}
             handleInputChange={this.handleInputChange}
+            handleNewCustomerSubmit={this.handleNewCustomerSubmit}
             firstName={this.state.firstName}
             lastName={this.state.lastName}
             completed={this.state.completed}
