@@ -8,23 +8,6 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Checkbox from '@material-ui/core/Checkbox';
 import Avatar from '@material-ui/core/Avatar';
 
-import guinnessLogo from '../../../assets/guinness.png';
-import sierraNevadaLogo from '../../../assets/sierra_nevada.png';
-import firestoneWalkerLogo from '../../../assets/firestone_walker.png';
-import blueMoonLogo from '../../../assets/blue_moon.png';
-import konaLogo from '../../../assets/kona.png';
-import sixRiversLogo from '../../../assets/six_rivers.png';
-import stellaArtoisLogo from '../../../assets/stella_artois.png';
-import northCoastLogo from '../../../assets/north_coast.jpg';
-import lagunitasLogo from '../../../assets/lagunitas.jpg';
-import modernTimesLogo from '../../../assets/modern_times.png';
-import trackSevenLogo from '../../../assets/track_seven.png';
-import newGloryLogo from '../../../assets/new_glory.png';
-import modeloLogo from '../../../assets/modelo.png';
-import lostCoastLogo from '../../../assets/lost_coast.png';
-
-
-
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
