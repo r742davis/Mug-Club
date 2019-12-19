@@ -3,15 +3,13 @@ import React from 'react';
 const search = (props) => {
   return (
     <>
-    <form onSubmit={props.handleSubmit}>
+    <form>
       <input
-        type="text"
+        type='text'
+        name='search'
         value={props.value}
         onChange={props.handleChange} />
-      <input
-        type="submit"
-        value="Search" />
-      </form>
+    </form>
     </>
   )
 };

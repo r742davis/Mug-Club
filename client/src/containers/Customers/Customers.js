@@ -2,12 +2,13 @@ import React from 'react';
 // import Button from '../../components/Button/Button';
 import Customer from '../../components/Customer/Customer';
 import NewCustomer from '../../components/Modals/Customer/NewCustomer';
-// import Search from '../../components/Search/Search';
+import Search from '../../components/Search/Search';
 import Home from '../../components/Home/Home';
 import Navigation from '../../components/Navigation/Navigation';
 import BeerDisplay from '../../components/Beer/BeerDisplay';
 import BeerModal from '../../components/Modals/Beer/BeerModal';
 import NewBeerModal from '../../components/Modals/Beer/NewBeerModal';
+import DisplayCustomers from '../../components/Customer/DisplayCustomers';
 import axios from 'axios';
 
 //React Router DOM Import
@@ -210,21 +211,6 @@ class Customers extends React.Component {
   }
 
   render() {
-    const displayCustomers = (
-      this.state.customers.map((person, index) => {
-        return (
-          <Customer
-            key={index}
-            name={person.name}
-            email={person.email}
-            username={person.username}
-            clubId={person.mugClub.clubId}
-            beers={person.mugClub.beers}
-            completed={person.mugClub.completed}
-          />
-        )
-      })
-    );
 
     return (
       <>
@@ -238,7 +224,8 @@ class Customers extends React.Component {
                 <Home />
               </Route>
               <Route path="/searchCustomers">
-                {displayCustomers}
+                <Search />
+                <DisplayCustomers customers={this.state.customers}/>
               </Route>
               <Route path="/beersList">
                 <BeerDisplay
