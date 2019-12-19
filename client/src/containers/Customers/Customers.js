@@ -1,6 +1,7 @@
 import React from 'react';
 // import Button from '../../components/Button/Button';
 import Customer from '../../components/Customer/Customer';
+import NewCustomer from '../../components/Customer/NewCustomer';
 // import Search from '../../components/Search/Search';
 import Home from '../../components/Home/Home';
 import Navigation from '../../components/Navigation/Navigation';
@@ -196,7 +197,7 @@ class Customers extends React.Component {
                 <Home />
               </Route>
               <Route path="/newCustomer">
-                <h1>New Customer</h1>
+                <NewCustomer />
               </Route>
               <Route path="/searchCustomers">
                 {displayCustomers}
