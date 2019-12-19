@@ -4,10 +4,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
-// Beers Section Material UI Imports
 import BeersList from './BeersList/BeersList';
-
 import classes from './Customer.module.css';
 
 const customer = (props) => {
@@ -22,13 +19,15 @@ const customer = (props) => {
         <Typography variant="h5" color="textSecondary">
           Mug Club ID: {props.clubId}
         </Typography>
-        <Typography variant="h5">
-          Beers:
-        </Typography>
-        {/* Import of Beers List with Clickable Action and Avatars */}
-        <BeersList
-          beers={props.beers}
-        />
+        {/*
+          <Typography variant="h5">
+            Beers:
+          </Typography>
+          <BeersList
+            beers={props.beers}
+          />
+        */}
+
       </CardContent>
       <CardActions>
         <Button size="small">Edit Customer</Button>

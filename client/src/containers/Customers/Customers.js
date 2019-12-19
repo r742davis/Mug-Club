@@ -23,7 +23,6 @@ class Customers extends React.Component {
     customers: [],
     firstName: '',
     lastName: '',
-    completed: '',
     clubId: '',
     beers: [],
     beerId: '',
@@ -158,7 +157,6 @@ class Customers extends React.Component {
         last: this.state.lastName
       },
       mugClub: {
-        completed: false,
         clubId: this.state.clubId
       }
     };
@@ -173,6 +171,15 @@ class Customers extends React.Component {
       await axios.post(customerURL, newCustomer, {crossDomain: true}, config);
       console.log(newCustomer);
       await alert(`${this.state.firstName} has been created! :D`);
+
+      //Retrieve customers with new customer added
+      const customers = 'http://localhost:5000/customers';
+      const customersResponse = await fetch(customers, {crossDomain: true});
+      const customersJSON = await customersResponse.json();
+      this.setState({
+        customers: customersJSON,
+        newCustomerModalOpen: false
+      })
     } catch (e) {
       console.log(e);
     }
@@ -251,7 +258,6 @@ class Customers extends React.Component {
             handleNewCustomerSubmit={this.handleNewCustomerSubmit}
             firstName={this.state.firstName}
             lastName={this.state.lastName}
-            completed={this.state.completed}
             clubId={this.state.clubId}
             /> : null}
         {this.state.editModalOpen ?

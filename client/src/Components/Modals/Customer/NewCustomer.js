@@ -38,9 +38,6 @@ const NewCustomer = (props) => {
             <input type="text" name="firstName" placeholder="First Name" value={props.firstName} onChange={props.handleInputChange} />
             <label htmlFor="lastName">Last Name</label>
             <input type="text" name="lastName" placeholder="Last Name" value={props.lastName} onChange={props.handleInputChange} />
-
-            <label htmlFor="completed">Mug Club Completed?</label>
-            <input type="text" name="completed" placeholder="True / False" value={props.completed} onChange={props.handleInputChange} />
             <label htmlFor="clubId">Mug Club ID</label>
             <input type="text" name="clubId" placeholder="Mug Club ID" value={props.clubId} onChange={props.handleInputChange} />
 
