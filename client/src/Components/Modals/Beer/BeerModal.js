@@ -3,17 +3,7 @@ import Grow from '@material-ui/core/Grow';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import classes from '../Modals.module.css';
-import beerTypes from '../../Beer/BeerTypes';
-const uniqid = require('uniqid');
-
-//Iterate over object, return the optgroup with the key name, then map each key's array to display the options within that optgroup
-const typeMap = Object.entries(beerTypes)
-  .map(([key, value]) => {
-      return <optgroup key={uniqid()} label={key.split(/(?=[A-Z])/).join(" ")}>{
-        value.map(type => <option key={uniqid()} value={type}>{type}</option>)
-      }</optgroup>
-    }
-  );
+import typeMap from '../../Beer/TypeMap';
 
 const useStyles = makeStyles(theme => ({
   margin: {

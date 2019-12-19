@@ -9,6 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import classes from './BeerDisplay.module.css';
+const uniqid = require('uniqid');
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -41,10 +42,9 @@ const BeerDisplay = (props) => {
       <List dense className={classes.List}>
         {props.beers
           .map(beer => {
-          const labelId = `checkbox-list-secondary-label-${props.beers.id}`;
           return (
             <ListItem
-              key={beer.id}
+              key={uniqid()}
               dense
               button
               className={classes.ListItem}
@@ -57,7 +57,6 @@ const BeerDisplay = (props) => {
                 />
               </ListItemAvatar>
               <ListItemText
-                id={labelId}
                 primary={`${beer.name}`}
                 secondary={`${beer.brewery}`} />
             </ListItem>
