@@ -27,6 +27,27 @@ const theme = createMuiTheme({
 
 const BeerDisplay = (props) => {
   const styles = useStyles();
+  const beerList = props.beers.map(beer => {
+    return (
+      <ListItem
+        key={uniqid()}
+        dense
+        button
+        className={classes.ListItem}
+        onClick={() => props.toggleEditModal(beer)}
+        >
+        <ListItemAvatar>
+          <Avatar
+            alt={`${beer.brewery}`}
+            src={beer.url}
+          />
+        </ListItemAvatar>
+        <ListItemText
+          primary={`${beer.name}`}
+          secondary={`${beer.brewery}`} />
+      </ListItem>
+    );
+  })
 
   return (
     <>
@@ -40,28 +61,7 @@ const BeerDisplay = (props) => {
         color="primary">Create New Beer</Button>
     </ThemeProvider>
       <List dense className={classes.List}>
-        {props.beers
-          .map(beer => {
-          return (
-            <ListItem
-              key={uniqid()}
-              dense
-              button
-              className={classes.ListItem}
-              onClick={() => props.toggleEditModal(beer)}
-              >
-              <ListItemAvatar>
-                <Avatar
-                  alt={`${beer.brewery}`}
-                  src={beer.url}
-                />
-              </ListItemAvatar>
-              <ListItemText
-                primary={`${beer.name}`}
-                secondary={`${beer.brewery}`} />
-            </ListItem>
-          );
-        })}
+        {beerList}
       </List>
     </section>
     </>

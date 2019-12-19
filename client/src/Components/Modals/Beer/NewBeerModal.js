@@ -26,16 +26,13 @@ const NewBeerModal = (props) => {
             <label htmlFor="beerName">Beer Name</label>
             <input type="text" name="beerName" placeholder="Beer Name" value={props.beerName} onChange={props.handleInputChange} required/>
             <label htmlFor="beerType">Type</label>
-
             <select name="beerType" onChange={props.handleInputChange}>
               {typeMap}
             </select>
-
             <label htmlFor="brewery">Brewery</label>
             <input type="text" name="brewery" placeholder="Brewery Name" value={props.brewery} onChange={props.handleInputChange} required/>
             <label htmlFor="breweryLocation">Brewery Location</label>
             <input type="text" name="breweryLocation" placeholder="Brewery Location" value={props.breweryLocation} onChange={props.handleInputChange} required/>
-
             <label htmlFor="beerUrl">Beer/Brewery Image URL</label>
             <input type="text" name="beerUrl" placeholder="URL Address" value={props.beerUrl} onChange={props.handleInputChange} required/>
             <Button
