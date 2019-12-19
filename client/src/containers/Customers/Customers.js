@@ -1,7 +1,7 @@
 import React from 'react';
 // import Button from '../../components/Button/Button';
 import Customer from '../../components/Customer/Customer';
-import NewCustomerModal from '../../components/Modals/Customer/NewCustomer';
+import NewCustomer from '../../components/Modals/Customer/NewCustomer';
 // import Search from '../../components/Search/Search';
 import Home from '../../components/Home/Home';
 import Navigation from '../../components/Navigation/Navigation';
@@ -21,6 +21,10 @@ class Customers extends React.Component {
   state = {
     clicked: false,
     customers: [],
+    firstName: '',
+    lastName: '',
+    clubCompleted: '',
+    clubId: '',
     beers: [],
     beerId: '',
     beerName: '',
@@ -64,6 +68,8 @@ class Customers extends React.Component {
     const name = target.name;
 
     await this.setState({ [name]: event.target.value})
+
+    console.log(name)
   }
 
   handleSubmit = async (event) => {
@@ -192,16 +198,9 @@ class Customers extends React.Component {
             <Navigation
               toggleNewCustomerModal={this.toggleNewCustomerModal}
             />
-
-
             <Switch>
               <Route exact path="/">
                 <Home />
-              </Route>
-              <Route path="/newCustomer">
-                {this.state.newCustomerModalOpen ?
-                  <NewCustomerModal toggleNewCustomerModal={this.toggleNewCustomerModal}
-                  /> : null}
               </Route>
               <Route path="/searchCustomers">
                 {displayCustomers}
@@ -217,6 +216,15 @@ class Customers extends React.Component {
           </div>
         </Router>
 
+        {this.state.newCustomerModalOpen ?
+          <NewCustomer
+            toggleNewCustomerModal={this.toggleNewCustomerModal}
+            handleInputChange={this.handleInputChange}
+            firstName={this.state.firstName}
+            lastName={this.state.lastName}
+            completed={this.state.completed}
+            clubId={this.state.clubId}
+            /> : null}
         {this.state.editModalOpen ?
           <BeerModal
             handleEditSubmit={this.handleEditSubmit}
