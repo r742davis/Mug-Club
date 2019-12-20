@@ -30,7 +30,7 @@ const customer = (props) => {
 
       </CardContent>
       <CardActions>
-        <Button size="small" name={props.name.first}>Edit Customer</Button>
+        <Button size="small" onClick={props.toggleEditCustomerModal}>Edit Customer</Button>
       </CardActions>
     </Card>
 

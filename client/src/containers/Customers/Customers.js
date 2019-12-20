@@ -2,6 +2,7 @@ import React from 'react';
 // import Button from '../../components/Button/Button';
 import Customer from '../../components/Customer/Customer';
 import NewCustomer from '../../components/Modals/Customer/NewCustomer';
+import EditCustomer from '../../components/Modals/Customer/EditCustomer';
 import Search from '../../components/Search/Search';
 import Home from '../../components/Home/Home';
 import Navigation from '../../components/Navigation/Navigation';
@@ -22,6 +23,7 @@ class Customers extends React.Component {
   state = {
     clicked: false,
     customers: [],
+    customerId: '',
     firstName: '',
     lastName: '',
     clubId: '',
@@ -36,7 +38,8 @@ class Customers extends React.Component {
     selectedBeerType: '',
     editModalOpen: false,
     newModalOpen: false,
-    newCustomerModalOpen: false
+    newCustomerModalOpen: false,
+    editCustomerModalOpen: false
   };
 
   async componentDidMount() {
@@ -186,6 +189,43 @@ class Customers extends React.Component {
     }
   }
 
+  handleEditCustomerSubmit = async (event) => {
+    event.preventDefault();
+    const updatedCustomer = {
+      name: {
+        first: this.state.firstName,
+        last: this.state.lastName
+      },
+      mugClub: {
+        clubId: this.state.clubId,
+        completed: this.state.completed
+      }
+    };
+
+    try {
+      const customerURL = 'http://localhost:5000/customers/' + this.state.customerId;
+      const config = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json'
+        }
+      };
+      await axios.put(customerURL, updatedCustomer, {crossDomain: true}, config);
+      console.log(updatedCustomer);
+      await alert(`${this.state.firstName} has been updated! :D`);
+
+      const customers = 'http://localhost:5000/customers';
+      const customersResponse = await fetch(customers, {crossDomain: true});
+      const customersJSON = await customersResponse.json();
+      this.setState({
+        customers: customersJSON,
+        editCustomerModalOpen: false
+      })
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   toggleEditModal = async (beer) => {
     await this.setState({
       editModalOpen: !this.state.editModalOpen,
@@ -210,6 +250,27 @@ class Customers extends React.Component {
     })
   }
 
+  toggleEditCustomerModal = async (customer) => {
+    await this.setState({
+      editCustomerModalOpen: !this.state.editCustomerModalOpen
+    })
+
+    if (customer.name !== undefined) {
+      const first = customer.name.first
+      const last = customer.name.last
+
+      await this.setState({
+        customerId: customer._id,
+        firstName: first,
+        lastName: last,
+        clubId: customer.mugClub.clubId,
+        completed: customer.mugClub.completed
+      })
+    }
+
+    console.log(customer)
+  }
+
   render() {
 
     return (
@@ -225,7 +286,10 @@ class Customers extends React.Component {
               </Route>
               <Route path="/searchCustomers">
                 <Search />
-                <DisplayCustomers customers={this.state.customers}/>
+                <DisplayCustomers
+                  customers={this.state.customers}
+                  toggleEditCustomerModal={this.toggleEditCustomerModal}
+                />
               </Route>
               <Route path="/beersList">
                 <BeerDisplay
@@ -237,7 +301,14 @@ class Customers extends React.Component {
             </Switch>
           </div>
         </Router>
-
+        {this.state.editCustomerModalOpen ?
+          <EditCustomer
+            toggleEditCustomerModal={this.toggleEditCustomerModal}
+            handleEditCustomerSubmit={this.handleEditCustomerSubmit}
+            handleInputChange={this.handleInputChange}
+            firstName={this.state.firstName}
+            lastName={this.state.lastName}
+          /> : null}
         {this.state.newCustomerModalOpen ?
           <NewCustomer
             toggleNewCustomerModal={this.toggleNewCustomerModal}

@@ -12,6 +12,7 @@ const DisplayCustomers = (props) => (
         clubId={person.mugClub.clubId}
         beers={person.mugClub.beers}
         completed={person.mugClub.completed}
+        toggleEditCustomerModal={() => props.toggleEditCustomerModal(person)}
       />
     )
   })
