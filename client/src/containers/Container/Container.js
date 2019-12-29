@@ -19,7 +19,7 @@ import {
   Route
 } from "react-router-dom";
 
-class Customers extends React.Component {
+class Container extends React.Component {
   state = {
     clicked: false,
     customers: [],
@@ -63,16 +63,12 @@ class Customers extends React.Component {
 
   handleClick = () => {
     this.setState({ clicked: !this.state.clicked })
-    console.log(this.state.clicked)
   }
 
   handleInputChange = async (event) => {
     const target = event.target;
     const name = target.name;
-
     await this.setState({ [name]: event.target.value})
-
-    console.log(name)
   }
 
   handleSubmit = async (event) => {
@@ -95,15 +91,10 @@ class Customers extends React.Component {
         }
       };
       await axios.post(beersURL, newBeer, {crossDomain: true}, config);
-      console.log(newBeer);
       await alert(`${this.state.beerName} has been created 🍺`);
-
-      //Retrieve beers and update state after submitting new beer
       const beers = 'http://localhost:5000/beers';
       const beersResponse = await fetch(beers, {crossDomain: true});
       const beersJSON = await beersResponse.json();
-
-      //Reset initial state for beer field values
       await this.setState({
         beers: beersJSON,
         beerName: '',
@@ -137,14 +128,11 @@ class Customers extends React.Component {
         }
       };
       await axios.put(beerURL, updatedBeer, {crossDomain: true}, config);
-      console.log(updatedBeer);
       await alert(`${this.state.beerName} has been updated! 🍺`);
-
-      //Retrieve beers and update state after updating new beer
       const beers = 'http://localhost:5000/beers';
       const beersResponse = await fetch(beers, {crossDomain: true});
       const beersJSON = await beersResponse.json();
-      this.setState({
+      await this.setState({
         beers: beersJSON,
         editModalOpen: false
       })
@@ -173,14 +161,11 @@ class Customers extends React.Component {
         }
       };
       await axios.post(customerURL, newCustomer, {crossDomain: true}, config);
-      console.log(newCustomer);
       await alert(`${this.state.firstName} has been created! :D`);
-
-      //Retrieve customers with new customer added
       const customers = 'http://localhost:5000/customers';
       const customersResponse = await fetch(customers, {crossDomain: true});
       const customersJSON = await customersResponse.json();
-      this.setState({
+      await this.setState({
         customers: customersJSON,
         newCustomerModalOpen: false
       })
@@ -211,13 +196,11 @@ class Customers extends React.Component {
         }
       };
       await axios.put(customerURL, updatedCustomer, {crossDomain: true}, config);
-      console.log(updatedCustomer);
       await alert(`${this.state.firstName} has been updated! :D`);
-
       const customers = 'http://localhost:5000/customers';
       const customersResponse = await fetch(customers, {crossDomain: true});
       const customersJSON = await customersResponse.json();
-      this.setState({
+      await this.setState({
         customers: customersJSON,
         editCustomerModalOpen: false
       })
@@ -229,13 +212,24 @@ class Customers extends React.Component {
   toggleEditModal = async (beer) => {
     await this.setState({
       editModalOpen: !this.state.editModalOpen,
+    });
+    this.state.editModalOpen ?
+    await this.setState ({
       beerId: beer._id,
       beerName: beer.name,
       beerType: beer.type,
       brewery: beer.brewery,
       breweryLocation: beer.breweryLocation,
       beerUrl: beer.url
-    });
+    })
+    : await this.setState({
+      beerId: '',
+      beerName: '',
+      beerType: '',
+      brewery: '',
+      breweryLocation: '',
+      beerUrl: ''
+    })
   }
 
   toggleNewModal = async () => {
@@ -255,20 +249,25 @@ class Customers extends React.Component {
       editCustomerModalOpen: !this.state.editCustomerModalOpen
     })
 
-    if (customer.name !== undefined) {
-      const first = customer.name.first
-      const last = customer.name.last
-
+    if (customer.name?.first) {
       await this.setState({
         customerId: customer._id,
-        firstName: first,
-        lastName: last,
+        firstName: customer.name.first,
+        lastName: customer.name.last,
         clubId: customer.mugClub.clubId,
         completed: customer.mugClub.completed
       })
     }
 
     console.log(customer)
+  }
+
+  deleteBeer = () => {
+
+  }
+
+  deleteCustomer = () => {
+    
   }
 
   render() {
@@ -358,4 +357,4 @@ class Customers extends React.Component {
   };
 };
 
-export default Customers;
+export default Container;

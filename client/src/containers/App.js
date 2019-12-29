@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import Customers from './Customers/Customers';
+import Container from './Container/Container';
 
 function App() {
   return (
     <>
-      <Customers />
+      <Container />
     </>
   );
 }
