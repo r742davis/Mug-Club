@@ -1,7 +1,5 @@
 import React from 'react';
 import Customer from '../Customer/Customer';
-// import DisplayCustomers from '../Customer/DisplayCustomers';
-
 
 const search = (props) => {
     let filteredCustomers = props.customers.filter(
