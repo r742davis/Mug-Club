@@ -23,6 +23,7 @@ class Container extends React.Component {
   state = {
     clicked: false,
     customers: [],
+    search: '',
     customerId: '',
     firstName: '',
     lastName: '',
@@ -43,7 +44,10 @@ class Container extends React.Component {
     displayBeer: false
   };
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.loadData();
+  }
+  loadData = async () => {
     try {
       const customers = 'http://localhost:5000/customers';
       const beers = 'http://localhost:5000/beers';
@@ -234,13 +238,13 @@ class Container extends React.Component {
   }
 
   toggleNewModal = async () => {
-    this.setState({
+    await this.setState({
       newModalOpen: !this.state.newModalOpen
     })
   }
 
   toggleNewCustomerModal = async (event) => {
-    this.setState({
+    await this.setState({
       newCustomerModalOpen: !this.state.newCustomerModalOpen
     })
   }
@@ -271,11 +275,18 @@ class Container extends React.Component {
     
   }
 
+  //Search Component Functions
   handleDisplayBeer = () => {
     this.setState({
       displayBeer: !this.state.displayBeer
     })
     console.log(this.state.displayBeer)
+  }
+
+  updateSearch = (event) => {
+    this.setState({
+      search: event.target.value
+    })
   }
 
   render() {
@@ -291,15 +302,17 @@ class Container extends React.Component {
                 <Home />
               </Route>
               <Route path="/searchCustomers">
-                <Search 
-                  customers={this.state.customers}
-                />
-                <DisplayCustomers
-                  customers={this.state.customers}
-                  toggleEditCustomerModal={this.toggleEditCustomerModal}
-                  handleDisplayBeer={this.handleDisplayBeer}
-                  displayBeer={this.state.displayBeer}
-                />
+                {this.state.customers ? 
+                  <Search 
+                    customers={this.state.customers}
+                    search={this.state.search}
+                    updateSearch={this.updateSearch}
+                    toggleEditCustomerModal={this.toggleEditCustomerModal}
+                    handleDisplayBeer={this.handleDisplayBeer}
+                    displayBeer={this.state.displayBeer}
+                  />
+                  : null
+                }
               </Route>
               <Route path="/beersList">
                 <BeerDisplay
