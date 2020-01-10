@@ -13,7 +13,9 @@
   background: rgba(0,0,0,0.4);
   overflow-y: hidden;
   z-index: 100;
-
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+  transition: all 0.3s;
 }
 
 .Modal {
@@ -24,6 +26,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  backface-visibility: hidden;
 }
 
 .ModalTitle {
