@@ -1,6 +1,9 @@
 import React from 'react';
 
+
+
 const search = (props) => {
+  let filteredCustomers = props.customers;
   return (
     <>
     <form>

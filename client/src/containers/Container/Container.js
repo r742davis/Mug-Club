@@ -39,7 +39,8 @@ class Container extends React.Component {
     editModalOpen: false,
     newModalOpen: false,
     newCustomerModalOpen: false,
-    editCustomerModalOpen: false
+    editCustomerModalOpen: false,
+    displayBeer: false
   };
 
   async componentDidMount() {
@@ -270,8 +271,14 @@ class Container extends React.Component {
     
   }
 
-  render() {
+  handleDisplayBeer = () => {
+    this.setState({
+      displayBeer: !this.state.displayBeer
+    })
+    console.log(this.state.displayBeer)
+  }
 
+  render() {
     return (
       <>
         <Router>
@@ -284,10 +291,14 @@ class Container extends React.Component {
                 <Home />
               </Route>
               <Route path="/searchCustomers">
-                <Search />
+                <Search 
+                  customers={this.state.customers}
+                />
                 <DisplayCustomers
                   customers={this.state.customers}
                   toggleEditCustomerModal={this.toggleEditCustomerModal}
+                  handleDisplayBeer={this.handleDisplayBeer}
+                  displayBeer={this.state.displayBeer}
                 />
               </Route>
               <Route path="/beersList">

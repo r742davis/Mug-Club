@@ -19,14 +19,14 @@ const customer = (props) => {
         <Typography variant="h5" color="textSecondary">
           Mug Club ID: {props.clubId}
         </Typography>
-        {/*
-          <Typography variant="h5">
-            Beers:
-          </Typography>
+        <button onClick={props.handleDisplayBeer}>Display Beer List</button>
+        {
+          props.displayBeer ?
           <BeersList
             beers={props.beers}
           />
-        */}
+          : null
+        }
 
       </CardContent>
       <CardActions>

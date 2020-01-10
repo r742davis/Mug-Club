@@ -13,6 +13,8 @@ const DisplayCustomers = (props) => (
         beers={person.mugClub.beers}
         completed={person.mugClub.completed}
         toggleEditCustomerModal={() => props.toggleEditCustomerModal(person)}
+        displayBeer={props.displayBeer}
+        handleDisplayBeer={props.handleDisplayBeer}
       />
     )
   })
