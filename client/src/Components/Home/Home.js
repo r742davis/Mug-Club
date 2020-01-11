@@ -8,8 +8,6 @@ const home = (props) => {
       <div className={classes.BgImage}>
       </div>
       <div className={classes.Container}>
-        <h1>The Madison Bear Garden</h1>
-        <h3>Mug Club</h3>
         <Login />
       </div>
     </>

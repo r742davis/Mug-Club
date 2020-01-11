@@ -1,6 +1,6 @@
 .BgImage {
   background-image: linear-gradient(0deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)),
-                    url("../../assets/backgrounds/bar-background.jpg");
+                    url("../../assets/backgrounds/beer-tap.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   filter: blur(2px);
@@ -13,12 +13,4 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 500px;
-}
-
-.Container h1,
-.Container h3 {
-  font-family: 'Montserrat', sans-serif;
-  color: white;
-  text-align: center;
-  font-size: 2rem;
 }

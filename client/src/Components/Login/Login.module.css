@@ -7,6 +7,13 @@
   background: white;
   border-radius: 0.5rem;
 }
+.Container h1 {
+  font-family: 'Bowlby One SC', cursive;
+  color:#0288d1;
+  text-align: center;
+  padding-top: 4rem;
+  font-size: 4rem;
+}
 .LoginContainer {
   display: flex;
   flex-direction: column;
@@ -32,7 +39,7 @@
 }
 
 /* Label */
-.Group label {
+.Label {
   color: #999; 
   font-size: 1.5rem;
   font-weight: normal;
@@ -43,7 +50,7 @@
   -moz-transition: 0.2s ease all; 
   -webkit-transition: 0.2s ease all;
 }
-.Input:focus ~ label, input:valid ~ label {
+.Input:focus ~ .Label, .Input:valid ~ .Label {
   top: -0.5rem;
   font-size: 1rem;
   color: #5264AE;
@@ -53,7 +60,11 @@
 }
 
 /* Bar Changes */
-.Bar 	{ position:relative; display:block; width:300px; }
+.Bar 	{ 
+  position:relative; 
+  display:block; 
+  width:300px; 
+}
 .Bar:before, .Bar:after 	{
   content: '';
   height: 2px; 
