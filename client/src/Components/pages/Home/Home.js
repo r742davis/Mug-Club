@@ -1,5 +1,5 @@
 import React from 'react';
-import Login from '../Login/Login';
+import Login from '../../auth/Login/Login';
 import classes from './Home.module.css';
 
 const home = (props) => {
