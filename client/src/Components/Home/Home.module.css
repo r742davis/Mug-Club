@@ -1,11 +1,11 @@
-h1,
-h3 {
+.Container {
+  margin: 0 auto;
+  border: 1px solid yellow;
+}
+
+.Container h1,
+.Container h3 {
   font-family: 'Montserrat', sans-serif;
   color: #3196f3;
   text-align: center;
-}
-
-.container {
-  margin: 0 auto;
-  border: 1px solid yellow;
 }

@@ -5,7 +5,7 @@ import classes from './Home.module.css';
 const home = (props) => {
   return (
     <>
-      <div className={classes.container}>
+      <div className={classes.Container}>
         <h1>The Madison Bear Garden</h1>
         <h3>Mug Club</h3>
         <Login />
