@@ -1,6 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
-body {
+
+/* CSS Reset */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-size: 10px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ol, ul {
+	list-style: none;
 }

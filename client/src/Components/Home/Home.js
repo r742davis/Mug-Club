@@ -5,6 +5,8 @@ import classes from './Home.module.css';
 const home = (props) => {
   return (
     <>
+      <div className={classes.BgImage}>
+      </div>
       <div className={classes.Container}>
         <h1>The Madison Bear Garden</h1>
         <h3>Mug Club</h3>

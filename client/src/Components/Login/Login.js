@@ -5,10 +5,10 @@ import classes from './Login.module.css';
 const Login = (props) => {
   return (
     <div>
-      <section className={classes.LoginContainer}>
+      <section className={classes.Container}>
         <h1>Login</h1>
         <form action="#" method="post">
-          <div className={classes.Container}>
+          <div className={classes.LoginContainer}>
             <div className={classes.Group}>
               <input type="text" name="username" className={classes.Input} required/>
               <span className={classes.Highlight}></span>
