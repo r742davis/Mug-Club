@@ -23,23 +23,67 @@ const NewBeerModal = (props) => {
           <form
             className={classes.ModalForm}
             onSubmit={props.handleSubmit}>
-            <label htmlFor="beerName">Beer Name</label>
-            <input type="text" name="beerName" placeholder="Beer Name" value={props.beerName} onChange={props.handleInputChange} required/>
-            <label htmlFor="beerType">Type</label>
-            <select name="beerType" onChange={props.handleInputChange}>
-              {typeMap}
-            </select>
-            <label htmlFor="brewery">Brewery</label>
-            <input type="text" name="brewery" placeholder="Brewery Name" value={props.brewery} onChange={props.handleInputChange} required/>
-            <label htmlFor="breweryLocation">Brewery Location</label>
-            <input type="text" name="breweryLocation" placeholder="Brewery Location" value={props.breweryLocation} onChange={props.handleInputChange} required/>
-            <label htmlFor="beerUrl">Beer/Brewery Image URL</label>
-            <input type="text" name="beerUrl" placeholder="URL Address" value={props.beerUrl} onChange={props.handleInputChange} required/>
+            <div className={classes.Group}>
+              <label htmlFor="beerName" className={classes.Label}>Beer Name</label>
+              <input 
+                type="text" 
+                name="beerName" 
+                className={classes.Input} 
+                value={props.beerName} 
+                onChange={props.handleInputChange} required/>
+              <span className={classes.Bar}></span>
+            </div>
+          
+            <div className={classes.Group}>
+              <label htmlFor="beerType" className={classes.Label}>Type</label>
+              <select 
+                name="beerType" 
+                onChange={props.handleInputChange} 
+                value={props.beerType}>
+                <optgroup label="Current Beer Type">
+                  <option value={props.beerType}>{props.beerType}</option>
+                </optgroup>
+                {typeMap}
+              </select>
+            </div>
+            
+            <div className={classes.Group}>
+              <label htmlFor="brewery" className={classes.Label}>Brewery</label>
+              <input 
+                type="text" 
+                name="brewery"  
+                className={classes.Input} 
+                value={props.brewery} 
+                onChange={props.handleInputChange} required/>
+              <span className={classes.Bar}></span>
+            </div>
+            
+            <div className={classes.Group}>
+              <label htmlFor="breweryLocation" className={classes.Label}>Brewery Location</label>
+              <input 
+                type="text" 
+                name="breweryLocation" 
+                className={classes.Input} 
+                value={props.breweryLocation} 
+                onChange={props.handleInputChange} />
+              <span className={classes.Bar}></span>
+            </div>
+            
+            <div className={classes.Group}>
+              <label htmlFor="beerUrl" className={classes.Label}>Beer/Brewery Image URL</label>
+              <input 
+                type="text" 
+                name="beerUrl" 
+                className={classes.Input} 
+                value={props.beerUrl} 
+                onChange={props.handleInputChange} required/>
+              <span className={classes.Bar}></span>
+            </div>
             <Button
               type="submit"
               variant="contained"
               color="primary"
-              className={styles.margin}>Submit Edit</Button>
+              className={styles.margin}>Create New Beer</Button>
             <Button
               variant="outlined"
               color="secondary"

@@ -34,13 +34,21 @@ const NewCustomer = (props) => {
           <form
             className={classes.ModalForm}
             onSubmit={props.handleNewCustomerSubmit}>
-            <label htmlFor="firstName">First Name</label>
-            <input type="text" name="firstName" placeholder="First Name" value={props.firstName} onChange={props.handleInputChange} />
-            <label htmlFor="lastName">Last Name</label>
-            <input type="text" name="lastName" placeholder="Last Name" value={props.lastName} onChange={props.handleInputChange} />
-            <label htmlFor="clubId">Mug Club ID</label>
-            <input type="text" name="clubId" placeholder="Mug Club ID" value={props.clubId} onChange={props.handleInputChange} />
-
+            <div className={classes.Group}>
+              <label htmlFor="firstName" className={classes.Label}>First Name</label>
+              <input type="text" name="firstName" className={classes.Input} value={props.firstName} onChange={props.handleInputChange} />
+              <span className={classes.Bar}></span>
+            </div>
+            <div className={classes.Group}>
+              <label htmlFor="lastName" className={classes.Label}>Last Name</label>
+              <input type="text" name="lastName" className={classes.Input} value={props.lastName} onChange={props.handleInputChange} />
+              <span className={classes.Bar}></span>
+            </div>
+            <div className={classes.Group}>
+              <label htmlFor="clubId" className={classes.Label}>Mug Club ID</label>
+              <input type="text" name="clubId" className={classes.Input} value={props.clubId} onChange={props.handleInputChange} />
+              <span className={classes.Bar}></span>
+            </div>
             <Button
               type="submit"
               variant="contained"

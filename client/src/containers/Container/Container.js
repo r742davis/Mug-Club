@@ -1,6 +1,5 @@
 import React from 'react';
 // import Button from '../../components/Button/Button';
-import Customer from '../../components/Customer/Customer';
 import NewCustomer from '../../components/Modals/Customer/NewCustomer';
 import EditCustomer from '../../components/Modals/Customer/EditCustomer';
 import Search from '../../components/Search/Search';
@@ -145,6 +144,16 @@ class Container extends React.Component {
     }
   }
 
+  clearCustomerState = () => {
+    this.setState({
+      customerId: '',
+      firstName: '',
+      lastName: '',
+      clubId: '',
+      completed: ''
+    })
+  }
+
   handleNewCustomerSubmit = async (event) => {
     event.preventDefault();
     const newCustomer = {
@@ -169,6 +178,7 @@ class Container extends React.Component {
       const customers = 'http://localhost:5000/customers';
       const customersResponse = await fetch(customers, {crossDomain: true});
       const customersJSON = await customersResponse.json();
+      await this.clearCustomerState();
       await this.setState({
         customers: customersJSON,
         newCustomerModalOpen: false
@@ -204,6 +214,7 @@ class Container extends React.Component {
       const customers = 'http://localhost:5000/customers';
       const customersResponse = await fetch(customers, {crossDomain: true});
       const customersJSON = await customersResponse.json();
+      await this.clearCustomerState();
       await this.setState({
         customers: customersJSON,
         editCustomerModalOpen: false
@@ -263,6 +274,9 @@ class Container extends React.Component {
       })
     }
 
+    if (!this.state.editCustomerModalOpen) {
+      this.clearCustomerState();
+    }
     console.log(customer)
   }
 
@@ -330,6 +344,7 @@ class Container extends React.Component {
             handleInputChange={this.handleInputChange}
             firstName={this.state.firstName}
             lastName={this.state.lastName}
+            clubId={this.state.clubId}
           /> : null}
         {this.state.newCustomerModalOpen ?
           <NewCustomer
