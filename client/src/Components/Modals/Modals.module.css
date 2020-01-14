@@ -73,6 +73,14 @@
   transition: 0.5s;
 }
 
+select {
+  outline: 0;
+  background: transparent;
+  border-radius: none;
+  margin-top: 0.5rem;
+}
+
+
 .Group {
   margin-top: 1rem;
   margin-bottom: 1rem;

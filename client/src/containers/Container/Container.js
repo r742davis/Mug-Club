@@ -2,7 +2,7 @@ import React from 'react';
 // import Button from '../../components/Button/Button';
 import NewCustomer from '../../components/Modals/Customer/NewCustomer';
 import EditCustomer from '../../components/Modals/Customer/EditCustomer';
-import Search from '../../components/Search/Search';
+import Search from '../../components/pages/Search/Search';
 import Home from '../../components/pages/Home/Home';
 import Navigation from '../../components/pages/Navigation/Navigation';
 import BeerDisplay from '../../components/Beer/BeerDisplay';

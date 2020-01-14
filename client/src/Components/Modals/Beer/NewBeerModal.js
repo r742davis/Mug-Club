@@ -37,7 +37,8 @@ const NewBeerModal = (props) => {
             <div className={classes.Group}>
               <label htmlFor="beerType" className={classes.Label}>Type</label>
               <select 
-                name="beerType" 
+                name="beerType"
+                className={classes.Select} 
                 onChange={props.handleInputChange} 
                 value={props.beerType}>
                 <optgroup label="Current Beer Type">
