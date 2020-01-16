@@ -23,7 +23,6 @@ const theme = createMuiTheme({
 
 const NewCustomer = (props) => {
   const styles = useStyles();
-  const component = "newCustomer";
 
   return (
     <>
