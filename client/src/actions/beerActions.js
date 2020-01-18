@@ -5,20 +5,6 @@ import {
   FETCH_BEERS_FAILURE
 } from './action-types';
 
-
-
-export const getBeers = () => (dispatch, getState) => {
-  return fetch('http://localhost:5000/beers')
-    .then(res => res.json())
-    .then(res =>{
-      console.log(getState())
-      dispatch({
-        type: GET_BEERS,
-        payload: res
-      })}
-    )
-}
-
 export const fetchBeers = () => {
   return dispatch => {
     dispatch(fetchBeersBegin());
