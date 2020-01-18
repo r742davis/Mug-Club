@@ -67,7 +67,6 @@ class Container extends React.Component {
       // await console.log(this.state.customers, this.state.beers)
       await this.props.dispatch(fetchBeers());
       await this.props.dispatch(fetchCustomers());
-      await console.log(this.props)
     } catch (error) {
         throw new Error('Cannot connect to database. Server may be busy or unavailable.')
     }
@@ -326,7 +325,6 @@ class Container extends React.Component {
               <Route path="/searchCustomers">
                 {this.state.customers ? 
                   <Search 
-                    customers={this.state.customers}
                     search={this.state.search}
                     updateSearch={this.updateSearch}
                     toggleEditCustomerModal={this.toggleEditCustomerModal}
