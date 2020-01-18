@@ -385,16 +385,6 @@ class Container extends React.Component {
             beerUrl={this.state.beerUrl}
           />
         : null}
-
-
-        {/*<Button handleClick={this.handleClick} />
-        <Search
-          customers={this.state.customers}
-          // value={this.state.value}
-          // handleSubmit={this.handleSubmit}
-          // handleChange={this.handleChange}
-          />
-        {this.state.clicked ? displayCustomers : null}*/}
       </>
     );
   };
