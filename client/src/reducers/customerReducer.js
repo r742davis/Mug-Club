@@ -1,12 +1,17 @@
 import {
   FETCH_CUSTOMERS_BEGIN,
   FETCH_CUSTOMERS_SUCCESS,
-  FETCH_CUSTOMERS_FAILURE
+  FETCH_CUSTOMERS_FAILURE,
+  CREATE_CUSTOMER,
+  UPDATE_CUSTOMER,
+  DELETE_CUSTOMER,
+  TOGGLE_EDIT_CUSTOMER_MODAL
 } from '../actions/action-types';
 
 const initialState = {
   loading: false,
   error: null,
+  toggleEditCustomerModal: false,
   customers: []
 }
 
@@ -33,6 +38,26 @@ export default function customerReducer (state = initialState, action) {
         error: action.payload.error,
         customers: []
       };
+
+    case UPDATE_CUSTOMER:
+      return {
+        ...state
+      }
+
+    case CREATE_CUSTOMER:
+      return {
+        ...state
+      }
+
+    case DELETE_CUSTOMER:
+      return {
+        ...state
+      }
+
+    case TOGGLE_EDIT_CUSTOMER_MODAL:
+      return {
+        ...state
+      }
 
     default:
       return state;

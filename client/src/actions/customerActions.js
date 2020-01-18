@@ -1,7 +1,8 @@
 import {
   FETCH_CUSTOMERS_BEGIN,
   FETCH_CUSTOMERS_SUCCESS,
-  FETCH_CUSTOMERS_FAILURE
+  FETCH_CUSTOMERS_FAILURE,
+  TOGGLE_EDIT_CUSTOMER_MODAL
 } from './action-types';
 
 export const fetchCustomers = () => {
@@ -30,3 +31,8 @@ export const fetchCustomersFailure = (error) => ({
   type: FETCH_CUSTOMERS_FAILURE,
   payload: { error }
 });
+
+export const toggleEditCustomerModal = (customer) => ({
+  type: TOGGLE_EDIT_CUSTOMER_MODAL,
+  payload: customer
+})

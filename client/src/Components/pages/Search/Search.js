@@ -44,7 +44,8 @@ const Search = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  customers: state.customers.customers
+  customers: state.customers.customers,
+  toggleEditCustomerModal: state.customers.toggleEditCustomerModal
 })
 
 

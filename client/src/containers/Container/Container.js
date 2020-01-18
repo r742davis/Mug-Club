@@ -55,7 +55,7 @@ class Container extends React.Component {
       await this.props.dispatch(fetchBeers());
       await this.props.dispatch(fetchCustomers());
     } catch (error) {
-        throw new Error('Cannot connect to database. Server may be busy or unavailable.')
+      throw new Error('Cannot connect to database. Server may be busy or unavailable.')
     }
   }
 
@@ -252,34 +252,26 @@ class Container extends React.Component {
     })
   }
 
-  toggleEditCustomerModal = async (customer) => {
-    await this.setState({
-      editCustomerModalOpen: !this.state.editCustomerModalOpen
-    })
+  // toggleEditCustomerModal = async (customer) => {
+  //   await this.setState({
+  //     editCustomerModalOpen: !this.state.editCustomerModalOpen
+  //   })
 
-    if (customer.name?.first) {
-      await this.setState({
-        customerId: customer._id,
-        firstName: customer.name.first,
-        lastName: customer.name.last,
-        clubId: customer.mugClub.clubId,
-        completed: customer.mugClub.completed
-      })
-    }
+  //   if (customer.name?.first) {
+  //     await this.setState({
+  //       customerId: customer._id,
+  //       firstName: customer.name.first,
+  //       lastName: customer.name.last,
+  //       clubId: customer.mugClub.clubId,
+  //       completed: customer.mugClub.completed
+  //     })
+  //   }
 
-    if (!this.state.editCustomerModalOpen) {
-      this.clearCustomerState();
-    }
-    console.log(customer)
-  }
-
-  deleteBeer = () => {
-
-  }
-
-  deleteCustomer = () => {
-    
-  }
+  //   if (!this.state.editCustomerModalOpen) {
+  //     this.clearCustomerState();
+  //   }
+  //   console.log(customer)
+  // }
 
   //Search Component Functions
   handleDisplayBeer = () => {
@@ -308,16 +300,15 @@ class Container extends React.Component {
                 <Home />
               </Route>
               <Route path="/searchCustomers">
-                {this.state.customers ? 
+                
                   <Search 
                     search={this.state.search}
                     updateSearch={this.updateSearch}
-                    toggleEditCustomerModal={this.toggleEditCustomerModal}
+                    
                     handleDisplayBeer={this.handleDisplayBeer}
                     displayBeer={this.state.displayBeer}
                   />
-                  : null
-                }
+                  
               </Route>
               <Route path="/beersList">
                 <BeerDisplay
