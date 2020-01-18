@@ -219,14 +219,12 @@ class Container extends React.Component {
       };
       await axios.put(customerURL, updatedCustomer, {crossDomain: true}, config);
       await alert(`${this.state.firstName} has been updated! :D`);
-      const customers = 'http://localhost:5000/customers';
-      const customersResponse = await fetch(customers, {crossDomain: true});
-      const customersJSON = await customersResponse.json();
+
       await this.clearCustomerState();
       await this.setState({
-        customers: customersJSON,
         editCustomerModalOpen: false
       })
+      await this.props.dispatch(fetchCustomers());
     } catch (e) {
       console.log(e);
     }
