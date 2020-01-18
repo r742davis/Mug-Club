@@ -12,6 +12,7 @@ import axios from 'axios';
 
 import { connect } from 'react-redux';
 import { fetchBeers } from '../../actions/beerActions';
+import { fetchCustomers } from '../../actions/customerActions';
 
 //React Router DOM Import
 import {
@@ -65,6 +66,8 @@ class Container extends React.Component {
 
       // await console.log(this.state.customers, this.state.beers)
       await this.props.dispatch(fetchBeers());
+      await this.props.dispatch(fetchCustomers());
+      await console.log(this.props)
     } catch (error) {
         throw new Error('Cannot connect to database. Server may be busy or unavailable.')
     }
@@ -391,7 +394,8 @@ class Container extends React.Component {
 };
 
 const mapStateToProps = (state) => ({
-  beers: state.beers.beers
+  beers: state.beers.beers,
+  customers: state.customers.customers
 });
 
 export default connect(mapStateToProps)(Container);
