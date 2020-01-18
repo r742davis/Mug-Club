@@ -5,8 +5,6 @@ import {
 } from '../actions/action-types';
 
 const initialState = {
-  welcome: 'hello',
-  beers: [],
   loading: false,
   error: null
 }

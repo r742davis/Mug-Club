@@ -45,26 +45,26 @@ class Container extends React.Component {
     displayBeer: false
   };
 
-  componentDidMount() {
-    this.loadData();
-    this.props.dispatch(fetchBeers());
+  async componentDidMount() {
+    await this.loadData();
   }
-  
+
   loadData = async () => {
     try {
-      const customers = 'http://localhost:5000/customers';
-      const beers = 'http://localhost:5000/beers';
-      const customersResponse = await fetch(customers, {crossDomain: true});
-      const beersResponse = await fetch(beers, {crossDomain: true});
-      const customersJSON = await customersResponse.json();
-      const beersJSON = await beersResponse.json();
+      // const customers = 'http://localhost:5000/customers';
+      // const beers = 'http://localhost:5000/beers';
+      // const customersResponse = await fetch(customers, {crossDomain: true});
+      // const beersResponse = await fetch(beers, {crossDomain: true});
+      // const customersJSON = await customersResponse.json();
+      // const beersJSON = await beersResponse.json();
 
-      await this.setState({
-        customers: customersJSON,
-        beers: beersJSON
-      })
+      // await this.setState({
+      //   customers: customersJSON,
+      //   beers: beersJSON
+      // })
 
-      await console.log(this.state.customers, this.state.beers)
+      // await console.log(this.state.customers, this.state.beers)
+      await this.props.dispatch(fetchBeers());
     } catch (error) {
         throw new Error('Cannot connect to database. Server may be busy or unavailable.')
     }
@@ -335,7 +335,6 @@ class Container extends React.Component {
               </Route>
               <Route path="/beersList">
                 <BeerDisplay
-                  beers={this.state.beers}
                   toggleEditModal={this.toggleEditModal}
                   toggleNewModal={this.toggleNewModal}
                 />
@@ -402,7 +401,7 @@ class Container extends React.Component {
 };
 
 const mapStateToProps = (state) => ({
-  beers: state.beers
-})
+  beers: state.beers.beers
+});
 
 export default connect(mapStateToProps)(Container);

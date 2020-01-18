@@ -9,7 +9,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import classes from './BeerDisplay.module.css';
+import { connect } from 'react-redux';
+
 const uniqid = require('uniqid');
+
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -26,28 +29,31 @@ const theme = createMuiTheme({
 
 
 const BeerDisplay = (props) => {
+  console.log(props)
   const styles = useStyles();
-  const beerList = props.beers.map(beer => {
-    return (
-      <ListItem
-        key={uniqid()}
-        dense
-        button
-        className={classes.ListItem}
-        onClick={() => props.toggleEditModal(beer)}
-        >
-        <ListItemAvatar>
-          <Avatar
-            alt={`${beer.brewery}`}
-            src={beer.url}
-          />
-        </ListItemAvatar>
-        <ListItemText
-          primary={`${beer.name}`}
-          secondary={`${beer.brewery}`} />
-      </ListItem>
-    );
-  })
+  const beerList = props.beers ? 
+    props.beers.map(beer => {
+      return (
+        <ListItem
+          key={uniqid()}
+          dense
+          button
+          className={classes.ListItem}
+          onClick={() => props.toggleEditModal(beer)}
+          >
+          <ListItemAvatar>
+            <Avatar
+              alt={`${beer.brewery}`}
+              src={beer.url}
+            />
+          </ListItemAvatar>
+          <ListItemText
+            primary={`${beer.name}`}
+            secondary={`${beer.brewery}`} />
+        </ListItem>
+      );
+    })
+    : null
 
   return (
     <>
@@ -68,4 +74,9 @@ const BeerDisplay = (props) => {
   )
 }
 
-export default BeerDisplay;
+const mapStateToProps = (state) => ({
+  beers: state.beers.beers
+})
+
+
+export default connect(mapStateToProps)(BeerDisplay);

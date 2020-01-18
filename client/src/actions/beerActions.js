@@ -12,7 +12,6 @@ export const fetchBeers = () => {
       .then(res => res.json())
       .then(beers => {
         dispatch(fetchBeersSuccess(beers));
-        console.log(beers)
         return beers;
       })
       .catch(error => dispatch(fetchBeersFailure(error)));
