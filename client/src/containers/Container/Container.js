@@ -52,19 +52,6 @@ class Container extends React.Component {
 
   loadData = async () => {
     try {
-      // const customers = 'http://localhost:5000/customers';
-      // const beers = 'http://localhost:5000/beers';
-      // const customersResponse = await fetch(customers, {crossDomain: true});
-      // const beersResponse = await fetch(beers, {crossDomain: true});
-      // const customersJSON = await customersResponse.json();
-      // const beersJSON = await beersResponse.json();
-
-      // await this.setState({
-      //   customers: customersJSON,
-      //   beers: beersJSON
-      // })
-
-      // await console.log(this.state.customers, this.state.beers)
       await this.props.dispatch(fetchBeers());
       await this.props.dispatch(fetchCustomers());
     } catch (error) {
