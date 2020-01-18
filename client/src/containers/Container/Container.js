@@ -10,6 +10,9 @@ import BeerModal from '../../components/Modals/Beer/BeerModal';
 import NewBeerModal from '../../components/Modals/Beer/NewBeerModal';
 import axios from 'axios';
 
+import { connect } from 'react-redux';
+import { fetchBeers } from '../../actions/beerActions';
+
 //React Router DOM Import
 import {
   BrowserRouter as Router,
@@ -44,7 +47,9 @@ class Container extends React.Component {
 
   componentDidMount() {
     this.loadData();
+    this.props.dispatch(fetchBeers());
   }
+  
   loadData = async () => {
     try {
       const customers = 'http://localhost:5000/customers';
@@ -58,6 +63,7 @@ class Container extends React.Component {
         customers: customersJSON,
         beers: beersJSON
       })
+
       await console.log(this.state.customers, this.state.beers)
     } catch (error) {
         throw new Error('Cannot connect to database. Server may be busy or unavailable.')
@@ -395,4 +401,8 @@ class Container extends React.Component {
   };
 };
 
-export default Container;
+const mapStateToProps = (state) => ({
+  beers: state.beers
+})
+
+export default connect(mapStateToProps)(Container);
