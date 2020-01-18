@@ -1,5 +1,4 @@
 import {
-  GET_BEERS,
   FETCH_BEERS_BEGIN,
   FETCH_BEERS_SUCCESS,
   FETCH_BEERS_FAILURE
@@ -14,13 +13,6 @@ const initialState = {
 
 export default function beerReducer (state = initialState, action) {
   switch(action.type) {
-    case GET_BEERS:
-      return {
-        ...state,
-        beers: action.payload
-      }
-
-
     case FETCH_BEERS_BEGIN:
       return {
         ...state,
