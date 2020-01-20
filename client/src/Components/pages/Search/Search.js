@@ -28,6 +28,8 @@ const Search = (props) => {
       )
     }) : null
   
+    
+
   return (
     <>
     <div>
@@ -36,7 +38,7 @@ const Search = (props) => {
         name='search'
         value={props.search}
         onChange={props.updateSearch} />
-    { mappedCustomers }
+    { mappedCustomers.sort() }
     </div>
     
     </>
@@ -44,8 +46,7 @@ const Search = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  customers: state.customers.customers,
-  toggleEditCustomerModal: state.customers.toggleEditCustomerModal
+  customers: state.customers.customers
 })
 
 

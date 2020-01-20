@@ -12,7 +12,7 @@ import axios from 'axios';
 
 import { connect } from 'react-redux';
 import { fetchBeers } from '../../actions/beerActions';
-import { fetchCustomers } from '../../actions/customerActions';
+import { fetchCustomers, createCustomer } from '../../actions/customerActions';
 
 //React Router DOM Import
 import {
@@ -23,14 +23,11 @@ import {
 
 class Container extends React.Component {
   state = {
-    clicked: false,
-    customers: [],
     search: '',
     customerId: '',
     firstName: '',
     lastName: '',
     clubId: '',
-    beers: [],
     beerId: '',
     beerName: '',
     beerType: '',
@@ -57,10 +54,6 @@ class Container extends React.Component {
     } catch (error) {
       throw new Error('Cannot connect to database. Server may be busy or unavailable.')
     }
-  }
-
-  handleClick = () => {
-    this.setState({ clicked: !this.state.clicked })
   }
 
   handleInputChange = async (event) => {
@@ -161,21 +154,22 @@ class Container extends React.Component {
       }
     };
     try {
-      const customerURL = 'http://localhost:5000/customers';
-      const config = {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Accept': 'application/json'
-        }
-      };
-      await axios.post(customerURL, newCustomer, {crossDomain: true}, config);
-      await alert(`${this.state.firstName} has been created! :D`);
-      const customers = 'http://localhost:5000/customers';
-      const customersResponse = await fetch(customers, {crossDomain: true});
-      const customersJSON = await customersResponse.json();
+      // const customerURL = 'http://localhost:5000/customers';
+      // const config = {
+      //   headers: {
+      //     'Content-Type': 'application/x-www-form-urlencoded',
+      //     'Accept': 'application/json'
+      //   }
+      // };
+      // await axios.post(customerURL, newCustomer, {crossDomain: true}, config);
+      // await alert(`${this.state.firstName} has been created! :D`);
+      await this.props.dispatch(createCustomer(newCustomer))
+      await this.props.dispatch(fetchCustomers());
+      // const customers = 'http://localhost:5000/customers';
+      // const customersResponse = await fetch(customers, {crossDomain: true});
+      // const customersJSON = await customersResponse.json();
       await this.clearCustomerState();
       await this.setState({
-        customers: customersJSON,
         newCustomerModalOpen: false
       })
     } catch (e) {
@@ -252,26 +246,26 @@ class Container extends React.Component {
     })
   }
 
-  // toggleEditCustomerModal = async (customer) => {
-  //   await this.setState({
-  //     editCustomerModalOpen: !this.state.editCustomerModalOpen
-  //   })
+  toggleEditCustomerModal = async (customer) => {
+    await this.setState({
+      editCustomerModalOpen: !this.state.editCustomerModalOpen
+    })
 
-  //   if (customer.name?.first) {
-  //     await this.setState({
-  //       customerId: customer._id,
-  //       firstName: customer.name.first,
-  //       lastName: customer.name.last,
-  //       clubId: customer.mugClub.clubId,
-  //       completed: customer.mugClub.completed
-  //     })
-  //   }
+    if (customer.name?.first) {
+      await this.setState({
+        customerId: customer._id,
+        firstName: customer.name.first,
+        lastName: customer.name.last,
+        clubId: customer.mugClub.clubId,
+        completed: customer.mugClub.completed
+      })
+    }
 
-  //   if (!this.state.editCustomerModalOpen) {
-  //     this.clearCustomerState();
-  //   }
-  //   console.log(customer)
-  // }
+    if (!this.state.editCustomerModalOpen) {
+      this.clearCustomerState();
+    }
+    console.log(customer)
+  }
 
   //Search Component Functions
   handleDisplayBeer = () => {
@@ -304,7 +298,7 @@ class Container extends React.Component {
                   <Search 
                     search={this.state.search}
                     updateSearch={this.updateSearch}
-                    
+                    toggleEditCustomerModal={this.toggleEditCustomerModal}
                     handleDisplayBeer={this.handleDisplayBeer}
                     displayBeer={this.state.displayBeer}
                   />

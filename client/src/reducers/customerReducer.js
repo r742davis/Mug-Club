@@ -5,13 +5,12 @@ import {
   CREATE_CUSTOMER,
   UPDATE_CUSTOMER,
   DELETE_CUSTOMER,
-  TOGGLE_EDIT_CUSTOMER_MODAL
 } from '../actions/action-types';
 
 const initialState = {
   loading: false,
   error: null,
-  toggleEditCustomerModal: false,
+  showEditCustomerModal: false,
   customers: []
 }
 
@@ -39,22 +38,18 @@ export default function customerReducer (state = initialState, action) {
         customers: []
       };
 
+    case CREATE_CUSTOMER:
+      return {
+        ...state,
+        customers: [action.payload, ...state.customers]
+      }
+
     case UPDATE_CUSTOMER:
       return {
         ...state
       }
 
-    case CREATE_CUSTOMER:
-      return {
-        ...state
-      }
-
     case DELETE_CUSTOMER:
-      return {
-        ...state
-      }
-
-    case TOGGLE_EDIT_CUSTOMER_MODAL:
       return {
         ...state
       }

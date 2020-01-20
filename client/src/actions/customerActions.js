@@ -2,8 +2,11 @@ import {
   FETCH_CUSTOMERS_BEGIN,
   FETCH_CUSTOMERS_SUCCESS,
   FETCH_CUSTOMERS_FAILURE,
-  TOGGLE_EDIT_CUSTOMER_MODAL
+  CREATE_CUSTOMER,
+  UPDATE_CUSTOMER,
+  DELETE_CUSTOMER
 } from './action-types';
+import axios from 'axios';
 
 export const fetchCustomers = () => {
   return dispatch => {
@@ -32,7 +35,19 @@ export const fetchCustomersFailure = (error) => ({
   payload: { error }
 });
 
-export const toggleEditCustomerModal = (customer) => ({
-  type: TOGGLE_EDIT_CUSTOMER_MODAL,
-  payload: customer
-})
+
+export const createCustomer = (newCustomer) => (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Accept': 'application/json'
+    }
+  };
+  axios.post('http://localhost:5000/customers', newCustomer, {crossDomain: true}, config)
+    .then(res =>
+      dispatch({
+        type: CREATE_CUSTOMER,
+        payload: res.data
+      }))
+    .catch(error => console.log(error))
+}

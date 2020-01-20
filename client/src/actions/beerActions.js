@@ -1,7 +1,10 @@
 import {
   FETCH_BEERS_BEGIN,
   FETCH_BEERS_SUCCESS,
-  FETCH_BEERS_FAILURE
+  FETCH_BEERS_FAILURE,
+  CREATE_BEER,
+  UPDATE_BEER,
+  DELETE_BEER
 } from './action-types';
 
 export const fetchBeers = () => {
