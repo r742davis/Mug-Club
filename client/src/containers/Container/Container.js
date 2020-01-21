@@ -2,9 +2,9 @@ import React from 'react';
 // import Button from '../../components/Button/Button';
 import NewCustomer from '../../components/Modals/Customer/NewCustomer';
 import EditCustomer from '../../components/Modals/Customer/EditCustomer';
-import Search from '../../components/pages/Search/Search';
-import Home from '../../components/pages/Home/Home';
-import Navigation from '../../components/pages/Navigation/Navigation';
+import Search from '../../components/Pages/Search/Search';
+import Home from '../../components/Pages/Home/Home';
+import Navigation from '../../components/Pages/Navigation/Navigation';
 import BeerDisplay from '../../components/Beer/BeerDisplay';
 import BeerModal from '../../components/Modals/Beer/BeerModal';
 import NewBeerModal from '../../components/Modals/Beer/NewBeerModal';
@@ -34,9 +34,8 @@ class Container extends React.Component {
     brewery: '',
     breweryLocation: '',
     beerUrl: '',
-    active: false,
     selectedBeerType: '',
-    editModalOpen: false,
+    editBeerModalOpen: false,
     newBeerModalOpen: false,
     newCustomerModalOpen: false,
     editCustomerModalOpen: false,
@@ -100,7 +99,7 @@ class Container extends React.Component {
     }
   }
 
-  handleEditSubmit = async (event) => {
+  handleEditBeerSubmit = async (event) => {
     event.preventDefault();
     const updatedBeer = {
       name: this.state.beerName,
@@ -119,18 +118,18 @@ class Container extends React.Component {
         }
       };
       await axios.put(beerURL, updatedBeer, {crossDomain: true}, config);
-      await alert(`${this.state.beerName} has been updated! 🍺`);
-      const beers = 'http://localhost:5000/beers';
-      const beersResponse = await fetch(beers, {crossDomain: true});
-      const beersJSON = await beersResponse.json();
+
+      await this.props.dispatch(fetchBeers());
       await this.setState({
-        beers: beersJSON,
-        editModalOpen: false
+        editBeerModalOpen: false
       })
     } catch (e) {
       console.log(e);
     }
   }
+
+
+  //// Customer creation and edit functions ////
 
   clearCustomerState = () => {
     this.setState({
@@ -201,9 +200,9 @@ class Container extends React.Component {
 
   toggleEditBeerModal = async (beer) => {
     await this.setState({
-      editModalOpen: !this.state.editModalOpen,
+      editBeerModalOpen: !this.state.editBeerModalOpen,
     });
-    this.state.editModalOpen ?
+    this.state.editBeerModalOpen ?
     await this.setState ({
       beerId: beer._id,
       beerName: beer.name,
@@ -317,9 +316,9 @@ class Container extends React.Component {
             lastName={this.state.lastName}
             clubId={this.state.clubId}
             /> : null}
-        {this.state.editModalOpen ?
+        {this.state.editBeerModalOpen ?
           <BeerModal
-            handleEditSubmit={this.handleEditSubmit}
+            handleEditBeerSubmit={this.handleEditBeerSubmit}
             handleInputChange={this.handleInputChange}
             toggleEditBeerModal={this.toggleEditBeerModal}
             handleEdit={this.handleEdit}

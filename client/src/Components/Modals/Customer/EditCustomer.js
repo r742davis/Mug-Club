@@ -14,8 +14,6 @@ const EditCustomer = (props) => {
   const styles = useStyles();
   return (
     <>
-      <h1>Beers Will Appear Here</h1>
-
       <section className={classes.ModalContainer}>
         <Grow in={true}>
         <div className={classes.Modal}>
