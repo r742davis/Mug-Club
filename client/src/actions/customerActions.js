@@ -50,4 +50,9 @@ export const createCustomer = (newCustomer) => (dispatch) => {
         payload: res.data
       }))
     .catch(error => console.log(error))
+};
+
+export const updateCustomer = (id, customer, customers) => (dispatch) => {
+  
 }
+

@@ -89,7 +89,7 @@ const NewBeerModal = (props) => {
               variant="outlined"
               color="secondary"
               size="medium"
-              onClick={props.toggleNewModal}
+              onClick={props.toggleNewBeerModal}
               className={styles.margin}>Cancel</Button>
           </form>
         </div>

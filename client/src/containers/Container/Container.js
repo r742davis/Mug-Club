@@ -37,7 +37,7 @@ class Container extends React.Component {
     active: false,
     selectedBeerType: '',
     editModalOpen: false,
-    newModalOpen: false,
+    newBeerModalOpen: false,
     newCustomerModalOpen: false,
     editCustomerModalOpen: false,
     displayBeer: false
@@ -93,7 +93,7 @@ class Container extends React.Component {
         brewery: '',
         breweryLocation: '',
         beerUrl: '',
-        newModalOpen: false
+        newBeerModalOpen: false
       });
     } catch (e) {
       console.error(e)
@@ -154,20 +154,8 @@ class Container extends React.Component {
       }
     };
     try {
-      // const customerURL = 'http://localhost:5000/customers';
-      // const config = {
-      //   headers: {
-      //     'Content-Type': 'application/x-www-form-urlencoded',
-      //     'Accept': 'application/json'
-      //   }
-      // };
-      // await axios.post(customerURL, newCustomer, {crossDomain: true}, config);
-      // await alert(`${this.state.firstName} has been created! :D`);
       await this.props.dispatch(createCustomer(newCustomer))
       await this.props.dispatch(fetchCustomers());
-      // const customers = 'http://localhost:5000/customers';
-      // const customersResponse = await fetch(customers, {crossDomain: true});
-      // const customersJSON = await customersResponse.json();
       await this.clearCustomerState();
       await this.setState({
         newCustomerModalOpen: false
@@ -234,9 +222,9 @@ class Container extends React.Component {
     })
   }
 
-  toggleNewModal = async () => {
+  toggleNewBeerModal = async () => {
     await this.setState({
-      newModalOpen: !this.state.newModalOpen
+      newBeerModalOpen: !this.state.newBeerModalOpen
     })
   }
 
@@ -294,20 +282,18 @@ class Container extends React.Component {
                 <Home />
               </Route>
               <Route path="/searchCustomers">
-                
-                  <Search 
-                    search={this.state.search}
-                    updateSearch={this.updateSearch}
-                    toggleEditCustomerModal={this.toggleEditCustomerModal}
-                    handleDisplayBeer={this.handleDisplayBeer}
-                    displayBeer={this.state.displayBeer}
-                  />
-                  
+                <Search 
+                  search={this.state.search}
+                  updateSearch={this.updateSearch}
+                  toggleEditCustomerModal={this.toggleEditCustomerModal}
+                  handleDisplayBeer={this.handleDisplayBeer}
+                  displayBeer={this.state.displayBeer}
+                />
               </Route>
               <Route path="/beersList">
                 <BeerDisplay
                   toggleEditModal={this.toggleEditModal}
-                  toggleNewModal={this.toggleNewModal}
+                  toggleNewBeerModal={this.toggleNewBeerModal}
                 />
               </Route>
             </Switch>
@@ -344,11 +330,11 @@ class Container extends React.Component {
             beerUrl={this.state.beerUrl}
             />
           : null}
-        {this.state.newModalOpen ?
+        {this.state.newBeerModalOpen ?
           <NewBeerModal
             handleSubmit={this.handleSubmit}
             handleInputChange={this.handleInputChange}
-            toggleNewModal={this.toggleNewModal}
+            toggleNewBeerModal={this.toggleNewBeerModal}
             beerName={this.state.beerName}
             selectedBeerType={this.state.selectedBeerType}
             brewery={this.state.brewery}

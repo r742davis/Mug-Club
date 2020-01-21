@@ -61,7 +61,7 @@ const BeerDisplay = (props) => {
     <h1>Current Mug Club Beers</h1>
     <ThemeProvider theme={theme}>
       <Button
-        onClick={props.toggleNewModal}
+        onClick={props.toggleNewBeerModal}
         className={styles.margin}
         variant="contained"
         color="primary">Create New Beer</Button>

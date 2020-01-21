@@ -9,7 +9,6 @@ const Search = (props) => {
         return customer.name.first.toLowerCase().includes(props.search.toLowerCase()) || customer.name.last.toLowerCase().includes(props.search.toLowerCase());
       }
     ) : null
-    
 
     const mappedCustomers = filteredCustomers ? filteredCustomers.map((person, index) => {
       return (
