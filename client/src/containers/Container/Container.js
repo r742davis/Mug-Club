@@ -11,7 +11,7 @@ import NewBeerModal from '../../components/Modals/Beer/NewBeerModal';
 import axios from 'axios';
 
 import { connect } from 'react-redux';
-import { fetchBeers } from '../../actions/beerActions';
+import { fetchBeers, createBeer } from '../../actions/beerActions';
 import { fetchCustomers, createCustomer } from '../../actions/customerActions';
 
 //React Router DOM Import
@@ -61,39 +61,33 @@ class Container extends React.Component {
     await this.setState({ [name]: event.target.value})
   }
 
-  handleSubmit = async (event) => {
-    await event.preventDefault();
-    const newBeer = {
-      name: this.state.beerName,
-      type: this.state.beerType,
-      brewery: this.state.brewery,
-      breweryLocation: this.state.breweryLocation,
-      url: this.state.beerUrl,
-      finished: false
-    }
+  clearBeerState = () => {
+    this.setState({
+      beerName: '',
+      beerType: '',
+      brewery: '',
+      breweryLocation: '',
+      beerUrl: '',
+      newBeerModalOpen: false
+    });
+  }
 
+  ///// Beer Submissions ////
+
+  handleNewBeerSubmit = async (event) => {
+    event.preventDefault();
     try {
-      const beersURL = 'http://localhost:5000/beers';
-      const config = {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Accept': 'application/json'
-        }
-      };
-      await axios.post(beersURL, newBeer, {crossDomain: true}, config);
-      await alert(`${this.state.beerName} has been created 🍺`);
-      const beers = 'http://localhost:5000/beers';
-      const beersResponse = await fetch(beers, {crossDomain: true});
-      const beersJSON = await beersResponse.json();
-      await this.setState({
-        beers: beersJSON,
-        beerName: '',
-        beerType: '',
-        brewery: '',
-        breweryLocation: '',
-        beerUrl: '',
-        newBeerModalOpen: false
-      });
+      const newBeer = {
+        name: this.state.beerName,
+        type: this.state.beerType,
+        brewery: this.state.brewery,
+        breweryLocation: this.state.breweryLocation,
+        url: this.state.beerUrl,
+        finished: false
+      }
+      await this.props.dispatch(createBeer(newBeer));
+      await this.props.dispatch(fetchBeers());
+      await this.clearBeerState();
     } catch (e) {
       console.error(e)
     }
@@ -127,7 +121,6 @@ class Container extends React.Component {
       console.log(e);
     }
   }
-
 
   //// Customer creation and edit functions ////
 
@@ -197,6 +190,8 @@ class Container extends React.Component {
       console.log(e);
     }
   }
+
+  //// Toggle Modals ////
 
   toggleEditBeerModal = async (beer) => {
     await this.setState({
@@ -331,7 +326,7 @@ class Container extends React.Component {
           : null}
         {this.state.newBeerModalOpen ?
           <NewBeerModal
-            handleSubmit={this.handleSubmit}
+            handleNewBeerSubmit={this.handleNewBeerSubmit}
             handleInputChange={this.handleInputChange}
             toggleNewBeerModal={this.toggleNewBeerModal}
             beerName={this.state.beerName}

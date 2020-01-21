@@ -84,7 +84,8 @@ const NewBeerModal = (props) => {
               type="submit"
               variant="contained"
               color="primary"
-              className={styles.margin}>Create New Beer</Button>
+              className={styles.margin}
+              onClick={props.handleNewBeerSubmit}>Create New Beer</Button>
             <Button
               variant="outlined"
               color="secondary"

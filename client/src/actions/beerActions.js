@@ -6,6 +6,7 @@ import {
   UPDATE_BEER,
   DELETE_BEER
 } from './action-types';
+import axios from 'axios';
 
 export const fetchBeers = () => {
   return dispatch => {
@@ -34,5 +35,14 @@ export const fetchBeersFailure = (error) => ({
   payload: { error }
 });
 
+export const createBeer = (newBeer) => () => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Accept': 'application/json'
+    }
+  };
+  axios.post('http://localhost:5000/beers', newBeer, {crossDomain: true}, config)
+}
 
 

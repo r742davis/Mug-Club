@@ -37,7 +37,8 @@ export default function beerReducer (state = initialState, action) {
       };
     case CREATE_BEER:
       return {
-        ...state
+        ...state,
+        beers: [...state.beers, action.payload]
       }
     case UPDATE_BEER:
       return {
