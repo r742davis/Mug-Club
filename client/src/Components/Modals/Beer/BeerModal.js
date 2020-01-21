@@ -82,20 +82,25 @@ const BeerModal = (props) => {
                 onChange={props.handleInputChange} required/>
               <span className={classes.Bar}></span>
             </div>
-            
-
             <Button
               type="submit"
               variant="contained"
               color="primary"
+              size="large"
               className={styles.margin}
               onClick={props.handleEditBeerSubmit}>Submit Edit</Button>
             <Button
               variant="outlined"
               color="secondary"
-              size="medium"
+              size="large"
               onClick={props.toggleEditBeerModal}
               className={styles.margin}>Cancel</Button>
+            <Button
+              variant="outlined"
+              color="secondary"
+              size="small"
+              onClick={props.handleDeleteBeer}
+              className={styles.margin}>DELETE BEER</Button>
           </form>
 
         </div>
