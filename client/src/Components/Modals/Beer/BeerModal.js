@@ -93,7 +93,7 @@ const BeerModal = (props) => {
               variant="outlined"
               color="secondary"
               size="medium"
-              onClick={props.toggleEditModal}
+              onClick={props.toggleEditBeerModal}
               className={styles.margin}>Cancel</Button>
           </form>
 

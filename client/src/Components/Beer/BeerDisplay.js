@@ -39,7 +39,7 @@ const BeerDisplay = (props) => {
           dense
           button
           className={classes.ListItem}
-          onClick={() => props.toggleEditModal(beer)}
+          onClick={() => props.toggleEditBeerModal(beer)}
           >
           <ListItemAvatar>
             <Avatar

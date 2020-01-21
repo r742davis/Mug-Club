@@ -199,7 +199,7 @@ class Container extends React.Component {
     }
   }
 
-  toggleEditModal = async (beer) => {
+  toggleEditBeerModal = async (beer) => {
     await this.setState({
       editModalOpen: !this.state.editModalOpen,
     });
@@ -292,7 +292,7 @@ class Container extends React.Component {
               </Route>
               <Route path="/beersList">
                 <BeerDisplay
-                  toggleEditModal={this.toggleEditModal}
+                  toggleEditBeerModal={this.toggleEditBeerModal}
                   toggleNewBeerModal={this.toggleNewBeerModal}
                 />
               </Route>
@@ -321,7 +321,7 @@ class Container extends React.Component {
           <BeerModal
             handleEditSubmit={this.handleEditSubmit}
             handleInputChange={this.handleInputChange}
-            toggleEditModal={this.toggleEditModal}
+            toggleEditBeerModal={this.toggleEditBeerModal}
             handleEdit={this.handleEdit}
             beerName={this.state.beerName}
             beerType={this.state.beerType}
