@@ -58,17 +58,17 @@ const BeerDisplay = (props) => {
   return (
     <>
     <section className={classes.DisplayContainer}>
-    <h1>Current Mug Club Beers</h1>
-    <ThemeProvider theme={theme}>
-      <Button
-        onClick={props.toggleNewBeerModal}
-        className={styles.margin}
-        variant="contained"
-        color="primary">Create New Beer</Button>
-    </ThemeProvider>
-      <List dense className={classes.List}>
-        {beerList}
-      </List>
+      <h1>Current Mug Club Beers</h1>
+      <ThemeProvider theme={theme}>
+        <Button
+          onClick={props.toggleNewBeerModal}
+          className={styles.margin}
+          variant="contained"
+          color="primary">Create New Beer</Button>
+      </ThemeProvider>
+        <List dense className={classes.List}>
+          {beerList}
+        </List>
     </section>
     </>
   )

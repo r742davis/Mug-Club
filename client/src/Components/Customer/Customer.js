@@ -21,11 +21,11 @@ const customer = (props) => {
           <BeersList beers={props.beers} /> : null } */}
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={props.toggleEditCustomerModal}>Edit Customer</Button>
-      </CardActions>
-      <CardActions>
-        <Button size="small" color="secondary" variant="contained">Delete Customer</Button>
-      </CardActions>
+        <Button size="small" color="primary" variant="contained" onClick={props.toggleEditCustomerModal}>Edit Customer</Button>
+        </CardActions>
+        <CardActions>
+          <Button size="small" color="secondary" variant="contained">Delete Customer</Button>
+        </CardActions>
     </Card>
 
     </div>

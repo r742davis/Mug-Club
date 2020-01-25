@@ -1,4 +1,4 @@
-.ModalContainer {
+/* .ModalContainer {
   position: fixed;
   transform: translate3d(-50%,-50%,0);
   top: 50%;
@@ -69,4 +69,4 @@
 .ModalForm input[type=submit]:hover {
   background-color: lightblue;
   transition: 0.5s;
-}
+} */
