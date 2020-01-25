@@ -1,5 +1,6 @@
 import React from 'react';
-import Customer from '../../Customer/Customer';
+import Customer from '../../components/Customer/Customer';
+import classes from './Search.module.css';
 import { connect } from 'react-redux';
 
 const Search = (props) => {
@@ -26,20 +27,23 @@ const Search = (props) => {
         />
       )
     }) : null
-  
-    
 
   return (
     <>
     <div>
-      <input
-        type='text'
-        name='search'
-        value={props.search}
-        onChange={props.updateSearch} />
-    { mappedCustomers.sort() }
+      <div className={classes.InputContainer}>
+        <label htmlFor='search' className={classes.Label}>Search for Customers</label>
+        <input
+          type='text'
+          name='search'
+          className={classes.Input}
+          value={props.search}
+          onChange={props.updateSearch} />
+      </div>
+      <div className={classes.CustomerContainer}>
+        { mappedCustomers }
+      </div>
     </div>
-    
     </>
   )
 };

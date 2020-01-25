@@ -13,21 +13,12 @@ const customer = (props) => {
     <div className={classes.CustomerBox}>
       <Card>
       <CardContent>
-        <Typography variant="h4" color="textSecondary" gutterBottom>
-          {props.name.first} {props.name.last}
-        </Typography>
-        <Typography variant="h5" color="textSecondary">
-          Mug Club ID: {props.clubId}
-        </Typography>
-        <button onClick={props.handleDisplayBeer}>Display Beer List</button>
-        {
-          props.displayBeer ?
-          <BeersList
-            beers={props.beers}
-          />
-          : null
-        }
-
+        <Typography variant="h2" color="textSecondary" gutterBottom>{props.name.first} {props.name.last}</Typography>
+        <Typography variant="h4" color="textSecondary">Mug Club ID: {props.clubId}</Typography>
+        <Typography variant="h4" color="textSecondary">Completed?</Typography>
+        {/* <Button onClick={props.handleDisplayBeer}>Display Beer List</Button>
+        { props.displayBeer ?
+          <BeersList beers={props.beers} /> : null } */}
       </CardContent>
       <CardActions>
         <Button size="small" onClick={props.toggleEditCustomerModal}>Edit Customer</Button>

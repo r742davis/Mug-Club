@@ -12,12 +12,12 @@ const Login = (props) => {
             <div className={classes.Group}>
               <input type="text" name="username" className={classes.Input} required/>
               <span className={classes.Bar}></span>
-              <label for="username" className={classes.Label}>Username</label>
+              <label htmlFor="username" className={classes.Label}>Username</label>
             </div>
             <div className={classes.Group}>
               <input type="password" name="password" className={classes.Input} required/>
               <span className={classes.Bar}></span>
-              <label for="password" className={classes.Label}>Password</label>
+              <label htmlFor="password" className={classes.Label}>Password</label>
             </div>
             <Button 
               type="submit" 
