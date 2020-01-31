@@ -9,7 +9,7 @@
 }
 .Container h1 {
   font-family: 'Bowlby One SC', cursive;
-  color:#0288d1;
+  color: #2196f3;
   text-align: center;
   padding-top: 4rem;
   font-size: 4rem;
@@ -45,7 +45,7 @@
   font-weight: normal;
   position: absolute;
   pointer-events: none;
-  top: 2rem;
+  top: 1.5rem;
   transition: 0.2s ease all; 
   -moz-transition: 0.2s ease all; 
   -webkit-transition: 0.2s ease all;
@@ -53,10 +53,11 @@
 .Input:focus ~ .Label, .Input:valid ~ .Label {
   top: -0.5rem;
   font-size: 1rem;
-  color: #5264AE;
+  color: #2196f3;
 }
 .Submit {
-  margin: 0 auto;
+  margin-top: 2.5rem !important;
+  width: 100% !important;
 }
 
 /* Bar Changes */
@@ -71,7 +72,7 @@
   width: 0;
   bottom: 0px; 
   position: absolute;
-  background: #5264AE; 
+  background: #2196f3; 
   transition: 0.2s ease all; 
   -moz-transition: 0.2s ease all; 
   -webkit-transition: 0.2s ease all;
