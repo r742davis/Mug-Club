@@ -1,20 +1,21 @@
 import React from 'react';
-// import Button from '../../components/Button/Button';
-import NewCustomer from '../../components/Modals/Customer/NewCustomer';
-import EditCustomer from '../../components/Modals/Customer/EditCustomer';
-import Search from '../../pages/Search/Search';
-import Home from '../../pages/Home/Home';
-import Navigation from '../../pages/Navigation/Navigation';
-import BeerDisplay from '../../components/BeerDisplay/BeerDisplay';
-import BeerModal from '../../components/Modals/Beer/BeerModal';
-import NewBeerModal from '../../components/Modals/Beer/NewBeerModal';
+import NewCustomer from '../components/NewCustomer';
+import EditCustomer from '../components/EditCustomer';
+import Search from '../pages/Search';
+import Home from '../pages/Home';
+import Navigation from '../pages/Navigation';
+import BeerDisplay from '../components/BeerDisplay';
+import BeerModal from '../components/BeerModal';
+import NewBeerModal from '../components/NewBeerModal';
 import axios from 'axios';
 
 import { connect } from 'react-redux';
-import { fetchBeers, createBeer } from '../../actions/beerActions';
-import { fetchCustomers, createCustomer } from '../../actions/customerActions';
-
-//React Router DOM Import
+import { 
+  fetchBeers, 
+  createBeer } from '../actions/beerActions';
+import { 
+  fetchCustomers, 
+  createCustomer } from '../actions/customerActions';
 import {
   BrowserRouter as Router,
   Switch,

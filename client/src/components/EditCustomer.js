@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from '../Modals.module.css';
+import classes from './styles/Modals.module.css';
 import Grow from '@material-ui/core/Grow';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';

@@ -1,9 +1,9 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import Grow from '@material-ui/core/Grow';
+import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import classes from '../Modals.module.css';
-import { typeMap } from '../../BeerDisplay/TypeMap';
+import classes from './styles/Modals.module.css';
+import { typeMap } from '../lib/TypeMap';
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const NewBeerModal = (props) => {
+const BeerModal = (props) => {
   const styles = useStyles();
 
   return (
@@ -19,10 +19,12 @@ const NewBeerModal = (props) => {
       <section className={classes.ModalContainer}>
         <Grow in={true}>
         <div className={classes.Modal}>
-          <h2 className={classes.ModalTitle}>Create New Beer</h2>
+          <h2 className={classes.ModalTitle}>Edit Beer</h2>
+          <img className={classes.ModalImage} src={props.beerUrl} alt={props.beerName} />
           <form
             className={classes.ModalForm}
-            onSubmit={props.handleSubmit}>
+            onSubmit={props.handleEditSubmit}>
+
             <div className={classes.Group}>
               <label htmlFor="beerName" className={classes.Label}>Beer Name</label>
               <input 
@@ -41,10 +43,10 @@ const NewBeerModal = (props) => {
                 className={classes.Select} 
                 onChange={props.handleInputChange} 
                 value={props.beerType}>
-                <optgroup label="Current Beer Type">
-                  <option value={props.beerType}>{props.beerType}</option>
-                </optgroup>
-                {typeMap}
+                  <optgroup label="Current Beer Type">
+                    <option value={props.beerType}>{props.beerType}</option>
+                  </optgroup>
+                  {typeMap}
               </select>
             </div>
             
@@ -84,15 +86,23 @@ const NewBeerModal = (props) => {
               type="submit"
               variant="contained"
               color="primary"
+              size="large"
               className={styles.margin}
-              onClick={props.handleNewBeerSubmit}>Create New Beer</Button>
+              onClick={props.handleEditBeerSubmit}>Submit Edit</Button>
             <Button
               variant="outlined"
               color="secondary"
-              size="medium"
-              onClick={props.toggleNewBeerModal}
+              size="large"
+              onClick={props.toggleEditBeerModal}
               className={styles.margin}>Cancel</Button>
+            <Button
+              variant="outlined"
+              color="secondary"
+              size="small"
+              onClick={props.handleDeleteBeer}
+              className={styles.margin}>DELETE BEER</Button>
           </form>
+
         </div>
         </Grow>
       </section>
@@ -100,4 +110,4 @@ const NewBeerModal = (props) => {
   )
 };
 
-export default NewBeerModal;
+export default BeerModal;

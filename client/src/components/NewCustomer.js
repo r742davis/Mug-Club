@@ -1,10 +1,10 @@
 import React from 'react';
-import classes from '../Modals.module.css';
 import Grow from '@material-ui/core/Grow';
 import Button from '@material-ui/core/Button';
 // import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/core/styles';
+import classes from './styles/Modals.module.css';
 
 const useStyles = makeStyles(theme => ({
   margin: {

@@ -1,7 +1,7 @@
 import React from 'react';
-import Customer from '../../components/Customer/Customer';
-import classes from './Search.module.css';
 import { connect } from 'react-redux';
+import Customer from '../components/Customer';
+import classes from './styles/Search.module.css';
 
 const Search = (props) => {
   console.log(props)

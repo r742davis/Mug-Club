@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import classes from './Login.module.css';
+import classes from './styles/Login.module.css';
 
 const Login = (props) => {
   return (
