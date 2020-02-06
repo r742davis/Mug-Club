@@ -10,11 +10,12 @@
   align-items: center;
   flex-wrap: wrap;
   border-radius: 1rem;
-  background: #2196f3;
+  
 }
 
 .DisplayContainer h1 {
   font-size: 2rem;
+  background: black;
   color: white;
 }
 

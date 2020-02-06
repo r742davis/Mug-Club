@@ -56,3 +56,15 @@ export const updateCustomer = (id, customer, customers) => (dispatch) => {
   
 }
 
+export const deleteCustomer = (id) => (dispatch) => {
+  axios.delete('http://localhost:5000/customers/'+id)
+    .then(res =>
+      dispatch({
+        type: DELETE_CUSTOMER,
+        payload: id
+      })  
+    )
+    .catch(error => console.log(error))
+}
+
+

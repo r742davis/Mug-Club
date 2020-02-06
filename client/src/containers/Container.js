@@ -15,7 +15,8 @@ import {
   createBeer } from '../actions/beerActions';
 import { 
   fetchCustomers, 
-  createCustomer } from '../actions/customerActions';
+  createCustomer,
+  deleteCustomer } from '../actions/customerActions';
 import {
   BrowserRouter as Router,
   Switch,
@@ -264,6 +265,13 @@ class Container extends React.Component {
     })
   }
 
+  deleteCustomer = (person) => {
+    console.log('DELETE WORKS')
+    console.log(person)
+    this.props.dispatch(deleteCustomer(person._id));
+  }
+  
+
   render() {
     return (
       <>
@@ -283,6 +291,7 @@ class Container extends React.Component {
                   toggleEditCustomerModal={this.toggleEditCustomerModal}
                   handleDisplayBeer={this.handleDisplayBeer}
                   displayBeer={this.state.displayBeer}
+                  deleteCustomer={this.deleteCustomer}
                 />
               </Route>
               <Route path="/beersList">
