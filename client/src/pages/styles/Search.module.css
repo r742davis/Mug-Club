@@ -1,34 +1,28 @@
-
-
 .InputContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 5rem;
-  background-color: #2196f3;
-  border: 1px solid #2196f3;
-  border-radius: 1rem;
+  border: 1px solid red;
 }
-
 .Label {
   margin: 5rem 0 1rem 5rem;
-  font-size: 2rem;
-  color: white;
+  font-size: 4rem;
+  background: white;
+  color: black;
 }
-
 .Input {
   margin: 0 5rem 5rem 5rem;
   padding: 10px;
   border: none;
-  border: 1px solid #2196f3;
+  border: 3px solid black;
   border-radius: 1rem;
   font-size: 2rem;
+  font-family: 'Roboto', sans-serif;
   color: #a9a9a9;
+  max-width: 750px;
 }
-
 .CustomerContainer {
   margin: 5rem;
-  background-color: #2196f3;
-  border: 1px solid #2196f3;
-  border-radius: 1rem;
+  border: 1px solid red;
 }

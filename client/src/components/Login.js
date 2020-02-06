@@ -19,12 +19,10 @@ const Login = (props) => {
               <span className={classes.Bar}></span>
               <label htmlFor="password" className={classes.Label}>Password</label>
             </div>
-            <Button 
+            <button 
               type="submit" 
               name="login" 
-              className={classes.Submit} 
-              color="primary" 
-              variant="outlined">LOGIN</Button>
+              className={classes.Button}>Login</button>
           </div>
         </form>
       </section>

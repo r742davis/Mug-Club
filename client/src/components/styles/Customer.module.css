@@ -1,7 +1,43 @@
-.CustomerBox {
+.CustomerBox h1 {
   padding: 2rem;
+  padding-bottom: 0.5rem;
+  font-size: 4rem;
+  background: black;
+  color: white;
 }
-
-.CustomerBox ul {
-  width: 100%;
+.CustomerBox h2 {
+  padding: 1rem;
+  padding-left: 2rem;
+  font-size: 2rem;
+}
+.CustomerBox button {
+  margin: 1rem;
+  padding: 1rem;
+  padding-left: 2rem;
+  border: none;
+  display: flex;
+  border-radius: 0.5rem;
+}
+.CustomerBox button:hover {
+  cursor: pointer;
+  transition: 0.2s;
+}
+.CustomerBox button span {
+  font-size: 2rem;
+  font-family: 'Roboto', sans-serif;
+}
+.Span:hover {
+  text-align: center;
+  margin: 0 auto;
+  padding: 0;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+}
+.EditButton:hover {
+  background: white;
+  color: #00A287;
+}
+.DeleteButton:hover {
+  background: white;
+  color: #B72E3E;
 }
