@@ -47,9 +47,14 @@ const BeerDisplay = (props) => {
               src={beer.url}
             />
           </ListItemAvatar>
-          <ListItemText
+          <div className={classes.Group}>
+            <h3>{beer.brewery}</h3>
+            <h2>{beer.name}</h2>
+          </div>
+          
+          {/* <ListItemText
             primary={`${beer.name}`}
-            secondary={`${beer.brewery}`} />
+            secondary={`${beer.brewery}`} /> */}
         </ListItem>
       );
     })
@@ -58,7 +63,7 @@ const BeerDisplay = (props) => {
   return (
     <>
     <section className={classes.DisplayContainer}>
-      <h1>Current Mug Club Beers</h1>
+      <h1>Current Beers</h1>
       <ThemeProvider theme={theme}>
         <Button
           onClick={props.toggleNewBeerModal}
