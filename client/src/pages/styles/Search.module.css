@@ -3,7 +3,6 @@
   flex-direction: column;
   justify-content: center;
   margin: 5rem;
-  border: 1px solid red;
 }
 .Label {
   margin: 5rem 0 1rem 5rem;
@@ -24,5 +23,4 @@
 }
 .CustomerContainer {
   margin: 5rem;
-  border: 1px solid red;
 }
