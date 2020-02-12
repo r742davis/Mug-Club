@@ -46,7 +46,7 @@ export default function CheckboxListSecondary(props) {
             onClick={handleToggle(beer)}
             dense
             button
-            css={{ maxWidth: 360 }}
+            css={{ maxWidth: 200 }}
             >
             <ListItemAvatar>
               <Avatar

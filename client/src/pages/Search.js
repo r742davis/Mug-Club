@@ -4,7 +4,6 @@ import Customer from '../components/Customer';
 import classes from './styles/Search.module.css';
 
 const Search = (props) => {
-  console.log(props)
     let filteredCustomers = props.customers ? props.customers.filter(
       (customer) => {
         return customer.name.first.toLowerCase().includes(props.search.toLowerCase()) || customer.name.last.toLowerCase().includes(props.search.toLowerCase());

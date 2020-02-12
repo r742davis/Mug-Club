@@ -1,13 +1,14 @@
-nav {
-  box-sizing: border-box;
-  padding: 0;
-}
-
 .container {
-  background: #3196f3;
+  background: black;
   height: 3rem;
   display: flex;
   justify-content: center;
+  box-sizing: border-box;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .list {
@@ -22,5 +23,11 @@ nav {
   color: white;
   text-decoration: none;
   padding: 1rem;
-  border: 1px solid white;
+  font-size: 1.5rem;
+  transition: 0.25s;
+}
+.link:hover {
+  color: black;
+  background: white;
+  transition: 0.25s;
 }

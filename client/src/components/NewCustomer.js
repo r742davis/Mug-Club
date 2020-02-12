@@ -13,12 +13,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 //MUI Theme Creation - Button
-const theme = createMuiTheme({
-  palette: {
-    primary: { main: '#3196f3' },
-    secondary: { main: '#11cb5f' },
-  },
-});
+// const theme = createMuiTheme({
+//   palette: {
+//     primary: { main: '#3196f3' },
+//     secondary: { main: '#11cb5f' },
+//   },
+// });
 
 
 const NewCustomer = (props) => {

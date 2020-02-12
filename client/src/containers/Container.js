@@ -256,7 +256,6 @@ class Container extends React.Component {
     this.setState({
       displayBeer: !this.state.displayBeer
     })
-    console.log(this.state.displayBeer)
   }
 
   updateSearch = (event) => {
