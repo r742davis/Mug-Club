@@ -57,7 +57,7 @@
 .Input:focus ~ .Label, .Input:valid ~ .Label {
   top: -0.5rem;
   font-size: 1rem;
-  color: #2196f3;
+  color: black;
 }
 .Button {
   margin-top: 2.5rem;
@@ -89,7 +89,7 @@
   width: 0;
   bottom: 0px; 
   position: absolute;
-  background: #2196f3; 
+  background: black; 
   transition: 0.2s ease all; 
   -moz-transition: 0.2s ease all; 
   -webkit-transition: 0.2s ease all;

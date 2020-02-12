@@ -17,10 +17,17 @@ const navigation = (props) => {
           <Link to="/beersList" className={classes.link}>Beers List</Link>
         </li>
         <li className={classes.item}>
-          <Button variant="outlined" onClick={props.toggleNewCustomerModal}>Add New Customer</Button>
+          <button 
+            onClick={props.toggleNewCustomerModal} 
+            className={classes.NewButton}><i class="fas fa-plus"></i>New Customer</button>
+        </li>
+        <li>
+          <button 
+            onClick={props.toggleNewBeerModal}
+            className={classes.NewButton}><i class="fas fa-plus"></i>New Beer</button>
         </li>
         <li className={classes.item}>
-          <Button variant="outlined">LOG OUT</Button>
+          <button>Log Out</button>
         </li>
       </ul>
     </nav>

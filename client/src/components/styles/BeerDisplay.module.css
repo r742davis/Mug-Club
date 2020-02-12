@@ -4,7 +4,7 @@
   margin: 5rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   flex-wrap: wrap;
   border-radius: 1rem;
@@ -23,7 +23,7 @@
   font-family: 'Roboto', sans-serif;
 } 
 .DisplayContainer h3 {
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-family: 'Roboto', sans-serif;
 }
 .DisplayContainer .List {
@@ -32,19 +32,22 @@
   flex-wrap: wrap;
   width: 100%;
   max-width: 750px;
-  font-size: 2rem;
 }
 .DisplayContainer .ListItem {
   width: 45%;
   margin: 1%;
   border-radius: 0.5rem;
+  /* border: 3px solid black; */
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: white;
-  height: 8rem !important;
+  height: 7rem !important;
   font-size: 2rem !important;
+  transition: 0.25s;
 }
 .ListItem:hover {
-  background: #eef7fe !important;
+  background: whitesmoke !important;
+  transform: scale(1.05);
+  transition: 0.25s;
 }
 .EditIcon {
   z-index: 10;
@@ -53,3 +56,4 @@
 .DeleteIcon {
   color: #757575;
 }
+

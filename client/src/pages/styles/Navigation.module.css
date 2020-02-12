@@ -31,3 +31,23 @@
   background: white;
   transition: 0.25s;
 }
+.NewButton {
+  padding: 1rem;
+  background: none;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  transition: 0.25s;
+  cursor: pointer;
+}
+.NewButton:hover {
+  color: black;
+  background: white;
+  transition: 0.25s;
+}
+i {
+  margin-right: 1rem;
+  font-size: 1.5rem;
+  align-self: center;
+}
