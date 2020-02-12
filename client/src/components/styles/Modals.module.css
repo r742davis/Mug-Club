@@ -6,7 +6,7 @@
   height: 100%;
   width: 100%;
   margin: 0 auto;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  /* box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,39 +15,39 @@
   z-index: 100;
   backface-visibility: hidden;
   -webkit-font-smoothing: subpixel-antialiased;
-  transition: all 0.3s;
+  transition: 0.25s;
 }
-
 .Modal {
   padding: 2%;
   background: white;
   height: auto;
-  border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
-
 .ModalTitle {
-  text-align: center;
+  text-align: left;
+  font-size: 2rem;
+  padding: 2rem;
 }
-
 .ModalImage {
   width: 150px;
   height: 150px;
   border-radius: 5rem;
 }
-
 .ModalForm {
   display: flex;
   flex-direction: column;
   width: 300px;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
-
 .ModalForm input,
 .ModalForm select {
   font-size: 1.8rem;
+  font-family: 'Roboto', sans-serif;
   color: #616161;
   height: 2.4rem;
   padding-top: 1.5rem;
@@ -56,48 +56,27 @@
   border: none;
   border-bottom: 1px solid #e0e0e0;
 }
-
-.ModalForm input[type=submit] {
-  margin-top: 30px;
-  height: 30px;
-  border: none;
-  color: white;
-  background-color: #0288d1;
-  font-size: 1.25rem;
-  cursor: pointer;
-  transition: 0.5s;
-}
-
-.ModalForm input[type=submit]:hover {
-  background-color: lightblue;
-  transition: 0.5s;
-}
-
 select {
   outline: 0;
   background: transparent;
   border-radius: none;
   margin-top: 0.5rem;
 }
-
-
 .Group {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-
 .Label {
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin-top: 1rem;
-  color: #5264AE;
+  color: #0288d1;
 }
-
 
 /* Bar Changes */
 .Bar 	{ 
-  position:relative; 
-  display:block; 
-  width:300px; 
+  position: relative; 
+  display: block; 
+  width: 300px; 
 }
 .Bar:before, .Bar:after 	{
   content: '';
@@ -105,7 +84,7 @@ select {
   width: 0;
   bottom: 0px; 
   position: absolute;
-  background: #5264AE; 
+  background: #0288d1; 
   transition: 0.2s ease all; 
   -moz-transition: 0.2s ease all; 
   -webkit-transition: 0.2s ease all;
@@ -120,4 +99,35 @@ select {
 /* active state */
 .Input:focus ~ .Bar:before, .Input:focus ~ .Bar:after {
   width: 150px;
+}
+.EditButton,
+.CancelButton,
+.DeleteButton {
+  padding: 1rem;
+  margin: 0.5rem;
+  background: white;
+  color: black;
+  border: none;
+  border: 2px solid black;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.EditButton:hover {
+  color: #00A287;
+  border: 2px solid #00A287;
+  transition: 0.25s;
+}
+.CancelButton:hover {
+  color: #B72E3E;
+  border: 2px solid #B72E3E;
+  transition: 0.25s;
+}
+.DeleteButton:hover {
+  background: #B72E3E;
+  color: white;
+  border: 2px solid #B72E3E;
+  transition: 0.25s;
 }

@@ -5,14 +5,15 @@ import Search from '../pages/Search';
 import Home from '../pages/Home';
 import Navigation from '../pages/Navigation';
 import BeerDisplay from '../components/BeerDisplay';
-import BeerModal from '../components/BeerModal';
+import EditBeerModal from '../components/EditBeerModal';
 import NewBeerModal from '../components/NewBeerModal';
 import axios from 'axios';
 
 import { connect } from 'react-redux';
 import { 
   fetchBeers, 
-  createBeer } from '../actions/beerActions';
+  createBeer,
+  deleteBeer } from '../actions/beerActions';
 import { 
   fetchCustomers, 
   createCustomer,
@@ -265,12 +266,14 @@ class Container extends React.Component {
   }
 
   deleteCustomer = (person) => {
-    console.log('DELETE WORKS')
-    console.log(person)
     this.props.dispatch(deleteCustomer(person._id));
   }
-  
 
+  deleteBeer = (beer) => {
+    this.props.dispatch(deleteBeer(beer._id));
+  }
+  
+  
   render() {
     return (
       <>
@@ -278,6 +281,7 @@ class Container extends React.Component {
           <div>
             <Navigation
               toggleNewCustomerModal={this.toggleNewCustomerModal}
+              toggleNewBeerModal={this.toggleNewBeerModal}
             />
             <Switch>
               <Route exact path="/">
@@ -296,7 +300,6 @@ class Container extends React.Component {
               <Route path="/beersList">
                 <BeerDisplay
                   toggleEditBeerModal={this.toggleEditBeerModal}
-                  toggleNewBeerModal={this.toggleNewBeerModal}
                 />
               </Route>
             </Switch>
@@ -321,8 +324,9 @@ class Container extends React.Component {
             clubId={this.state.clubId}
             /> : null}
         {this.state.editBeerModalOpen ?
-          <BeerModal
+          <EditBeerModal
             handleEditBeerSubmit={this.handleEditBeerSubmit}
+            deleteBeer={this.deleteBeer}
             handleInputChange={this.handleInputChange}
             toggleEditBeerModal={this.toggleEditBeerModal}
             handleEdit={this.handleEdit}

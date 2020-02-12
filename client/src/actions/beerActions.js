@@ -43,6 +43,18 @@ export const createBeer = (newBeer) => () => {
     }
   };
   axios.post('http://localhost:5000/beers', newBeer, {crossDomain: true}, config)
+};
+
+export const deleteBeer = (id) => (dispatch) => {
+  axios.delete('http://localhost:5000/customers/'+id)
+    .then(res =>
+      dispatch({
+        type: DELETE_BEER,
+        payload: id
+      })  
+    )
+    .catch(error => console.log(error))
 }
+
 
 

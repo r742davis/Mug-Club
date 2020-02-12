@@ -46,7 +46,8 @@ export default function beerReducer (state = initialState, action) {
       }
     case DELETE_BEER:
       return {
-        ...state
+        ...state,
+        customers: state.beers.filter(beer => beer._id !== action.payload)
       }
 
     default:

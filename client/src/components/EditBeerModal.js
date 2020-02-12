@@ -1,30 +1,18 @@
 import React from 'react';
-import Grow from '@material-ui/core/Grow';
-import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import classes from './styles/Modals.module.css';
 import { typeMap } from '../lib/TypeMap';
 
-const useStyles = makeStyles(theme => ({
-  margin: {
-    margin: theme.spacing(1),
-  },
-}));
-
-const BeerModal = (props) => {
-  const styles = useStyles();
-
+const EditBeerModal = (props) => {
   return (
     <>
       <section className={classes.ModalContainer}>
-        <Grow in={true}>
         <div className={classes.Modal}>
-          <h2 className={classes.ModalTitle}>Edit Beer</h2>
+        <h2 className={classes.ModalTitle}>Edit Beer</h2>
           <img className={classes.ModalImage} src={props.beerUrl} alt={props.beerName} />
           <form
             className={classes.ModalForm}
             onSubmit={props.handleEditSubmit}>
-
             <div className={classes.Group}>
               <label htmlFor="beerName" className={classes.Label}>Beer Name</label>
               <input 
@@ -82,32 +70,20 @@ const BeerModal = (props) => {
                 onChange={props.handleInputChange} required/>
               <span className={classes.Bar}></span>
             </div>
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              size="large"
-              className={styles.margin}
-              onClick={props.handleEditBeerSubmit}>Submit Edit</Button>
-            <Button
-              variant="outlined"
-              color="secondary"
-              size="large"
+            <button 
+              onClick={props.handleEditBeerSubmit}
+              className={classes.EditButton}>Submit Edit</button>
+            <button 
               onClick={props.toggleEditBeerModal}
-              className={styles.margin}>Cancel</Button>
-            <Button
-              variant="outlined"
-              color="secondary"
-              size="small"
-              onClick={props.handleDeleteBeer}
-              className={styles.margin}>DELETE BEER</Button>
+              className={classes.CancelButton}>Cancel</button>
+            <button 
+              onClick={console.log(props)}
+              className={classes.DeleteButton}>DELETE BEER</button>
           </form>
-
         </div>
-        </Grow>
       </section>
     </>
   )
 };
 
-export default BeerModal;
+export default EditBeerModal;
