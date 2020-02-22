@@ -314,7 +314,6 @@ class Container extends React.Component {
         </Router>
         {this.state.editCustomerModalOpen ?
           <EditCustomer
-            customer={this.state.customer}
             toggleEditCustomerModal={this.toggleEditCustomerModal}
             handleEditCustomerSubmit={this.handleEditCustomerSubmit}
             handleInputChange={this.handleInputChange}

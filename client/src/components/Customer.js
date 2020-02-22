@@ -8,10 +8,7 @@ const customer = (props) => {
       <h1>{props.name.first} {props.name.last}</h1>
       <h2>Mug Club ID: {props.clubId}</h2>
       <h2>Completed?</h2>
-      <BeersList beers={props.beers} />
-      {/* <button onClick={props.handleDisplayBeer}>Display Beer List</button> */}
-      {/* { props.displayBeer ?
-        <BeersList beers={props.beers} /> : null } */}
+      {/* <BeersList beers={props.beers} /> */}
       <button 
         className={classes.EditButton} 
         onClick={props.toggleEditCustomerModal}><span className={classes.Span}>Edit</span></button>
