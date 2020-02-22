@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import Grow from '@material-ui/core/Grow';
 import classes from './styles/Modals.module.css';
 import { typeMap } from '../lib/TypeMap';
