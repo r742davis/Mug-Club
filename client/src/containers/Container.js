@@ -27,10 +27,14 @@ import {
 class Container extends React.Component {
   state = {
     search: '',
+    customer: '',
+    first: '',
+    last: '',
+    cludId: '',
     customerId: '',
     firstName: '',
     lastName: '',
-    clubId: '',
+    customerBeers: [],
     beerId: '',
     beerName: '',
     beerType: '',
@@ -133,7 +137,8 @@ class Container extends React.Component {
       firstName: '',
       lastName: '',
       clubId: '',
-      completed: ''
+      completed: '',
+      customerBeers: []
     })
   }
 
@@ -160,8 +165,8 @@ class Container extends React.Component {
     }
   }
 
-  handleEditCustomerSubmit = async (event) => {
-    event.preventDefault();
+  handleEditCustomerSubmit = async (e) => {
+    e.preventDefault();
     const updatedCustomer = {
       name: {
         first: this.state.firstName,
@@ -169,7 +174,8 @@ class Container extends React.Component {
       },
       mugClub: {
         clubId: this.state.clubId,
-        completed: this.state.completed
+        completed: this.state.completed,
+        beers: this.state.customerBeers
       }
     };
 
@@ -183,7 +189,6 @@ class Container extends React.Component {
       };
       await axios.put(customerURL, updatedCustomer, {crossDomain: true}, config);
       await alert(`${this.state.firstName} has been updated! :D`);
-
       await this.clearCustomerState();
       await this.setState({
         editCustomerModalOpen: false
@@ -237,19 +242,21 @@ class Container extends React.Component {
     })
 
     if (customer.name?.first) {
+      const { name, mugClub } = customer;
       await this.setState({
         customerId: customer._id,
-        firstName: customer.name.first,
-        lastName: customer.name.last,
-        clubId: customer.mugClub.clubId,
-        completed: customer.mugClub.completed
+        firstName: name.first,
+        lastName: name.last,
+        clubId: mugClub.clubId,
+        completed: mugClub.completed,
+        customerBeers: mugClub.beers
       })
     }
 
     if (!this.state.editCustomerModalOpen) {
       this.clearCustomerState();
     }
-    console.log(customer)
+    console.log(this.state)
   }
 
   //Search Component Functions
@@ -307,6 +314,7 @@ class Container extends React.Component {
         </Router>
         {this.state.editCustomerModalOpen ?
           <EditCustomer
+            customer={this.state.customer}
             toggleEditCustomerModal={this.toggleEditCustomerModal}
             handleEditCustomerSubmit={this.handleEditCustomerSubmit}
             handleInputChange={this.handleInputChange}

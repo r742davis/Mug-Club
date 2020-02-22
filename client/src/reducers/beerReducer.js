@@ -49,7 +49,6 @@ export default function beerReducer (state = initialState, action) {
         ...state,
         customers: state.beers.filter(beer => beer._id !== action.payload)
       }
-
     default:
       return state;
   }

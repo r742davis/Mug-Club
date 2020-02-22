@@ -3,6 +3,7 @@ import classes from './styles/Modals.module.css';
 import Grow from '@material-ui/core/Grow';
 
 const EditCustomer = (props) => {
+  if (!props) { return null; }
   return (
     <>
       <section className={classes.ModalContainer}>
@@ -28,7 +29,7 @@ const EditCustomer = (props) => {
               <span className={classes.Bar}></span>
             </div>
             <button
-              onClick={props.handleEditCustomerSubmit}
+              onClick={() => props.handleEditCustomerSubmit}
               className={classes.EditButton}>Submit Edit</button>
             <button
               onClick={props.toggleEditCustomerModal}
