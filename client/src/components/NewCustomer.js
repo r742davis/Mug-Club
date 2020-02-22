@@ -1,29 +1,9 @@
 import React from 'react';
 import Grow from '@material-ui/core/Grow';
 import Button from '@material-ui/core/Button';
-// import { ThemeProvider } from '@material-ui/styles';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { makeStyles } from '@material-ui/core/styles';
 import classes from './styles/Modals.module.css';
 
-const useStyles = makeStyles(theme => ({
-  margin: {
-    margin: theme.spacing(1),
-  },
-}));
-
-//MUI Theme Creation - Button
-// const theme = createMuiTheme({
-//   palette: {
-//     primary: { main: '#3196f3' },
-//     secondary: { main: '#11cb5f' },
-//   },
-// });
-
-
 const NewCustomer = (props) => {
-  const styles = useStyles();
-
   return (
     <>
       <section className={classes.ModalContainer}>
@@ -52,13 +32,13 @@ const NewCustomer = (props) => {
               type="submit"
               variant="contained"
               color="primary"
-              className={styles.margin}>Submit</Button>
+              >Submit</Button>
             <Button
               variant="outlined"
               color="secondary"
               size="medium"
               onClick={props.toggleNewCustomerModal}
-              className={styles.margin}>Cancel</Button>
+              >Cancel</Button>
           </form>
         </div>
         </Grow>
