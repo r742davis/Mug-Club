@@ -22,7 +22,6 @@ const EditBeerModal = (props) => {
                 onChange={props.handleInputChange} required/>
               <span className={classes.Bar}></span>
             </div>
-          
             <div className={classes.Group}>
               <label htmlFor="beerType" className={classes.Label}>Type</label>
               <select 
@@ -36,7 +35,6 @@ const EditBeerModal = (props) => {
                   {typeMap}
               </select>
             </div>
-            
             <div className={classes.Group}>
               <label htmlFor="brewery" className={classes.Label}>Brewery</label>
               <input 
@@ -47,7 +45,6 @@ const EditBeerModal = (props) => {
                 onChange={props.handleInputChange} required/>
               <span className={classes.Bar}></span>
             </div>
-            
             <div className={classes.Group}>
               <label htmlFor="breweryLocation" className={classes.Label}>Brewery Location</label>
               <input 
@@ -58,7 +55,6 @@ const EditBeerModal = (props) => {
                 onChange={props.handleInputChange} />
               <span className={classes.Bar}></span>
             </div>
-            
             <div className={classes.Group}>
               <label htmlFor="beerUrl" className={classes.Label}>Beer/Brewery Image URL</label>
               <input 
@@ -75,9 +71,6 @@ const EditBeerModal = (props) => {
             <button 
               onClick={props.toggleEditBeerModal}
               className={classes.CancelButton}>Cancel</button>
-            <button 
-              onClick={console.log(props)}
-              className={classes.DeleteButton}>DELETE BEER</button>
           </form>
         </div>
       </section>

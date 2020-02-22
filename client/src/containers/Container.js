@@ -276,8 +276,8 @@ class Container extends React.Component {
     this.props.dispatch(deleteCustomer(person._id));
   }
 
-  deleteBeer = (beer) => {
-    this.props.dispatch(deleteBeer(beer._id));
+  deleteBeer = (id) => {
+    // this.props.dispatch(deleteBeer(beer._id));
   }
   
   

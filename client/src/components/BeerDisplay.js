@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 const uniqid = require('uniqid');
 
 const BeerDisplay = (props) => {
-  console.log(props)
   const beerList = props.beers ? 
     props.beers.map(beer => {
       return (

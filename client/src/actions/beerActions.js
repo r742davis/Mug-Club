@@ -46,7 +46,7 @@ export const createBeer = (newBeer) => () => {
 };
 
 export const deleteBeer = (id) => (dispatch) => {
-  axios.delete('http://localhost:5000/customers/'+id)
+  axios.delete('http://localhost:5000/beers/'+id)
     .then(res =>
       dispatch({
         type: DELETE_BEER,
