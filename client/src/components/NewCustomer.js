@@ -1,6 +1,5 @@
 import React from 'react';
 import Grow from '@material-ui/core/Grow';
-import Button from '@material-ui/core/Button';
 import classes from './styles/Modals.module.css';
 
 const NewCustomer = (props) => {
@@ -28,17 +27,8 @@ const NewCustomer = (props) => {
               <input type="text" name="clubId" className={classes.Input} value={props.clubId} onChange={props.handleInputChange} />
               <span className={classes.Bar}></span>
             </div>
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              >Submit</Button>
-            <Button
-              variant="outlined"
-              color="secondary"
-              size="medium"
-              onClick={props.toggleNewCustomerModal}
-              >Cancel</Button>
+            <button className={classes.EditButton}>Submit</button>
+            <button className={classes.CancelButton}>Cancel</button>
           </form>
         </div>
         </Grow>

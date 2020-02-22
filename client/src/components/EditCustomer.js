@@ -1,17 +1,8 @@
 import React from 'react';
 import classes from './styles/Modals.module.css';
 import Grow from '@material-ui/core/Grow';
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles(theme => ({
-  margin: {
-    margin: theme.spacing(1),
-  },
-}));
 
 const EditCustomer = (props) => {
-  const styles = useStyles();
   return (
     <>
       <section className={classes.ModalContainer}>
@@ -36,18 +27,12 @@ const EditCustomer = (props) => {
               <input type="text" name="clubId" className={classes.Input} value={props.clubId} onChange={props.handleInputChange} />
               <span className={classes.Bar}></span>
             </div>
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
+            <button
               onClick={props.handleEditCustomerSubmit}
-              className={styles.margin}>Submit</Button>
-            <Button
-              variant="outlined"
-              color="secondary"
-              size="medium"
+              className={classes.EditButton}>Submit Edit</button>
+            <button
               onClick={props.toggleEditCustomerModal}
-              className={styles.margin}>Cancel</Button>
+              className={classes.CancelButton}>Cancel</button>
           </form>
         </div>
         </Grow>

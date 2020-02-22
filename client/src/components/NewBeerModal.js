@@ -1,19 +1,10 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Grow from '@material-ui/core/Grow';
-import { makeStyles } from '@material-ui/core/styles';
 import classes from './styles/Modals.module.css';
 import { typeMap } from '../lib/TypeMap';
 
-const useStyles = makeStyles(theme => ({
-  margin: {
-    margin: theme.spacing(1),
-  },
-}));
-
 const NewBeerModal = (props) => {
-  const styles = useStyles();
-
   return (
     <>
       <section className={classes.ModalContainer}>
@@ -80,18 +71,12 @@ const NewBeerModal = (props) => {
                 onChange={props.handleInputChange} required/>
               <span className={classes.Bar}></span>
             </div>
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              className={styles.margin}
-              onClick={props.handleNewBeerSubmit}>Create New Beer</Button>
-            <Button
-              variant="outlined"
-              color="secondary"
-              size="medium"
+            <button
+              className={classes.EditButton}
+              onClick={props.handleNewBeerSubmit}>Create New Beer</button>
+            <button
               onClick={props.toggleNewBeerModal}
-              className={styles.margin}>Cancel</Button>
+              className={classes.CancelButton}>Cancel</button>
           </form>
         </div>
         </Grow>
