@@ -256,7 +256,6 @@ class Container extends React.Component {
     if (!this.state.editCustomerModalOpen) {
       this.clearCustomerState();
     }
-    console.log(this.state)
   }
 
   //Search Component Functions

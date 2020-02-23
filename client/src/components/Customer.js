@@ -5,16 +5,25 @@ import classes from './styles/Customer.module.css';
 const customer = (props) => {
   return (
     <div className={classes.CustomerBox}>
-      <h1>{props.name.first} {props.name.last}</h1>
-      <h2>Mug Club ID: {props.clubId}</h2>
-      <h2>Completed?</h2>
+      <h1>{props.name.first} {props.name.last}
+        <span className={classes.ButtonContainer}>
+          <button 
+            className={classes.EditButton} 
+            onClick={props.toggleEditCustomerModal}><span className={classes.Span}>Edit</span></button>
+          <button 
+            className={classes.DeleteButton}
+            onClick={props.deleteCustomer}><span className={classes.Span}>Delete</span></button>
+        </span>
+      </h1>
+      <span className={classes.Span}>
+        <h2>Mug Club ID:</h2>
+        <h2>{props.clubId}</h2>
+      </span>
+      <span className={classes.Span}>
+        <h2>Completed?</h2>
+        <h2>{props.completed ? 'TRUE' : 'FALSE'}</h2>
+      </span>
       {/* <BeersList beers={props.beers} /> */}
-      <button 
-        className={classes.EditButton} 
-        onClick={props.toggleEditCustomerModal}><span className={classes.Span}>Edit</span></button>
-      <button 
-        className={classes.DeleteButton}
-        onClick={props.deleteCustomer}><span className={classes.Span}>Delete</span></button>
     </div>
   )
 }
