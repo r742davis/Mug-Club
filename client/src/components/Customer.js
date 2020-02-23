@@ -1,5 +1,4 @@
 import React from 'react';
-import BeersList from './BeersList';
 import classes from './styles/Customer.module.css';
 
 const customer = (props) => {
@@ -9,7 +8,7 @@ const customer = (props) => {
         <span className={classes.ButtonContainer}>
           <button 
             className={classes.EditButton} 
-            onClick={props.toggleEditCustomerModal}><span className={classes.Span}>Edit</span></button>
+            onClick={props.toggleEditCustomerModal}><span className={classes.Span}>Edit Info</span></button>
           <button 
             className={classes.DeleteButton}
             onClick={props.deleteCustomer}><span className={classes.Span}>Delete</span></button>
@@ -23,7 +22,9 @@ const customer = (props) => {
         <h2>Completed?</h2>
         <h2>{props.completed ? 'TRUE' : 'FALSE'}</h2>
       </span>
-      {/* <BeersList beers={props.beers} /> */}
+      <button 
+        className={classes.BeersButton}
+        onClick={props.toggleCustomerBeersModal}>View Completed Beers</button>
     </div>
   )
 }

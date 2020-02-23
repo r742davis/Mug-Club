@@ -9,12 +9,17 @@
   font-size: 4rem;
   background: black;
   color: white;
+  display: flex;
+  justify-content: space-between;
 }
 .CustomerBox h2 {
   padding: 1rem;
   padding-left: 2rem;
   font-size: 2rem;
   font-family: 'Roboto', sans-serif;
+}
+.CustomerBox h2:nth-child(2) {
+  color: #0288d1;
 }
 .CustomerBox button {
   padding: 1rem;
@@ -23,7 +28,9 @@
   background: white;
   color: black;
   border: none;
+  border: 3px solid black;
   border-radius: 0.5rem;
+  font-size: 2rem;
   cursor: pointer;
   transition: 0.25s;
 }
@@ -31,13 +38,13 @@
   cursor: pointer;
   transition: 0.2s;
 }
-.CustomerBox button span {
+.CustomerBox button span,
+.BeersButton {
   font-size: 2rem;
   font-family: 'Roboto', sans-serif;
 }
 .Span {
   display: flex;
-  /* flex-direction: row; */
 }
 .ButtonContainer {
   margin-left: 4rem;
@@ -52,4 +59,11 @@
   background: #B72E3E;
   color: white;
   transition: 0.25s;
+}
+.BeersButton {
+  margin-bottom: 1rem;
+}
+.BeersButton:hover {
+  background: black;
+  color: white;
 }

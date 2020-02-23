@@ -46,6 +46,7 @@ class Container extends React.Component {
     newBeerModalOpen: false,
     newCustomerModalOpen: false,
     editCustomerModalOpen: false,
+    customerBeerModalOpen: false,
     displayBeer: false
   };
 
@@ -258,27 +259,30 @@ class Container extends React.Component {
     }
   }
 
-  //Search Component Functions
+  toggleCustomerBeersModal = async (beers) => {
+    await this.setState({
+      customerBeerModalOpen: !this.state.customerBeerModalOpen
+    })
+    if (!this.state.customerBeerModalOpen) {
+      this.clearCustomerState();
+    }
+
+    console.log('Hello')
+  }
+
+  ///// Search Component Functions /////
   handleDisplayBeer = () => {
-    this.setState({
-      displayBeer: !this.state.displayBeer
-    })
+    this.setState({ displayBeer: !this.state.displayBeer })
   }
-
   updateSearch = (event) => {
-    this.setState({
-      search: event.target.value
-    })
+    this.setState({ search: event.target.value })
   }
-
   deleteCustomer = (person) => {
     this.props.dispatch(deleteCustomer(person._id));
   }
-
   deleteBeer = (id) => {
-    // this.props.dispatch(deleteBeer(beer._id));
+    this.props.dispatch(deleteBeer(id));
   }
-  
   
   render() {
     return (
@@ -290,24 +294,25 @@ class Container extends React.Component {
               toggleNewBeerModal={this.toggleNewBeerModal}
             />
             <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route path="/searchCustomers">
-                <Search 
-                  search={this.state.search}
-                  updateSearch={this.updateSearch}
-                  toggleEditCustomerModal={this.toggleEditCustomerModal}
-                  handleDisplayBeer={this.handleDisplayBeer}
-                  displayBeer={this.state.displayBeer}
-                  deleteCustomer={this.deleteCustomer}
-                />
-              </Route>
-              <Route path="/beersList">
-                <BeerDisplay
-                  toggleEditBeerModal={this.toggleEditBeerModal}
-                />
-              </Route>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/searchCustomers">
+              <Search 
+                search={this.state.search}
+                updateSearch={this.updateSearch}
+                toggleEditCustomerModal={this.toggleEditCustomerModal}
+                toggleCustomerBeersModal={this.toggleCustomerBeersModal}
+                handleDisplayBeer={this.handleDisplayBeer}
+                displayBeer={this.state.displayBeer}
+                deleteCustomer={this.deleteCustomer}
+              />
+            </Route>
+            <Route path="/beersList">
+              <BeerDisplay
+                toggleEditBeerModal={this.toggleEditBeerModal}
+              />
+            </Route>
             </Switch>
           </div>
         </Router>
@@ -319,6 +324,7 @@ class Container extends React.Component {
             firstName={this.state.firstName}
             lastName={this.state.lastName}
             clubId={this.state.clubId}
+            beers={this.state.customerBeers}
           /> : null}
         {this.state.newCustomerModalOpen ?
           <NewCustomer
