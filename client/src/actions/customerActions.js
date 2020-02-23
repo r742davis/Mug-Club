@@ -52,12 +52,19 @@ export const createCustomer = (newCustomer) => (dispatch) => {
     .catch(error => console.log(error))
 };
 
-export const updateCustomer = (id, customer, customers) => (dispatch) => {
-  
+export const updateCustomer = (customer, id) => (dispatch) => {
+  const customerURL = 'http://localhost:5000/customers/' + id;
+  const config = {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Accept': 'application/json'
+    }
+  };
+  axios.put(customerURL, customer, {crossDomain: true}, config);
 }
 
 export const deleteCustomer = (id) => (dispatch) => {
-  axios.delete('http://localhost:5000/customers/'+id)
+  axios.delete('http://localhost:5000/customers/' + id)
     .then(res =>
       dispatch({
         type: DELETE_CUSTOMER,

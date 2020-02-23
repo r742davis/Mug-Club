@@ -23,6 +23,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import CustomerBeersModal from '../components/CustomerBeersModal';
 
 class Container extends React.Component {
   state = {
@@ -181,27 +182,19 @@ class Container extends React.Component {
     };
 
     try {
-      const customerURL = 'http://localhost:5000/customers/' + this.state.customerId;
-      const config = {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Accept': 'application/json'
-        }
-      };
-      await axios.put(customerURL, updatedCustomer, {crossDomain: true}, config);
+      await this.props.dispatch(updatedCustomer(updatedCustomer, this.state.customerId))
+      await this.props.dispatch(fetchCustomers())
       await alert(`${this.state.firstName} has been updated! :D`);
       await this.clearCustomerState();
       await this.setState({
         editCustomerModalOpen: false
       })
-      await this.props.dispatch(fetchCustomers());
     } catch (e) {
       console.log(e);
     }
   }
 
   //// Toggle Modals ////
-
   toggleEditBeerModal = async (beer) => {
     await this.setState({
       editBeerModalOpen: !this.state.editBeerModalOpen,
@@ -360,6 +353,9 @@ class Container extends React.Component {
             breweryLocation={this.state.breweryLocation}
             beerUrl={this.state.beerUrl}
           />
+        : null}
+        {this.state.customerBeerModalOpen ?
+          <CustomerBeersModal />
         : null}
       </>
     );

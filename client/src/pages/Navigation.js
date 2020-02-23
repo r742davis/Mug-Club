@@ -18,12 +18,12 @@ const navigation = (props) => {
         <li className={classes.item}>
           <button 
             onClick={props.toggleNewCustomerModal} 
-            className={classes.NewButton}><i class="fas fa-plus"></i>New Customer</button>
+            className={classes.NewButton}><i className="fas fa-plus"></i>New Customer</button>
         </li>
         <li>
           <button 
             onClick={props.toggleNewBeerModal}
-            className={classes.NewButton}><i class="fas fa-plus"></i>New Beer</button>
+            className={classes.NewButton}><i className="fas fa-plus"></i>New Beer</button>
         </li>
         <li className={classes.item}>
           <button>Log Out</button>
