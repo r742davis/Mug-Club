@@ -11,7 +11,16 @@ import Avatar from '@material-ui/core/Avatar';
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: theme.palette.background.paper,
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+  item: {
+    width: '250px',
+    border: '3px solid black',
+    borderRadius: '10px',
+    margin: '10px',
   }
 }));
 
@@ -37,8 +46,7 @@ export default function CheckboxListSecondary(props) {
 
   return (
     <List dense className={classes.root}>
-      {props.beers
-        .map(beer => {
+      {props.beers.map(beer => {
         const labelId = `checkbox-list-secondary-label-${beer.id}`;
         return (
           <ListItem
@@ -46,14 +54,10 @@ export default function CheckboxListSecondary(props) {
             onClick={handleToggle(beer)}
             dense
             button
-            css={{ maxWidth: 200 }}
+            className={classes.item}
             >
             <ListItemAvatar>
-              <Avatar
-                alt={`${beer.brewery}`}
-                src={`${beer.url}`}
-                // src={`/static/images/avatar/${beer + 1}.jpg`}
-              />
+              <Avatar alt={`${beer.brewery}`} src={`${beer.url}`} />
             </ListItemAvatar>
             <ListItemText
               id={labelId}
@@ -62,6 +66,7 @@ export default function CheckboxListSecondary(props) {
             <ListItemIcon>
               <Checkbox
                 edge="end"
+                size="medium"
                 checked={beer.finished || checked.indexOf(beer) !== -1}
                 disabled={beer.finished}
                 inputProps={{ 'aria-labelledby': labelId }}

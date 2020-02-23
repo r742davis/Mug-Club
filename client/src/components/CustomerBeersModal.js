@@ -1,5 +1,7 @@
 import React from 'react';
 import classes from './styles/Modals.module.css';
+import BeersList from './BeersList';
+import { connect } from 'react-redux';
 
 const CustomerBeersModal = (props) => {
   return (
@@ -7,10 +9,17 @@ const CustomerBeersModal = (props) => {
       <section className={classes.ModalContainer}>
         <div className={classes.Modal}>
           <h2 className={classes.ModalTitle}>Beers</h2>
-        </div>
+          <BeersList beers={props.beers}/>
+          <button onClick={props.toggleModal}>Cancel</button>
+        </div> 
       </section>
     </>
   )
 };
 
-export default CustomerBeersModal;
+const mapStateToProps = (state) => ({
+  beers: state.beers.beers,
+  customers: state.customers.customers
+});
+
+export default connect(mapStateToProps)(CustomerBeersModal);

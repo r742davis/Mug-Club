@@ -47,14 +47,13 @@ class Container extends React.Component {
     newBeerModalOpen: false,
     newCustomerModalOpen: false,
     editCustomerModalOpen: false,
-    customerBeerModalOpen: false,
+    customerBeersModalOpen: false,
     displayBeer: false
   };
 
   async componentDidMount() {
     await this.loadData();
   }
-
   loadData = async () => {
     try {
       await this.props.dispatch(fetchBeers());
@@ -63,13 +62,11 @@ class Container extends React.Component {
       throw new Error('Cannot connect to database. Server may be busy or unavailable.')
     }
   }
-
   handleInputChange = async (event) => {
     const target = event.target;
     const name = target.name;
     await this.setState({ [name]: event.target.value})
   }
-
   clearBeerState = () => {
     this.setState({
       beerName: '',
@@ -80,9 +77,18 @@ class Container extends React.Component {
       newBeerModalOpen: false
     });
   }
+  clearCustomerState = () => {
+    this.setState({
+      customerId: '',
+      firstName: '',
+      lastName: '',
+      clubId: '',
+      completed: '',
+      customerBeers: []
+    })
+  }
 
   ///// Beer Submissions ////
-
   handleNewBeerSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -121,7 +127,6 @@ class Container extends React.Component {
         }
       };
       await axios.put(beerURL, updatedBeer, {crossDomain: true}, config);
-
       await this.props.dispatch(fetchBeers());
       await this.setState({
         editBeerModalOpen: false
@@ -132,18 +137,6 @@ class Container extends React.Component {
   }
 
   //// Customer creation and edit functions ////
-
-  clearCustomerState = () => {
-    this.setState({
-      customerId: '',
-      firstName: '',
-      lastName: '',
-      clubId: '',
-      completed: '',
-      customerBeers: []
-    })
-  }
-
   handleNewCustomerSubmit = async (event) => {
     event.preventDefault();
     const newCustomer = {
@@ -195,6 +188,16 @@ class Container extends React.Component {
   }
 
   //// Toggle Modals ////
+  toggleNewBeerModal = async () => {
+    await this.setState({
+      newBeerModalOpen: !this.state.newBeerModalOpen
+    })
+  }
+  toggleNewCustomerModal = async (event) => {
+    await this.setState({
+      newCustomerModalOpen: !this.state.newCustomerModalOpen
+    })
+  }
   toggleEditBeerModal = async (beer) => {
     await this.setState({
       editBeerModalOpen: !this.state.editBeerModalOpen,
@@ -217,19 +220,6 @@ class Container extends React.Component {
       beerUrl: ''
     })
   }
-
-  toggleNewBeerModal = async () => {
-    await this.setState({
-      newBeerModalOpen: !this.state.newBeerModalOpen
-    })
-  }
-
-  toggleNewCustomerModal = async (event) => {
-    await this.setState({
-      newCustomerModalOpen: !this.state.newCustomerModalOpen
-    })
-  }
-
   toggleEditCustomerModal = async (customer) => {
     await this.setState({
       editCustomerModalOpen: !this.state.editCustomerModalOpen
@@ -246,21 +236,17 @@ class Container extends React.Component {
         customerBeers: mugClub.beers
       })
     }
-
     if (!this.state.editCustomerModalOpen) {
       this.clearCustomerState();
     }
   }
-
   toggleCustomerBeersModal = async (beers) => {
     await this.setState({
-      customerBeerModalOpen: !this.state.customerBeerModalOpen
+      customerBeersModalOpen: !this.state.customerBeersModalOpen
     })
-    if (!this.state.customerBeerModalOpen) {
+    if (!this.state.customerBeersModalOpen) {
       this.clearCustomerState();
     }
-
-    console.log('Hello')
   }
 
   ///// Search Component Functions /////
@@ -282,31 +268,32 @@ class Container extends React.Component {
       <>
         <Router>
           <div>
-            <Navigation
-              toggleNewCustomerModal={this.toggleNewCustomerModal}
-              toggleNewBeerModal={this.toggleNewBeerModal}
+          <Navigation
+            toggleNewCustomerModal={this.toggleNewCustomerModal}
+            toggleNewBeerModal={this.toggleNewBeerModal}
+          />
+          <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/searchCustomers">
+            <Search 
+              search={this.state.search}
+              updateSearch={this.updateSearch}
+              toggleEditCustomerModal={this.toggleEditCustomerModal}
+              toggleCustomerBeersModal={this.toggleCustomerBeersModal}
+              customerBeersModalOpen={this.state.customerBeersModalOpen}
+              handleDisplayBeer={this.handleDisplayBeer}
+              displayBeer={this.state.displayBeer}
+              deleteCustomer={this.deleteCustomer}
             />
-            <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/searchCustomers">
-              <Search 
-                search={this.state.search}
-                updateSearch={this.updateSearch}
-                toggleEditCustomerModal={this.toggleEditCustomerModal}
-                toggleCustomerBeersModal={this.toggleCustomerBeersModal}
-                handleDisplayBeer={this.handleDisplayBeer}
-                displayBeer={this.state.displayBeer}
-                deleteCustomer={this.deleteCustomer}
-              />
-            </Route>
-            <Route path="/beersList">
-              <BeerDisplay
-                toggleEditBeerModal={this.toggleEditBeerModal}
-              />
-            </Route>
-            </Switch>
+          </Route>
+          <Route path="/beersList">
+            <BeerDisplay
+              toggleEditBeerModal={this.toggleEditBeerModal}
+            />
+          </Route>
+          </Switch>
           </div>
         </Router>
         {this.state.editCustomerModalOpen ?
@@ -354,9 +341,11 @@ class Container extends React.Component {
             beerUrl={this.state.beerUrl}
           />
         : null}
-        {this.state.customerBeerModalOpen ?
-          <CustomerBeersModal />
-        : null}
+        {/* {this.state.customerBeersModalOpen ?
+          <CustomerBeersModal 
+            toggleModal={this.toggleCustomerBeersModal}
+          />
+        : null} */}
       </>
     );
   };

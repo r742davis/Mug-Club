@@ -1,5 +1,7 @@
 import React from 'react';
 import classes from './styles/Customer.module.css';
+import BeersList from './BeersList';
+import { connect } from 'react-redux';
 
 const customer = (props) => {
   return (
@@ -25,8 +27,17 @@ const customer = (props) => {
       <button 
         className={classes.BeersButton}
         onClick={props.toggleCustomerBeersModal}>View Completed Beers</button>
+      <BeersList beers={props.beers} />
+      {/* {props.customerBeersModalOpen ?
+        <BeersList beers={props.beers} />
+      :null} */}
     </div>
   )
 }
 
-export default customer;
+const mapStateToProps = (state) => ({
+  beers: state.beers.beers
+});
+
+export default connect(mapStateToProps)(customer);
+

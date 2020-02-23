@@ -22,6 +22,7 @@ const Search = (props) => {
           completed={person.mugClub.completed}
           toggleEditCustomerModal={() => props.toggleEditCustomerModal(person)}
           toggleCustomerBeersModal={() => props.toggleCustomerBeersModal(person)}
+          customerBeersModalOpen={props.customerBeersModalOpen}
           deleteCustomer={() => props.deleteCustomer(person)}
           displayBeer={props.displayBeer}
           handleDisplayBeer={props.handleDisplayBeer}
