@@ -17,11 +17,26 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
   },
   item: {
-    width: '250px',
+    width: '300px',
     height: '100px',
     border: '3px solid black',
     borderRadius: '10px',
     margin: '10px',
+    background: '#F0D3D7'
+  },
+  completedItem: {
+    width: '300px',
+    height: '100px',
+    border: '3px solid black',
+    borderRadius: '10px',
+    margin: '10px',
+    background: '#BDE7DF'
+  },
+  primary: {
+    fontSize: '20px',
+  },
+  secondary: {
+    fontSize: '15px'
   }
 }));
 
@@ -57,32 +72,24 @@ export default function CheckboxListSecondary(props) {
             onClick={handleToggle(beer)}
             dense
             button
-            className={classes.item}
+            className={beer.finished ? classes.completedItem : classes.item}
             >
             <ListItemAvatar>
-              <Avatar alt={`${beer.brewery}`} src={`${beer.url}`} />
+              <Avatar className={classes.avatar} alt={`${beer.brewery}`} src={`${beer.url}`} />
             </ListItemAvatar>
             <ListItemText
-              id={labelId}
+              classes={{primary: classes.primary, secondary: classes.secondary}}
               primary={`${beer.name}`}
               secondary={`${beer.brewery}`} />
-            {/* <input type="checkbox" defaultChecked={beer.finished ? "on" : null}/> */}
-            
-            
-            
             <ListItemIcon>
               <Checkbox
                 edge="end"
-                size="medium"
+                className={classes.checkbox}
                 checked={beer.finished || checked.indexOf(beer) !== -1}
                 disabled={beer.finished}
                 inputProps={{ 'aria-labelledby': labelId }}
                 />
             </ListItemIcon>
-
-
-
-
           </ListItem>
         );
       })}

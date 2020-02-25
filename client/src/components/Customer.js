@@ -4,8 +4,6 @@ import BeersList from './BeersList';
 // import { connect } from 'react-redux';
 
 const customer = (props) => {
-  
-
   return (
     <div className={classes.CustomerBox}>
       <h1>{props.name.first} {props.name.last}
