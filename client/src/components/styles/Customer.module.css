@@ -22,6 +22,7 @@
   color: #0288d1;
 }
 .CustomerBox button {
+  width: 150px;
   padding: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
@@ -42,6 +43,8 @@
 .BeersButton {
   font-size: 2rem;
   font-family: 'Roboto', sans-serif;
+  display: flex;
+  align-self: center;
 }
 .Span {
   display: flex;
@@ -59,11 +62,4 @@
   background: #B72E3E;
   color: white;
   transition: 0.25s;
-}
-.BeersButton {
-  margin-bottom: 1rem;
-}
-.BeersButton:hover {
-  background: black;
-  color: white;
 }

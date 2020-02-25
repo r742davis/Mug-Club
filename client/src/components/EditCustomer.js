@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './styles/Modals.module.css';
 import Grow from '@material-ui/core/Grow';
+import BeersList from './BeersList';
 
 const EditCustomer = (props) => {
   if (!props) { return null; }
@@ -8,10 +9,10 @@ const EditCustomer = (props) => {
     <>
       <section className={classes.ModalContainer}>
         <Grow in={true}>
-        <div className={classes.Modal}>
+        <div className={classes.EditModal}>
           <h2 className={classes.ModalTitle}>Edit Customer</h2>
           <form
-            className={classes.ModalForm}
+            className={classes.EditForm}
             onSubmit={props.handleEditCustomerSubmit}>
             <div className={classes.Group}>
               <label htmlFor="firstName" className={classes.Label}>First Name</label>
@@ -42,6 +43,12 @@ const EditCustomer = (props) => {
                 value={props.clubId} 
                 onChange={props.handleInputChange} />
               <span className={classes.Bar}></span>
+            </div>
+            <div>
+              <BeersList 
+                beers={props.beers} 
+                updateCompletedBeers={props.updateCompletedBeers}
+              />
             </div>
             <button
               onClick={() => props.handleEditCustomerSubmit}

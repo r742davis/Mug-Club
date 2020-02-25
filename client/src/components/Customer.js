@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './styles/Customer.module.css';
-import BeersList from './BeersList';
+// import BeersList from './BeersList';
 // import { connect } from 'react-redux';
 
 const customer = (props) => {
@@ -10,10 +10,14 @@ const customer = (props) => {
         <span className={classes.ButtonContainer}>
           <button 
             className={classes.EditButton} 
-            onClick={props.toggleEditCustomerModal}><span className={classes.Span}>Edit Info</span></button>
+            onClick={props.toggleEditCustomerModal}>
+            Edit
+          </button>
           <button 
             className={classes.DeleteButton}
-            onClick={props.deleteCustomer}><span className={classes.Span}>Delete</span></button>
+            onClick={props.deleteCustomer}>
+            Delete
+          </button>
         </span>
       </h1>
       <span className={classes.Span}>
@@ -28,13 +32,14 @@ const customer = (props) => {
         <h2>Beers Completed:</h2>
         <h2>11</h2>
       </span>
-      <button 
+      {/* <button 
         className={classes.BeersButton}
-        onClick={props.toggleCustomerBeersModal}>View Completed Beers</button>
-      {/* <BeersList beers={props.beers} updateCompletedBeers={props.updateCompletedBeers} /> */}
-      {props.customerBeersModalOpen ?
-        <BeersList beers={props.beers} updateCompletedBeers={props.updateCompletedBeers} />
-      :null}
+        onClick={props.toggleCustomerBeersModal}>View Completed Beers</button> */}
+      {/* {props.customerBeersModalOpen ?
+        <BeersList 
+          beers={props.beers} 
+          updateCompletedBeers={props.updateCompletedBeers} />
+      :null} */}
     </div>
   )
 }

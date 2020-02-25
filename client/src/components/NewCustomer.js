@@ -27,8 +27,8 @@ const NewCustomer = (props) => {
               <input type="text" name="clubId" className={classes.Input} value={props.clubId} onChange={props.handleInputChange} />
               <span className={classes.Bar}></span>
             </div>
-            <button className={classes.EditButton}>Submit</button>
-            <button className={classes.CancelButton}>Cancel</button>
+            <button onClick={props.handleNewCustomerSubmit} className={classes.EditButton}>Submit</button>
+            <button onClick={props.toggleNewCustomerModal} className={classes.CancelButton}>Cancel</button>
           </form>
         </div>
         </Grow>

@@ -152,6 +152,7 @@ class Container extends React.Component {
     try {
       await this.props.dispatch(createCustomer(newCustomer))
       await this.props.dispatch(fetchCustomers());
+      await alert(`${this.state.firstName} has been created!`);
       await this.clearCustomerState();
       await this.setState({
         newCustomerModalOpen: false
@@ -308,6 +309,11 @@ class Container extends React.Component {
       customerBeersModalOpen: false
     })
   }
+
+  calculateCompletedBeers = (arr) => {
+    
+  }
+  
   
   
   render() {
@@ -353,6 +359,7 @@ class Container extends React.Component {
             lastName={this.state.lastName}
             clubId={this.state.clubId}
             beers={this.state.customerBeers}
+            updateCompletedBeers={this.updateCompletedBeers}
           /> : null}
         {this.state.newCustomerModalOpen ?
           <NewCustomer

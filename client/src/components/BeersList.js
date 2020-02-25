@@ -15,28 +15,27 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
+    overflowY: 'auto',
   },
   item: {
-    width: '300px',
-    height: '100px',
+    width: '250px',
+    height: '50px',
     border: '3px solid black',
-    borderRadius: '10px',
-    margin: '10px',
+    margin: '2px',
     background: '#F0D3D7'
   },
   completedItem: {
-    width: '300px',
-    height: '100px',
+    width: '250px',
+    height: '50px',
     border: '3px solid black',
-    borderRadius: '10px',
-    margin: '10px',
+    margin: '2px',
     background: '#BDE7DF'
   },
   primary: {
-    fontSize: '20px',
+    fontSize: '10px',
   },
   secondary: {
-    fontSize: '15px'
+    fontSize: '10px'
   }
 }));
 
@@ -62,38 +61,40 @@ export default function CheckboxListSecondary(props) {
 
   return (
     <>
-    <button onClick={(e) => props.updateCompletedBeers(e, checked)}>Submit</button>
-    <List dense className={classes.root}>
-      {props.beers.map(beer => {
-        const labelId = `checkbox-list-secondary-label-${beer.id}`;
-        return (
-          <ListItem
-            key={beer.id}
-            onClick={handleToggle(beer)}
-            dense
-            button
-            className={beer.finished ? classes.completedItem : classes.item}
-            >
-            <ListItemAvatar>
-              <Avatar className={classes.avatar} alt={`${beer.brewery}`} src={`${beer.url}`} />
-            </ListItemAvatar>
-            <ListItemText
-              classes={{primary: classes.primary, secondary: classes.secondary}}
-              primary={`${beer.name}`}
-              secondary={`${beer.brewery}`} />
-            <ListItemIcon>
-              <Checkbox
-                edge="end"
-                className={classes.checkbox}
-                checked={beer.finished || checked.indexOf(beer) !== -1}
-                disabled={beer.finished}
-                inputProps={{ 'aria-labelledby': labelId }}
-                />
-            </ListItemIcon>
-          </ListItem>
-        );
-      })}
-    </List>
+    {/* <div className={classes.listContainer}> */}
+      <button onClick={(e) => props.updateCompletedBeers(e, checked)}>Submit</button>
+      <List dense className={classes.root}>
+        {props.beers.map(beer => {
+          const labelId = `checkbox-list-secondary-label-${beer.id}`;
+          return (
+            <ListItem
+              key={beer.id}
+              onClick={handleToggle(beer)}
+              dense
+              button
+              className={beer.finished ? classes.completedItem : classes.item}
+              >
+              <ListItemAvatar>
+                <Avatar className={classes.avatar} alt={`${beer.brewery}`} src={`${beer.url}`} />
+              </ListItemAvatar>
+              <ListItemText
+                classes={{primary: classes.primary, secondary: classes.secondary}}
+                primary={`${beer.name}`}
+                secondary={`${beer.brewery}`} />
+              <ListItemIcon>
+                <Checkbox
+                  edge="end"
+                  className={classes.checkbox}
+                  checked={beer.finished || checked.indexOf(beer) !== -1}
+                  disabled={beer.finished}
+                  inputProps={{ 'aria-labelledby': labelId }}
+                  />
+              </ListItemIcon>
+            </ListItem>
+          );
+        })}
+      </List>
+    {/* </div> */}
     </>
   );
 }
