@@ -17,7 +17,8 @@ import {
 import { 
   fetchCustomers, 
   createCustomer,
-  deleteCustomer } from '../actions/customerActions';
+  deleteCustomer,
+  updateCustomer } from '../actions/customerActions';
 import {
   BrowserRouter as Router,
   Switch,
@@ -175,7 +176,7 @@ class Container extends React.Component {
     };
 
     try {
-      await this.props.dispatch(updatedCustomer(updatedCustomer, this.state.customerId))
+      await this.props.dispatch(updateCustomer(updatedCustomer, this.state.customerId))
       await this.props.dispatch(fetchCustomers())
       await alert(`${this.state.firstName} has been updated! :D`);
       await this.clearCustomerState();
@@ -240,10 +241,22 @@ class Container extends React.Component {
       this.clearCustomerState();
     }
   }
-  toggleCustomerBeersModal = async (beers) => {
+  toggleCustomerBeersModal = async (customer) => {
     await this.setState({
       customerBeersModalOpen: !this.state.customerBeersModalOpen
     })
+
+    if (customer.name?.first) {
+      const { name, mugClub } = customer;
+      await this.setState({
+        customerId: customer._id,
+        firstName: name.first,
+        lastName: name.last,
+        clubId: mugClub.clubId,
+        completed: mugClub.completed,
+        customerBeers: mugClub.beers
+      })
+    }
     if (!this.state.customerBeersModalOpen) {
       this.clearCustomerState();
     }
@@ -262,6 +275,40 @@ class Container extends React.Component {
   deleteBeer = (id) => {
     this.props.dispatch(deleteBeer(id));
   }
+
+  //// TEST SECTION ////
+  updateCompletedBeers = async (e, checkedArr) => {
+
+    // let map = {};
+    let updatedArr = this.state.customerBeers;
+    // for (let i = 1; i < checkedArr.length; i++) {
+    //   if (!map[i]) {
+    //     const item = checkedArr[i]._id;
+    //     map[i-1] = item;
+    //   }
+    // }
+    // for (let j = 0; j < updatedArr.length; j++) {
+    //   if (updatedArr[] === map[checkedArr[j]._id]) {
+    //     updatedArr[j].finished = true;
+    //   }
+    // }
+
+    for (let k = 0; k < updatedArr.length; k++) {
+      for (let h = 1; h < checkedArr.length; h++) {
+        if (updatedArr[k]._id === checkedArr[h]._id) {
+          updatedArr[k].finished = true;
+        } 
+      }
+    }
+    await this.setState({
+      customerBeers: updatedArr
+    })
+    await this.handleEditCustomerSubmit(e);
+    await this.setState({
+      customerBeersModalOpen: false
+    })
+  }
+  
   
   render() {
     return (
@@ -286,6 +333,7 @@ class Container extends React.Component {
               handleDisplayBeer={this.handleDisplayBeer}
               displayBeer={this.state.displayBeer}
               deleteCustomer={this.deleteCustomer}
+              updateCompletedBeers={this.updateCompletedBeers}
             />
           </Route>
           <Route path="/beersList">

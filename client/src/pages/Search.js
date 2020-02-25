@@ -26,6 +26,7 @@ const Search = (props) => {
           deleteCustomer={() => props.deleteCustomer(person)}
           displayBeer={props.displayBeer}
           handleDisplayBeer={props.handleDisplayBeer}
+          updateCompletedBeers={props.updateCompletedBeers}
         />
       )
     }) : null

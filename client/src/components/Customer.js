@@ -1,9 +1,11 @@
 import React from 'react';
 import classes from './styles/Customer.module.css';
 import BeersList from './BeersList';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
 const customer = (props) => {
+  
+
   return (
     <div className={classes.CustomerBox}>
       <h1>{props.name.first} {props.name.last}
@@ -24,20 +26,26 @@ const customer = (props) => {
         <h2>Completed?</h2>
         <h2>{props.completed ? 'TRUE' : 'FALSE'}</h2>
       </span>
+      <span className={classes.Span}>
+        <h2>Beers Completed:</h2>
+        <h2>11</h2>
+      </span>
       <button 
         className={classes.BeersButton}
         onClick={props.toggleCustomerBeersModal}>View Completed Beers</button>
-      <BeersList beers={props.beers} />
-      {/* {props.customerBeersModalOpen ?
-        <BeersList beers={props.beers} />
-      :null} */}
+      {/* <BeersList beers={props.beers} updateCompletedBeers={props.updateCompletedBeers} /> */}
+      {props.customerBeersModalOpen ?
+        <BeersList beers={props.beers} updateCompletedBeers={props.updateCompletedBeers} />
+      :null}
     </div>
   )
 }
 
-const mapStateToProps = (state) => ({
-  beers: state.beers.beers
-});
+// const mapStateToProps = (state) => ({
+//   beers: state.beers.beers
+// });
 
-export default connect(mapStateToProps)(customer);
+// export default connect(mapStateToProps)(customer);
+
+export default customer;
 

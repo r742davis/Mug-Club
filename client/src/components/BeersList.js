@@ -18,6 +18,7 @@ const useStyles = makeStyles(theme => ({
   },
   item: {
     width: '250px',
+    height: '100px',
     border: '3px solid black',
     borderRadius: '10px',
     margin: '10px',
@@ -45,6 +46,8 @@ export default function CheckboxListSecondary(props) {
   };
 
   return (
+    <>
+    <button onClick={(e) => props.updateCompletedBeers(e, checked)}>Submit</button>
     <List dense className={classes.root}>
       {props.beers.map(beer => {
         const labelId = `checkbox-list-secondary-label-${beer.id}`;
@@ -63,6 +66,10 @@ export default function CheckboxListSecondary(props) {
               id={labelId}
               primary={`${beer.name}`}
               secondary={`${beer.brewery}`} />
+            {/* <input type="checkbox" defaultChecked={beer.finished ? "on" : null}/> */}
+            
+            
+            
             <ListItemIcon>
               <Checkbox
                 edge="end"
@@ -72,9 +79,14 @@ export default function CheckboxListSecondary(props) {
                 inputProps={{ 'aria-labelledby': labelId }}
                 />
             </ListItemIcon>
+
+
+
+
           </ListItem>
         );
       })}
     </List>
+    </>
   );
 }
