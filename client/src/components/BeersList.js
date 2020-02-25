@@ -18,21 +18,23 @@ const useStyles = makeStyles(theme => ({
     overflowY: 'auto',
   },
   item: {
-    width: '250px',
+    width: '300px',
     height: '50px',
-    border: '3px solid black',
+    borderRadius: '0.5rem',
+    boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)',
     margin: '2px',
     background: '#F0D3D7'
   },
   completedItem: {
-    width: '250px',
+    width: '300px',
     height: '50px',
-    border: '3px solid black',
+    borderRadius: '0.5rem',
+    boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)',
     margin: '2px',
     background: '#BDE7DF'
   },
   primary: {
-    fontSize: '10px',
+    fontSize: '12px',
   },
   secondary: {
     fontSize: '10px'
@@ -61,7 +63,6 @@ export default function CheckboxListSecondary(props) {
 
   return (
     <>
-    {/* <div className={classes.listContainer}> */}
       <button onClick={(e) => props.updateCompletedBeers(e, checked)}>Submit</button>
       <List dense className={classes.root}>
         {props.beers.map(beer => {
@@ -94,7 +95,6 @@ export default function CheckboxListSecondary(props) {
           );
         })}
       </List>
-    {/* </div> */}
     </>
   );
 }
