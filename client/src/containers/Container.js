@@ -138,6 +138,19 @@ class Container extends React.Component {
   }
 
   //// Customer creation and edit functions ////
+  updateCompletedBeers = async (checkedArr) => {
+    let updatedArr = this.state.customerBeers;
+    for (let k = 0; k < updatedArr.length; k++) {
+      for (let h = 1; h < checkedArr.length; h++) {
+        if (updatedArr[k]._id === checkedArr[h]._id) {
+          updatedArr[k].finished = true;
+        } 
+      }
+    }
+    await this.setState({
+      customerBeers: updatedArr
+    })
+  }
   handleNewCustomerSubmit = async (event) => {
     event.preventDefault();
     const newCustomer = {
@@ -161,9 +174,9 @@ class Container extends React.Component {
       console.log(e);
     }
   }
-
-  handleEditCustomerSubmit = async (e) => {
+  handleEditCustomerSubmit = async (e, checkedArr) => {
     e.preventDefault();
+    await this.updateCompletedBeers(checkedArr);
     const updatedCustomer = {
       name: {
         first: this.state.firstName,
@@ -278,37 +291,7 @@ class Container extends React.Component {
   }
 
   //// TEST SECTION ////
-  updateCompletedBeers = async (e, checkedArr) => {
-
-    // let map = {};
-    let updatedArr = this.state.customerBeers;
-    // for (let i = 1; i < checkedArr.length; i++) {
-    //   if (!map[i]) {
-    //     const item = checkedArr[i]._id;
-    //     map[i-1] = item;
-    //   }
-    // }
-    // for (let j = 0; j < updatedArr.length; j++) {
-    //   if (updatedArr[] === map[checkedArr[j]._id]) {
-    //     updatedArr[j].finished = true;
-    //   }
-    // }
-
-    for (let k = 0; k < updatedArr.length; k++) {
-      for (let h = 1; h < checkedArr.length; h++) {
-        if (updatedArr[k]._id === checkedArr[h]._id) {
-          updatedArr[k].finished = true;
-        } 
-      }
-    }
-    await this.setState({
-      customerBeers: updatedArr
-    })
-    await this.handleEditCustomerSubmit(e);
-    await this.setState({
-      customerBeersModalOpen: false
-    })
-  }
+  
 
   calculateCompletedBeers = (arr) => {
     
@@ -396,11 +379,6 @@ class Container extends React.Component {
             beerUrl={this.state.beerUrl}
           />
         : null}
-        {/* {this.state.customerBeersModalOpen ?
-          <CustomerBeersModal 
-            toggleModal={this.toggleCustomerBeersModal}
-          />
-        : null} */}
       </>
     );
   };
