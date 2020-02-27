@@ -48,14 +48,16 @@ const EditCustomer = (props) => {
               <BeersList 
                 beers={props.beers} 
                 updateCompletedBeers={props.updateCompletedBeers}
+                handleEditCustomerSubmit={props.handleEditCustomerSubmit}
+                toggleEditCustomerModal={props.toggleEditCustomerModal}
               />
             </div>
-            <button
+            {/* <button
               onClick={() => props.handleEditCustomerSubmit}
               className={classes.EditButton}>Submit Edit</button>
             <button
               onClick={props.toggleEditCustomerModal}
-              className={classes.CancelButton}>Cancel</button>
+              className={classes.CancelButton}>Cancel</button> */}
           </form>
         </div>
         </Grow>

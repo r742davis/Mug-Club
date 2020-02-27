@@ -7,6 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Checkbox from '@material-ui/core/Checkbox';
 import Avatar from '@material-ui/core/Avatar';
+import styles from './styles/Modals.module.css';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -38,7 +39,12 @@ const useStyles = makeStyles(theme => ({
   },
   secondary: {
     fontSize: '10px'
-  }
+  },
+  buttonContainer: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column'
+  },
 }));
 
 export default function CheckboxListSecondary(props) {
@@ -63,7 +69,9 @@ export default function CheckboxListSecondary(props) {
 
   return (
     <>
-      <button onClick={(e) => props.updateCompletedBeers(e, checked)}>Submit</button>
+      <div className={classes.container}>
+        
+      </div>
       <List dense className={classes.root}>
         {props.beers.map(beer => {
           const labelId = `checkbox-list-secondary-label-${beer.id}`;
@@ -95,6 +103,14 @@ export default function CheckboxListSecondary(props) {
           );
         })}
       </List>
+      <div className={classes.buttonContainer}>
+        <button
+          onClick={(e) => props.handleEditCustomerSubmit(e,checked)}
+          className={styles.EditButton}>Submit Edit</button>
+        <button
+          onClick={props.toggleEditCustomerModal}
+          className={styles.CancelButton}>Cancel</button>
+      </div>
     </>
   );
 }
