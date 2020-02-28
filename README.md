@@ -1,11 +1,19 @@
 # Mug Club
 
-## Current Development Stage - June 25th, 2019
-#### Backend Creation
+## Current Development Stage - Feb 28th, 2020
 
-After speaking with Bear employees, I decided to make the first iteration of the app only business-side and then add customer usage later. The primary use is for accessing customer database and generating new customers via bar employee access of internet connected devices.
+The app's design and functionality is essentially complete at this stage. Much of the work now involves minor details, unit testing, and developing the CSV-to-JSON conversion algorithm.
 
-The app is simple but it requires both an easy-to-use frontend UI and a backend database to store the customer information securely. There are many features I would like to add to the app, BUT the first and only focus for now is the 'Mug Club ID lookup' functionality.
+#### Some minor details include:
+1. Disabling navigation when modals are active
+2. Creating a responsive hamburger menu for the navigation
+3. Updating Mug Club completion numbers and CSS actions related to customer completion
+4. Fix the leading zero issue with Mug Club numbers
+5. Transferring rest of functionality over to Redux store/actions/reducers
+
+#### CSV-to-JSON Algorithm
+I am currently using Papaparse to parse the CSV file that will be sent from the Madison Bear Garden main computer. I need to develop an algorithm that will automatically generate the customer database using my schema design. The number of customer datapoints numbers at about 15,000. This will only be a one-time operation, so time and space complexity aren't a huge issue.
+
 
 ## Motivation
 
