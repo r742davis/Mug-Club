@@ -2,7 +2,7 @@
 
 ## Current Development Stage - Feb 28th, 2020
 
-The app's design and functionality is essentially complete at this stage. Much of the work now involves minor details, unit testing, and developing the CSV-to-JSON conversion algorithm.
+The app's design and functionality is essentially complete at this stage. Much of the work now involves minor details, unit testing, authentication, and developing the CSV-to-JSON conversion algorithm. 
 
 #### Some minor details include:
 1. Disabling navigation when modals are active
