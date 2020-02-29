@@ -30,7 +30,7 @@ const customer = (props) => {
       </span>
       <span className={classes.Span}>
         <h2>Beers Completed:</h2>
-        <h2>11</h2>
+        <h2>{props.calculateCompletedBeers(props.beers)}</h2>
       </span>
       {/* <button 
         className={classes.BeersButton}

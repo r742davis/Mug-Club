@@ -27,6 +27,7 @@ const Search = (props) => {
           displayBeer={props.displayBeer}
           handleDisplayBeer={props.handleDisplayBeer}
           updateCompletedBeers={props.updateCompletedBeers}
+          calculateCompletedBeers={props.calculateCompletedBeers}
         />
       )
     }) : null

@@ -56,18 +56,19 @@ class Container extends React.Component {
 
   async componentDidMount() {
     await this.loadData();
-    const results = await readString(csvFile, {
-      delimiter: ",",
-      download: true,
-      complete: function(results) {
-        // console.log(results.data)
-        let i = 0;
-        while (i < results.data.length) {
-          console.log(results.data[i]);
-          i++;
-        }
-      }
-    })
+    ///// CSV CONVERSION
+    // const results = await readString(csvFile, {
+    //   delimiter: ",",
+    //   download: true,
+    //   complete: function(results) {
+    //     // console.log(results.data)
+    //     let i = 0;
+    //     while (i < results.data.length) {
+    //       console.log(results.data[i]);
+    //       i++;
+    //     }
+    //   }
+    // })
   }
   loadData = async () => {
     try {
@@ -307,14 +308,17 @@ class Container extends React.Component {
   //// TEST SECTION ////
   
 
-  // calculateCompletedBeers = (arr) => {
-  //   if (arr) {
-  //     let count = 0;
-  //     for (let i = 0; i < arr.length; i++) {
-  //       if (arr[i].mugClub.)
-  //     }
-  //   }
-  // }
+  calculateCompletedBeers = (arr) => {
+    if (arr) {
+      let count = 0;
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].finished === true) {
+          count++;
+        }
+      }
+      return count;
+    }
+  }
   
   
   
@@ -342,6 +346,7 @@ class Container extends React.Component {
               displayBeer={this.state.displayBeer}
               deleteCustomer={this.deleteCustomer}
               updateCompletedBeers={this.updateCompletedBeers}
+              calculateCompletedBeers={this.calculateCompletedBeers}
             />
           </Route>
           <Route path="/beersList">
