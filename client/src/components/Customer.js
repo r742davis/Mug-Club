@@ -1,12 +1,11 @@
 import React from 'react';
 import classes from './styles/Customer.module.css';
-// import BeersList from './BeersList';
 // import { connect } from 'react-redux';
 
 const customer = (props) => {
   return (
-    <div className={classes.CustomerBox}>
-      <h1>{props.name.first} {props.name.last}
+    <div className={props.completed ? classes.CompletedCustomerBox : classes.CustomerBox}>
+      <h1 className={props.completed ? classes.CompletedTitle : classes.CustomerBoxTitle}>{props.name.first} {props.name.last}
         <span className={classes.ButtonContainer}>
           <button 
             className={classes.EditButton} 
