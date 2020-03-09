@@ -21,7 +21,8 @@ const EditCustomer = (props) => {
                 name="firstName" 
                 className={classes.Input} 
                 value={props.firstName} 
-                onChange={props.handleInputChange} />
+                onChange={props.handleInputChange} 
+                required />
               <span className={classes.Bar}></span>
             </div>
             <div className={classes.Group}>
@@ -31,7 +32,8 @@ const EditCustomer = (props) => {
                 name="lastName" 
                 className={classes.Input} 
                 value={props.lastName} 
-                onChange={props.handleInputChange} />
+                onChange={props.handleInputChange} 
+                required />
               <span className={classes.Bar}></span>
             </div>
             <div className={classes.Group}>
@@ -41,7 +43,8 @@ const EditCustomer = (props) => {
                 name="clubId" 
                 className={classes.Input} 
                 value={props.clubId} 
-                onChange={props.handleInputChange} />
+                onChange={props.handleInputChange} 
+                required />
               <span className={classes.Bar}></span>
             </div>
             <div>

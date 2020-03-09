@@ -19,7 +19,8 @@ const EditBeerModal = (props) => {
                 name="beerName" 
                 className={classes.Input} 
                 value={props.beerName} 
-                onChange={props.handleInputChange} required/>
+                onChange={props.handleInputChange} 
+                required />
               <span className={classes.Bar}></span>
             </div>
             <div className={classes.Group}>
@@ -42,7 +43,8 @@ const EditBeerModal = (props) => {
                 name="brewery"  
                 className={classes.Input} 
                 value={props.brewery} 
-                onChange={props.handleInputChange} required/>
+                onChange={props.handleInputChange} 
+                required />
               <span className={classes.Bar}></span>
             </div>
             <div className={classes.Group}>
@@ -52,7 +54,8 @@ const EditBeerModal = (props) => {
                 name="breweryLocation" 
                 className={classes.Input} 
                 value={props.breweryLocation} 
-                onChange={props.handleInputChange} />
+                onChange={props.handleInputChange} 
+                required />
               <span className={classes.Bar}></span>
             </div>
             <div className={classes.Group}>
@@ -62,7 +65,8 @@ const EditBeerModal = (props) => {
                 name="beerUrl" 
                 className={classes.Input} 
                 value={props.beerUrl} 
-                onChange={props.handleInputChange} required/>
+                onChange={props.handleInputChange} 
+                required />
               <span className={classes.Bar}></span>
             </div>
             <button 

@@ -20,7 +20,8 @@ const NewBeerModal = (props) => {
                 name="beerName" 
                 className={classes.Input} 
                 value={props.beerName} 
-                onChange={props.handleInputChange} required/>
+                onChange={props.handleInputChange} 
+                required />
               <span className={classes.Bar}></span>
             </div>
           
@@ -45,7 +46,8 @@ const NewBeerModal = (props) => {
                 name="brewery"  
                 className={classes.Input} 
                 value={props.brewery} 
-                onChange={props.handleInputChange} required/>
+                onChange={props.handleInputChange} 
+                required />
               <span className={classes.Bar}></span>
             </div>
             
@@ -56,7 +58,8 @@ const NewBeerModal = (props) => {
                 name="breweryLocation" 
                 className={classes.Input} 
                 value={props.breweryLocation} 
-                onChange={props.handleInputChange} />
+                onChange={props.handleInputChange}
+                required />
               <span className={classes.Bar}></span>
             </div>
             
@@ -67,7 +70,8 @@ const NewBeerModal = (props) => {
                 name="beerUrl" 
                 className={classes.Input} 
                 value={props.beerUrl} 
-                onChange={props.handleInputChange} required/>
+                onChange={props.handleInputChange} 
+                required />
               <span className={classes.Bar}></span>
             </div>
             <button
