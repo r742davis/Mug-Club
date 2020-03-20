@@ -1,11 +1,13 @@
 import React from 'react';
 import classes from './styles/Modals.module.css';
 import { typeMap } from '../lib/TypeMap';
+import Grow from '@material-ui/core/Grow';
 
 const EditBeerModal = (props) => {
   return (
     <>
       <section className={classes.ModalContainer}>
+        <Grow in={true}>
         <div className={classes.Modal}>
         <h2 className={classes.ModalTitle}>Edit Beer</h2>
           <img className={classes.ModalImage} src={props.beerUrl} alt={props.beerName} />
@@ -77,6 +79,7 @@ const EditBeerModal = (props) => {
               className={classes.CancelButton}>Cancel</button>
           </form>
         </div>
+        </Grow>
       </section>
     </>
   )

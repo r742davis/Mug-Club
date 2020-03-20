@@ -8,6 +8,7 @@ import BeerDisplay from '../components/BeerDisplay';
 import EditBeerModal from '../components/EditBeerModal';
 import NewBeerModal from '../components/NewBeerModal';
 import axios from 'axios';
+import swal from '@sweetalert/with-react';
 
 import { connect } from 'react-redux';
 import { 
@@ -299,7 +300,23 @@ class Container extends React.Component {
     this.setState({ search: event.target.value })
   }
   deleteCustomer = (person) => {
-    this.props.dispatch(deleteCustomer(person._id));
+    swal({
+      title: `Delete ${person.name.first}?`,
+      text: `Do you really want to delete this customer?`,
+      buttons: true,
+      icon: 'warning',
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal(`Boom! ${person.name.first} ${person.name.last} has been deleted!`, {
+          icon: 'success',
+        });
+        this.props.dispatch(deleteCustomer(person._id));
+      } else {
+        swal(`Phew! ${person.name.first} is safe!`);
+      }
+    });
   }
   deleteBeer = (id) => {
     this.props.dispatch(deleteBeer(id));

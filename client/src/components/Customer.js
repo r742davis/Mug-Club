@@ -24,7 +24,7 @@ const Customer = (props) => {
       </span>
       <span className={classes.Span}>
         <h2>Completed?</h2>
-        <h2>{props.completed ? 'TRUE' : 'FALSE'}</h2>
+        <h2>{props.completed ? 'Completed!' : 'Not Yet!'}</h2>
       </span>
       <span className={classes.Span}>
         <h2>Beers Completed:</h2>
