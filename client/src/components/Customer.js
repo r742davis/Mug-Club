@@ -1,8 +1,7 @@
 import React from 'react';
 import classes from './styles/Customer.module.css';
-// import { connect } from 'react-redux';
 
-const customer = (props) => {
+const Customer = (props) => {
   return (
     <div className={classes.CustomerBox}>
       <h1 className={props.completed ? classes.CompletedTitle : classes.CustomerBoxTitle}>{props.name.first} {props.name.last}
@@ -35,5 +34,5 @@ const customer = (props) => {
   )
 }
 
-export default customer;
+export default Customer;
 

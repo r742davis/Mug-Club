@@ -2,7 +2,7 @@
   background-image: url("../../assets/backgrounds/bar-background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  /* filter: blur(1px); */
+  filter: blur(3px);
   height: 100vh;
 }
 

@@ -46,7 +46,7 @@ const NewCustomer = (props) => {
                 required />
               <span className={classes.Bar}></span>
             </div>
-            <button type="submit" onClick={props.handleNewCustomerSubmit} className={classes.EditButton}>Submit</button>
+            <button type="submit" onClick={props.handleNewCustomerSubmit} className={classes.EditButton}>Create New Customer</button>
             <button type="button" onClick={props.toggleNewCustomerModal} className={classes.CancelButton}>Cancel</button>
           </form>
         </div>

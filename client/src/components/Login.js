@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './styles/Login.module.css';
 
-const Login = (props) => {
+const Login = () => {
   return (
     <div>
       <section className={classes.Container}>

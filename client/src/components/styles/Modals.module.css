@@ -27,11 +27,14 @@
   align-items: center;
   backface-visibility: hidden;
   -webkit-font-smoothing: subpixel-antialiased;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  border-radius: 1rem;
 }
 .ModalTitle {
   text-align: left;
   font-size: 2rem;
   padding: 2rem;
+
 }
 .ModalImage {
   width: 150px;
@@ -111,7 +114,8 @@ select {
   background: white;
   color: black;
   border: none;
-  border: 2px solid black;
+  /* border: 2px solid black; */
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   border-radius: 0.5rem;
   font-size: 1.5rem;
   cursor: pointer;
@@ -121,19 +125,19 @@ select {
 .EditButton:hover {
   background: #00A287;
   color: white;
-  border: 2px solid #00A287;
+  /* border: 2px solid #00A287; */
   transition: 0.25s;
 }
 .CancelButton:hover {
   background: #B72E3E;
   color: white;
-  border: 2px solid #B72E3E;
+  /* border: 2px solid #B72E3E; */
   transition: 0.25s;
 }
 .DeleteButton:hover {
   background: #B72E3E;
   color: white;
-  border: 2px solid #B72E3E;
+  /* border: 2px solid #B72E3E; */
   transition: 0.25s;
 }
 
@@ -150,6 +154,8 @@ select {
   -webkit-font-smoothing: subpixel-antialiased;
   overflow-y: auto;
   overflow-x: auto;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  border-radius: 1rem;
 }
 .EditForm {
   display: flex;

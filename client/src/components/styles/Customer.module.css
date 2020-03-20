@@ -2,8 +2,13 @@
   margin-top: 2rem;
   margin-bottom: 1rem;
   border-radius: 1rem;
-  background: whitesmoke;
+  background: white;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition: 0.25s;
+}
+.CustomerBox:hover {
+  transform: scale(1.01);
+  transition: 0.25s;
 }
 .CustomerBoxTitle {
   padding: 2rem;
@@ -43,7 +48,7 @@
   background: white;
   color: black;
   border: none;
-  border: 3px solid black;
+  /* border: 3px solid black; */
   border-radius: 0.5rem;
   font-size: 2rem;
   cursor: pointer;

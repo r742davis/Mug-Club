@@ -153,7 +153,7 @@ class Container extends React.Component {
   }
 
   //// Customer creation and edit functions ////
-  updateCompletedBeers = async (checkedArr) => {
+  updateCompletedBeers = (checkedArr) => {
     let updatedArr = this.state.customerBeers;
     for (let k = 0; k < updatedArr.length; k++) {
       for (let h = 1; h < checkedArr.length; h++) {
@@ -162,7 +162,7 @@ class Container extends React.Component {
         } 
       }
     }
-    await this.setState({
+    this.setState({
       customerBeers: updatedArr
     })
   }

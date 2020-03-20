@@ -69,9 +69,6 @@ export default function CheckboxListSecondary(props) {
 
   return (
     <>
-      <div className={classes.container}>
-        
-      </div>
       <List dense className={classes.root}>
         {props.beers.map(beer => {
           const labelId = `checkbox-list-secondary-label-${beer.id}`;
@@ -105,7 +102,7 @@ export default function CheckboxListSecondary(props) {
       </List>
       <div className={classes.buttonContainer}>
         <button
-          onClick={(e) => props.handleEditCustomerSubmit(e,checked)}
+          onClick={(e) => props.handleEditCustomerSubmit(e, checked)}
           className={styles.EditButton}>Submit Edit</button>
         <button
           onClick={props.toggleEditCustomerModal}

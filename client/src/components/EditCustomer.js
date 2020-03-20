@@ -48,6 +48,7 @@ const EditCustomer = (props) => {
               <span className={classes.Bar}></span>
             </div>
             <div>
+              <label htmlFor="beerList" className={classes.Label}>Beers Complete (Green)/Beers Incomplete (Red)</label>
               <BeersList 
                 beers={props.beers} 
                 updateCompletedBeers={props.updateCompletedBeers}
@@ -55,12 +56,6 @@ const EditCustomer = (props) => {
                 toggleEditCustomerModal={props.toggleEditCustomerModal}
               />
             </div>
-            {/* <button
-              onClick={() => props.handleEditCustomerSubmit}
-              className={classes.EditButton}>Submit Edit</button>
-            <button
-              onClick={props.toggleEditCustomerModal}
-              className={classes.CancelButton}>Cancel</button> */}
           </form>
         </div>
         </Grow>
