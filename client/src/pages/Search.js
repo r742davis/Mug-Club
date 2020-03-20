@@ -36,7 +36,8 @@ const Search = (props) => {
     <>
     <div>
       <div className={classes.InputContainer}>
-        <label htmlFor='search' className={classes.Label}>Search for Customers</label>
+        <h1 className={classes.SearchTitle}>Search Customers</h1>
+        {/* <label htmlFor='search' className={classes.Label}>Search for Customers</label> */}
         <input
           type='text'
           name='search'
