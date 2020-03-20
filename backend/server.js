@@ -6,18 +6,6 @@ const mongoose = require("mongoose");
 const db = mongoose.connection;
 const cors = require("cors");
 
-//--------------------//
-//  Users Controller  //
-//--------------------//
-const usersController = require("./controllers/users.js");
-app.use("/users", usersController);
-
-//-------------------//
-//  Auth Controller  //
-//-------------------//
-const authController = require("./controllers/auth.js");
-app.use("/auth", authController);
-
 //-------------------------//
 //  Environment Variables  //
 //-------------------------//
