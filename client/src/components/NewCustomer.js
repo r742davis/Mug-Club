@@ -11,7 +11,8 @@ const NewCustomer = (props) => {
           <h2 className={classes.ModalTitle}>Add New Customer</h2>
           <form
             className={classes.ModalForm}
-            onSubmit={props.handleNewCustomerSubmit}>
+            onSubmit={props.handleNewCustomerSubmit}
+            method="POST" >
             <div className={classes.Group}>
               <label htmlFor="firstName" className={classes.Label}>First Name</label>
               <input 
@@ -45,8 +46,8 @@ const NewCustomer = (props) => {
                 required />
               <span className={classes.Bar}></span>
             </div>
-            <button onClick={props.handleNewCustomerSubmit} className={classes.EditButton}>Submit</button>
-            <button onClick={props.toggleNewCustomerModal} className={classes.CancelButton}>Cancel</button>
+            <button type="submit" onClick={props.handleNewCustomerSubmit} className={classes.EditButton}>Submit</button>
+            <button type="button" onClick={props.toggleNewCustomerModal} className={classes.CancelButton}>Cancel</button>
           </form>
         </div>
         </Grow>

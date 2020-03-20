@@ -10,7 +10,7 @@ const navigation = (props) => {
           <Link to="/" className={classes.link}>Home</Link>
         </li>
         <li className={classes.item}>
-          <Link to="/searchCustomers" className={classes.link}>Search Customers</Link>
+          <Link to="/searchCustomers" className={classes.link}>Search</Link>
         </li>
         <li className={classes.item}>
           <Link to="/beersList" className={classes.link}>Beers List</Link>

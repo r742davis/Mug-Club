@@ -4,7 +4,7 @@ import classes from './styles/Customer.module.css';
 
 const customer = (props) => {
   return (
-    <div className={props.completed ? classes.CompletedCustomerBox : classes.CustomerBox}>
+    <div className={classes.CustomerBox}>
       <h1 className={props.completed ? classes.CompletedTitle : classes.CustomerBoxTitle}>{props.name.first} {props.name.last}
         <span className={classes.ButtonContainer}>
           <button 
@@ -31,23 +31,9 @@ const customer = (props) => {
         <h2>Beers Completed:</h2>
         <h2>{props.calculateCompletedBeers(props.beers)}</h2>
       </span>
-      {/* <button 
-        className={classes.BeersButton}
-        onClick={props.toggleCustomerBeersModal}>View Completed Beers</button> */}
-      {/* {props.customerBeersModalOpen ?
-        <BeersList 
-          beers={props.beers} 
-          updateCompletedBeers={props.updateCompletedBeers} />
-      :null} */}
     </div>
   )
 }
-
-// const mapStateToProps = (state) => ({
-//   beers: state.beers.beers
-// });
-
-// export default connect(mapStateToProps)(customer);
 
 export default customer;
 
