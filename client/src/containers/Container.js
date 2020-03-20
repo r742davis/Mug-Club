@@ -119,9 +119,19 @@ class Container extends React.Component {
       }
       await this.props.dispatch(createBeer(newBeer));
       await this.props.dispatch(fetchBeers());
+      swal({
+        title: `${this.state.beerName} has been created!`,
+        icon: 'success',
+        button: 'Cool!'
+      })
       await this.clearBeerState();
     } catch (e) {
-      console.error(e)
+      console.error(e);
+      swal({
+        title: `Oops! Something went wrong :(`,
+        icon: 'fail',
+        button: 'Crap!'
+      })
     }
   }
 
@@ -144,12 +154,23 @@ class Container extends React.Component {
         }
       };
       await axios.put(beerURL, updatedBeer, {crossDomain: true}, config);
+      swal({
+        title: `You've updated the ${this.state.beerName} Beer`,
+        icon: 'success',
+        button: 'Sweet!'
+      })
+      this.clearBeerState();
       await this.props.dispatch(fetchBeers());
-      await this.setState({
+      this.setState({
         editBeerModalOpen: false
       })
     } catch (e) {
       console.log(e);
+      swal({
+        title: `Oops! Something went wrong :(`,
+        icon: 'fail',
+        button: 'Crap!'
+      })
     }
   }
 
@@ -181,13 +202,22 @@ class Container extends React.Component {
     try {
       await this.props.dispatch(createCustomer(newCustomer))
       await this.props.dispatch(fetchCustomers());
-      await alert(`${this.state.firstName} has been created!`);
-      await this.clearCustomerState();
-      await this.setState({
+      swal({
+        title: `${this.state.firstName} has been created!`,
+        icon: 'success',
+        button: 'Ok!'
+      })
+      this.clearCustomerState();
+      this.setState({
         newCustomerModalOpen: false
       })
     } catch (e) {
       console.log(e);
+      swal({
+        title: `Oops! Something went wrong :(`,
+        icon: 'fail',
+        button: 'Crap!'
+      })
     }
   }
   handleEditCustomerSubmit = async (e, checkedArr) => {
@@ -208,13 +238,22 @@ class Container extends React.Component {
     try {
       await this.props.dispatch(updateCustomer(updatedCustomer, this.state.customerId))
       await this.props.dispatch(fetchCustomers())
-      await alert(`${this.state.firstName} has been updated! :D`);
-      await this.clearCustomerState();
-      await this.setState({
+      swal({
+        title: `You've updated ${this.state.firstName} ${this.state.lastName}!`,
+        icon: 'success',
+        button: 'Ok!'
+      })
+      this.clearCustomerState();
+      this.setState({
         editCustomerModalOpen: false
       })
     } catch (e) {
       console.log(e);
+      swal({
+        title: `Oops! Something went wrong :(`,
+        icon: 'fail',
+        button: 'Crap!'
+      })
     }
   }
 
