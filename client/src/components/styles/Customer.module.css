@@ -1,73 +1,82 @@
-.CustomerBox {
+.CustomerCard {
+  min-width: 350px;
   margin-top: 2rem;
   margin-bottom: 1rem;
   border-radius: 1rem;
   background: white;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   transition: 0.125s;
-  font-family: 'Roboto', sans-serif;
 }
-.CustomerBox:hover {
+.CustomerCard:hover {
   transform: scale(1.01);
   transition: 0.125s;
 }
-.CustomerBoxTitle {
-  padding: 2rem;
-  padding-bottom: 1rem;
-  font-size: 4rem;
+
+
+.IncompleteTitleContainer {
   background: black;
   color: whitesmoke;
+  font-size: 4rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+  margin-bottom: 1rem;
 }
-.CompletedTitle {
+.CompletedTitleContainer {
   background: #00A287;
-  padding: 2rem;
-  padding-bottom: 1rem;
+  color: whitesmoke;
   font-size: 4rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.CustomerTitle {
+  padding-left: 2rem;
+  padding-top: 2rem;
+  
+  font-size: 4rem;
+  border-radius: 1rem;
   color: white;
   display: flex;
   justify-content: space-between;
 }
-.CustomerBox h2,
-.CompletedCustomerBox h2 {
-  padding: 1rem;
+.CustomerDetails {
   padding-left: 2rem;
-  font-size: 1.5rem;
-  font-family: 'Roboto', sans-serif;
-  width: 150px;
-  text-align: right;
+  padding-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: lighter;
 }
-.CustomerBox h2:nth-child(2),
-.CompletedCustomerBox h2:nth-child(2) {
-  color: #0288d1;
-  text-align: left;
-}
-.CustomerBox button,
-.CompletedCustomerBox button {
+
+
+.CustomerCard button,
+.CompletedCustomerCard button {
   width: 100px;
   padding: 1rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin: 1rem 1rem 0 1rem;
   background: white;
   color: black;
   border: none;
-  /* border: 3px solid black; */
   border-radius: 0.5rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  font-weight: lighter;
   cursor: pointer;
   transition: 0.25s;
 }
-.CustomerBox button:hover,
-.CompletedCustomerBox button:hover {
+.CustomerCard button:hover,
+.CompletedCustomerCard button:hover {
   cursor: pointer;
   transition: 0.2s;
 }
-.CustomerBox button span,
-.CompletedCustomerBox button span
+.CustomerCard button span,
+.CompletedCustomerCard button span
 .BeersButton {
   font-size: 2rem;
-  font-family: 'Roboto', sans-serif;
   display: flex;
   align-self: center;
 }
