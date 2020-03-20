@@ -1,5 +1,5 @@
-import React from 'react';
-import classes from './styles/Login.module.css';
+import React from "react";
+import classes from "./styles/Login.module.css";
 
 const Login = () => {
   return (
@@ -9,24 +9,40 @@ const Login = () => {
         <form action="#" method="post">
           <div className={classes.LoginContainer}>
             <div className={classes.Group}>
-              <input type="text" name="username" className={classes.Input} required/>
+              <input
+                type="text"
+                name="username"
+                className={classes.Input}
+                required
+              />
               <span className={classes.Bar}></span>
-              <label htmlFor="username" className={classes.Label}>Username</label>
+              <label htmlFor="username" className={classes.Label}>
+                Username
+              </label>
             </div>
             <div className={classes.Group}>
-              <input type="password" name="password" className={classes.Input} required/>
+              <input
+                type="password"
+                name="password"
+                className={classes.Input}
+                required
+              />
               <span className={classes.Bar}></span>
-              <label htmlFor="password" className={classes.Label}>Password</label>
+              <label htmlFor="password" className={classes.Label}>
+                Password
+              </label>
             </div>
-            <button 
-              type="submit" 
-              name="login" 
-              className={classes.Button}>Login</button>
+            <button type="submit" name="login" className={classes.Button}>
+              Login
+            </button>
+            <button name="register" className={classes.Button}>
+              Register
+            </button>
           </div>
         </form>
       </section>
     </div>
-  )
-} 
+  );
+};
 
 export default Login;

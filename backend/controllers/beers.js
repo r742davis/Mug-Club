@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const auth = require('../middleware/auth');
 
 //GET route
-router.get("/", auth, async (req, res) => {
+router.get("/",  async (req, res) => {
   try {
     const beers = await Beer.find();
     res.status(200).json(beers);
@@ -17,7 +17,7 @@ router.get("/", auth, async (req, res) => {
 });
 
 //CREATE route
-router.post("/", auth, async (req, res) => {
+router.post("/",  async (req, res) => {
   try {
     // const beerList = await Beer.find();
     const newBeer = await new Beer({
@@ -38,7 +38,7 @@ router.post("/", auth, async (req, res) => {
 });
 
 //SHOW route
-router.get("/:id", auth, async (req, res) => {
+router.get("/:id",  async (req, res) => {
   try {
     const foundBeer = await Beer.findById(req.params.id);
     return res.send(foundBeer);
@@ -50,7 +50,7 @@ router.get("/:id", auth, async (req, res) => {
 });
 
 //DELETE route
-router.delete("/:id", auth, async (req, res) => {
+router.delete("/:id",  async (req, res) => {
   try {
     const findBeer = await Beer.findById(req.params.id);
     const foundBeer = await findBeer.remove();
@@ -65,7 +65,7 @@ router.delete("/:id", auth, async (req, res) => {
 });
 
 //UPDATE route
-router.put("/:id", auth, async (req, res) => {
+router.put("/:id",  async (req, res) => {
   try {
     const updateBeer = await Beer.findByIdAndUpdate(req.params.id, req.body, {
       new: true

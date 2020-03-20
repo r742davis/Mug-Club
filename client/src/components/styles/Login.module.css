@@ -1,7 +1,7 @@
 .Container {
   width: 75%;
   max-width: 400px;
-  height: 400px;
+  height: 450px;
   margin: 0 auto;
   background: white;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
