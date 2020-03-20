@@ -4,11 +4,11 @@
   border-radius: 1rem;
   background: white;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  transition: 0.25s;
+  transition: 0.125s;
 }
 .CustomerBox:hover {
   transform: scale(1.01);
-  transition: 0.25s;
+  transition: 0.125s;
 }
 .CustomerBoxTitle {
   padding: 2rem;
@@ -32,12 +32,15 @@
 .CompletedCustomerBox h2 {
   padding: 1rem;
   padding-left: 2rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-family: 'Roboto', sans-serif;
+  width: 150px;
+  text-align: right;
 }
 .CustomerBox h2:nth-child(2),
 .CompletedCustomerBox h2:nth-child(2) {
   color: #0288d1;
+  text-align: left;
 }
 .CustomerBox button,
 .CompletedCustomerBox button {

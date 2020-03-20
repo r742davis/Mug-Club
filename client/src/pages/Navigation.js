@@ -4,7 +4,7 @@ import classes from './styles/Navigation.module.css';
 
 const navigation = (props) => {
   return (
-    <nav className={classes.container}>
+    <nav className={classes.navbar}>
       <ul className={classes.list}>
         <li className={classes.item}>
           <Link to="/" className={classes.link}>Home</Link>

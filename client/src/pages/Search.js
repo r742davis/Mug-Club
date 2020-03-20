@@ -43,10 +43,11 @@ const Search = (props) => {
           className={classes.Input}
           value={props.search}
           onChange={props.updateSearch} />
-      </div>
       <div className={classes.CustomerContainer}>
         { mappedCustomers }
       </div>
+      </div>
+      
     </div>
     </>
   )
