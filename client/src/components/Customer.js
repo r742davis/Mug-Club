@@ -1,5 +1,7 @@
 import React from 'react';
 import classes from './styles/Customer.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 const Customer = (props) => {
   return (
@@ -12,7 +14,9 @@ const Customer = (props) => {
         }>
         
         <h1 className={classes.CustomerTitle}>{props.name.first} {props.name.last}
-          
+
+        {
+          !props.completed ?
           <span className={classes.ButtonContainer}>
             <button 
               className={classes.EditButton} 
@@ -24,7 +28,14 @@ const Customer = (props) => {
               onClick={props.deleteCustomer}>
               Delete
             </button>
-          </span>
+          </span> 
+          :
+          <div className={classes.CheckIcon}>
+            <FontAwesomeIcon icon={faCheckCircle} />
+          </div>
+        }
+          
+          
 
           
         </h1>

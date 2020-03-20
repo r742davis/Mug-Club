@@ -11,8 +11,6 @@
   transform: scale(1.01);
   transition: 0.125s;
 }
-
-
 .IncompleteTitleContainer {
   background: black;
   color: whitesmoke;
@@ -35,11 +33,9 @@
   flex-direction: column;
   margin-bottom: 1rem;
 }
-
 .CustomerTitle {
   padding-left: 2rem;
   padding-top: 2rem;
-  
   font-size: 4rem;
   border-radius: 1rem;
   color: white;
@@ -52,8 +48,6 @@
   font-size: 2rem;
   font-weight: lighter;
 }
-
-
 .CustomerCard button,
 .CompletedCustomerCard button {
   width: 100px;
@@ -96,4 +90,8 @@
   background: #B72E3E;
   color: white;
   transition: 0.25s;
+}
+.CheckIcon {
+  font-size: 4rem;
+  margin-right: 4rem;
 }
