@@ -14,7 +14,6 @@
 .IncompleteTitleContainer {
   background: black;
   color: whitesmoke;
-  font-size: 4rem;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
   display: flex;
@@ -25,7 +24,6 @@
 .CompletedTitleContainer {
   background: #00A287;
   color: whitesmoke;
-  font-size: 4rem;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
   display: flex;
@@ -36,7 +34,7 @@
 .CustomerTitle {
   padding-left: 2rem;
   padding-top: 2rem;
-  font-size: 4rem;
+  font-size: 4.5rem;
   border-radius: 1rem;
   color: white;
   display: flex;
