@@ -1,23 +1,22 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Beer = require('../models/beer.js');
-const mongoose = require('mongoose');
-
+const Beer = require("../models/beer.js");
+const mongoose = require("mongoose");
 
 //GET route
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const beers = await Beer.find();
     res.status(200).json(beers);
   } catch (error) {
     res.status(400).json({
       error: error.message
-    })
+    });
   }
-})
+});
 
 //CREATE route
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     // const beerList = await Beer.find();
     const newBeer = await new Beer({
@@ -34,11 +33,11 @@ router.post('/', async (req, res) => {
     res.status(400).json({
       error: error.message
     });
-  };
+  }
 });
 
 //SHOW route
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const foundBeer = await Beer.findById(req.params.id);
     return res.send(foundBeer);
@@ -46,35 +45,36 @@ router.get('/:id', async (req, res) => {
     res.status(400).json({
       Error: "Uh oh! Could not find beer."
     });
-  };
+  }
 });
 
 //DELETE route
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const findBeer = await Beer.findById(req.params.id);
     const foundBeer = await findBeer.remove();
     return res.json({
       Success: "Beer was successfully deleted from database"
-    })
+    });
   } catch (e) {
     res.status(400).json({
       Error: "Uh oh! Could not delete beer."
     });
-  };
+  }
 });
 
 //UPDATE route
-router.put('/:id', async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
-    const updateBeer = await Beer.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const updateBeer = await Beer.findByIdAndUpdate(req.params.id, req.body, {
+      new: true
+    });
     res.status(200).json(updateBeer);
   } catch (e) {
     res.status(400).json({
       Error: "Oh my, your beer could not be updated."
     });
-  };
+  }
 });
-
 
 module.exports = router;
