@@ -9,6 +9,7 @@ import { faArrowAltCircleLeft, faBeer } from '@fortawesome/free-solid-svg-icons'
 
 class Login extends Component {
   state = {
+    name: "",
     email: "",
     password: "",
     message: null,
@@ -68,6 +69,23 @@ class Login extends Component {
     })
   };
 
+  onSubmitReg = e => {
+    e.preventDefault()
+    const { name, email, password } = this.state;
+    const newUser = {
+      name,
+      email,
+      password
+    }
+
+    //Attempt to register
+    console.log(newUser)
+    // this.props.register(newUser)
+
+    //Close modal
+    // this.toggleModal();
+  }
+
   toggleReg = () => {
     this.props.clearErrors();
     this.setState({
@@ -108,14 +126,14 @@ class Login extends Component {
               <div className={classes.Group}>
                 <input
                   type="text"
-                  name="username"
+                  name="email"
                   className={classes.Input}
                   onChange={this.onChange}
                   required
                 />
                 <span className={classes.Bar}></span>
-                <label htmlFor="username" className={classes.Label}>
-                  Username
+                <label htmlFor="email" className={classes.Label}>
+                  Email
                 </label>
               </div>
               <div className={classes.Group}>
@@ -144,10 +162,15 @@ class Login extends Component {
           }
           {
             this.state.toggleReg &&
-            <form>
+            <form onSubmit={e => this.onSubmitReg(e)}>
             <div className={classes.LoginContainer}>
               <div className={classes.Group}>
-                <input type="text" name="name" className={classes.Input} required />
+                <input 
+                  type="text" 
+                  name="name" 
+                  onChange={this.onChange}
+                  className={classes.Input} 
+                  required />
                 <span className={classes.Bar}></span>
                 <label htmlFor="name" className={classes.Label}>
                   Name
@@ -156,19 +179,21 @@ class Login extends Component {
               <div className={classes.Group}>
                 <input
                   type="text"
-                  name="username"
+                  name="email"
+                  onChange={this.onChange}
                   className={classes.Input}
                   required
                 />
                 <span className={classes.Bar}></span>
-                <label htmlFor="username" className={classes.Label}>
-                  Username
+                <label htmlFor="email" className={classes.Label}>
+                  Email
                 </label>
               </div>
               <div className={classes.Group}>
                 <input
                   type="password"
                   name="password"
+                  onChange={this.onChange}
                   className={classes.Input}
                   required
                 />
@@ -177,7 +202,10 @@ class Login extends Component {
                   Password
                 </label>
               </div>
-              <button type="submit" name="register" className={`${classes.Button} ${classes.bounce}`}>
+              <button 
+                type="submit" 
+                name="register" 
+                className={`${classes.Button} ${classes.bounce}`}>
                 Register
               </button>
               <div 
