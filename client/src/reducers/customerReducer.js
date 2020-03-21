@@ -46,7 +46,8 @@ export default function customerReducer (state = initialState, action) {
 
     case UPDATE_CUSTOMER:
       return {
-        ...state
+        ...state,
+        customers: action.payload
       }
 
     case DELETE_CUSTOMER:
