@@ -6,7 +6,11 @@ import classes from './styles/Search.module.css';
 const Search = (props) => {
     let filteredCustomers = props.customers ? props.customers.filter(
       (customer) => {
-        return customer.name.first.toLowerCase().includes(props.search.toLowerCase()) || customer.name.last.toLowerCase().includes(props.search.toLowerCase());
+        let strings = customer.name.first.toLowerCase().includes(props.search.toLowerCase()) || customer.name.last.toLowerCase().includes(props.search.toLowerCase());
+        // let numbers = customer.mugClub.cludId.includes(Number(props.search));
+        return (
+          strings
+        )
       }
     ) : null
 
