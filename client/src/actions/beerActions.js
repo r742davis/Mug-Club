@@ -3,7 +3,6 @@ import {
   FETCH_BEERS_SUCCESS,
   FETCH_BEERS_FAILURE,
   CREATE_BEER,
-  UPDATE_BEER,
   DELETE_BEER
 } from "./action-types";
 import axios from "axios";
@@ -39,10 +38,13 @@ export const fetchBeersFailure = error => ({
 
 export const createBeer = newBeer => (dispatch, getState) => {
   axios
-    .post(
-    "http://localhost:5000/beers",
-    newBeer, tokenConfig(getState)
-  );
+    .post("http://localhost:5000/beers", newBeer)
+    .then(res => 
+      dispatch({
+        type: CREATE_BEER,
+        payload: res.data
+      }))
+    .catch(err => dispatch(returnErrors(err.response.data, err.response.status)))
 };
 
 export const deleteBeer = id => (dispatch, getState) => {
@@ -54,5 +56,17 @@ export const deleteBeer = id => (dispatch, getState) => {
         payload: id
       })
     )
-    .catch(err => dispatch(returnErrors(err.response.data, err.response.status)))
+    .catch(err =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
+};
+
+export const updateBeer = (beer, id) => (dispatch, getState) => {
+  const beerURL = "http://localhost:5000/beers/" + id;
+  axios
+    .put(beerURL, beer)
+    .then(dispatch(fetchBeers()))
+    .catch(err =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };

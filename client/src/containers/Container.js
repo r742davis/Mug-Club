@@ -11,7 +11,11 @@ import axios from "axios";
 import swal from "@sweetalert/with-react";
 
 import { connect } from "react-redux";
-import { fetchBeers, createBeer, deleteBeer } from "../actions/beerActions";
+import { 
+  fetchBeers, 
+  createBeer, 
+  deleteBeer,
+  updateBeer } from "../actions/beerActions";
 import {
   fetchCustomers,
   createCustomer,
@@ -20,8 +24,8 @@ import {
 } from "../actions/customerActions";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { readString } from "react-papaparse";
-const csvFile = require("./Test.csv");
+// import { readString } from "react-papaparse";
+// const csvFile = require("./Test.csv");
 
 class Container extends React.Component {
   state = {
@@ -46,7 +50,8 @@ class Container extends React.Component {
     newCustomerModalOpen: false,
     editCustomerModalOpen: false,
     customerBeersModalOpen: false,
-    displayBeer: false
+    displayBeer: false,
+    isAuthenticated: false
   };
 
   async componentDidMount() {
@@ -143,20 +148,14 @@ class Container extends React.Component {
 
     try {
       const beerURL = "http://localhost:5000/beers/" + this.state.beerId;
-      const config = {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          Accept: "application/json"
-        }
-      };
-      await axios.put(beerURL, updatedBeer, { crossDomain: true }, config);
+      await axios.put(beerURL, updatedBeer, { crossDomain: true });
+      await this.props.dispatch(updateBeer());
       swal({
         title: `You've updated the ${this.state.beerName} Beer`,
         icon: "success",
         button: "Sweet!"
       });
       this.clearBeerState();
-      await this.props.dispatch(fetchBeers());
       this.setState({
         editBeerModalOpen: false
       });
@@ -184,8 +183,8 @@ class Container extends React.Component {
       customerBeers: updatedArr
     });
   };
-  handleNewCustomerSubmit = async event => {
-    event.preventDefault();
+  handleNewCustomerSubmit = async e => {
+    e.preventDefault();
     const newCustomer = {
       name: {
         first: this.state.firstName,
@@ -196,8 +195,9 @@ class Container extends React.Component {
       }
     };
     try {
-      await this.props.dispatch(createCustomer(newCustomer));
-      await this.props.dispatch(fetchCustomers());
+      console.log('Saing customer...');
+      this.props.dispatch(createCustomer(newCustomer));
+      this.props.dispatch(fetchCustomers());
       swal({
         title: `${this.state.firstName} has been created!`,
         icon: "success",

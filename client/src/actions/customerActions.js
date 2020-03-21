@@ -3,7 +3,6 @@ import {
   FETCH_CUSTOMERS_SUCCESS,
   FETCH_CUSTOMERS_FAILURE,
   CREATE_CUSTOMER,
-  UPDATE_CUSTOMER,
   DELETE_CUSTOMER
 } from "./action-types";
 import axios from "axios";

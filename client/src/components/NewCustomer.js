@@ -11,8 +11,7 @@ const NewCustomer = props => {
             <h2 className={classes.ModalTitle}>Add New Customer</h2>
             <form
               className={classes.ModalForm}
-              onSubmit={props.handleNewCustomerSubmit}
-              method="POST"
+              onSubmit={e => props.handleNewCustomerSubmit(e)}
             >
               <div className={classes.Group}>
                 <input
@@ -58,7 +57,6 @@ const NewCustomer = props => {
               </div>
               <button
                 type="submit"
-                onClick={props.handleNewCustomerSubmit}
                 className={classes.EditButton}
               >
                 Create New Customer
