@@ -4,8 +4,6 @@ import { clearErrors } from "../actions/errorActions";
 import { login } from "../actions/authActions";
 import PropTypes from "prop-types";
 import classes from "./styles/Login.module.css";
-import Register from "./Register";
-import Log from "./Log";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleLeft, faBeer } from '@fortawesome/free-solid-svg-icons';
 
@@ -105,7 +103,7 @@ class Login extends Component {
           { buttons }
           {
             this.state.toggleLogin &&
-            <form onSubmit={this.onSubmit} method="post">
+            <form onSubmit={this.onSubmit}>
             <div className={classes.LoginContainer}>
               <div className={classes.Group}>
                 <input
@@ -133,7 +131,7 @@ class Login extends Component {
                   Password
                 </label>
               </div>
-              <button type="submit" name="login" className={classes.Button}>
+              <button type="submit" name="login" className={`${classes.Button} ${classes.bounce}`}>
                 Login
               </button>
               <div 
@@ -179,7 +177,7 @@ class Login extends Component {
                   Password
                 </label>
               </div>
-              <button type="submit" name="register" className={classes.Button}>
+              <button type="submit" name="register" className={`${classes.Button} ${classes.bounce}`}>
                 Register
               </button>
               <div 

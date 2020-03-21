@@ -1,6 +1,6 @@
 .ModalContainer {
   position: fixed;
-  transform: perspective(1px) translate3d(-50%,-50%,0);
+  transform: perspective(1px) translate3d(-50%, -50%, 0);
   top: 50%;
   left: 50%;
   height: 100%;
@@ -9,7 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   overflow: auto;
   z-index: 100;
   backface-visibility: hidden;
@@ -26,14 +26,13 @@
   align-items: center;
   backface-visibility: hidden;
   -webkit-font-smoothing: subpixel-antialiased;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border-radius: 1rem;
 }
 .ModalTitle {
   text-align: left;
   font-size: 2rem;
   padding: 2rem;
-
 }
 .ModalImage {
   width: 150px;
@@ -47,62 +46,99 @@
   backface-visibility: hidden;
   -webkit-font-smoothing: subpixel-antialiased;
 }
-.ModalForm input,
-.ModalForm select,
-.EditForm input,
-.EditForm select {
-  font-size: 1.8rem;
-  font-family: 'Roboto', sans-serif;
-  color: #616161;
-  height: 2.4rem;
+/* Inputs */
+.Group {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.Input {
+  font-size: 2rem;
   padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  display: block;
   width: 99%;
   border: none;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #ccc;
 }
-select {
-  outline: 0;
-  background: transparent;
-  border-radius: none;
-  margin-top: 0.5rem;
+
+.Input:focus {
+  outline: none;
 }
-.Group {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
+
+/* Label */
 .Label {
-  font-size: 1.5rem;
-  margin-top: 1rem;
+  color: #aaa;
+  font-size: 2rem;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  top: 1rem;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+.SelectLabel {
+  color: #0288d1;
+  font-size: 1.2rem;
+  font-weight: normal;
+  pointer-events: none;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+.ListLabel {
+  color: #0288d1;
+}
+.Select {
+  color: #616161;
+  font-size: 2rem;
+  height: 2.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  position: relative;
+  width: 99%;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+.Input:focus ~ .Label,
+.Input:valid ~ .Label {
+  top: -0.25rem;
+  font-size: 1.2rem;
+  color: #0288d1;
+}
+.Select:focus ~ .SelectLabel,
+.Select:valid ~ .SelectLabel {
   color: #0288d1;
 }
 
+
 /* Bar Changes */
-.Bar 	{ 
-  position: relative; 
-  display: block; 
-  width: 300px; 
+.Bar {
+  position: relative;
+  display: block;
+  width: auto;
 }
-.Bar:before, .Bar:after 	{
-  content: '';
-  height: 2px; 
+.Bar:before,
+.Bar:after {
+  content: "";
+  height: 2px;
   width: 0;
-  bottom: 0px; 
+  bottom: 0px;
   position: absolute;
-  background: #0288d1; 
-  transition: 0.2s ease all; 
-  -moz-transition: 0.2s ease all; 
+  background: #0288d1;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
   -webkit-transition: 0.2s ease all;
 }
 .Bar:before {
   left: 50%;
 }
 .Bar:after {
-  right: 50%; 
+  right: 50%;
 }
 
 /* active state */
-.Input:focus ~ .Bar:before, .Input:focus ~ .Bar:after {
+.Input:focus ~ .Bar:before,
+.Input:focus ~ .Bar:after {
   width: 150px;
 }
 .EditButton,
@@ -114,7 +150,7 @@ select {
   color: black;
   border: none;
   /* border: 2px solid black; */
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border-radius: 0.5rem;
   font-size: 1.5rem;
   cursor: pointer;
@@ -122,19 +158,19 @@ select {
 }
 
 .EditButton:hover {
-  background: #00A287;
+  background: #00a287;
   color: white;
   /* border: 2px solid #00A287; */
   transition: 0.25s;
 }
 .CancelButton:hover {
-  background: #B72E3E;
+  background: #b72e3e;
   color: white;
   /* border: 2px solid #B72E3E; */
   transition: 0.25s;
 }
 .DeleteButton:hover {
-  background: #B72E3E;
+  background: #b72e3e;
   color: white;
   /* border: 2px solid #B72E3E; */
   transition: 0.25s;
@@ -142,7 +178,7 @@ select {
 
 /* Completed Beers Modal */
 .EditModal {
-  width: 700px;
+  width: 350px;
   padding: 2%;
   background: white;
   height: 80%;
@@ -153,7 +189,7 @@ select {
   -webkit-font-smoothing: subpixel-antialiased;
   overflow-y: auto;
   overflow-x: auto;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border-radius: 1rem;
 }
 .EditForm {

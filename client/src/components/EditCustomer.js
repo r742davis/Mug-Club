@@ -1,67 +1,81 @@
-import React from 'react';
-import classes from './styles/Modals.module.css';
-import Grow from '@material-ui/core/Grow';
-import BeersList from './BeersList';
+import React from "react";
+import classes from "./styles/Modals.module.css";
+import Grow from "@material-ui/core/Grow";
+import BeersList from "./BeersList";
 
-const EditCustomer = (props) => {
-  if (!props) { return null; }
+const EditCustomer = props => {
+  if (!props) {
+    return null;
+  }
   return (
     <>
       <section className={classes.ModalContainer}>
         <Grow in={true}>
-        <div className={classes.EditModal}>
-          <h2 className={classes.ModalTitle}>Edit Customer</h2>
-          <form
-            className={classes.EditForm}
-            onSubmit={props.handleEditCustomerSubmit}>
-            <div className={classes.Group}>
-              <label htmlFor="firstName" className={classes.Label}>First Name</label>
-              <input 
-                type="text" 
-                name="firstName" 
-                className={classes.Input} 
-                value={props.firstName} 
-                onChange={props.handleInputChange} 
-                required />
-              <span className={classes.Bar}></span>
-            </div>
-            <div className={classes.Group}>
-              <label htmlFor="lastName" className={classes.Label}>Last Name</label>
-              <input 
-                type="text" 
-                name="lastName" 
-                className={classes.Input} 
-                value={props.lastName} 
-                onChange={props.handleInputChange} 
-                required />
-              <span className={classes.Bar}></span>
-            </div>
-            <div className={classes.Group}>
-              <label htmlFor="clubId" className={classes.Label}>Mug Club ID</label>
-              <input 
-                type="text" 
-                name="clubId" 
-                className={classes.Input} 
-                value={props.clubId} 
-                onChange={props.handleInputChange} 
-                required />
-              <span className={classes.Bar}></span>
-            </div>
-            <div>
-              <label htmlFor="beerList" className={classes.Label}>Beers Complete (Green)/Beers Incomplete (Red)</label>
-              <BeersList 
-                beers={props.beers} 
-                updateCompletedBeers={props.updateCompletedBeers}
-                handleEditCustomerSubmit={props.handleEditCustomerSubmit}
-                toggleEditCustomerModal={props.toggleEditCustomerModal}
-              />
-            </div>
-          </form>
-        </div>
+          <div className={classes.EditModal}>
+            <h2 className={classes.ModalTitle}>Edit Customer</h2>
+            <form
+              className={classes.EditForm}
+              onSubmit={props.handleEditCustomerSubmit}
+            >
+              <div className={classes.Group}>
+                <input
+                  type="text"
+                  name="firstName"
+                  className={classes.Input}
+                  value={props.firstName}
+                  onChange={props.handleInputChange}
+                  required
+                />
+                <span className={classes.Bar}></span>
+                <label htmlFor="firstName" className={classes.Label}>
+                  First Name
+                </label>
+              </div>
+              <div className={classes.Group}>
+                <input
+                  type="text"
+                  name="lastName"
+                  className={classes.Input}
+                  value={props.lastName}
+                  onChange={props.handleInputChange}
+                  required
+                />
+                <span className={classes.Bar}></span>
+                <label htmlFor="lastName" className={classes.Label}>
+                  Last Name
+                </label>
+              </div>
+              <div className={classes.Group}>
+                <input
+                  type="text"
+                  name="clubId"
+                  className={classes.Input}
+                  value={props.clubId}
+                  onChange={props.handleInputChange}
+                  required
+                />
+                <span className={classes.Bar}></span>
+                <label htmlFor="clubId" className={classes.Label}>
+                  Mug Club ID
+                </label>
+              </div>
+              <div>
+                <label htmlFor="beerList" id={classes.ListLabel}>
+                  Beer List
+                </label>
+                <BeersList
+                  beers={props.beers}
+                  updateCompletedBeers={props.updateCompletedBeers}
+                  handleEditCustomerSubmit={props.handleEditCustomerSubmit}
+                  toggleEditCustomerModal={props.toggleEditCustomerModal}
+                />
+              </div>
+            </form>
+          </div>
         </Grow>
       </section>
     </>
-  )
+  );
 };
 
 export default EditCustomer;
