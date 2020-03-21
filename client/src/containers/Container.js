@@ -11,11 +11,12 @@ import axios from "axios";
 import swal from "@sweetalert/with-react";
 
 import { connect } from "react-redux";
-import { 
-  fetchBeers, 
-  createBeer, 
+import {
+  fetchBeers,
+  createBeer,
   deleteBeer,
-  updateBeer } from "../actions/beerActions";
+  updateBeer
+} from "../actions/beerActions";
 import {
   fetchCustomers,
   createCustomer,
@@ -183,6 +184,19 @@ class Container extends React.Component {
       customerBeers: updatedArr
     });
   };
+
+  checkCompletion = (beers) => {
+    let value = true;
+    for (let i = 0; i < beers; i++) {
+      if (beers[i].finished === false) {
+        return (value = false);
+      }
+    };
+    if (value === true) {
+      this.state.completed = true;
+    }
+  };
+
   handleNewCustomerSubmit = async e => {
     e.preventDefault();
     const newCustomer = {
@@ -195,7 +209,7 @@ class Container extends React.Component {
       }
     };
     try {
-      console.log('Saing customer...');
+      console.log("Saing customer...");
       this.props.dispatch(createCustomer(newCustomer));
       this.props.dispatch(fetchCustomers());
       swal({
@@ -219,6 +233,7 @@ class Container extends React.Component {
   handleEditCustomerSubmit = async (e, checkedArr) => {
     e.preventDefault();
     await this.updateCompletedBeers(checkedArr);
+    await this.checkCompletion(this.state.customerBeers)
     const updatedCustomer = {
       name: {
         first: this.state.firstName,
