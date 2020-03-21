@@ -37,15 +37,15 @@ const Search = (props) => {
     <div>
       <div className={classes.InputContainer}>
         <h1 className={classes.SearchTitle}>Search Customers</h1>
-        {/* <label htmlFor='search' className={classes.Label}>Search for Customers</label> */}
         <input
           type='text'
           name='search'
           className={classes.Input}
           value={props.search}
           onChange={props.updateSearch} />
+      
       <div className={classes.CustomerContainer}>
-        { mappedCustomers }
+        { props.search ? mappedCustomers : null }
       </div>
       </div>
       
