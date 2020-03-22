@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from 'react-router-dom';
 import { clearErrors } from "../actions/errorActions";
 import { login } from "../actions/authActions";
 import PropTypes from "prop-types";
@@ -102,6 +103,9 @@ class Login extends Component {
   
     return (
       <div>
+        {
+          this.props.isAuthenticated ? <Redirect to="/searchCustomers" /> : null
+        }
         {
           !this.props.isAuthenticated &&
           <section className={classes.Container}>
