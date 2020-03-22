@@ -43,7 +43,8 @@ export const register = ({ name, email, password }) => dispatch => {
   //Request body
   const body = JSON.stringify({ name, email, password })
 
-  axios.post('http://locahost:5000/users', body, config)
+  axios
+    .post('http://localhost:5000/users', body, config)
     .then(res => dispatch({
       type: REGISTER_SUCCESS,
       payload: res.data

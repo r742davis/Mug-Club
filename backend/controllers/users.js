@@ -8,6 +8,30 @@ const jwt = require("jsonwebtoken");
 //-- User Model
 const User = require("../models/User.js");
 
+// GET /users Route
+router.get("/",  async (req, res) => {
+  try {
+    const users = await User.find();
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(400).json({
+      error: error.message
+    });
+  }
+});
+
+// SHOW individual user
+router.get("/:id",  async (req, res) => {
+  try {
+    const foundUser = await User.findById(req.params.id);
+    return res.send(foundUser);
+  } catch (error) {
+    res.status(400).json({
+      Error: "Uh oh! Could not find user."
+    });
+  }
+});
+
 // POST /users route
 router.post("/", (req, res) => {
   const { name, email, password } = req.body;

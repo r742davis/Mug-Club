@@ -5,7 +5,8 @@ import { login } from "../actions/authActions";
 import PropTypes from "prop-types";
 import classes from "./styles/Login.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowAltCircleLeft, faBeer } from '@fortawesome/free-solid-svg-icons';
+import { faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
+import { register } from '../actions/authActions';
 
 class Login extends Component {
   state = {
@@ -80,10 +81,8 @@ class Login extends Component {
 
     //Attempt to register
     console.log(newUser)
-    // this.props.register(newUser)
+    this.props.register(newUser)
 
-    //Close modal
-    // this.toggleModal();
   }
 
   toggleReg = () => {
@@ -115,7 +114,9 @@ class Login extends Component {
 
     return (
       <div>
-        <section className={classes.Container}>
+        {
+          !this.state.isAuthenticated &&
+          <section className={classes.Container}>
           <h1 className={classes.Title}>Mug Club 🍻
           </h1>
           { buttons }
@@ -178,7 +179,7 @@ class Login extends Component {
               </div>
               <div className={classes.Group}>
                 <input
-                  type="text"
+                  type="email"
                   name="email"
                   onChange={this.onChange}
                   className={classes.Input}
@@ -217,6 +218,7 @@ class Login extends Component {
             </form>
           }
         </section>
+        }
       </div>
     );
   }
@@ -227,4 +229,4 @@ const mapStateToProps = state => ({
   error: state.error
 });
 
-export default connect(mapStateToProps, { login, clearErrors })(Login);
+export default connect(mapStateToProps, { login, register, clearErrors })(Login);
