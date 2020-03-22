@@ -23,13 +23,12 @@ class EditBeerModal extends Component {
           }
         );
         this.props.deleteBeer(this.props.id);
+        this.props.toggleEditBeerModal();
       } else {
         swal(`Today is your luck day, you sweet sweet miracle drink!`);
       }
     });
   }
-  
-  
 
   render() {
     return (
