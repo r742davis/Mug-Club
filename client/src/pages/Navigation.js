@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { Redirect } from 'react-router-dom';
 import { logout } from '../actions/authActions';
 import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 class Navigation extends Component {
   state = {
@@ -49,7 +51,7 @@ class Navigation extends Component {
               onClick={this.props.toggleNewCustomerModal}
               className={classes.NewButton}
             >
-              <i className="fas fa-plus"></i>New Customer
+              <FontAwesomeIcon icon={faPlus}/> New Customer
             </button>
           </li>
           <li>
@@ -57,11 +59,14 @@ class Navigation extends Component {
               onClick={this.props.toggleNewBeerModal}
               className={classes.NewButton}
             >
-              <i className="fas fa-plus"></i>New Beer
+              <FontAwesomeIcon icon={faPlus} /> New Beer
             </button>
           </li>
           <li className={classes.item}>
-            <button onClick={this.logout}>Log Out</button>
+            <button 
+              onClick={this.logout}
+              className={classes.Logout}
+            >Log Out</button>
           </li>
         </ul>
       </nav>

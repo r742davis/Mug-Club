@@ -3,8 +3,7 @@
   background: black;
   height: 5rem;
   display: flex;
-  justify-content: center;
-  box-sizing: border-box;
+  justify-content: flex-end;
   padding: 0;
   top: 0;
   width: 100%;
@@ -14,43 +13,52 @@
   width: 100%;
   list-style: none;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
+  margin: 0 1rem 0 2rem;
 }
 .link {
   color: white;
   text-decoration: none;
   padding: 1rem;
-  font-size: 1.5rem;
+  margin-right: 2rem;
+  font-size: 2rem;
   transition: 0.25s;
 }
 .link:hover {
-  color: black;
-  background: white;
+  color: #00a5ff;
+  /* background: white; */
   transition: 0.25s;
 }
 .NewButton {
   padding: 1rem;
+  margin-right: 2rem;
   background: none;
   color: white;
   border: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
   transition: 0.25s;
   cursor: pointer;
 }
 .NewButton:hover {
-  color: black;
-  background: white;
+  color: #00a5ff;
+  /* background: white; */
   transition: 0.25s;
 }
 .NewButton:focus {
   outline: none;
 }
-i {
-  margin-right: 1rem;
-  font-size: 1.5rem;
-  align-self: center;
-}
 .Logout {
-  
+  padding: 1rem;
+  background: white;
+  color: black;
+  border: white;
+  border-radius: 10rem;
+  font-size: 1.5rem;
+  transition: 0.25s;
+  cursor: pointer;
+}
+.Logout:hover {
+  background: #B72E3E;
+  color: white;
 }
