@@ -2,16 +2,30 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import classes from "./styles/Navigation.module.css";
 import { connect } from "react-redux";
+import { Redirect } from 'react-router-dom';
+import { logout } from '../actions/authActions';
 import PropTypes from "prop-types";
 
 class Navigation extends Component {
-  state = {};
+  state = {
+    navigate: false
+  };
 
   static propTypes = {
     auth: PropTypes.object.isRequired,
     isAuthenticated: PropTypes.bool
   };
+
+  logout = () => {
+    this.props.logout();
+  }
+  
+  
   render() {
+    const { isAuthenticated } = this.props.auth;
+    if (!isAuthenticated) {
+      return <Redirect to="/" push={true} />
+    }
     const authLinks = (
       <nav className={classes.navbar}>
         <ul className={classes.list}>
@@ -47,7 +61,7 @@ class Navigation extends Component {
             </button>
           </li>
           <li className={classes.item}>
-            <button>Log Out</button>
+            <button onClick={this.logout}>Log Out</button>
           </li>
         </ul>
       </nav>
@@ -62,4 +76,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, null)(Navigation);
+export default connect(mapStateToProps, { logout })(Navigation);
