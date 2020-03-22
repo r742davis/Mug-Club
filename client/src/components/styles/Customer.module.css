@@ -46,48 +46,39 @@
   font-size: 2rem;
   font-weight: lighter;
 }
-.CustomerCard button,
-.CompletedCustomerCard button {
-  width: 100px;
-  padding: 1rem;
-  margin: 1rem 1rem 0 1rem;
-  background: white;
-  color: black;
-  border: none;
-  border-radius: 0.5rem;
-  font-size: 1.5rem;
-  font-weight: lighter;
-  cursor: pointer;
-  transition: 0.25s;
-}
-.CustomerCard button:hover,
-.CompletedCustomerCard button:hover {
+button {
   cursor: pointer;
   transition: 0.2s;
 }
-.CustomerCard button span,
-.CompletedCustomerCard button span
-.BeersButton {
+.ButtonContainer {
+  margin-left: 2rem;
+}
+.EditButton,
+.DeleteButton {
+  width: 5rem;
+  height: 5rem;
+  padding: 1rem;
+  margin: 1rem 1rem 1rem 0;
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 10rem;
   font-size: 2rem;
-  display: flex;
-  align-self: center;
+  cursor: pointer;
+  transition: 0.2s;
 }
 .Span {
   display: flex;
 }
-.ButtonContainer {
-  margin-left: 4rem;
-  padding-bottom: 1rem;
-}
 .EditButton:hover {
   background: #00A287;
   color: white;
-  transition: 0.25s;
+  transition: 0.2s;
 }
 .DeleteButton:hover {
   background: #B72E3E;
   color: white;
-  transition: 0.25s;
+  transition: 0.2s;
 }
 .CheckIcon {
   font-size: 4rem;
