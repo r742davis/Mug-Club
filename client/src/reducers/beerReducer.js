@@ -8,7 +8,8 @@ import {
 
 const initialState = {
   loading: false,
-  error: null
+  error: null,
+  beers: []
 };
 
 export default function beerReducer(state = initialState, action) {
@@ -40,7 +41,7 @@ export default function beerReducer(state = initialState, action) {
     case DELETE_BEER:
       return {
         ...state,
-        customers: state.beers.filter(beer => beer._id !== action.payload)
+        beers: state.beers.filter(beer => beer._id !== action.payload)
       };
     default:
       return state;

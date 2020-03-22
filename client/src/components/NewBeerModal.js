@@ -12,7 +12,7 @@ const NewBeerModal = props => {
             <h2 className={classes.ModalTitle}>Create New Beer</h2>
             <form 
               className={classes.ModalForm} 
-              onSubmit={props.handleSubmit}
+              onSubmit={e => props.handleSubmit(e)}
             >
               <div className={classes.Group}>
                 <input

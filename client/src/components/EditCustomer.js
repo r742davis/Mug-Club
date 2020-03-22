@@ -15,7 +15,7 @@ const EditCustomer = props => {
             <h2 className={classes.ModalTitle}>Edit Customer</h2>
             <form
               className={classes.EditForm}
-              onSubmit={props.handleEditCustomerSubmit}
+              onSubmit={e => props.handleSubmit(e)}
             >
               <div className={classes.Group}>
                 <input

@@ -12,7 +12,7 @@ import { returnErrors } from "./errorActions";
 export const fetchBeers = () => {
   return (dispatch, getState) => {
     dispatch(fetchBeersBegin());
-    return fetch("http://localhost:5000/beers", tokenConfig(getState))
+    return fetch("http://localhost:5000/beers")
       .then(res => res.json())
       .then(beers => {
         dispatch(fetchBeersSuccess(beers));
@@ -49,13 +49,14 @@ export const createBeer = newBeer => (dispatch, getState) => {
 
 export const deleteBeer = id => (dispatch, getState) => {
   axios
-    .delete("http://localhost:5000/beers/" + id, tokenConfig(getState))
+    .delete("http://localhost:5000/beers/" + id)
     .then(res =>
       dispatch({
         type: DELETE_BEER,
         payload: id
       })
     )
+    .then(dispatch(fetchBeers()))
     .catch(err =>
       dispatch(returnErrors(err.response.data, err.response.status))
     );

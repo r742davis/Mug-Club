@@ -138,8 +138,8 @@ class Container extends React.Component {
     }
   };
 
-  handleEditBeerSubmit = async event => {
-    event.preventDefault();
+  handleEditBeerSubmit = async e => {
+    e.preventDefault();
     const updatedBeer = {
       name: this.state.beerName,
       type: this.state.beerType,
@@ -374,9 +374,10 @@ class Container extends React.Component {
       }
     });
   };
-  deleteBeer = id => {
-    this.props.dispatch(deleteBeer(id));
-  };
+  // deleteBeer = id => {
+  //   this.props.dispatch(deleteBeer(id));
+  //   this.props.dispatch(fetchBeers());
+  // };
 
   //// TEST SECTION ////
   calculateCompletedBeers = arr => {
@@ -426,8 +427,8 @@ class Container extends React.Component {
         </Router>
         {this.state.editCustomerModalOpen ? (
           <EditCustomer
+            handleSubmit={this.handleEditCustomerSubmit}
             toggleEditCustomerModal={this.toggleEditCustomerModal}
-            handleEditCustomerSubmit={this.handleEditCustomerSubmit}
             handleInputChange={this.handleInputChange}
             firstName={this.state.firstName}
             lastName={this.state.lastName}
@@ -438,9 +439,9 @@ class Container extends React.Component {
         ) : null}
         {this.state.newCustomerModalOpen ? (
           <NewCustomer
+            handleSubmit={this.handleNewCustomerSubmit}
             toggleNewCustomerModal={this.toggleNewCustomerModal}
             handleInputChange={this.handleInputChange}
-            handleNewCustomerSubmit={this.handleNewCustomerSubmit}
             firstName={this.state.firstName}
             lastName={this.state.lastName}
             clubId={this.state.clubId}
@@ -448,11 +449,12 @@ class Container extends React.Component {
         ) : null}
         {this.state.editBeerModalOpen ? (
           <EditBeerModal
-            handleEditBeerSubmit={this.handleEditBeerSubmit}
+            handleSubmit={this.handleEditBeerSubmit}
             deleteBeer={this.deleteBeer}
             handleInputChange={this.handleInputChange}
             toggleEditBeerModal={this.toggleEditBeerModal}
             handleEdit={this.handleEdit}
+            id={this.state.beerId}
             beerName={this.state.beerName}
             beerType={this.state.beerType}
             brewery={this.state.brewery}
@@ -462,7 +464,7 @@ class Container extends React.Component {
         ) : null}
         {this.state.newBeerModalOpen ? (
           <NewBeerModal
-            handleNewBeerSubmit={this.handleNewBeerSubmit}
+            handleSubmit={this.handleNewBeerSubmit}
             handleInputChange={this.handleInputChange}
             toggleNewBeerModal={this.toggleNewBeerModal}
             beerName={this.state.beerName}
