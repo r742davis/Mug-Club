@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import classes from './styles/Navigation.module.css';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const navigation = (props) => {
-  return (
-    <nav className={classes.navbar}>
+class Navigation extends Component {
+  state = {};
+
+  static propTypes = {
+    auth: PropTypes.object.isRequired,
+    isAuthenticated: PropTypes.bool
+  }
+  render() {
+    const authLinks = <nav className={classes.navbar}>
       <ul className={classes.list}>
         <li className={classes.item}>
           <Link to="/" className={classes.link}>Home</Link>
@@ -17,12 +25,12 @@ const navigation = (props) => {
         </li>
         <li className={classes.item}>
           <button 
-            onClick={props.toggleNewCustomerModal} 
+            onClick={this.props.toggleNewCustomerModal} 
             className={classes.NewButton}><i className="fas fa-plus"></i>New Customer</button>
         </li>
         <li>
           <button 
-            onClick={props.toggleNewBeerModal}
+            onClick={this.props.toggleNewBeerModal}
             className={classes.NewButton}><i className="fas fa-plus"></i>New Beer</button>
         </li>
         <li className={classes.item}>
@@ -30,7 +38,19 @@ const navigation = (props) => {
         </li>
       </ul>
     </nav>
-  )
+    
+    return (
+      <>
+        { this.props.isAuthenticated ? authLinks : null }
+      </>
+      
+    )
+  }
 };
 
-export default navigation;
+const mapStateToProps = state => ({
+  auth: state.auth,
+  isAuthenticated: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps, null)(Navigation);
