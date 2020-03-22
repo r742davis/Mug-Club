@@ -39,6 +39,7 @@ class Container extends React.Component {
     firstName: "",
     lastName: "",
     customerBeers: [],
+    completed: "",
     beerId: "",
     beerName: "",
     beerType: "",
@@ -186,10 +187,11 @@ class Container extends React.Component {
   };
 
   checkCompletion = (beers) => {
+    console.log(beers)
     let value = true;
-    for (let i = 0; i < beers; i++) {
+    for (let i = 0; i < beers.length; i++) {
       if (beers[i].finished === false) {
-        return (value = false);
+        return value = false;
       }
     };
     if (value === true) {
@@ -234,7 +236,7 @@ class Container extends React.Component {
     e.preventDefault();
     await this.updateCompletedBeers(checkedArr);
     await this.checkCompletion(this.state.customerBeers)
-    const updatedCustomer = {
+    const updatedCustomer = await {
       name: {
         first: this.state.firstName,
         last: this.state.lastName
