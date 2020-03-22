@@ -77,7 +77,7 @@
   -webkit-transition: 0.2s ease all;
 }
 .SelectLabel {
-  color: #0288d1;
+  color: #00a5ff;
   font-size: 1.2rem;
   font-weight: normal;
   pointer-events: none;
@@ -86,7 +86,7 @@
   -webkit-transition: 0.2s ease all;
 }
 .ListLabel {
-  color: #0288d1;
+  color: #00a5ff;
 }
 .Select {
   color: #616161;
@@ -103,13 +103,12 @@
 .Input:valid ~ .Label {
   top: -0.25rem;
   font-size: 1.2rem;
-  color: #0288d1;
+  color: #00a5ff;
 }
 .Select:focus ~ .SelectLabel,
 .Select:valid ~ .SelectLabel {
-  color: #0288d1;
+  color: #00a5ff;
 }
-
 
 /* Bar Changes */
 .Bar {
@@ -124,7 +123,7 @@
   width: 0;
   bottom: 0px;
   position: absolute;
-  background: #0288d1;
+  background: #00a5ff;
   transition: 0.2s ease all;
   -moz-transition: 0.2s ease all;
   -webkit-transition: 0.2s ease all;

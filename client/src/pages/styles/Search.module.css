@@ -6,7 +6,6 @@
   margin-top: 10rem;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   border-radius: 0.5rem;
-  /* padding: 5rem; */
 }
 .SearchTitle {
   padding: 2rem;
@@ -17,12 +16,6 @@
   display: flex;
   justify-content: space-between;
 }
-/* .Label {
-  margin: 5rem 0 1rem 5rem;
-  font-size: 4rem;
-  background: white;
-  color: black;
-} */
 .Input {
   margin: 5rem;
   padding: 10px;

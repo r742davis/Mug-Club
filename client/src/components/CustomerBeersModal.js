@@ -1,25 +1,24 @@
-import React from 'react';
-import classes from './styles/Modals.module.css';
-import BeersList from './BeersList';
-import { connect } from 'react-redux';
+import React from "react";
+import classes from "./styles/Modals.module.css";
+import BeersList from "./BeersList";
+import { connect } from "react-redux";
 
-const CustomerBeersModal = (props) => {
+const CustomerBeersModal = props => {
   return (
     <>
       <section className={classes.ModalContainer}>
         <div className={classes.Modal}>
           <h2 className={classes.ModalTitle}>Beers</h2>
-          <BeersList beers={props.beers}/>
+          <BeersList beers={props.beers} />
           <button onClick={props.toggleModal}>Cancel</button>
-        </div> 
+        </div>
       </section>
     </>
-  )
+  );
 };
 
-const mapStateToProps = (state) => ({
-  beers: state.beers.beers,
-  customers: state.customers.customers
+const mapStateToProps = state => ({
+  beers: state.beers.beers
 });
 
 export default connect(mapStateToProps)(CustomerBeersModal);
