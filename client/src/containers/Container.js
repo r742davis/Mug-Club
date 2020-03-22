@@ -374,10 +374,6 @@ class Container extends React.Component {
       }
     });
   };
-  // deleteBeer = id => {
-  //   this.props.dispatch(deleteBeer(id));
-  //   this.props.dispatch(fetchBeers());
-  // };
 
   //// TEST SECTION ////
   calculateCompletedBeers = arr => {

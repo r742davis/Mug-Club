@@ -56,7 +56,6 @@ export const deleteBeer = id => (dispatch, getState) => {
         payload: id
       })
     )
-    .then(dispatch(fetchBeers()))
     .catch(err =>
       dispatch(returnErrors(err.response.data, err.response.status))
     );
