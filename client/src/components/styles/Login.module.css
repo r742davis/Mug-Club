@@ -133,6 +133,16 @@
   width: 150px;
 }
 
+/* Errors */
+.Error {
+  height: 5rem;
+  font-size: 1.5rem;
+  color: red;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Animations */
 .bounce {
   -webkit-animation: bounce-top 0.5s both;
   animation: bounce-top 0.5s both;

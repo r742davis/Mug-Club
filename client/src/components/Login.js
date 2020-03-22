@@ -35,23 +35,13 @@ class Login extends Component {
         this.setState({ message: null });
       }
     }
-
-    //If authenticated, reroute to search page __NEEDS WORK__
-    // if (this.state.modalOpen) {
-    //   if (isAuthenticated) {
-    //     this.toggleRoute();
-    //   }
-    // }
   }
-
-  // toggleRoute = () => {
-  //   this.props.clearErrors();
-  // };
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  //-- Submit for Login and Register
   onSubmit = e => {
     e.preventDefault();
     const { email, password } = this.state;
@@ -59,15 +49,8 @@ class Login extends Component {
       email,
       password
     };
-    //Attempting to log in
-    this.props.login(user);
-  };
-
-  toggleLogin = () => {
-    this.props.clearErrors();
-    this.setState({
-      toggleLogin: !this.state.toggleLogin
-    })
+    //Attempt to log in
+    this.props.login(user);  
   };
 
   onSubmitReg = e => {
@@ -78,13 +61,17 @@ class Login extends Component {
       email,
       password
     }
-
     //Attempt to register
-    console.log(newUser)
     this.props.register(newUser)
-
   }
 
+  //-- Toggles for Login and Register
+  toggleLogin = () => {
+    this.props.clearErrors();
+    this.setState({
+      toggleLogin: !this.state.toggleLogin
+    })
+  };
   toggleReg = () => {
     this.props.clearErrors();
     this.setState({
@@ -109,13 +96,14 @@ class Login extends Component {
           Register
         </button>
       </div>
-      
     };
 
+    let error = <div><h3 className={classes.Error}>{this.state.message}</h3></div> 
+  
     return (
       <div>
         {
-          !this.state.isAuthenticated &&
+          !this.props.isAuthenticated &&
           <section className={classes.Container}>
           <h1 className={classes.Title}>Mug Club 🍻
           </h1>
@@ -124,6 +112,7 @@ class Login extends Component {
             this.state.toggleLogin &&
             <form onSubmit={this.onSubmit}>
             <div className={classes.LoginContainer}>
+            { this.state.message && error }
               <div className={classes.Group}>
                 <input
                   type="text"
@@ -165,6 +154,7 @@ class Login extends Component {
             this.state.toggleReg &&
             <form onSubmit={e => this.onSubmitReg(e)}>
             <div className={classes.LoginContainer}>
+            { this.state.message && error }
               <div className={classes.Group}>
                 <input 
                   type="text" 
