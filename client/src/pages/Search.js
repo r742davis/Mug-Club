@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Customer from '../components/Customer';
 import classes from './styles/Search.module.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const Search = (props) => {
     let filteredCustomers = props.customers ? props.customers.filter(
@@ -40,7 +42,13 @@ const Search = (props) => {
     <>
     <div>
       <div className={classes.InputContainer}>
-        <h1 className={classes.SearchTitle}>Search Customers</h1>
+        <h1 className={classes.SearchTitle}>Search Customers
+          <div 
+            className={classes.AddIcon}
+            onClick={props.createNewUser}>
+            <FontAwesomeIcon icon={faPlus} />
+          </div>
+        </h1>
         <input
           type='text'
           name='search'

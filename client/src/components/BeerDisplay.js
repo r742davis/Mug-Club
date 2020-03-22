@@ -5,6 +5,9 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import classes from "./styles/BeerDisplay.module.css";
 import { connect } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+
 const uniqid = require("uniqid");
 
 const BeerDisplay = props => {
@@ -16,7 +19,7 @@ const BeerDisplay = props => {
             dense
             button
             className={classes.ListItem}
-            onClick={() => props.toggleEditBeerModal(beer)}
+            onClick={() => props.toggleModal(beer)}
           >
             <ListItemAvatar>
               <Avatar alt={`${beer.brewery}`} src={beer.url} />
@@ -31,14 +34,18 @@ const BeerDisplay = props => {
     : null;
 
   return (
-    <>
-      <section className={classes.DisplayContainer}>
-        <h1>Current Beers</h1>
-        <List dense className={classes.List}>
-          {beerList}
-        </List>
-      </section>
-    </>
+    <section className={classes.DisplayContainer}>
+      <h1 className={classes.BeersTitle}>Current Beers
+        <div 
+          className={classes.AddIcon}
+          onClick={props.createNewBeer}>
+          <FontAwesomeIcon icon={faPlus} />
+        </div>
+      </h1>
+      <List dense className={classes.List}>
+        {beerList}
+      </List>
+    </section>
   );
 };
 

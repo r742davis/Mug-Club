@@ -413,10 +413,14 @@ class Container extends React.Component {
                   deleteCustomer={this.deleteCustomer}
                   updateCompletedBeers={this.updateCompletedBeers}
                   calculateCompletedBeers={this.calculateCompletedBeers}
+                  createNewUser={this.toggleNewCustomerModal}
                 />
               </Route>
               <Route path="/beersList">
-                <BeerDisplay toggleEditBeerModal={this.toggleEditBeerModal} />
+                <BeerDisplay 
+                  toggleModal={this.toggleEditBeerModal}
+                  createNewBeer={this.toggleNewBeerModal}
+                 />
               </Route>
             </Switch>
           </div>
