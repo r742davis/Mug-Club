@@ -63,7 +63,7 @@ const NewCustomer = props => {
               </button>
               <button
                 type="button"
-                onClick={props.toggleNewCustomerModal}
+                onClick={props.toggleModal}
                 className={classes.CancelButton}
               >
                 Cancel

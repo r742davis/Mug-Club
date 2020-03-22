@@ -105,7 +105,7 @@ export default function CheckboxListSecondary(props) {
           onClick={(e) => props.handleSubmit(e, checked)}
           className={styles.EditButton}>Submit Edit</button>
         <button
-          onClick={props.toggleEditCustomerModal}
+          onClick={props.toggleModal}
           className={styles.CancelButton}>Cancel</button>
       </div>
     </>

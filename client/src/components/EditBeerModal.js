@@ -23,7 +23,7 @@ class EditBeerModal extends Component {
           }
         );
         this.props.deleteBeer(this.props.id);
-        this.props.toggleEditBeerModal();
+        this.props.toggleModal();
       } else {
         swal(`Today is your luck day, you sweet sweet miracle drink!`);
       }
@@ -124,7 +124,7 @@ class EditBeerModal extends Component {
                 Submit Edit
               </button>
               <button
-                onClick={this.props.toggleEditBeerModal}
+                onClick={this.props.toggleModal}
                 className={classes.CancelButton}
               >
                 Cancel

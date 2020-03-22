@@ -98,7 +98,7 @@ const NewBeerModal = props => {
                 Create New Beer
               </button>
               <button
-                onClick={props.toggleNewBeerModal}
+                onClick={props.toggleModal}
                 className={classes.CancelButton}
               >
                 Cancel

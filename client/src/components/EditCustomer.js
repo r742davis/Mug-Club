@@ -67,7 +67,7 @@ const EditCustomer = props => {
                   beers={props.beers}
                   updateCompletedBeers={props.updateCompletedBeers}
                   handleSubmit={props.handleSubmit}
-                  toggleEditCustomerModal={props.toggleEditCustomerModal}
+                  toggleModal={props.toggleModal}
                 />
               </div>
             </form>

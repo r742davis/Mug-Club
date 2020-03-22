@@ -428,7 +428,7 @@ class Container extends React.Component {
         {this.state.editCustomerModalOpen ? (
           <EditCustomer
             handleSubmit={this.handleEditCustomerSubmit}
-            toggleEditCustomerModal={this.toggleEditCustomerModal}
+            toggleModal={this.toggleEditCustomerModal}
             handleInputChange={this.handleInputChange}
             firstName={this.state.firstName}
             lastName={this.state.lastName}
@@ -440,7 +440,7 @@ class Container extends React.Component {
         {this.state.newCustomerModalOpen ? (
           <NewCustomer
             handleSubmit={this.handleNewCustomerSubmit}
-            toggleNewCustomerModal={this.toggleNewCustomerModal}
+            toggleModal={this.toggleNewCustomerModal}
             handleInputChange={this.handleInputChange}
             firstName={this.state.firstName}
             lastName={this.state.lastName}
@@ -452,7 +452,7 @@ class Container extends React.Component {
             handleSubmit={this.handleEditBeerSubmit}
             deleteBeer={this.deleteBeer}
             handleInputChange={this.handleInputChange}
-            toggleEditBeerModal={this.toggleEditBeerModal}
+            toggleModal={this.toggleEditBeerModal}
             handleEdit={this.handleEdit}
             id={this.state.beerId}
             beerName={this.state.beerName}
@@ -466,7 +466,7 @@ class Container extends React.Component {
           <NewBeerModal
             handleSubmit={this.handleNewBeerSubmit}
             handleInputChange={this.handleInputChange}
-            toggleNewBeerModal={this.toggleNewBeerModal}
+            toggleModal={this.toggleNewBeerModal}
             beerName={this.state.beerName}
             selectedBeerType={this.state.selectedBeerType}
             brewery={this.state.brewery}
