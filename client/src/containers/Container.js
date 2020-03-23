@@ -9,6 +9,7 @@ import EditBeerModal from "../components/EditBeerModal";
 import NewBeerModal from "../components/NewBeerModal";
 import axios from "axios";
 import swal from "@sweetalert/with-react";
+import Backdrop from '../components/Backdrop';
 
 import { connect } from "react-redux";
 import {
@@ -386,9 +387,28 @@ class Container extends React.Component {
       }
       return count;
     }
-  };
+  }; 
+
+  modalOpenQuery = () => {
+    if (this.state.newBeerModalOpen === true) { 
+        return true }
+  }
+  closeModal = () => {
+    this.setState({ 
+      editBeerModalOpen: false,
+      newBeerModalOpen: false,
+      newCustomerModalOpen: false,
+      editCustomerModalOpen: false,
+      customerBeersModalOpen: false,
+    })
+  }
+  
 
   render() {
+    let modalOpen = false;
+    if (this.state.editBeerModalOpen || this.state.editCustomerModalOpen) {
+      modalOpen = true;
+    }
     return (
       <>
         <Router>
@@ -425,6 +445,9 @@ class Container extends React.Component {
             </Switch>
           </div>
         </Router>
+
+        {/* Modal Displays */}
+        <Backdrop modalOpen={modalOpen} closeModal={this.closeModal}></Backdrop>
         {this.state.editCustomerModalOpen ? (
           <EditCustomer
             handleSubmit={this.handleEditCustomerSubmit}
@@ -474,6 +497,7 @@ class Container extends React.Component {
             beerUrl={this.state.beerUrl}
           />
         ) : null}
+        
       </>
     );
   }

@@ -1,25 +1,21 @@
 .ModalContainer {
   position: fixed;
-  transform: perspective(1px) translate3d(-50%, -50%, 0);
+  z-index: 500;
+  width: auto;
+  height: 75%;
   top: 50%;
   left: 50%;
-  height: 100%;
-  width: 100%;
+  padding-bottom: 25px;
+  display: block;
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.4);
-  overflow: auto;
-  z-index: 100;
-  backface-visibility: hidden;
-  -webkit-font-smoothing: subpixel-antialiased;
-  transition: 0.5s;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
 }
 .Modal {
-  padding: 2%;
+  padding: 5%;
   background: white;
-  height: auto;
+  height: 75%;
   width: auto;
   display: flex;
   flex-direction: column;
