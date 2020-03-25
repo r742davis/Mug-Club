@@ -7,7 +7,6 @@ import classes from "./styles/BeerDisplay.module.css";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-
 const uniqid = require("uniqid");
 
 const BeerDisplay = props => {

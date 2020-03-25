@@ -9,7 +9,7 @@ import EditBeerModal from "../components/EditBeerModal";
 import NewBeerModal from "../components/NewBeerModal";
 import axios from "axios";
 import swal from "@sweetalert/with-react";
-import Backdrop from '../components/Backdrop';
+import Backdrop from "../components/Backdrop";
 
 import { connect } from "react-redux";
 import {
@@ -88,6 +88,8 @@ class Container extends React.Component {
     const name = target.name;
     await this.setState({ [name]: event.target.value });
   };
+
+  // Reset Beer or Customer State
   clearBeerState = () => {
     this.setState({
       beerName: "",
@@ -187,14 +189,14 @@ class Container extends React.Component {
     });
   };
 
-  checkCompletion = (beers) => {
-    console.log(beers)
+  checkCompletion = beers => {
+    console.log(beers);
     let value = true;
     for (let i = 0; i < beers.length; i++) {
       if (beers[i].finished === false) {
-        return value = false;
+        return (value = false);
       }
-    };
+    }
     if (value === true) {
       this.state.completed = true;
     }
@@ -236,7 +238,7 @@ class Container extends React.Component {
   handleEditCustomerSubmit = async (e, checkedArr) => {
     e.preventDefault();
     await this.updateCompletedBeers(checkedArr);
-    await this.checkCompletion(this.state.customerBeers)
+    await this.checkCompletion(this.state.customerBeers);
     const updatedCustomer = await {
       name: {
         first: this.state.firstName,
@@ -387,26 +389,31 @@ class Container extends React.Component {
       }
       return count;
     }
-  }; 
+  };
 
   modalOpenQuery = () => {
-    if (this.state.newBeerModalOpen === true) { 
-        return true }
-  }
+    if (this.state.newBeerModalOpen === true) {
+      return true;
+    }
+  };
   closeModal = () => {
-    this.setState({ 
+    this.setState({
       editBeerModalOpen: false,
       newBeerModalOpen: false,
       newCustomerModalOpen: false,
       editCustomerModalOpen: false,
-      customerBeersModalOpen: false,
-    })
-  }
-  
+      customerBeersModalOpen: false
+    });
+  };
 
   render() {
     let modalOpen = false;
-    if (this.state.editBeerModalOpen || this.state.editCustomerModalOpen) {
+    if (
+      this.state.editBeerModalOpen ||
+      this.state.editCustomerModalOpen ||
+      this.state.newCustomerModalOpen ||
+      this.state.newBeerModalOpen
+    ) {
       modalOpen = true;
     }
     return (
@@ -437,10 +444,10 @@ class Container extends React.Component {
                 />
               </Route>
               <Route path="/beersList">
-                <BeerDisplay 
+                <BeerDisplay
                   toggleModal={this.toggleEditBeerModal}
                   createNewBeer={this.toggleNewBeerModal}
-                 />
+                />
               </Route>
             </Switch>
           </div>
@@ -497,7 +504,6 @@ class Container extends React.Component {
             beerUrl={this.state.beerUrl}
           />
         ) : null}
-        
       </>
     );
   }

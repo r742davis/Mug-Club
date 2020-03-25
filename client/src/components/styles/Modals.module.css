@@ -2,7 +2,6 @@
   position: fixed;
   z-index: 500;
   width: auto;
- 
   top: 50%;
   left: 50%;
   padding-bottom: 25px;
@@ -10,7 +9,6 @@
   margin: 0 auto;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-
 }
 .Modal {
   padding: 2rem;
