@@ -24,10 +24,10 @@ class Navigation extends Component {
   
   
   render() {
-    const { isAuthenticated } = this.props.auth;
-    if (!isAuthenticated) {
-      return <Redirect to="/" push={true} />
-    }
+    // const { isAuthenticated } = this.props.auth;
+    // if (!isAuthenticated) {
+    //   return <Redirect to="/" push={true} />
+    // }
     const authLinks = (
       <nav className={classes.navbar}>
         <ul className={classes.list}>
@@ -72,7 +72,8 @@ class Navigation extends Component {
       </nav>
     );
 
-    return <>{this.props.isAuthenticated ? authLinks : null}</>;
+    // return <>{this.props.isAuthenticated ? authLinks : null}</>;
+    return authLinks;
   }
 }
 
