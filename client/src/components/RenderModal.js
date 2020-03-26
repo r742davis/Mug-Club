@@ -13,23 +13,17 @@ class RenderModal extends Component {
     switch (renderedModal) {
       case "EDIT_CUSTOMER":
         return <EditCustomer />;
-        break;
       case "NEW_CUSTOMER":
         return <NewCustomer />;
-        break;
       case "EDIT_BEER":
         return <EditBeer />;
-        break;
       case "NEW_BEER":
         return <NewBeer />;
-        break;
       case "BEER_LIST":
         console.log("Beer List");
         return <></>;
-        break;
       default:
         return <></>;
-        break;
     }
   }
 }

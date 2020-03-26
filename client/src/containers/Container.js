@@ -8,24 +8,15 @@ import RenderModal from "../components/RenderModal";
 
 // Redux Imports
 import { connect } from "react-redux";
-import {
-  fetchBeers,
-} from "../actions/beerActions";
-import {
-  fetchCustomers,
-} from "../actions/customerActions";
+import { fetchBeers } from "../actions/beerActions";
+import { fetchCustomers } from "../actions/customerActions";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // import { readString } from "react-papaparse";
 // const csvFile = require("./Test.csv");
 
 class Container extends React.Component {
-  state = {
-    search: "",
-    customerBeersModalOpen: false,
-    displayBeer: false,
-    isAuthenticated: false
-  };
+  state = {};
 
   async componentDidMount() {
     await this.loadData();
@@ -53,19 +44,6 @@ class Container extends React.Component {
       );
     }
   };
-  
-  //// TEST SECTION ////
-  calculateCompletedBeers = arr => {
-    if (arr) {
-      let count = 0;
-      for (let i = 0; i < arr.length; i++) {
-        if (arr[i].finished === true) {
-          count++;
-        }
-      }
-      return count;
-    }
-  };
 
   render() {
     return (
@@ -78,9 +56,7 @@ class Container extends React.Component {
                 <Home />
               </Route>
               <Route path="/searchCustomers">
-                <Search
-                  calculateCompletedBeers={this.calculateCompletedBeers}
-                />
+                <Search />
               </Route>
               <Route path="/beersList">
                 <BeerDisplay />
@@ -96,9 +72,6 @@ class Container extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  beers: state.beers.beers,
-  customers: state.customers.customers,
-});
+const mapStateToProps = state => ({});
 
 export default connect(mapStateToProps)(Container);

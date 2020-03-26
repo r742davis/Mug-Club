@@ -42,6 +42,18 @@ class Search extends Component {
     });
   };
 
+  calculateCompletedBeers = arr => {
+    if (arr) {
+      let count = 0;
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].finished === true) {
+          count++;
+        }
+      }
+      return count;
+    }
+  };
+
   render() {
     let filteredCustomers = this.props.customers
       ? this.props.customers.filter(customer => {
@@ -74,7 +86,7 @@ class Search extends Component {
               }
               
               updateCompletedBeers={this.props.updateCompletedBeers}
-              calculateCompletedBeers={this.props.calculateCompletedBeers}
+              calculateCompletedBeers={this.calculateCompletedBeers}
               deleteCustomer={() => this.deleteCustomer(customer)}
             />
           );
