@@ -7,17 +7,17 @@ import {
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
   REGISTER_FAIL
-} from '../actions/action-types';
+} from "../actions/action-types";
 
 const initialState = {
-  token: localStorage.getItem('token'),
+  token: localStorage.getItem("token"),
   isAuthenticated: null,
   isLoading: false,
   user: null
-}
+};
 
 export default function(state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case USER_LOADING:
       return {
         ...state,
@@ -32,7 +32,7 @@ export default function(state = initialState, action) {
       };
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:
-      localStorage.setItem('token', action.payload.token)
+      localStorage.setItem("token", action.payload.token);
       return {
         ...state,
         ...action.payload,
@@ -44,14 +44,14 @@ export default function(state = initialState, action) {
     case LOGOUT_SUCCESS:
     case REGISTER_FAIL:
       //Makes sure everything is reset if there is an error
-      localStorage.removeItem('token');
+      localStorage.removeItem("token");
       return {
         ...state,
         token: null,
         user: null,
         isAuthenticated: false,
         isLoading: false
-      }
+      };
     default:
       return state;
   }

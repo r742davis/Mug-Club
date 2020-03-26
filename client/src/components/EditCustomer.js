@@ -71,7 +71,7 @@ class EditCustomer extends Component {
         completed: this.state.completed,
         beers: this.state.customerBeers
       }
-    };    
+    };
     try {
       await this.props.updateCustomer(updatedCustomer, this.props.customerId);
       await this.props.fetchCustomers();

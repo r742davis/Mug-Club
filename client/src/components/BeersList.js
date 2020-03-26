@@ -8,7 +8,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Checkbox from "@material-ui/core/Checkbox";
 import Avatar from "@material-ui/core/Avatar";
 import styles from "./styles/Modals.module.css";
-const uniqid = require('uniqid');
+const uniqid = require("uniqid");
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -100,12 +100,12 @@ export default function CheckboxListSecondary(props) {
         </ListItemIcon>
       </ListItem>
     );
-  })
+  });
 
   return (
     <>
       <List dense className={classes.root}>
-        { mappedBeers }
+        {mappedBeers}
       </List>
       <div className={classes.buttonContainer}>
         <button
@@ -114,9 +114,7 @@ export default function CheckboxListSecondary(props) {
         >
           Submit Edit
         </button>
-        <button 
-          onClick={props.toggleModal} 
-          className={styles.CancelButton}>
+        <button onClick={props.toggleModal} className={styles.CancelButton}>
           Cancel
         </button>
       </div>

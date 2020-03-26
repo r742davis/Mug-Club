@@ -456,10 +456,6 @@ class Container extends React.Component {
         {this.props.modalOpen ? (
           <EditCustomer
             completed={this.state.completed}
-            
-            
-            
-            
             checkCompletedBeers={this.checkCompletedBeers}
           />
         ) : null}

@@ -39,12 +39,15 @@ export const fetchBeersFailure = error => ({
 export const createBeer = newBeer => (dispatch, getState) => {
   axios
     .post("http://localhost:5000/beers", newBeer)
-    .then(res => 
+    .then(res =>
       dispatch({
         type: CREATE_BEER,
         payload: res.data
-      }))
-    .catch(err => dispatch(returnErrors(err.response.data, err.response.status)))
+      })
+    )
+    .catch(err =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
 
 export const deleteBeer = id => (dispatch, getState) => {

@@ -1,9 +1,9 @@
-import React from 'react';
-import './styles/App.css';
-import Container from '../containers/Container';
+import React from "react";
+import "./styles/App.css";
+import Container from "../containers/Container";
 
-import { Provider } from 'react-redux';
-import store from '../store';
+import { Provider } from "react-redux";
+import store from "../store";
 
 function App() {
   return (
@@ -14,4 +14,3 @@ function App() {
 }
 
 export default App;
-

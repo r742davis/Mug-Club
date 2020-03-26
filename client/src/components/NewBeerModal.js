@@ -9,8 +9,8 @@ const NewBeerModal = props => {
       <Grow in={true}>
         <div className={classes.Modal}>
           <h2 className={classes.ModalTitle}>Create New Beer</h2>
-          <form 
-            className={classes.ModalForm} 
+          <form
+            className={classes.ModalForm}
             onSubmit={e => props.handleSubmit(e)}
           >
             <div className={classes.Group}>
@@ -90,10 +90,7 @@ const NewBeerModal = props => {
                 Beer/Brewery Image URL
               </label>
             </div>
-            <button
-              type="submit"
-              className={classes.EditButton}
-            >
+            <button type="submit" className={classes.EditButton}>
               Create New Beer
             </button>
             <button

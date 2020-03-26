@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import classes from "./styles/Navigation.module.css";
 import { connect } from "react-redux";
-import { Redirect } from 'react-router-dom';
-import { logout } from '../actions/authActions';
+import { Redirect } from "react-router-dom";
+import { logout } from "../actions/authActions";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -20,9 +20,8 @@ class Navigation extends Component {
 
   logout = () => {
     this.props.logout();
-  }
-  
-  
+  };
+
   render() {
     // const { isAuthenticated } = this.props.auth;
     // if (!isAuthenticated) {
@@ -51,7 +50,7 @@ class Navigation extends Component {
               onClick={this.props.toggleNewCustomerModal}
               className={classes.NewButton}
             >
-              <FontAwesomeIcon icon={faPlus}/> New Customer
+              <FontAwesomeIcon icon={faPlus} /> New Customer
             </button>
           </li>
           <li>
@@ -63,10 +62,9 @@ class Navigation extends Component {
             </button>
           </li>
           <li className={classes.item}>
-            <button 
-              onClick={this.logout}
-              className={classes.Logout}
-            >Log Out</button>
+            <button onClick={this.logout} className={classes.Logout}>
+              Log Out
+            </button>
           </li>
         </ul>
       </nav>

@@ -11,6 +11,6 @@ const backdrop = props =>
 
 const mapStateToProps = state => ({
   modalOpen: state.modal.modalOpen
-})
+});
 
 export default connect(mapStateToProps)(backdrop);

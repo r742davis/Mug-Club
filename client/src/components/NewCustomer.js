@@ -55,10 +55,7 @@ const NewCustomer = props => {
                   Mug Club ID
                 </label>
               </div>
-              <button
-                type="submit"
-                className={classes.EditButton}
-              >
+              <button type="submit" className={classes.EditButton}>
                 Create New Customer
               </button>
               <button

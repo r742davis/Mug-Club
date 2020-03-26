@@ -34,10 +34,9 @@ const BeerDisplay = props => {
 
   return (
     <section className={classes.DisplayContainer}>
-      <h1 className={classes.BeersTitle}>Current Beers
-        <div 
-          className={classes.AddIcon}
-          onClick={props.createNewBeer}>
+      <h1 className={classes.BeersTitle}>
+        Current Beers
+        <div className={classes.AddIcon} onClick={props.createNewBeer}>
           <FontAwesomeIcon icon={faPlus} />
         </div>
       </h1>

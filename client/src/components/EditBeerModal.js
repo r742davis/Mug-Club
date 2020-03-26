@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import classes from "./styles/Modals.module.css";
 import { typeMap } from "../lib/TypeMap";
 import Grow from "@material-ui/core/Grow";
-import { deleteBeer } from '../actions/beerActions';
+import { deleteBeer } from "../actions/beerActions";
 import swal from "@sweetalert/with-react";
 
 class EditBeerModal extends Component {
@@ -16,19 +16,16 @@ class EditBeerModal extends Component {
       dangerMode: true
     }).then(willDelete => {
       if (willDelete) {
-        swal(
-          `Hasta la Vista! ${this.props.beerName} has been deleted!`,
-          {
-            icon: "success"
-          }
-        );
+        swal(`Hasta la Vista! ${this.props.beerName} has been deleted!`, {
+          icon: "success"
+        });
         this.props.deleteBeer(this.props.id);
         this.props.toggleModal();
       } else {
         swal(`Today is your luck day, you sweet sweet miracle drink!`);
       }
     });
-  }
+  };
 
   render() {
     return (
@@ -70,7 +67,9 @@ class EditBeerModal extends Component {
                   value={this.props.beerType}
                 >
                   <optgroup label="Current Beer Type">
-                    <option value={this.props.beerType}>{this.props.beerType}</option>
+                    <option value={this.props.beerType}>
+                      {this.props.beerType}
+                    </option>
                   </optgroup>
                   {typeMap}
                 </select>
@@ -131,11 +130,11 @@ class EditBeerModal extends Component {
               </button>
             </form>
             <button
-                onClick={() => this.deleteBeerAlert()}
-                className={classes.CancelButton}
-              >
-                Delete
-              </button>
+              onClick={() => this.deleteBeerAlert()}
+              className={classes.CancelButton}
+            >
+              Delete
+            </button>
           </div>
         </Grow>
       </section>
@@ -148,6 +147,4 @@ const mapStateToProps = state => ({
   error: state.error
 });
 
-export default connect(
-  mapStateToProps, { deleteBeer }
-)(EditBeerModal);
+export default connect(mapStateToProps, { deleteBeer })(EditBeerModal);
