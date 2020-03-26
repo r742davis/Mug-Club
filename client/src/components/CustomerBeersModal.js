@@ -1,6 +1,8 @@
 import React from "react";
 import classes from "./styles/Modals.module.css";
 import BeersList from "./BeersList";
+
+// Redux Imports
 import { connect } from "react-redux";
 
 const CustomerBeersModal = props => {
