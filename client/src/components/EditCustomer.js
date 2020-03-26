@@ -9,6 +9,11 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { closeModal } from "../actions/modalActions";
 import { updateCustomer, fetchCustomers } from "../actions/customerActions";
+const actions = {
+  closeModal,
+  updateCustomer,
+  fetchCustomers
+};
 
 class EditCustomer extends Component {
   state = {
@@ -177,8 +182,4 @@ const mapStateToProps = state => ({
   customerId: state.modal.info._id
 });
 
-export default connect(mapStateToProps, {
-  closeModal,
-  updateCustomer,
-  fetchCustomers
-})(EditCustomer);
+export default connect(mapStateToProps, actions)(EditCustomer);

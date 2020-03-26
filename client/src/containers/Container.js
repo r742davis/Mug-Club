@@ -15,16 +15,14 @@ import { connect } from "react-redux";
 import {
   fetchBeers,
   createBeer,
-  deleteBeer,
   updateBeer
 } from "../actions/beerActions";
 import {
   fetchCustomers,
   createCustomer,
-  deleteCustomer,
-  updateCustomer
+  deleteCustomer
 } from "../actions/customerActions";
-import { openModal } from "../actions/modalActions";
+import { openModal, closeModal } from "../actions/modalActions";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // import { readString } from "react-papaparse";
@@ -318,6 +316,7 @@ class Container extends React.Component {
       editCustomerModalOpen: false,
       customerBeersModalOpen: false
     });
+    this.props.dispatch(closeModal());
   };
 
   render() {
@@ -369,7 +368,7 @@ class Container extends React.Component {
         </Router>
 
         {/* Modal Displays */}
-        <Backdrop modalOpen={modalOpen} closeModal={this.closeModal}></Backdrop>
+        <Backdrop modalOpen={this.props.modalOpen} closeModal={this.closeModal}></Backdrop>
         {this.props.modalOpen && <EditCustomer />}
         {this.state.newCustomerModalOpen ? (
           <NewCustomer
