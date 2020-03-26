@@ -9,8 +9,8 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 // Redux Imports
 import { connect } from "react-redux";
-import { openModal } from "../actions/modalActions";
-const actions = { openModal };
+import { openModal, closeModal } from "../actions/modalActions";
+const actions = { openModal, closeModal };
 const uniqid = require("uniqid");
 
 const BeerDisplay = props => {
@@ -22,7 +22,7 @@ const BeerDisplay = props => {
             dense
             button
             className={classes.ListItem}
-            onClick={() => props.toggleModal(beer)}
+            onClick={() => props.openModal("EDIT_BEER", beer)}
           >
             <ListItemAvatar>
               <Avatar alt={`${beer.brewery}`} src={beer.url} />

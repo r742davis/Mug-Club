@@ -103,34 +103,34 @@ class Container extends React.Component {
   // };
 
   ///// Beer Submissions ////
-  handleNewBeerSubmit = async event => {
-    event.preventDefault();
-    try {
-      const newBeer = {
-        name: this.state.beerName,
-        type: this.state.beerType,
-        brewery: this.state.brewery,
-        breweryLocation: this.state.breweryLocation,
-        url: this.state.beerUrl,
-        finished: false
-      };
-      await this.props.dispatch(createBeer(newBeer));
-      await this.props.dispatch(fetchBeers());
-      swal({
-        title: `${this.state.beerName} has been created!`,
-        icon: "success",
-        button: "Cool!"
-      });
-      await this.clearBeerState();
-    } catch (e) {
-      console.error(e);
-      swal({
-        title: `Oops! Something went wrong :(`,
-        icon: "fail",
-        button: "Crap!"
-      });
-    }
-  };
+  // handleNewBeerSubmit = async event => {
+  //   event.preventDefault();
+  //   try {
+  //     const newBeer = {
+  //       name: this.state.beerName,
+  //       type: this.state.beerType,
+  //       brewery: this.state.brewery,
+  //       breweryLocation: this.state.breweryLocation,
+  //       url: this.state.beerUrl,
+  //       finished: false
+  //     };
+  //     await this.props.dispatch(createBeer(newBeer));
+  //     await this.props.dispatch(fetchBeers());
+  //     swal({
+  //       title: `${this.state.beerName} has been created!`,
+  //       icon: "success",
+  //       button: "Cool!"
+  //     });
+  //     await this.clearBeerState();
+  //   } catch (e) {
+  //     console.error(e);
+  //     swal({
+  //       title: `Oops! Something went wrong :(`,
+  //       icon: "fail",
+  //       button: "Crap!"
+  //     });
+  //   }
+  // };
 
   // handleEditBeerSubmit = async e => {
   //   e.preventDefault();

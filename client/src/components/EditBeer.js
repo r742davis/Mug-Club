@@ -7,16 +7,24 @@ import swal from "@sweetalert/with-react";
 // Redux Imports
 import { connect } from "react-redux";
 import { openModal, closeModal } from "../actions/modalActions";
-import { deleteBeer, fetchBeers } from "../actions/beerActions";
+import { deleteBeer, updateBeer, fetchBeers } from "../actions/beerActions";
 const actions = {
   openModal,
   closeModal,
   deleteBeer,
+  updateBeer,
   fetchBeers
 };
 
-class EditBeerModal extends Component {
-  state = {};
+class EditBeer extends Component {
+  state = {
+    id: this.props.id,
+    name: this.props.name,
+    type: this.props.type,
+    brewery: this.props.brewery,
+    breweryLocation: this.props.breweryLocation,
+    url: this.props.url
+  };
 
   static propTypes = {};
 
@@ -33,9 +41,8 @@ class EditBeerModal extends Component {
       type: this.state.type,
       brewery: this.state.brewery,
       breweryLocation: this.state.breweryLocation,
-      url: this.state.beerUrl
+      url: this.state.url
     };
-
     try {
       const id = this.state.id;
       await this.props.updateBeer(updatedBeer, id);
@@ -85,20 +92,20 @@ class EditBeerModal extends Component {
             <h2 className={classes.ModalTitle}>Edit Beer</h2>
             <img
               className={classes.ModalImage}
-              src={this.props.beerUrl}
+              src={this.props.url}
               alt={this.props.name}
             />
             <form
               className={classes.ModalForm}
-              onSubmit={e => this.props.handleSubmit(e)}
+              onSubmit={e => this.handleSubmit(e)}
             >
               <div className={classes.Group}>
                 <input
                   type="text"
                   name="name"
                   className={classes.Input}
-                  value={this.props.name}
-                  onChange={this.handleInputChange}
+                  defaultValue={this.props.name}
+                  onChange={e => this.handleInputChange(e)}
                   required
                 />
                 <span className={classes.Bar}></span>
@@ -114,10 +121,12 @@ class EditBeerModal extends Component {
                   name="type"
                   className={classes.Select}
                   onChange={this.handleInputChange}
-                  value={this.props.type}
+                  defaultValue={this.props.type}
                 >
                   <optgroup label="Current Beer Type">
-                    <option value={this.props.type}>{this.props.type}</option>
+                    <option defaultValue={this.props.type}>
+                      {this.props.type}
+                    </option>
                   </optgroup>
                   {typeMap}
                 </select>
@@ -127,7 +136,7 @@ class EditBeerModal extends Component {
                   type="text"
                   name="brewery"
                   className={classes.Input}
-                  value={this.props.brewery}
+                  defaultValue={this.props.brewery}
                   onChange={this.handleInputChange}
                   required
                 />
@@ -141,7 +150,7 @@ class EditBeerModal extends Component {
                   type="text"
                   name="breweryLocation"
                   className={classes.Input}
-                  value={this.props.breweryLocation}
+                  defaultValue={this.props.breweryLocation}
                   onChange={this.handleInputChange}
                   required
                 />
@@ -153,21 +162,21 @@ class EditBeerModal extends Component {
               <div className={classes.Group}>
                 <input
                   type="text"
-                  name="beerUrl"
+                  name="url"
                   className={classes.Input}
-                  value={this.props.beerUrl}
+                  defaultValue={this.props.url}
                   onChange={this.handleInputChange}
                   required
                 />
                 <span className={classes.Bar}></span>
-                <label htmlFor="beerUrl" className={classes.Label}>
+                <label htmlFor="url" className={classes.Label}>
                   Beer/Brewery Image URL
                 </label>
               </div>
               <input
                 type="submit"
                 value="Submit Edit"
-                onClick={() => this.props.handleSubmit()}
+                onClick={e => this.handleSubmit(e)}
                 className={classes.EditButton}
               />
               <input
@@ -179,7 +188,7 @@ class EditBeerModal extends Component {
             </form>
             <input
               type="submit"
-              value="DELETE"
+              value="Delete"
               onClick={() => this.deleteBeerAlert()}
               className={classes.CancelButton}
             />
@@ -190,6 +199,13 @@ class EditBeerModal extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  id: state.modal.info._id,
+  name: state.modal.info.name,
+  type: state.modal.info.type,
+  brewery: state.modal.info.brewery,
+  breweryLocation: state.modal.info.breweryLocation,
+  url: state.modal.info.url
+});
 
-export default connect(mapStateToProps, actions)(EditBeerModal);
+export default connect(mapStateToProps, actions)(EditBeer);
