@@ -8,6 +8,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Checkbox from "@material-ui/core/Checkbox";
 import Avatar from "@material-ui/core/Avatar";
 import styles from "./styles/Modals.module.css";
+const uniqid = require('uniqid');
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -67,7 +68,7 @@ export default function CheckboxListSecondary(props) {
     const labelId = `checkbox-list-secondary-label-${beer.id}`;
     return (
       <ListItem
-        key={beer.id}
+        key={uniqid()}
         onClick={handleToggle(beer)}
         dense
         button

@@ -24,6 +24,7 @@ import {
   deleteCustomer,
   updateCustomer
 } from "../actions/customerActions";
+import { openModal } from "../actions/modalActions";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // import { readString } from "react-papaparse";
@@ -83,10 +84,10 @@ class Container extends React.Component {
       );
     }
   };
-  handleInputChange = async event => {
-    const target = event.target;
+  handleInputChange = e => {
+    const target = e.target;
     const name = target.name;
-    await this.setState({ [name]: event.target.value });
+    this.setState({ [name]: e.target.value });
   };
 
   // Reset Beer or Customer State
@@ -141,53 +142,53 @@ class Container extends React.Component {
     }
   };
 
-  handleEditBeerSubmit = async e => {
-    e.preventDefault();
-    const updatedBeer = {
-      name: this.state.beerName,
-      type: this.state.beerType,
-      brewery: this.state.brewery,
-      breweryLocation: this.state.breweryLocation,
-      url: this.state.beerUrl
-    };
+  // handleEditBeerSubmit = async e => {
+  //   e.preventDefault();
+  //   const updatedBeer = {
+  //     name: this.state.beerName,
+  //     type: this.state.beerType,
+  //     brewery: this.state.brewery,
+  //     breweryLocation: this.state.breweryLocation,
+  //     url: this.state.beerUrl
+  //   };
 
-    try {
-      const beerURL = "http://localhost:5000/beers/" + this.state.beerId;
-      await axios.put(beerURL, updatedBeer, { crossDomain: true });
-      await this.props.dispatch(updateBeer());
-      swal({
-        title: `You've updated the ${this.state.beerName} Beer`,
-        icon: "success",
-        button: "Sweet!"
-      });
-      this.clearBeerState();
-      this.setState({
-        editBeerModalOpen: false
-      });
-    } catch (e) {
-      console.log(e);
-      swal({
-        title: `Oops! Something went wrong :(`,
-        icon: "fail",
-        button: "Crap!"
-      });
-    }
-  };
+  //   try {
+  //     const beerURL = "http://localhost:5000/beers/" + this.state.beerId;
+  //     await axios.put(beerURL, updatedBeer, { crossDomain: true });
+  //     await this.props.dispatch(updateBeer());
+  //     swal({
+  //       title: `You've updated the ${this.state.beerName} Beer`,
+  //       icon: "success",
+  //       button: "Sweet!"
+  //     });
+  //     this.clearBeerState();
+  //     this.setState({
+  //       editBeerModalOpen: false
+  //     });
+  //   } catch (e) {
+  //     console.log(e);
+  //     swal({
+  //       title: `Oops! Something went wrong :(`,
+  //       icon: "fail",
+  //       button: "Crap!"
+  //     });
+  //   }
+  // };
 
   //// Customer creation and edit functions ////
-  updateCompletedBeers = checkedArr => {
-    let updatedArr = this.state.customerBeers;
-    for (let k = 0; k < updatedArr.length; k++) {
-      for (let h = 1; h < checkedArr.length; h++) {
-        if (updatedArr[k]._id === checkedArr[h]._id) {
-          updatedArr[k].finished = true;
-        }
-      }
-    }
-    this.setState({
-      customerBeers: updatedArr
-    });
-  };
+  // updateCompletedBeers = checkedArr => {
+  //   let updatedArr = this.state.customerBeers;
+  //   for (let k = 0; k < updatedArr.length; k++) {
+  //     for (let h = 1; h < checkedArr.length; h++) {
+  //       if (updatedArr[k]._id === checkedArr[h]._id) {
+  //         updatedArr[k].finished = true;
+  //       }
+  //     }
+  //   }
+  //   this.setState({
+  //     customerBeers: updatedArr
+  //   });
+  // };
 
   checkCompletion = beers => {
     console.log(beers);
@@ -235,45 +236,45 @@ class Container extends React.Component {
       });
     }
   };
-  handleEditCustomerSubmit = async (e, checkedArr) => {
-    e.preventDefault();
-    await this.updateCompletedBeers(checkedArr);
-    await this.checkCompletion(this.state.customerBeers);
-    const updatedCustomer = await {
-      name: {
-        first: this.state.firstName,
-        last: this.state.lastName
-      },
-      mugClub: {
-        clubId: this.state.clubId,
-        completed: this.state.completed,
-        beers: this.state.customerBeers
-      }
-    };
+  // handleEditCustomerSubmit = async (e, checkedArr) => {
+  //   e.preventDefault();
+  //   await this.updateCompletedBeers(checkedArr);
+  //   await this.checkCompletion(this.state.customerBeers);
+  //   const updatedCustomer = await {
+  //     name: {
+  //       first: this.state.firstName,
+  //       last: this.state.lastName
+  //     },
+  //     mugClub: {
+  //       clubId: this.state.clubId,
+  //       completed: this.state.completed,
+  //       beers: this.state.customerBeers
+  //     }
+  //   };
 
-    try {
-      await this.props.dispatch(
-        updateCustomer(updatedCustomer, this.state.customerId)
-      );
-      await this.props.dispatch(fetchCustomers());
-      swal({
-        title: `You've updated ${this.state.firstName} ${this.state.lastName}!`,
-        icon: "success",
-        button: "Ok!"
-      });
-      this.clearCustomerState();
-      this.setState({
-        editCustomerModalOpen: false
-      });
-    } catch (e) {
-      console.log(e);
-      swal({
-        title: `Oops! Something went wrong :(`,
-        icon: "fail",
-        button: "Crap!"
-      });
-    }
-  };
+  //   try {
+  //     await this.props.dispatch(
+  //       updateCustomer(updatedCustomer, this.state.customerId)
+  //     );
+  //     await this.props.dispatch(fetchCustomers());
+  //     swal({
+  //       title: `You've updated ${this.state.firstName} ${this.state.lastName}!`,
+  //       icon: "success",
+  //       button: "Ok!"
+  //     });
+  //     this.clearCustomerState();
+  //     this.setState({
+  //       editCustomerModalOpen: false
+  //     });
+  //   } catch (e) {
+  //     console.log(e);
+  //     swal({
+  //       title: `Oops! Something went wrong :(`,
+  //       icon: "fail",
+  //       button: "Crap!"
+  //     });
+  //   }
+  // };
 
   //// Toggle Modals ////
   toggleNewBeerModal = async () => {
@@ -308,14 +309,15 @@ class Container extends React.Component {
           beerUrl: ""
         });
   };
-  toggleEditCustomerModal = async customer => {
-    await this.setState({
-      editCustomerModalOpen: !this.state.editCustomerModalOpen
-    });
+  toggleEditCustomerModal = customer => {
+    this.props.dispatch(openModal(customer));
+    // this.setState({
+    //   editCustomerModalOpen: !this.state.editCustomerModalOpen
+    // });
 
     if (customer.name?.first) {
       const { name, mugClub } = customer;
-      await this.setState({
+      this.setState({
         customerId: customer._id,
         firstName: name.first,
         lastName: name.last,
@@ -324,7 +326,7 @@ class Container extends React.Component {
         customerBeers: mugClub.beers
       });
     }
-    if (!this.state.editCustomerModalOpen) {
+    if (!this.props.modalOpen) {
       this.clearCustomerState();
     }
   };
@@ -391,11 +393,6 @@ class Container extends React.Component {
     }
   };
 
-  modalOpenQuery = () => {
-    if (this.state.newBeerModalOpen === true) {
-      return true;
-    }
-  };
   closeModal = () => {
     this.setState({
       editBeerModalOpen: false,
@@ -412,7 +409,8 @@ class Container extends React.Component {
       this.state.editBeerModalOpen ||
       this.state.editCustomerModalOpen ||
       this.state.newCustomerModalOpen ||
-      this.state.newBeerModalOpen
+      this.state.newBeerModalOpen ||
+      this.props.modalOpen
     ) {
       modalOpen = true;
     }
@@ -455,16 +453,14 @@ class Container extends React.Component {
 
         {/* Modal Displays */}
         <Backdrop modalOpen={modalOpen} closeModal={this.closeModal}></Backdrop>
-        {this.state.editCustomerModalOpen ? (
+        {this.props.modalOpen ? (
           <EditCustomer
-            handleSubmit={this.handleEditCustomerSubmit}
-            toggleModal={this.toggleEditCustomerModal}
-            handleInputChange={this.handleInputChange}
-            firstName={this.state.firstName}
-            lastName={this.state.lastName}
-            clubId={this.state.clubId}
-            beers={this.state.customerBeers}
-            updateCompletedBeers={this.updateCompletedBeers}
+            completed={this.state.completed}
+            
+            
+            
+            
+            checkCompletedBeers={this.checkCompletedBeers}
           />
         ) : null}
         {this.state.newCustomerModalOpen ? (
@@ -511,7 +507,8 @@ class Container extends React.Component {
 
 const mapStateToProps = state => ({
   beers: state.beers.beers,
-  customers: state.customers.customers
+  customers: state.customers.customers,
+  modalOpen: state.modal.modalOpen
 });
 
 export default connect(mapStateToProps)(Container);

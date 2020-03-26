@@ -1,7 +1,14 @@
 import React from "react";
 import classes from "./styles/Customer.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle, faPencilAlt, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheckCircle,
+  faPencilAlt,
+  faTrashAlt
+} from "@fortawesome/free-solid-svg-icons";
+
+// Redux Imports
+import { connect } from "react-redux";
 
 const Customer = props => {
   return (
@@ -19,7 +26,7 @@ const Customer = props => {
             <div className={classes.CheckIcon}>
               <FontAwesomeIcon icon={faCheckCircle} />
             </div>
-          ) : null }
+          ) : null}
         </h1>
         <h2 className={classes.CustomerDetails}>Mug Club #{props.clubId}</h2>
       </div>
@@ -36,10 +43,7 @@ const Customer = props => {
         >
           <FontAwesomeIcon icon={faPencilAlt} />
         </button>
-        <button
-          className={classes.DeleteButton}
-          onClick={props.deleteCustomer}
-        >
+        <button className={classes.DeleteButton} onClick={props.deleteCustomer}>
           <FontAwesomeIcon icon={faTrashAlt} />
         </button>
       </span>
@@ -47,4 +51,8 @@ const Customer = props => {
   );
 };
 
-export default Customer;
+const mapStateToProps = state => ({
+  modalOpen: state.modal.modalOpen
+})
+
+export default connect(mapStateToProps)(Customer);
