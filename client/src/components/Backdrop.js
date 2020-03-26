@@ -3,14 +3,14 @@ import classes from "./styles/Backdrop.module.css";
 
 // Redux imports
 import { connect } from "react-redux";
+import { closeModal } from "../actions/modalActions";
+const actions = { closeModal };
 
-const backdrop = props =>
-  props.modalOpen ? (
-    <div className={classes.Backdrop} onClick={props.closeModal}></div>
-  ) : null;
+const Backdrop = props =>
+  props.modalOpen && <div className={classes.Backdrop} onClick={() => props.closeModal()}></div>;
 
 const mapStateToProps = state => ({
   modalOpen: state.modal.modalOpen
 });
 
-export default connect(mapStateToProps)(backdrop);
+export default connect(mapStateToProps, actions)(Backdrop);

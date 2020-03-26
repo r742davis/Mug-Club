@@ -1,13 +1,8 @@
 import React from "react";
-// import NewCustomer from "../components/NewCustomer";
-// import EditCustomer from "../components/EditCustomer";
 import Search from "../pages/Search";
 import Home from "../pages/Home";
 import Navigation from "../pages/Navigation";
 import BeerDisplay from "../components/BeerDisplay";
-import EditBeer from "../components/EditBeer";
-// import NewBeer from "../components/NewBeer";
-import axios from "axios";
 import swal from "@sweetalert/with-react";
 import Backdrop from "../components/Backdrop";
 import RenderModal from "../components/RenderModal";
@@ -16,14 +11,12 @@ import RenderModal from "../components/RenderModal";
 import { connect } from "react-redux";
 import {
   fetchBeers,
-  createBeer,
-  updateBeer
 } from "../actions/beerActions";
 import {
   fetchCustomers,
   deleteCustomer
 } from "../actions/customerActions";
-import { openModal, closeModal } from "../actions/modalActions";
+import { closeModal } from "../actions/modalActions";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // import { readString } from "react-papaparse";
@@ -32,17 +25,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 class Container extends React.Component {
   state = {
     search: "",
-    customer: "",
-    customerBeers: [],
-    completed: "",
-    beerId: "",
-    beerName: "",
-    beerType: "",
-    brewery: "",
-    breweryLocation: "",
-    beerUrl: "",
-    selectedBeerType: "",
-    editBeerModalOpen: false,
     customerBeersModalOpen: false,
     displayBeer: false,
     isAuthenticated: false
@@ -118,28 +100,7 @@ class Container extends React.Component {
     }
   };
 
-  closeModal = () => {
-    this.setState({
-      editBeerModalOpen: false,
-      newBeerModalOpen: false,
-      newCustomerModalOpen: false,
-      editCustomerModalOpen: false,
-      customerBeersModalOpen: false
-    });
-    this.props.dispatch(closeModal());
-  };
-
   render() {
-    // let modalOpen = false;
-    // if (
-    //   this.state.editBeerModalOpen ||
-    //   this.state.editCustomerModalOpen ||
-    //   this.state.newCustomerModalOpen ||
-    //   this.state.newBeerModalOpen ||
-    //   this.props.modalOpen
-    // ) {
-    //   modalOpen = true;
-    // }
     return (
       <>
         <Router>
@@ -178,46 +139,8 @@ class Container extends React.Component {
         </Router>
 
         {/* Modal Displays */}
-        <Backdrop modalOpen={this.props.modalOpen} closeModal={this.closeModal}></Backdrop>
-        {/* {this.props.modalOpen && <EditCustomer />} */}
+        <Backdrop></Backdrop>
         <RenderModal />
-        {/* {this.state.newCustomerModalOpen ? (
-          <NewCustomer
-            handleSubmit={this.handleNewCustomerSubmit}
-            toggleModal={this.toggleNewCustomerModal}
-            handleInputChange={this.handleInputChange}
-            firstName={this.state.firstName}
-            lastName={this.state.lastName}
-            clubId={this.state.clubId}
-          />
-        ) : null} */}
-        {/* {this.state.editBeerModalOpen ? (
-          <EditBeer
-            handleSubmit={this.handleEditBeerSubmit}
-            deleteBeer={this.deleteBeer}
-            handleInputChange={this.handleInputChange}
-            toggleModal={this.toggleEditBeerModal}
-            handleEdit={this.handleEdit}
-            id={this.state.beerId}
-            beerName={this.state.beerName}
-            beerType={this.state.beerType}
-            brewery={this.state.brewery}
-            breweryLocation={this.state.breweryLocation}
-            beerUrl={this.state.beerUrl}
-          />
-        ) : null} */}
-        {/* {this.state.newBeerModalOpen ? (
-          <NewBeer
-            handleSubmit={this.handleNewBeerSubmit}
-            handleInputChange={this.handleInputChange}
-            toggleModal={this.toggleNewBeerModal}
-            beerName={this.state.beerName}
-            selectedBeerType={this.state.selectedBeerType}
-            brewery={this.state.brewery}
-            breweryLocation={this.state.breweryLocation}
-            beerUrl={this.state.beerUrl}
-          />
-        ) : null} */}
       </>
     );
   }
@@ -226,7 +149,6 @@ class Container extends React.Component {
 const mapStateToProps = state => ({
   beers: state.beers.beers,
   customers: state.customers.customers,
-  modalOpen: state.modal.modalOpen
 });
 
 export default connect(mapStateToProps)(Container);
