@@ -3,7 +3,6 @@ import Search from "../pages/Search";
 import Home from "../pages/Home";
 import Navigation from "../pages/Navigation";
 import BeerDisplay from "../components/BeerDisplay";
-import swal from "@sweetalert/with-react";
 import Backdrop from "../components/Backdrop";
 import RenderModal from "../components/RenderModal";
 
@@ -14,9 +13,7 @@ import {
 } from "../actions/beerActions";
 import {
   fetchCustomers,
-  deleteCustomer
 } from "../actions/customerActions";
-import { closeModal } from "../actions/modalActions";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // import { readString } from "react-papaparse";
@@ -57,36 +54,6 @@ class Container extends React.Component {
     }
   };
   
-
-  ///// Search Component Functions /////
-  handleDisplayBeer = () => {
-    this.setState({ displayBeer: !this.state.displayBeer });
-  };
-  updateSearch = event => {
-    this.setState({ search: event.target.value });
-  };
-  deleteCustomer = person => {
-    swal({
-      title: `Delete ${person.name.first}?`,
-      text: `Do you really want to delete this customer?`,
-      buttons: true,
-      icon: "warning",
-      dangerMode: true
-    }).then(willDelete => {
-      if (willDelete) {
-        swal(
-          `Boom! ${person.name.first} ${person.name.last} has been deleted!`,
-          {
-            icon: "success"
-          }
-        );
-        this.props.dispatch(deleteCustomer(person._id));
-      } else {
-        swal(`Phew! ${person.name.first} is safe!`);
-      }
-    });
-  };
-
   //// TEST SECTION ////
   calculateCompletedBeers = arr => {
     if (arr) {
@@ -105,39 +72,22 @@ class Container extends React.Component {
       <>
         <Router>
           <div>
-            <Navigation
-              
-              toggleNewBeerModal={this.toggleNewBeerModal}
-            />
+            <Navigation />
             <Switch>
               <Route exact path="/">
                 <Home />
               </Route>
               <Route path="/searchCustomers">
                 <Search
-                  search={this.state.search}
-                  updateSearch={this.updateSearch}
-                  toggleEditCustomerModal={this.toggleEditCustomerModal}
-                  toggleCustomerBeersModal={this.toggleCustomerBeersModal}
-                  customerBeersModalOpen={this.state.customerBeersModalOpen}
-                  handleDisplayBeer={this.handleDisplayBeer}
-                  displayBeer={this.state.displayBeer}
-                  deleteCustomer={this.deleteCustomer}
-                  updateCompletedBeers={this.updateCompletedBeers}
                   calculateCompletedBeers={this.calculateCompletedBeers}
-                  createNewUser={this.toggleNewCustomerModal}
                 />
               </Route>
               <Route path="/beersList">
-                <BeerDisplay
-                  toggleModal={this.toggleEditBeerModal}
-                  createNewBeer={this.toggleNewBeerModal}
-                />
+                <BeerDisplay />
               </Route>
             </Switch>
           </div>
         </Router>
-
         {/* Modal Displays */}
         <Backdrop></Backdrop>
         <RenderModal />

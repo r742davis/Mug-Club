@@ -44,7 +44,6 @@ class EditCustomer extends Component {
   };
 
   checkCompletion = beers => {
-    console.log(beers);
     let value = true;
     for (let i = 0; i < beers.length; i++) {
       if (beers[i].finished === false) {

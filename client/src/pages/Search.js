@@ -1,81 +1,115 @@
-import React from "react";
+import React, { Component } from "react";
 import classes from "./styles/Search.module.css";
 import Customer from "../components/Customer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import swal from "@sweetalert/with-react";
 
 // Redux Imports
 import { connect } from "react-redux";
 import { openModal } from "../actions/modalActions";
-const actions = { openModal };
+import { deleteCustomer } from "../actions/customerActions";
+const actions = { openModal, deleteCustomer };
 
-const Search = props => {
-  let filteredCustomers = props.customers
-    ? props.customers.filter(customer => {
-        let strings =
-          customer.name.first
-            .toLowerCase()
-            .includes(props.search.toLowerCase()) ||
-          customer.name.last.toLowerCase().includes(props.search.toLowerCase());
-        // let numbers = customer.mugClub.cludId.includes(Number(props.search));
-        return strings;
-      })
-    : null;
+class Search extends Component {
+  state = {
+    search: "",
+  }
 
-  const mappedCustomers = filteredCustomers
-    ? filteredCustomers.map((person, index) => {
-        return (
-          <Customer
-            key={index}
-            name={person.name}
-            email={person.email}
-            username={person.username}
-            clubId={person.mugClub.clubId}
-            beers={person.mugClub.beers}
-            completed={person.mugClub.completed}
-            openModal={() =>
-              props.openModal("EDIT_CUSTOMER", person)
-            }
-            toggleCustomerBeersModal={() =>
-              props.toggleCustomerBeersModal(person)
-            }
-            customerBeersModalOpen={props.customerBeersModalOpen}
-            deleteCustomer={() => props.deleteCustomer(person)}
-            displayBeer={props.displayBeer}
-            handleDisplayBeer={props.handleDisplayBeer}
-            updateCompletedBeers={props.updateCompletedBeers}
-            calculateCompletedBeers={props.calculateCompletedBeers}
-          />
+  updateSearch = event => {
+    this.setState({ search: event.target.value });
+  };
+
+  deleteCustomer = customer => {
+    swal({
+      title: `Delete ${customer.name.first}?`,
+      text: `Do you really want to delete this customer?`,
+      buttons: true,
+      icon: "warning",
+      dangerMode: true
+    }).then(willDelete => {
+      if (willDelete) {
+        swal(
+          `Boom! ${customer.name.first} ${customer.name.last} has been deleted!`,
+          {
+            icon: "success"
+          }
         );
-      })
-    : null;
+        this.props.deleteCustomer(customer._id);
+      } else {
+        swal(`Phew! ${customer.name.first} is safe!`);
+      }
+    });
+  };
 
-  return (
-    <>
-      <div>
-        <div className={classes.InputContainer}>
-          <h1 className={classes.SearchTitle}>
-            Search Customers
-            <div className={classes.AddIcon} onClick={() => props.openModal("NEW_CUSTOMER")}>
-              <FontAwesomeIcon icon={faPlus} />
+  render() {
+    let filteredCustomers = this.props.customers
+      ? this.props.customers.filter(customer => {
+          let strings =
+            customer.name.first
+              .toLowerCase()
+              .includes(this.state.search.toLowerCase()) ||
+            customer.name.last
+              .toLowerCase()
+              .includes(this.state.search.toLowerCase());
+          // let numbers = customer.mugClub.cludId.includes(Number(this.props.search));
+          return strings;
+        })
+      : null;
+
+    const mappedCustomers = filteredCustomers
+      ? filteredCustomers.map((customer, index) => {
+          return (
+            <Customer
+              key={index}
+              name={customer.name}
+              email={customer.email}
+              username={customer.username}
+              clubId={customer.mugClub.clubId}
+              beers={customer.mugClub.beers}
+              completed={customer.mugClub.completed}
+              openModal={() => this.props.openModal("EDIT_CUSTOMER", customer)}
+              openBeerModal={() =>
+                this.props.toggleCustomerBeersModal(customer)
+              }
+              
+              updateCompletedBeers={this.props.updateCompletedBeers}
+              calculateCompletedBeers={this.props.calculateCompletedBeers}
+              deleteCustomer={() => this.deleteCustomer(customer)}
+            />
+          );
+        })
+      : null;
+    return (
+      <>
+        <div>
+          <div className={classes.InputContainer}>
+            <h1 className={classes.SearchTitle}>
+              Search Customers
+              <div
+                className={classes.AddIcon}
+                onClick={() => this.props.openModal("NEW_CUSTOMER")}
+              >
+                <FontAwesomeIcon icon={faPlus} />
+              </div>
+            </h1>
+            <input
+              type="text"
+              name="search"
+              className={classes.Input}
+              value={this.state.search}
+              onChange={this.updateSearch}
+            />
+
+            <div className={classes.CustomerContainer}>
+              {this.state.search && mappedCustomers}
             </div>
-          </h1>
-          <input
-            type="text"
-            name="search"
-            className={classes.Input}
-            value={props.search}
-            onChange={props.updateSearch}
-          />
-
-          <div className={classes.CustomerContainer}>
-            {props.search ? mappedCustomers : null}
           </div>
         </div>
-      </div>
-    </>
-  );
-};
+      </>
+    );
+  }
+}
 
 const mapStateToProps = state => ({
   customers: state.customers.customers

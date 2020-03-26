@@ -43,7 +43,10 @@ const Customer = props => {
         >
           <FontAwesomeIcon icon={faPencilAlt} />
         </button>
-        <button className={classes.DeleteButton} onClick={props.deleteCustomer}>
+        <button 
+          className={classes.DeleteButton}
+          onClick={props.deleteCustomer}
+        >
           <FontAwesomeIcon icon={faTrashAlt} />
         </button>
       </span>
