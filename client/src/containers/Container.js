@@ -142,67 +142,40 @@ class Container extends React.Component {
     }
   };
 
-  // handleEditBeerSubmit = async e => {
-  //   e.preventDefault();
-  //   const updatedBeer = {
-  //     name: this.state.beerName,
-  //     type: this.state.beerType,
-  //     brewery: this.state.brewery,
-  //     breweryLocation: this.state.breweryLocation,
-  //     url: this.state.beerUrl
-  //   };
+  handleEditBeerSubmit = async e => {
+    e.preventDefault();
+    const updatedBeer = {
+      name: this.state.beerName,
+      type: this.state.beerType,
+      brewery: this.state.brewery,
+      breweryLocation: this.state.breweryLocation,
+      url: this.state.beerUrl
+    };
 
-  //   try {
-  //     const beerURL = "http://localhost:5000/beers/" + this.state.beerId;
-  //     await axios.put(beerURL, updatedBeer, { crossDomain: true });
-  //     await this.props.dispatch(updateBeer());
-  //     swal({
-  //       title: `You've updated the ${this.state.beerName} Beer`,
-  //       icon: "success",
-  //       button: "Sweet!"
-  //     });
-  //     this.clearBeerState();
-  //     this.setState({
-  //       editBeerModalOpen: false
-  //     });
-  //   } catch (e) {
-  //     console.log(e);
-  //     swal({
-  //       title: `Oops! Something went wrong :(`,
-  //       icon: "fail",
-  //       button: "Crap!"
-  //     });
-  //   }
-  // };
-
-  //// Customer creation and edit functions ////
-  // updateCompletedBeers = checkedArr => {
-  //   let updatedArr = this.state.customerBeers;
-  //   for (let k = 0; k < updatedArr.length; k++) {
-  //     for (let h = 1; h < checkedArr.length; h++) {
-  //       if (updatedArr[k]._id === checkedArr[h]._id) {
-  //         updatedArr[k].finished = true;
-  //       }
-  //     }
-  //   }
-  //   this.setState({
-  //     customerBeers: updatedArr
-  //   });
-  // };
-
-  checkCompletion = beers => {
-    console.log(beers);
-    let value = true;
-    for (let i = 0; i < beers.length; i++) {
-      if (beers[i].finished === false) {
-        return (value = false);
-      }
-    }
-    if (value === true) {
-      this.state.completed = true;
+    try {
+      const beerURL = "http://localhost:5000/beers/" + this.state.beerId;
+      await axios.put(beerURL, updatedBeer, { crossDomain: true });
+      await this.props.dispatch(updateBeer());
+      swal({
+        title: `You've updated the ${this.state.beerName} Beer`,
+        icon: "success",
+        button: "Sweet!"
+      });
+      this.clearBeerState();
+      this.setState({
+        editBeerModalOpen: false
+      });
+    } catch (e) {
+      console.log(e);
+      swal({
+        title: `Oops! Something went wrong :(`,
+        icon: "fail",
+        button: "Crap!"
+      });
     }
   };
 
+  // Customer creation and edit functions ////
   handleNewCustomerSubmit = async e => {
     e.preventDefault();
     const newCustomer = {
@@ -236,45 +209,7 @@ class Container extends React.Component {
       });
     }
   };
-  // handleEditCustomerSubmit = async (e, checkedArr) => {
-  //   e.preventDefault();
-  //   await this.updateCompletedBeers(checkedArr);
-  //   await this.checkCompletion(this.state.customerBeers);
-  //   const updatedCustomer = await {
-  //     name: {
-  //       first: this.state.firstName,
-  //       last: this.state.lastName
-  //     },
-  //     mugClub: {
-  //       clubId: this.state.clubId,
-  //       completed: this.state.completed,
-  //       beers: this.state.customerBeers
-  //     }
-  //   };
-
-  //   try {
-  //     await this.props.dispatch(
-  //       updateCustomer(updatedCustomer, this.state.customerId)
-  //     );
-  //     await this.props.dispatch(fetchCustomers());
-  //     swal({
-  //       title: `You've updated ${this.state.firstName} ${this.state.lastName}!`,
-  //       icon: "success",
-  //       button: "Ok!"
-  //     });
-  //     this.clearCustomerState();
-  //     this.setState({
-  //       editCustomerModalOpen: false
-  //     });
-  //   } catch (e) {
-  //     console.log(e);
-  //     swal({
-  //       title: `Oops! Something went wrong :(`,
-  //       icon: "fail",
-  //       button: "Crap!"
-  //     });
-  //   }
-  // };
+  
 
   //// Toggle Modals ////
   toggleNewBeerModal = async () => {
@@ -311,24 +246,6 @@ class Container extends React.Component {
   };
   toggleEditCustomerModal = customer => {
     this.props.dispatch(openModal(customer));
-    // this.setState({
-    //   editCustomerModalOpen: !this.state.editCustomerModalOpen
-    // });
-
-    if (customer.name?.first) {
-      const { name, mugClub } = customer;
-      this.setState({
-        customerId: customer._id,
-        firstName: name.first,
-        lastName: name.last,
-        clubId: mugClub.clubId,
-        completed: mugClub.completed,
-        customerBeers: mugClub.beers
-      });
-    }
-    if (!this.props.modalOpen) {
-      this.clearCustomerState();
-    }
   };
   toggleCustomerBeersModal = async customer => {
     await this.setState({
