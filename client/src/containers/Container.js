@@ -10,6 +10,7 @@ import NewBeerModal from "../components/NewBeerModal";
 import axios from "axios";
 import swal from "@sweetalert/with-react";
 import Backdrop from "../components/Backdrop";
+import RenderModal from "../components/RenderModal";
 
 import { connect } from "react-redux";
 import {
@@ -242,9 +243,16 @@ class Container extends React.Component {
           beerUrl: ""
         });
   };
-  toggleEditCustomerModal = customer => {
-    this.props.dispatch(openModal(customer));
+
+
+
+  toggleEditCustomerModal = (modalType, customer) => {
+    this.props.dispatch(openModal(modalType, customer));
   };
+
+
+
+
   toggleCustomerBeersModal = async customer => {
     await this.setState({
       customerBeersModalOpen: !this.state.customerBeersModalOpen
@@ -370,6 +378,7 @@ class Container extends React.Component {
         {/* Modal Displays */}
         <Backdrop modalOpen={this.props.modalOpen} closeModal={this.closeModal}></Backdrop>
         {this.props.modalOpen && <EditCustomer />}
+        <RenderModal />
         {this.state.newCustomerModalOpen ? (
           <NewCustomer
             handleSubmit={this.handleNewCustomerSubmit}

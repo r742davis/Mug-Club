@@ -1,6 +1,7 @@
 import { OPEN_MODAL, CLOSE_MODAL } from "../actions/action-types";
 
 const initialState = {
+  modalType: "",
   modalOpen: false,
   error: null,
   info: null
@@ -12,13 +13,15 @@ export default function modalReducer(state = initialState, action) {
       return {
         ...state,
         modalOpen: true,
-        info: action.payload,
+        modalType: action.payload.modalType,
+        info: action.payload.data,
         error: null
       };
     case CLOSE_MODAL:
       return {
         ...state,
         modalOpen: false,
+        modalType: "",
         info: null,
         error: null
       };

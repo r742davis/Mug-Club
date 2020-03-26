@@ -30,7 +30,7 @@ const Search = props => {
             beers={person.mugClub.beers}
             completed={person.mugClub.completed}
             toggleEditCustomerModal={() =>
-              props.toggleEditCustomerModal(person)
+              props.toggleEditCustomerModal("EDIT_CUSTOMER", person)
             }
             toggleCustomerBeersModal={() =>
               props.toggleCustomerBeersModal(person)
