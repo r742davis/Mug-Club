@@ -370,12 +370,7 @@ class Container extends React.Component {
 
         {/* Modal Displays */}
         <Backdrop modalOpen={modalOpen} closeModal={this.closeModal}></Backdrop>
-        {this.props.modalOpen ? (
-          <EditCustomer
-            completed={this.state.completed}
-            checkCompletedBeers={this.checkCompletedBeers}
-          />
-        ) : null}
+        {this.props.modalOpen && <EditCustomer />}
         {this.state.newCustomerModalOpen ? (
           <NewCustomer
             handleSubmit={this.handleNewCustomerSubmit}
