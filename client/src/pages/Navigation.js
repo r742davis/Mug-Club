@@ -57,7 +57,7 @@ class Navigation extends Component {
           </li>
           <li>
             <button
-              onClick={this.props.toggleNewBeerModal}
+              onClick={() => this.props.openModal("NEW_BEER")}
               className={classes.NewButton}
             >
               <FontAwesomeIcon icon={faPlus} /> New Beer

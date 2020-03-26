@@ -1,17 +1,18 @@
 import React from "react";
-import NewCustomer from "../components/NewCustomer";
-import EditCustomer from "../components/EditCustomer";
+// import NewCustomer from "../components/NewCustomer";
+// import EditCustomer from "../components/EditCustomer";
 import Search from "../pages/Search";
 import Home from "../pages/Home";
 import Navigation from "../pages/Navigation";
 import BeerDisplay from "../components/BeerDisplay";
-import EditBeerModal from "../components/EditBeerModal";
-import NewBeerModal from "../components/NewBeerModal";
+import EditBeer from "../components/EditBeer";
+// import NewBeer from "../components/NewBeer";
 import axios from "axios";
 import swal from "@sweetalert/with-react";
 import Backdrop from "../components/Backdrop";
 import RenderModal from "../components/RenderModal";
 
+// Redux Imports
 import { connect } from "react-redux";
 import {
   fetchBeers,
@@ -20,7 +21,6 @@ import {
 } from "../actions/beerActions";
 import {
   fetchCustomers,
-  createCustomer,
   deleteCustomer
 } from "../actions/customerActions";
 import { openModal, closeModal } from "../actions/modalActions";
@@ -33,12 +33,6 @@ class Container extends React.Component {
   state = {
     search: "",
     customer: "",
-    first: "",
-    last: "",
-    cludId: "",
-    customerId: "",
-    firstName: "",
-    lastName: "",
     customerBeers: [],
     completed: "",
     beerId: "",
@@ -49,8 +43,6 @@ class Container extends React.Component {
     beerUrl: "",
     selectedBeerType: "",
     editBeerModalOpen: false,
-    newBeerModalOpen: false,
-    newCustomerModalOpen: false,
     customerBeersModalOpen: false,
     displayBeer: false,
     isAuthenticated: false
@@ -89,26 +81,26 @@ class Container extends React.Component {
   };
 
   // Reset Beer or Customer State
-  clearBeerState = () => {
-    this.setState({
-      beerName: "",
-      beerType: "",
-      brewery: "",
-      breweryLocation: "",
-      beerUrl: "",
-      newBeerModalOpen: false
-    });
-  };
-  clearCustomerState = () => {
-    this.setState({
-      customerId: "",
-      firstName: "",
-      lastName: "",
-      clubId: "",
-      completed: "",
-      customerBeers: []
-    });
-  };
+  // clearBeerState = () => {
+  //   this.setState({
+  //     beerName: "",
+  //     beerType: "",
+  //     brewery: "",
+  //     breweryLocation: "",
+  //     beerUrl: "",
+  //     newBeerModalOpen: false
+  //   });
+  // };
+  // clearCustomerState = () => {
+  //   this.setState({
+  //     customerId: "",
+  //     firstName: "",
+  //     lastName: "",
+  //     clubId: "",
+  //     completed: "",
+  //     customerBeers: []
+  //   });
+  // };
 
   ///// Beer Submissions ////
   handleNewBeerSubmit = async event => {
@@ -140,38 +132,38 @@ class Container extends React.Component {
     }
   };
 
-  handleEditBeerSubmit = async e => {
-    e.preventDefault();
-    const updatedBeer = {
-      name: this.state.beerName,
-      type: this.state.beerType,
-      brewery: this.state.brewery,
-      breweryLocation: this.state.breweryLocation,
-      url: this.state.beerUrl
-    };
+  // handleEditBeerSubmit = async e => {
+  //   e.preventDefault();
+  //   const updatedBeer = {
+  //     name: this.state.beerName,
+  //     type: this.state.beerType,
+  //     brewery: this.state.brewery,
+  //     breweryLocation: this.state.breweryLocation,
+  //     url: this.state.beerUrl
+  //   };
 
-    try {
-      const beerURL = "http://localhost:5000/beers/" + this.state.beerId;
-      await axios.put(beerURL, updatedBeer, { crossDomain: true });
-      await this.props.dispatch(updateBeer());
-      swal({
-        title: `You've updated the ${this.state.beerName} Beer`,
-        icon: "success",
-        button: "Sweet!"
-      });
-      this.clearBeerState();
-      this.setState({
-        editBeerModalOpen: false
-      });
-    } catch (e) {
-      console.log(e);
-      swal({
-        title: `Oops! Something went wrong :(`,
-        icon: "fail",
-        button: "Crap!"
-      });
-    }
-  };
+  //   try {
+  //     const beerURL = "http://localhost:5000/beers/" + this.state.beerId;
+  //     await axios.put(beerURL, updatedBeer, { crossDomain: true });
+  //     await this.props.dispatch(updateBeer());
+  //     swal({
+  //       title: `You've updated the ${this.state.beerName} Beer`,
+  //       icon: "success",
+  //       button: "Sweet!"
+  //     });
+  //     this.clearBeerState();
+  //     this.setState({
+  //       editBeerModalOpen: false
+  //     });
+  //   } catch (e) {
+  //     console.log(e);
+  //     swal({
+  //       title: `Oops! Something went wrong :(`,
+  //       icon: "fail",
+  //       button: "Crap!"
+  //     });
+  //   }
+  // };
 
   // Customer creation and edit functions ////
   // handleNewCustomerSubmit = async e => {
@@ -210,68 +202,68 @@ class Container extends React.Component {
   
 
   //// Toggle Modals ////
-  toggleNewBeerModal = async () => {
-    await this.setState({
-      newBeerModalOpen: !this.state.newBeerModalOpen
-    });
-  };
-  toggleNewCustomerModal = async event => {
-    await this.setState({
-      newCustomerModalOpen: !this.state.newCustomerModalOpen
-    });
-  };
-  toggleEditBeerModal = async beer => {
-    await this.setState({
-      editBeerModalOpen: !this.state.editBeerModalOpen
-    });
-    this.state.editBeerModalOpen
-      ? await this.setState({
-          beerId: beer._id,
-          beerName: beer.name,
-          beerType: beer.type,
-          brewery: beer.brewery,
-          breweryLocation: beer.breweryLocation,
-          beerUrl: beer.url
-        })
-      : await this.setState({
-          beerId: "",
-          beerName: "",
-          beerType: "",
-          brewery: "",
-          breweryLocation: "",
-          beerUrl: ""
-        });
-  };
+  // toggleNewBeerModal = async () => {
+  //   await this.setState({
+  //     newBeerModalOpen: !this.state.newBeerModalOpen
+  //   });
+  // };
+  // toggleNewCustomerModal = async event => {
+  //   await this.setState({
+  //     newCustomerModalOpen: !this.state.newCustomerModalOpen
+  //   });
+  // };
+  // toggleEditBeerModal = async beer => {
+  //   await this.setState({
+  //     editBeerModalOpen: !this.state.editBeerModalOpen
+  //   });
+  //   this.state.editBeerModalOpen
+  //     ? await this.setState({
+  //         beerId: beer._id,
+  //         beerName: beer.name,
+  //         beerType: beer.type,
+  //         brewery: beer.brewery,
+  //         breweryLocation: beer.breweryLocation,
+  //         beerUrl: beer.url
+  //       })
+  //     : await this.setState({
+  //         beerId: "",
+  //         beerName: "",
+  //         beerType: "",
+  //         brewery: "",
+  //         breweryLocation: "",
+  //         beerUrl: ""
+  //       });
+  // };
 
 
 
-  toggleEditCustomerModal = (modalType, customer) => {
-    this.props.dispatch(openModal(modalType, customer));
-  };
+  // toggleEditCustomerModal = (modalType, customer) => {
+  //   this.props.dispatch(openModal(modalType, customer));
+  // };
 
 
 
 
-  toggleCustomerBeersModal = async customer => {
-    await this.setState({
-      customerBeersModalOpen: !this.state.customerBeersModalOpen
-    });
+  // toggleCustomerBeersModal = async customer => {
+  //   await this.setState({
+  //     customerBeersModalOpen: !this.state.customerBeersModalOpen
+  //   });
 
-    if (customer.name?.first) {
-      const { name, mugClub } = customer;
-      await this.setState({
-        customerId: customer._id,
-        firstName: name.first,
-        lastName: name.last,
-        clubId: mugClub.clubId,
-        completed: mugClub.completed,
-        customerBeers: mugClub.beers
-      });
-    }
-    if (!this.state.customerBeersModalOpen) {
-      this.clearCustomerState();
-    }
-  };
+  //   if (customer.name?.first) {
+  //     const { name, mugClub } = customer;
+  //     await this.setState({
+  //       customerId: customer._id,
+  //       firstName: name.first,
+  //       lastName: name.last,
+  //       clubId: mugClub.clubId,
+  //       completed: mugClub.completed,
+  //       customerBeers: mugClub.beers
+  //     });
+  //   }
+  //   if (!this.state.customerBeersModalOpen) {
+  //     this.clearCustomerState();
+  //   }
+  // };
 
   ///// Search Component Functions /////
   handleDisplayBeer = () => {
@@ -342,7 +334,7 @@ class Container extends React.Component {
         <Router>
           <div>
             <Navigation
-              toggleNewCustomerModal={this.toggleNewCustomerModal}
+              
               toggleNewBeerModal={this.toggleNewBeerModal}
             />
             <Switch>
@@ -388,8 +380,8 @@ class Container extends React.Component {
             clubId={this.state.clubId}
           />
         ) : null} */}
-        {this.state.editBeerModalOpen ? (
-          <EditBeerModal
+        {/* {this.state.editBeerModalOpen ? (
+          <EditBeer
             handleSubmit={this.handleEditBeerSubmit}
             deleteBeer={this.deleteBeer}
             handleInputChange={this.handleInputChange}
@@ -402,9 +394,9 @@ class Container extends React.Component {
             breweryLocation={this.state.breweryLocation}
             beerUrl={this.state.beerUrl}
           />
-        ) : null}
-        {this.state.newBeerModalOpen ? (
-          <NewBeerModal
+        ) : null} */}
+        {/* {this.state.newBeerModalOpen ? (
+          <NewBeer
             handleSubmit={this.handleNewBeerSubmit}
             handleInputChange={this.handleInputChange}
             toggleModal={this.toggleNewBeerModal}
@@ -414,7 +406,7 @@ class Container extends React.Component {
             breweryLocation={this.state.breweryLocation}
             beerUrl={this.state.beerUrl}
           />
-        ) : null}
+        ) : null} */}
       </>
     );
   }

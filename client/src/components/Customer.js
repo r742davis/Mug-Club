@@ -39,7 +39,7 @@ const Customer = props => {
       <span className={classes.ButtonContainer}>
         <button
           className={classes.EditButton}
-          onClick={props.toggleEditCustomerModal}
+          onClick={props.openModal}
         >
           <FontAwesomeIcon icon={faPencilAlt} />
         </button>

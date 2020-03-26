@@ -1,13 +1,15 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
-import { clearErrors } from "../actions/errorActions";
-import { login } from "../actions/authActions";
-import PropTypes from "prop-types";
 import classes from "./styles/Login.module.css";
+import { Redirect } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
-import { register } from "../actions/authActions";
+
+// Redux Imports
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { clearErrors } from "../actions/errorActions";
+import { login, register } from "../actions/authActions";
+const actions = { login, register, clearErrors };
 
 class Login extends Component {
   state = {
@@ -233,6 +235,6 @@ const mapStateToProps = state => ({
   error: state.error
 });
 
-export default connect(mapStateToProps, { login, register, clearErrors })(
+export default connect(mapStateToProps, actions)(
   Login
 );

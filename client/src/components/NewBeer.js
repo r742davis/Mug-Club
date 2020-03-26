@@ -1,30 +1,58 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
+import Grow from "@material-ui/core/Grow";
 import classes from "./styles/Modals.module.css";
 import { typeMap } from "../lib/TypeMap";
-import Grow from "@material-ui/core/Grow";
-import { deleteBeer } from "../actions/beerActions";
 import swal from "@sweetalert/with-react";
 
-class EditBeerModal extends Component {
-  deleteBeerAlert = () => {
-    swal({
-      title: `Delete ${this.props.beerName}?`,
-      text: `Do you really want to delete this beer?`,
-      buttons: true,
-      icon: "warning",
-      dangerMode: true
-    }).then(willDelete => {
-      if (willDelete) {
-        swal(`Hasta la Vista! ${this.props.beerName} has been deleted!`, {
-          icon: "success"
-        });
-        this.props.deleteBeer(this.props.id);
-        this.props.toggleModal();
-      } else {
-        swal(`Today is your luck day, you sweet sweet miracle drink!`);
-      }
-    });
+// Redux Imports
+import { connect } from "react-redux";
+import { openModal, closeModal } from "../actions/modalActions";
+import { createBeer, fetchBeers } from "../actions/beerActions";
+const actions = {
+  openModal,
+  closeModal,
+  createBeer,
+  fetchBeers
+};
+
+class NewBeerModal extends Component {
+  state = {};
+
+  static propTypes = {};
+
+  handleInputChange = e => {
+    const target = e.target;
+    const name = target.name;
+    this.setState({ [name]: e.target.value });
+  };
+
+  handleSubmit = async e => {
+    e.preventDefault();
+    try {
+      const newBeer = {
+        name: this.state.name,
+        type: this.state.type,
+        brewery: this.state.brewery,
+        breweryLocation: this.state.breweryLocation,
+        url: this.state.beerUrl,
+        finished: false
+      };
+      await this.props.createBeer(newBeer);
+      swal({
+        title: `${this.state.name} has been created!`,
+        icon: "success",
+        button: "Cool!"
+      });
+      await this.props.fetchBeers();
+      this.props.closeModal()
+    } catch (e) {
+      console.error(e);
+      swal({
+        title: `Oops! Something went wrong :(`,
+        icon: "fail",
+        button: "Crap!"
+      });
+    }
   };
 
   render() {
@@ -32,12 +60,7 @@ class EditBeerModal extends Component {
       <section className={classes.ModalContainer}>
         <Grow in={true}>
           <div className={classes.Modal}>
-            <h2 className={classes.ModalTitle}>Edit Beer</h2>
-            <img
-              className={classes.ModalImage}
-              src={this.props.beerUrl}
-              alt={this.props.beerName}
-            />
+            <h2 className={classes.ModalTitle}>Create New Beer</h2>
             <form
               className={classes.ModalForm}
               onSubmit={e => this.props.handleSubmit(e)}
@@ -45,42 +68,45 @@ class EditBeerModal extends Component {
               <div className={classes.Group}>
                 <input
                   type="text"
-                  name="beerName"
+                  name="name"
                   className={classes.Input}
-                  value={this.props.beerName}
-                  onChange={this.props.handleInputChange}
+                  value={this.state.name}
+                  onChange={this.handleInputChange}
                   required
                 />
                 <span className={classes.Bar}></span>
-                <label htmlFor="beerName" className={classes.Label}>
+                <label htmlFor="name" className={classes.Label}>
                   Beer Name
                 </label>
               </div>
+
               <div className={classes.Group}>
-                <label htmlFor="beerType" className={classes.ListLabel}>
+                <label htmlFor="type" className={classes.SelectLabel}>
                   Type
                 </label>
                 <select
-                  name="beerType"
+                  name="type"
                   className={classes.Select}
-                  onChange={this.props.handleInputChange}
-                  value={this.props.beerType}
+                  onChange={this.handleInputChange}
+                  value={this.state.type}
+                  placeholder="Select Type of Beer"
                 >
                   <optgroup label="Current Beer Type">
-                    <option value={this.props.beerType}>
-                      {this.props.beerType}
+                    <option value={this.state.type}>
+                      {this.state.type}
                     </option>
                   </optgroup>
                   {typeMap}
                 </select>
               </div>
+
               <div className={classes.Group}>
                 <input
                   type="text"
                   name="brewery"
                   className={classes.Input}
-                  value={this.props.brewery}
-                  onChange={this.props.handleInputChange}
+                  value={this.state.brewery}
+                  onChange={this.handleInputChange}
                   required
                 />
                 <span className={classes.Bar}></span>
@@ -88,13 +114,14 @@ class EditBeerModal extends Component {
                   Brewery
                 </label>
               </div>
+
               <div className={classes.Group}>
                 <input
                   type="text"
                   name="breweryLocation"
                   className={classes.Input}
-                  value={this.props.breweryLocation}
-                  onChange={this.props.handleInputChange}
+                  value={this.state.breweryLocation}
+                  onChange={this.handleInputChange}
                   required
                 />
                 <span className={classes.Bar}></span>
@@ -102,13 +129,14 @@ class EditBeerModal extends Component {
                   Brewery Location
                 </label>
               </div>
+
               <div className={classes.Group}>
                 <input
                   type="text"
                   name="beerUrl"
                   className={classes.Input}
-                  value={this.props.beerUrl}
-                  onChange={this.props.handleInputChange}
+                  value={this.state.beerUrl}
+                  onChange={this.handleInputChange}
                   required
                 />
                 <span className={classes.Bar}></span>
@@ -116,25 +144,20 @@ class EditBeerModal extends Component {
                   Beer/Brewery Image URL
                 </label>
               </div>
-              <button
-                onClick={this.props.handleEditBeerSubmit}
+              <input
+                type="submit"
+                value="Create New Beer"
+                onClick={e => this.handleSubmit(e)}
                 className={classes.EditButton}
-              >
-                Submit Edit
-              </button>
-              <button
-                onClick={this.props.toggleModal}
+              />
+              <input
+                type="submit"
+                value="Cancel"
+                onClick={() => this.props.closeModal()}
                 className={classes.CancelButton}
-              >
-                Cancel
-              </button>
+                formNoValidate
+              />
             </form>
-            <button
-              onClick={() => this.deleteBeerAlert()}
-              className={classes.CancelButton}
-            >
-              Delete
-            </button>
           </div>
         </Grow>
       </section>
@@ -142,9 +165,6 @@ class EditBeerModal extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated,
-  error: state.error
-});
+const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, { deleteBeer })(EditBeerModal);
+export default connect(mapStateToProps, actions)(NewBeerModal);

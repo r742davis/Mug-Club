@@ -1,12 +1,16 @@
 import React from "react";
+import classes from "./styles/BeerDisplay.module.css";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
-import classes from "./styles/BeerDisplay.module.css";
-import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+
+// Redux Imports
+import { connect } from "react-redux";
+import { openModal } from "../actions/modalActions";
+const actions = { openModal };
 const uniqid = require("uniqid");
 
 const BeerDisplay = props => {
@@ -36,7 +40,7 @@ const BeerDisplay = props => {
     <section className={classes.DisplayContainer}>
       <h1 className={classes.BeersTitle}>
         Current Beers
-        <div className={classes.AddIcon} onClick={props.createNewBeer}>
+        <div className={classes.AddIcon} onClick={() => props.openModal("NEW_BEER")}>
           <FontAwesomeIcon icon={faPlus} />
         </div>
       </h1>
@@ -51,4 +55,4 @@ const mapStateToProps = state => ({
   beers: state.beers.beers
 });
 
-export default connect(mapStateToProps)(BeerDisplay);
+export default connect(mapStateToProps, actions)(BeerDisplay);

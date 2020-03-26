@@ -1,7 +1,11 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import EditCustomer from "./EditCustomer";
 import NewCustomer from "./NewCustomer";
+import EditBeer from "./EditBeer";
+import NewBeer from "./NewBeer";
+
+// Redux Imports
+import { connect } from "react-redux";
 
 class RenderModal extends Component {
   render() {
@@ -11,16 +15,13 @@ class RenderModal extends Component {
         return <EditCustomer />;
         break;
       case "NEW_CUSTOMER":
-        console.log("New Customer");
-        return <NewCustomer />
+        return <NewCustomer />;
         break;
       case "EDIT_BEER":
-        console.log("Edit Beer");
-        return <></>;
+        return <EditBeer />;
         break;
       case "NEW_BEER":
-        console.log("New Beer");
-        return <></>;
+        return <NewBeer />;
         break;
       case "BEER_LIST":
         console.log("Beer List");

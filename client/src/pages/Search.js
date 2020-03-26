@@ -1,11 +1,11 @@
 import React from "react";
-import { connect } from "react-redux";
-import Customer from "../components/Customer";
 import classes from "./styles/Search.module.css";
+import Customer from "../components/Customer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 // Redux Imports
+import { connect } from "react-redux";
 import { openModal } from "../actions/modalActions";
 const actions = { openModal };
 
@@ -33,8 +33,8 @@ const Search = props => {
             clubId={person.mugClub.clubId}
             beers={person.mugClub.beers}
             completed={person.mugClub.completed}
-            toggleEditCustomerModal={() =>
-              props.toggleEditCustomerModal("EDIT_CUSTOMER", person)
+            openModal={() =>
+              props.openModal("EDIT_CUSTOMER", person)
             }
             toggleCustomerBeersModal={() =>
               props.toggleCustomerBeersModal(person)

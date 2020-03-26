@@ -8,6 +8,11 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Checkbox from "@material-ui/core/Checkbox";
 import Avatar from "@material-ui/core/Avatar";
 import styles from "./styles/Modals.module.css";
+
+// Redux Imports
+import { connect } from "react-redux";
+import { openModal, closeModal } from "../actions/modalActions";
+const actions = { openModal, closeModal };
 const uniqid = require("uniqid");
 
 const useStyles = makeStyles(theme => ({
@@ -49,7 +54,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function CheckboxListSecondary(props) {
+function BeerList(props) {
   const classes = useStyles();
   const [checked, setChecked] = React.useState([-1]);
 
@@ -65,7 +70,6 @@ export default function CheckboxListSecondary(props) {
   };
 
   const mappedBeers = props.beers.map(beer => {
-    const labelId = `checkbox-list-secondary-label-${beer.id}`;
     return (
       <ListItem
         key={uniqid()}
@@ -95,7 +99,6 @@ export default function CheckboxListSecondary(props) {
             className={classes.checkbox}
             checked={beer.finished || checked.indexOf(beer) !== -1}
             disabled={beer.finished}
-            inputProps={{ "aria-labelledby": labelId }}
           />
         </ListItemIcon>
       </ListItem>
@@ -108,16 +111,23 @@ export default function CheckboxListSecondary(props) {
         {mappedBeers}
       </List>
       <div className={classes.buttonContainer}>
-        <button
+        <input
+          type="submit"
+          value="Submit Edit"
           onClick={e => props.handleSubmit(e, checked)}
           className={styles.EditButton}
-        >
-          Submit Edit
-        </button>
-        <button onClick={props.toggleModal} className={styles.CancelButton}>
-          Cancel
-        </button>
+        />
+        <input
+          type="submit"
+          value="Cancel"
+          onClick={() => props.closeModal()}
+          className={styles.CancelButton}
+        />
       </div>
     </>
   );
 }
+
+const mapStateToProps = state => ({});
+
+export default connect(mapStateToProps, actions)(BeerList);
