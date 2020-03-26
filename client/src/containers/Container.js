@@ -174,39 +174,39 @@ class Container extends React.Component {
   };
 
   // Customer creation and edit functions ////
-  handleNewCustomerSubmit = async e => {
-    e.preventDefault();
-    const newCustomer = {
-      name: {
-        first: this.state.firstName,
-        last: this.state.lastName
-      },
-      mugClub: {
-        clubId: this.state.clubId
-      }
-    };
-    try {
-      console.log("Saing customer...");
-      this.props.dispatch(createCustomer(newCustomer));
-      this.props.dispatch(fetchCustomers());
-      swal({
-        title: `${this.state.firstName} has been created!`,
-        icon: "success",
-        button: "Ok!"
-      });
-      this.clearCustomerState();
-      this.setState({
-        newCustomerModalOpen: false
-      });
-    } catch (e) {
-      console.log(e);
-      swal({
-        title: `Oops! Something went wrong :(`,
-        icon: "fail",
-        button: "Crap!"
-      });
-    }
-  };
+  // handleNewCustomerSubmit = async e => {
+  //   e.preventDefault();
+  //   const newCustomer = {
+  //     name: {
+  //       first: this.state.firstName,
+  //       last: this.state.lastName
+  //     },
+  //     mugClub: {
+  //       clubId: this.state.clubId
+  //     }
+  //   };
+  //   try {
+  //     console.log("Saing customer...");
+  //     this.props.dispatch(createCustomer(newCustomer));
+  //     this.props.dispatch(fetchCustomers());
+  //     swal({
+  //       title: `${this.state.firstName} has been created!`,
+  //       icon: "success",
+  //       button: "Ok!"
+  //     });
+  //     this.clearCustomerState();
+  //     this.setState({
+  //       newCustomerModalOpen: false
+  //     });
+  //   } catch (e) {
+  //     console.log(e);
+  //     swal({
+  //       title: `Oops! Something went wrong :(`,
+  //       icon: "fail",
+  //       button: "Crap!"
+  //     });
+  //   }
+  // };
   
 
   //// Toggle Modals ////
@@ -378,7 +378,7 @@ class Container extends React.Component {
         <Backdrop modalOpen={this.props.modalOpen} closeModal={this.closeModal}></Backdrop>
         {/* {this.props.modalOpen && <EditCustomer />} */}
         <RenderModal />
-        {this.state.newCustomerModalOpen ? (
+        {/* {this.state.newCustomerModalOpen ? (
           <NewCustomer
             handleSubmit={this.handleNewCustomerSubmit}
             toggleModal={this.toggleNewCustomerModal}
@@ -387,7 +387,7 @@ class Container extends React.Component {
             lastName={this.state.lastName}
             clubId={this.state.clubId}
           />
-        ) : null}
+        ) : null} */}
         {this.state.editBeerModalOpen ? (
           <EditBeerModal
             handleSubmit={this.handleEditBeerSubmit}

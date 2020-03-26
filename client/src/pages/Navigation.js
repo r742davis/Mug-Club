@@ -1,17 +1,19 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import classes from "./styles/Navigation.module.css";
-import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
-import { logout } from "../actions/authActions";
-import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
+// Redux Imports
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { openModal } from "../actions/modalActions";
+import { logout } from "../actions/authActions";
+const actions = { logout, openModal };
+
 class Navigation extends Component {
-  state = {
-    navigate: false
-  };
+  state = {};
 
   static propTypes = {
     auth: PropTypes.object.isRequired,
@@ -47,7 +49,7 @@ class Navigation extends Component {
           </li>
           <li className={classes.item}>
             <button
-              onClick={this.props.toggleNewCustomerModal}
+              onClick={() => this.props.openModal("NEW_CUSTOMER")}
               className={classes.NewButton}
             >
               <FontAwesomeIcon icon={faPlus} /> New Customer
@@ -80,4 +82,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { logout })(Navigation);
+export default connect(mapStateToProps, actions)(Navigation);

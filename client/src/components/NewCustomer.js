@@ -1,13 +1,57 @@
 import React, { Component } from "react";
 import Grow from "@material-ui/core/Grow";
 import classes from "./styles/Modals.module.css";
+import swal from "@sweetalert/with-react";
 
 // Redux Imports
 import { connect } from "react-redux";
 import { closeModal } from "../actions/modalActions";
-const actions = { closeModal };
+import { createCustomer, fetchCustomers } from "../actions/customerActions";
+const actions = { closeModal, createCustomer, fetchCustomers };
 
 class NewCustomer extends Component {
+  state = {};
+
+  static propTypes = {};
+
+  handleInputChange = e => {
+    const target = e.target;
+    const name = target.name;
+    this.setState({ [name]: e.target.value });
+  };
+
+  handleSubmit = async e => {
+    e.preventDefault();
+    const newCustomer = {
+      name: {
+        first: this.state.first,
+        last: this.state.last
+      },
+      mugClub: {
+        clubId: this.state.clubId
+      }
+    };
+    try {
+      console.log("Saing customer...");
+      this.props.createCustomer(newCustomer);
+      this.props.fetchCustomers();
+      swal({
+        title: `${this.state.first} has been created!`,
+        icon: "success",
+        button: "Ok!"
+      });
+      this.props.closeModal();
+      console.log("Customer saved!");
+    } catch (e) {
+      console.log(e);
+      swal({
+        title: `Oops! Something went wrong :(`,
+        icon: "fail",
+        button: "Crap!"
+      });
+    }
+  };
+
   render() {
     return (
       <>
@@ -17,33 +61,33 @@ class NewCustomer extends Component {
               <h2 className={classes.ModalTitle}>Add New Customer</h2>
               <form
                 className={classes.ModalForm}
-                onSubmit={e => this.props.handleSubmit(e)}
+                onSubmit={e => this.handleSubmit(e)}
               >
                 <div className={classes.Group}>
                   <input
                     type="text"
-                    name="firstName"
+                    name="first"
                     className={classes.Input}
-                    value={this.props.firstName}
-                    onChange={this.props.handleInputChange}
+                    defaultValue={this.state.first}
+                    onChange={this.handleInputChange}
                     required
                   />
                   <span className={classes.Bar}></span>
-                  <label htmlFor="firstName" className={classes.Label}>
+                  <label htmlFor="first" className={classes.Label}>
                     First Name
                   </label>
                 </div>
                 <div className={classes.Group}>
                   <input
                     type="text"
-                    name="lastName"
+                    name="last"
                     className={classes.Input}
-                    value={this.props.lastName}
-                    onChange={this.props.handleInputChange}
+                    defaultValue={this.state.last}
+                    onChange={this.handleInputChange}
                     required
                   />
                   <span className={classes.Bar}></span>
-                  <label htmlFor="lastName" className={classes.Label}>
+                  <label htmlFor="last" className={classes.Label}>
                     Last Name
                   </label>
                 </div>
@@ -52,8 +96,8 @@ class NewCustomer extends Component {
                     type="text"
                     name="clubId"
                     className={classes.Input}
-                    value={this.props.clubId}
-                    onChange={this.props.handleInputChange}
+                    defaultValue={this.state.clubId}
+                    onChange={this.handleInputChange}
                     required
                   />
                   <span className={classes.Bar}></span>
