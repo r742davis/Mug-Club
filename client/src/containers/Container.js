@@ -51,7 +51,6 @@ class Container extends React.Component {
     editBeerModalOpen: false,
     newBeerModalOpen: false,
     newCustomerModalOpen: false,
-    editCustomerModalOpen: false,
     customerBeersModalOpen: false,
     displayBeer: false,
     isAuthenticated: false
@@ -328,16 +327,16 @@ class Container extends React.Component {
   };
 
   render() {
-    let modalOpen = false;
-    if (
-      this.state.editBeerModalOpen ||
-      this.state.editCustomerModalOpen ||
-      this.state.newCustomerModalOpen ||
-      this.state.newBeerModalOpen ||
-      this.props.modalOpen
-    ) {
-      modalOpen = true;
-    }
+    // let modalOpen = false;
+    // if (
+    //   this.state.editBeerModalOpen ||
+    //   this.state.editCustomerModalOpen ||
+    //   this.state.newCustomerModalOpen ||
+    //   this.state.newBeerModalOpen ||
+    //   this.props.modalOpen
+    // ) {
+    //   modalOpen = true;
+    // }
     return (
       <>
         <Router>
@@ -377,7 +376,7 @@ class Container extends React.Component {
 
         {/* Modal Displays */}
         <Backdrop modalOpen={this.props.modalOpen} closeModal={this.closeModal}></Backdrop>
-        {this.props.modalOpen && <EditCustomer />}
+        {/* {this.props.modalOpen && <EditCustomer />} */}
         <RenderModal />
         {this.state.newCustomerModalOpen ? (
           <NewCustomer

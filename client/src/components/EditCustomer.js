@@ -26,7 +26,7 @@ class EditCustomer extends Component {
   };
 
   static propTypes = {
-    modalOpen: PropTypes.bool
+    
   };
 
   updateCompletedBeers = checkedArr => {
@@ -173,7 +173,6 @@ class EditCustomer extends Component {
 }
 
 const mapStateToProps = state => ({
-  modalOpen: state.modal.modalOpen,
   first: state.modal.info.name.first,
   last: state.modal.info.name.last,
   clubId: state.modal.info.mugClub.clubId,

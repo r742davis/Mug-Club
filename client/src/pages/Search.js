@@ -5,6 +5,10 @@ import classes from "./styles/Search.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
+// Redux Imports
+import { openModal } from "../actions/modalActions";
+const actions = { openModal };
+
 const Search = props => {
   let filteredCustomers = props.customers
     ? props.customers.filter(customer => {
@@ -52,7 +56,7 @@ const Search = props => {
         <div className={classes.InputContainer}>
           <h1 className={classes.SearchTitle}>
             Search Customers
-            <div className={classes.AddIcon} onClick={props.createNewUser}>
+            <div className={classes.AddIcon} onClick={() => props.openModal("NEW_CUSTOMER")}>
               <FontAwesomeIcon icon={faPlus} />
             </div>
           </h1>
@@ -77,4 +81,4 @@ const mapStateToProps = state => ({
   customers: state.customers.customers
 });
 
-export default connect(mapStateToProps)(Search);
+export default connect(mapStateToProps, actions)(Search);
