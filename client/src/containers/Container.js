@@ -47,7 +47,8 @@ class Container extends React.Component {
 
   render() {
     return (
-      <>
+      <> 
+      {/* Router Navigation */}
         <Router>
           <div>
             <Navigation />
@@ -64,7 +65,7 @@ class Container extends React.Component {
             </Switch>
           </div>
         </Router>
-        {/* Modal Displays */}
+      {/* Modal Displays */}
         <Backdrop></Backdrop>
         <RenderModal />
       </>

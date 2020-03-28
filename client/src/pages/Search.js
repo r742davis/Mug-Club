@@ -11,6 +11,8 @@ import { openModal } from "../actions/modalActions";
 import { deleteCustomer } from "../actions/customerActions";
 const actions = { openModal, deleteCustomer };
 
+const uniqid = require("uniqid");
+
 class Search extends Component {
   state = {
     search: "",
@@ -55,25 +57,37 @@ class Search extends Component {
   };
 
   render() {
-    let filteredCustomers = this.props.customers
-      ? this.props.customers.filter(customer => {
-          let strings =
-            customer.name.first
-              .toLowerCase()
-              .includes(this.state.search.toLowerCase()) ||
-            customer.name.last
-              .toLowerCase()
-              .includes(this.state.search.toLowerCase());
-          // let numbers = customer.mugClub.cludId.includes(Number(this.props.search));
+    let { search } = this.state;
+    let filteredCustomers;
+    if (this.props.customers && search) {
+      filteredCustomers = this.props.customers.filter(customer => {
+
+        let id = customer.mugClub.clubId.toString();
+        let number = search.includes(id);
+        console.log(id, number);
+        
+        let strings =
+          customer.name.first
+            .toLowerCase()
+            .includes(search.toLowerCase()) ||
+          customer.name.last
+            .toLowerCase()
+            .includes(search.toLowerCase());
+        
+        if (strings) {
           return strings;
-        })
-      : null;
+        }
+        if (number) {
+          return number;
+        }
+      })
+    }
 
     const mappedCustomers = filteredCustomers
       ? filteredCustomers.map((customer, index) => {
           return (
             <Customer
-              key={index}
+              key={uniqid()}
               name={customer.name}
               email={customer.email}
               username={customer.username}
