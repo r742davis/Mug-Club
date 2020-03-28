@@ -14,6 +14,16 @@ class NewCustomer extends Component {
 
   static propTypes = {};
 
+  customerIdCheck = customers => {
+    const enteredValue = this.state.clubId;
+    for (let i = 0; i < customers.length; i++) {
+      let id = customers[i].mugClub.clubId.toString();
+      if (id === enteredValue) {
+        return true;
+      }
+    }
+  };
+
   handleInputChange = e => {
     const target = e.target;
     const name = target.name;
@@ -22,33 +32,45 @@ class NewCustomer extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    const newCustomer = {
-      name: {
-        first: this.state.first,
-        last: this.state.last
-      },
-      mugClub: {
-        clubId: this.state.clubId
+
+    // Check if the submitted Mug Club Id is currently in the database
+    let value = this.customerIdCheck(this.props.customers);
+    if (value) {
+      swal({
+        title: `Mug Club Number ${this.state.clubId} is already taken.`,
+        text: "Please enter a new number.",
+        icon: "info",
+        button: "Ok"
+      });
+    } else {
+      const newCustomer = {
+        name: {
+          first: this.state.first,
+          last: this.state.last
+        },
+        mugClub: {
+          clubId: this.state.clubId
+        }
+      };
+      try {
+        console.log("Saing customer...");
+        this.props.createCustomer(newCustomer);
+        this.props.fetchCustomers();
+        swal({
+          title: `${this.state.first} has been created!`,
+          icon: "success",
+          button: "Ok!"
+        });
+        this.props.closeModal();
+        console.log("Customer saved!");
+      } catch (e) {
+        console.log(e);
+        swal({
+          title: `Oops! Something went wrong :(`,
+          icon: "info",
+          button: "Crap!"
+        });
       }
-    };
-    try {
-      console.log("Saing customer...");
-      this.props.createCustomer(newCustomer);
-      this.props.fetchCustomers();
-      swal({
-        title: `${this.state.first} has been created!`,
-        icon: "success",
-        button: "Ok!"
-      });
-      this.props.closeModal();
-      console.log("Customer saved!");
-    } catch (e) {
-      console.log(e);
-      swal({
-        title: `Oops! Something went wrong :(`,
-        icon: "fail",
-        button: "Crap!"
-      });
     }
   };
 
@@ -124,6 +146,8 @@ class NewCustomer extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  customers: state.customers.customers
+});
 
 export default connect(mapStateToProps, actions)(NewCustomer);
