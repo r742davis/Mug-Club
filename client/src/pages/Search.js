@@ -63,7 +63,7 @@ class Search extends Component {
       filteredCustomers = this.props.customers.filter(customer => {
 
         let id = customer.mugClub.clubId.toString();
-        let number = search.includes(id);
+        let number = search === id ? customer : null;
         console.log(id, number);
         
         let strings =
