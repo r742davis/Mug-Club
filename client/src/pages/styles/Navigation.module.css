@@ -67,7 +67,7 @@
   background: #B72E3E;
   color: white;
 }
-.burgerContainer {
+.hamburgerContainer {
   display: none;
 }
 
@@ -80,7 +80,7 @@
     display: none;
     width: 0;
   }
-  .burgerContainer {
+  .hamburgerContainer {
     display: flex;
     padding: .5rem;
   }

@@ -38,8 +38,6 @@ class Navigation extends Component {
     this.props.openModal(modalType); 
     this.toggleMenu();
   }
-  
-  
 
   render() {
     // const { isAuthenticated } = this.props.auth;
@@ -123,8 +121,10 @@ class Navigation extends Component {
           </li>
         </ul>
         }
-        <div className={classes.burgerContainer}>
-          <Burger isOpen={this.state.burgerOpen} onClick={() => this.toggleMenu()}/>
+        <div className={classes.hamburgerContainer}>
+          <Burger 
+            isOpen={this.state.burgerOpen} 
+            onClick={() => this.toggleMenu()}/>
         </div>
       </nav>
     )

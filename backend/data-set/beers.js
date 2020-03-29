@@ -4,7 +4,7 @@ const beersList = [
     type: "American Pale Ale",
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
-    url: "https://i.imgur.com/OCie6ls.png",
+    url: "https://i.imgur.com/5bLXtLP.png",
     finished: false
   },
   {
@@ -12,7 +12,7 @@ const beersList = [
     type: "Weissbier",
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
-    url: "https://i.imgur.com/OCie6ls.png",
+    url: "https://i.imgur.com/WXNVazi.png",
     finished: false
   },
   {
@@ -20,7 +20,7 @@ const beersList = [
     type: "American Stout",
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
-    url: "https://i.imgur.com/OCie6ls.png",
+    url: "https://i.imgur.com/Ken7GuF.jpg",
     finished: false
   },
   {
@@ -28,7 +28,7 @@ const beersList = [
     type: "American Porter",
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
-    url: "https://i.imgur.com/OCie6ls.png",
+    url: "https://i.imgur.com/txZEzTJ.jpg",
     finished: false
   },
   {
@@ -36,7 +36,7 @@ const beersList = [
     type: "Irish Stout",
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
-    url: "https://i.imgur.com/OCie6ls.png",
+    url: "https://i.imgur.com/5QmkdCb.png",
     finished: false
   },
   {
@@ -52,7 +52,7 @@ const beersList = [
     type: "American IPA",
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
-    url: "https://i.imgur.com/OCie6ls.png",
+    url: "https://i.imgur.com/866YExV.png",
     finished: false
   },
   {
@@ -60,7 +60,7 @@ const beersList = [
     type: "Gose",
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
-    url: "https://i.imgur.com/OCie6ls.png",
+    url: "https://i.imgur.com/BkD54Li.png",
     finished: false
   },
   {
@@ -68,7 +68,7 @@ const beersList = [
     type: "Double IPA",
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
-    url: "https://i.imgur.com/OCie6ls.png",
+    url: "https://i.imgur.com/O0z3mGr.jpg",
     finished: false
   },
   {
@@ -76,7 +76,7 @@ const beersList = [
     type: "American Lager",
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
-    url: "https://i.imgur.com/OCie6ls.png",
+    url: "https://i.imgur.com/XCw18zr.png",
     finished: false
   },
   {
@@ -84,7 +84,7 @@ const beersList = [
     type: "American IPA",
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
-    url: "https://i.imgur.com/OCie6ls.png",
+    url: "https://i.imgur.com/vrsClqs.jpg",
     finished: false
   },
   {
@@ -92,7 +92,7 @@ const beersList = [
     type: "American IPA",
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
-    url: "https://i.imgur.com/OCie6ls.png",
+    url: "https://i.imgur.com/NJcgSfz.jpg",
     finished: false
   },
   {

@@ -12,8 +12,8 @@ import { fetchBeers } from "../actions/beerActions";
 import { fetchCustomers } from "../actions/customerActions";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-// import { readString } from "react-papaparse";
-// const csvFile = require("./Test.csv");
+import { readString } from "react-papaparse";
+const csvFile = require("./Test.csv");
 
 class Container extends React.Component {
   state = {};
@@ -21,19 +21,57 @@ class Container extends React.Component {
   async componentDidMount() {
     await this.loadData();
     ///// CSV CONVERSION
-    // const results = await readString(csvFile, {
-    //   delimiter: ",",
-    //   download: true,
-    //   complete: function(results) {
-    //     // console.log(results.data)
-    //     let i = 0;
-    //     while (i < results.data.length) {
-    //       console.log(results.data[i]);
-    //       i++;
-    //     }
-    //   }
-    // })
+    const populateBeersArray = (headers, customer) => {
+      let list = this.props.beers;
+      
+      console.log(headers, customer)
+
+      return list;
+    }
+
+
+    const results = await readString(csvFile, {
+      delimiter: ",",
+      download: true,
+      complete: function(results) {
+        // console.log(results.data)
+        let customerArr = [];
+        let headers = results.data[0];
+        let i = 1;
+        while (i < results.data.length) {
+          let customer = results.data[i];
+          let temp = {
+            name: {
+              first: customer[1],
+              last: customer[2]
+            },
+            mugClub: {
+              completed: null,
+              clubId: parseInt(customer[0]),
+              beers: populateBeersArray(headers, customer)
+            }
+          };
+
+          if (customer[3] >= 30) {
+            temp.mugClub.completed = true;
+          } else {
+            temp.mugClub.completed = false;
+          }
+
+          customerArr.push(temp);
+          i++;
+        }
+        return console.log(customerArr);
+      }
+    })
+  
+    
   }
+  
+
+
+
+
   loadData = async () => {
     try {
       await this.props.dispatch(fetchBeers());
@@ -73,6 +111,8 @@ class Container extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  beers: state.beers.beers
+});
 
 export default connect(mapStateToProps)(Container);
