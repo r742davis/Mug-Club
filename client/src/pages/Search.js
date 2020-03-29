@@ -62,10 +62,11 @@ class Search extends Component {
     if (this.props.customers && search) {
       filteredCustomers = this.props.customers.filter(customer => {
 
+        // Number Search
         let id = customer.mugClub.clubId.toString();
         let number = search === id ? customer : null;
-        console.log(id, number);
         
+        // Name Search
         let strings =
           customer.name.first
             .toLowerCase()
