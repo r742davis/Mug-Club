@@ -99,8 +99,6 @@ class Search extends Component {
               openBeerModal={() =>
                 this.props.toggleCustomerBeersModal(customer)
               }
-              
-              updateCompletedBeers={this.props.updateCompletedBeers}
               calculateCompletedBeers={this.calculateCompletedBeers}
               deleteCustomer={() => this.deleteCustomer(customer)}
             />

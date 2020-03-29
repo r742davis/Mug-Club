@@ -2,7 +2,7 @@ import React from "react";
 import Search from "../pages/Search";
 import Home from "../pages/Home";
 import Navigation from "../pages/Navigation";
-import BeerDisplay from "../components/BeerDisplay";
+import BeerDisplay from "../pages/BeerDisplay";
 import Backdrop from "../components/Backdrop";
 import RenderModal from "../components/RenderModal";
 
