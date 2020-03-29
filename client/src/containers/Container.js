@@ -21,10 +21,36 @@ class Container extends React.Component {
   async componentDidMount() {
     await this.loadData();
     ///// CSV CONVERSION
+
     const populateBeersArray = (headers, customer) => {
       let list = this.props.beers;
+      let map = {};
+      // Mapping the customer's array of completed beers
+      for (let i = 5; i < customer.length; i++) {
+        const beer = headers[i];
+        if (customer[i]) {
+          map[beer] = true;
+        } else {
+          map[beer] = false;
+        }
+      };
+      console.log(map, list)
+
+      for (let beer in map) {
+        if (map[beer]) {          
+          for (let m = 0; m < list.length; m++) {
+            const name = list[m].name.toLowerCase();
+            const beerName = beer.toLowerCase();
+            if (name.includes(beerName)) {
+              list[m].finished = true;
+            }
+          }
+        } 
+      }
       
-      console.log(headers, customer)
+      // Compare the map with the list of beers and then change the values according to map values
+
+      
 
       return list;
     }
