@@ -40,7 +40,10 @@ const BeerDisplay = props => {
     <section className={classes.DisplayContainer}>
       <h1 className={classes.BeersTitle}>
         Current Beers
-        <div className={classes.AddIcon} onClick={() => props.openModal("NEW_BEER")}>
+        <div
+          className={classes.AddIcon}
+          onClick={() => props.openModal("NEW_BEER")}
+        >
           <FontAwesomeIcon icon={faPlus} />
         </div>
       </h1>

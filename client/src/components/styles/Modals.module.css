@@ -36,7 +36,7 @@
 .ModalForm {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 325px;
   backface-visibility: hidden;
   -webkit-font-smoothing: subpixel-antialiased;
 }
@@ -167,29 +167,4 @@
   color: white;
   /* border: 2px solid #B72E3E; */
   transition: 0.25s;
-}
-
-/* Completed Beers Modal */
-.EditModal {
-  width: 350px;
-  padding: 2%;
-  background: white;
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  backface-visibility: hidden;
-  -webkit-font-smoothing: subpixel-antialiased;
-  overflow-y: auto;
-  overflow-x: auto;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  border-radius: 1rem;
-}
-.EditForm {
-  display: flex;
-  flex-direction: column;
-  width: auto;
-  backface-visibility: hidden;
-  -webkit-font-smoothing: subpixel-antialiased;
-  overflow-y: auto;
 }

@@ -15,8 +15,8 @@ const uniqid = require("uniqid");
 
 class Search extends Component {
   state = {
-    search: "",
-  }
+    search: ""
+  };
 
   updateSearch = event => {
     this.setState({ search: event.target.value });
@@ -61,27 +61,22 @@ class Search extends Component {
     let filteredCustomers;
     if (this.props.customers && search) {
       filteredCustomers = this.props.customers.filter(customer => {
-
         // Number Search
         let id = customer.mugClub.clubId.toString();
         let number = search === id ? customer : null;
-        
+
         // Name Search
         let strings =
-          customer.name.first
-            .toLowerCase()
-            .includes(search.toLowerCase()) ||
-          customer.name.last
-            .toLowerCase()
-            .includes(search.toLowerCase());
-        
+          customer.name.first.toLowerCase().includes(search.toLowerCase()) ||
+          customer.name.last.toLowerCase().includes(search.toLowerCase());
+
         if (strings) {
           return strings;
         }
         if (number) {
           return number;
         }
-      })
+      });
     }
 
     const mappedCustomers = filteredCustomers

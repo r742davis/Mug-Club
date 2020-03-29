@@ -103,10 +103,10 @@ class EditCustomer extends Component {
       <>
         <section className={classes.ModalContainer}>
           <Grow in={true}>
-            <div className={classes.EditModal}>
+            <div className={classes.Modal}>
               <h2 className={classes.ModalTitle}>Edit Customer</h2>
               <form
-                className={classes.EditForm}
+                className={classes.Form}
                 onSubmit={e => this.props.handleSubmit(e)}
               >
                 <div className={classes.Group}>
