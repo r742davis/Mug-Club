@@ -6,8 +6,13 @@ import NewBeer from "./NewBeer";
 
 // Redux Imports
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 class RenderModal extends Component {
+  static propTypes = {
+    modalType: PropTypes.string
+  };
+
   render() {
     let renderedModal = this.props.modalType;
     switch (renderedModal) {

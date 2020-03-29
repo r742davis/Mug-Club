@@ -5,6 +5,7 @@ import swal from "@sweetalert/with-react";
 
 // Redux Imports
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { closeModal } from "../actions/modalActions";
 import { createCustomer, fetchCustomers } from "../actions/customerActions";
 const actions = { closeModal, createCustomer, fetchCustomers };
@@ -12,7 +13,9 @@ const actions = { closeModal, createCustomer, fetchCustomers };
 class NewCustomer extends Component {
   state = {};
 
-  static propTypes = {};
+  static propTypes = {
+    customers: PropTypes.array
+  };
 
   customerIdCheck = customers => {
     const enteredValue = this.state.clubId;

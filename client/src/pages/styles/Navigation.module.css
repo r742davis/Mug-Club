@@ -3,11 +3,18 @@
   background: black;
   height: 5rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 0;
   top: 0;
   width: 100%;
   z-index: 10;
+}
+.navbar h1 {
+  color: white;
+  width: 200px;
+  font-size: 2rem;
+  font-family: 'Montserrat', serif;
+  margin: 1rem 1rem 0 2rem;
 }
 .list {
   width: 100%;
@@ -60,3 +67,52 @@
   background: #B72E3E;
   color: white;
 }
+.burgerContainer {
+  display: none;
+}
+
+/* Collapsible menu */
+@media (max-width: 850px) {
+  .link,
+  .list,
+  .NewButton,
+  .Logout {
+    display: none;
+    width: 0;
+  }
+  .burgerContainer {
+    display: flex;
+    padding: .5rem;
+  }
+  .hamburgerList {
+    position: absolute;
+    height: auto;
+    width: 100%;
+    margin-top: 5rem;
+    left: rem;
+    background: black;
+    opacity: 0.90;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hamburgerItem {
+    text-decoration: none;
+    font-size: 3rem;
+    font-weight: bold;
+    background: black;
+    color: white;
+    border: none;
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+
+  }
+  .hamburgerItem:hover {
+    background: #696969;
+    cursor: pointer;
+  }
+}
+
+
+

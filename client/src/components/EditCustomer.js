@@ -26,7 +26,12 @@ class EditCustomer extends Component {
   };
 
   static propTypes = {
-    
+    first: PropTypes.string,
+    last: PropTypes.string,
+    clubId: PropTypes.number,
+    completed: PropTypes.bool,
+    customerBeers: PropTypes.array,
+    customerId: PropTypes.string
   };
 
   updateCompletedBeers = checkedArr => {
@@ -51,7 +56,9 @@ class EditCustomer extends Component {
       }
     }
     if (value === true) {
-      this.state.completed = true;
+      this.setState({
+        completed: true
+      })
     }
   };
 

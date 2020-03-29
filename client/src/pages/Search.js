@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import classes from "./styles/Search.module.css";
-import Customer from "../components/Customer";
+import Customer from "../components/Customer"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import swal from "@sweetalert/with-react";
 
 // Redux Imports
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { openModal } from "../actions/modalActions";
 import { deleteCustomer } from "../actions/customerActions";
 const actions = { openModal, deleteCustomer };
@@ -17,6 +18,10 @@ class Search extends Component {
   state = {
     search: ""
   };
+
+  static propTypes = {
+    customers: PropTypes.array.isRequired
+  }
 
   updateSearch = event => {
     this.setState({ search: event.target.value });
@@ -122,7 +127,7 @@ class Search extends Component {
             />
 
             <div className={classes.CustomerContainer}>
-              {this.state.search && mappedCustomers}
+              {search && mappedCustomers}
             </div>
           </div>
         </div>

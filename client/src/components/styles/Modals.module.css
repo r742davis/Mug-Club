@@ -36,7 +36,7 @@
 .ModalForm {
   display: flex;
   flex-direction: column;
-  width: 325px;
+  width: 300px;
   backface-visibility: hidden;
   -webkit-font-smoothing: subpixel-antialiased;
 }
@@ -49,7 +49,7 @@
   font-size: 2rem;
   padding-top: 1.5rem;
   display: block;
-  width: 99%;
+  width: 100%;
   border: none;
   border-bottom: 1px solid #ccc;
 }
@@ -89,7 +89,7 @@
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   position: relative;
-  width: 99%;
+  width: 100%;
   border: none;
   border-bottom: 1px solid #ccc;
 }
@@ -132,7 +132,7 @@
 /* active state */
 .Input:focus ~ .Bar:before,
 .Input:focus ~ .Bar:after {
-  width: 150px;
+  width: 50%;
 }
 .EditButton,
 .CancelButton,
@@ -142,7 +142,6 @@
   background: white;
   color: black;
   border: none;
-  /* border: 2px solid black; */
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border-radius: 0.5rem;
   font-size: 1.5rem;
@@ -153,18 +152,15 @@
 .EditButton:hover {
   background: #00a287;
   color: white;
-  /* border: 2px solid #00A287; */
   transition: 0.25s;
 }
 .CancelButton:hover {
   background: #b72e3e;
   color: white;
-  /* border: 2px solid #B72E3E; */
   transition: 0.25s;
 }
 .DeleteButton:hover {
   background: #b72e3e;
   color: white;
-  /* border: 2px solid #B72E3E; */
   transition: 0.25s;
 }
