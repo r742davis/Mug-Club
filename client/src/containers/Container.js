@@ -9,32 +9,48 @@ import RenderModal from "../components/RenderModal";
 // Redux Imports
 import { connect } from "react-redux";
 import { fetchBeers } from "../actions/beerActions";
-import { fetchCustomers } from "../actions/customerActions";
+import { fetchCustomers, createCustomer } from "../actions/customerActions";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { readString } from "react-papaparse";
+const actions = { fetchBeers, fetchCustomers, createCustomer };
 const csvFile = require("./Test.csv");
 
 class Container extends React.Component {
-  state = {};
+  state = {
+    existingCustomers: ""
+  };
 
   async componentDidMount() {
     await this.loadData();
     ///// CSV CONVERSION
+    const list = this.props.beers;
+
+    // const checkCompletion = beers => {
+    //   let value = true;
+    //   for (let i = 0; i < beers.length; i++) {
+    //     if (beers[i].finished === false) {
+    //       return (value = false);
+    //     }
+    //   }
+    //   if (value === true) {
+    //     this.setState({
+    //       completed: true
+    //     })
+    //   }
+    // };
 
     const populateBeersArray = (headers, customer) => {
-      let list = this.props.beers;
       let map = {};
       // Mapping the customer's array of completed beers
       for (let i = 5; i < customer.length; i++) {
         const beer = headers[i];
         if (customer[i]) {
-          map[beer] = true;
+          map[beer] = true;     
         } else {
-          map[beer] = false;
+          map[beer] = false;          
         }
       };
-      console.log(map, list)
 
       for (let beer in map) {
         if (map[beer]) {          
@@ -43,27 +59,21 @@ class Container extends React.Component {
             const beerName = beer.toLowerCase();
             if (name.includes(beerName)) {
               list[m].finished = true;
+              break;
             }
           }
         } 
       }
-      
-      // Compare the map with the list of beers and then change the values according to map values
-
-      
-
       return list;
     }
-
+    let existingCustomersArray = [];
 
     const results = await readString(csvFile, {
       delimiter: ",",
       download: true,
       complete: function(results) {
-        // console.log(results.data)
-        let customerArr = [];
         let headers = results.data[0];
-        let i = 1;
+        let i = 1;        
         while (i < results.data.length) {
           let customer = results.data[i];
           let temp = {
@@ -77,31 +87,49 @@ class Container extends React.Component {
               beers: populateBeersArray(headers, customer)
             }
           };
+          
 
-          if (customer[3] >= 30) {
+          if (customer[3] >= list.length) {
             temp.mugClub.completed = true;
           } else {
             temp.mugClub.completed = false;
           }
-
-          customerArr.push(temp);
+          existingCustomersArray.push(temp);
           i++;
         }
-        return console.log(customerArr);
+        
       }
     })
   
-    
+    await this.setState({
+      existingCustomers: existingCustomersArray
+    })
+    await console.log(this.state.existingCustomers);
+  }
+
+  saveCustomersToDatabase = (customersArray) => {
+    for (let customer of customersArray) {
+      const newCustomer = {
+        name: {
+          first: customer.name.first,
+          last: customer.name.last
+        },
+        mugClub: {
+          completed: customer.mugClub.completed,
+          clubId: customer.mugClub.clubId,
+          beers: customer.mugClub.beers
+        }
+      };
+      this.props.createCustomer(newCustomer);
+      console.log("Customer created");
+    }
   }
   
 
-
-
-
   loadData = async () => {
     try {
-      await this.props.dispatch(fetchBeers());
-      await this.props.dispatch(fetchCustomers());
+      await this.props.fetchBeers();
+      await this.props.fetchCustomers();
     } catch (error) {
       throw new Error(
         "Cannot connect to database. Server may be busy or unavailable."
@@ -127,6 +155,7 @@ class Container extends React.Component {
                 <BeerDisplay />
               </Route>
             </Switch>
+            <button onClick={() => this.saveCustomersToDatabase(this.state.existingCustomers)}>Save Customers</button>
           </div>
         </Router>
       {/* Modal Displays */}
@@ -141,4 +170,4 @@ const mapStateToProps = state => ({
   beers: state.beers.beers
 });
 
-export default connect(mapStateToProps)(Container);
+export default connect(mapStateToProps, actions)(Container);

@@ -1,5 +1,37 @@
 const beersList = [
   {
+    name: "Budweiser",
+    type: "American Lager",
+    brewery: "Anheuser Busch",
+    breweryLocation: "St. Louis, MO",
+    url: "https://www.google.com/url?sa=i&url=https%3A%2F%2F1000logos.net%2Fbudweiser-logo%2F&psig=AOvVaw1cv59hWiwPdNOIFd1d3L0a&ust=1585597850455000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIC4sb-6wOgCFQAAAAAdAAAAABAD",
+    finished: false
+  },
+  {
+    name: "Bud Light",
+    type: "American Light Lager",
+    brewery: "Anheuser Busch",
+    breweryLocation: "St. Louis, MO",
+    url: "https://www.google.com/url?sa=i&url=https%3A%2F%2Ftwitter.com%2Fbudlight&psig=AOvVaw1S9I1Uv3VzaN6Vq-BFeAHY&ust=1585597962656000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCND5ve26wOgCFQAAAAAdAAAAABAD",
+    finished: false
+  },
+  {
+    name: "Coors",
+    type: "American Lager",
+    brewery: "Coors Brewing Company",
+    breweryLocation: "Golden, CO",
+    url: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.taphunter.com%2Fbeer%2Fcoors-banquet%2F5103350571073536&psig=AOvVaw0BNYLmvkU9ZzQ1OTdtAYJE&ust=1585598111237000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPjIy7u7wOgCFQAAAAAdAAAAABAD",
+    finished: false
+  },
+  {
+    name: "Coors Light",
+    type: "American Light Lager",
+    brewery: "Coors Brewing Company",
+    breweryLocation: "Golden, CO",
+    url: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.logopik.com%2Fitem%2Fcoors-light-logo-vector%2F&psig=AOvVaw2xd6IgfclYBfDHtUdyRgRL&ust=1585598159221000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMjl6su7wOgCFQAAAAAdAAAAABAl",
+    finished: false
+  },
+  {
     name: "Pale Ale",
     type: "American Pale Ale",
     brewery: "Sierra Nevada",
