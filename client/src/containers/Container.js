@@ -25,6 +25,7 @@ class Container extends React.Component {
     await this.loadData();
     ///// CSV CONVERSION
     const list = this.props.beers;
+    let existingCustomersArray = [];
 
     // const checkCompletion = beers => {
     //   let value = true;
@@ -42,31 +43,43 @@ class Container extends React.Component {
 
     const populateBeersArray = (headers, customer) => {
       let map = {};
+      let beersList = [...list];
       // Mapping the customer's array of completed beers
       for (let i = 5; i < customer.length; i++) {
-        const beer = headers[i];
-        if (customer[i]) {
-          map[beer] = true;     
+        const beer = headers[i];        
+        if (customer[i] === "1") {
+          map[beer] = true;   
         } else {
-          map[beer] = false;          
+          map[beer] = false;
         }
       };
-
-      for (let beer in map) {
-        if (map[beer]) {          
-          for (let m = 0; m < list.length; m++) {
-            const name = list[m].name.toLowerCase();
-            const beerName = beer.toLowerCase();
-            if (name.includes(beerName)) {
-              list[m].finished = true;
-              break;
-            }
-          }
-        } 
+      
+      for (let item of beersList) {
+        console.log(item.name, map[item.name]);
+        
+        // if(map[item.name] === true) {
+        //   item.finished = true;
+        //   console.log(item.name, item.finished);
+        // }
+        
       }
-      return list;
+      // console.log(beersList);
+      
+      // for (let beer in map) {
+      //   // console.log(beer, map[beer]);
+      //   for (let i = 0; i < beersList.length; i++) {
+      //     if (beer === beersList[i].name) {
+      //       beersList[i].finished = true;
+      //       console.log(beersList[i].finished);
+      //       break;
+      //     } 
+      //   }
+        
+      // }
+      // console.log(beersList);
+      
+      return beersList;
     }
-    let existingCustomersArray = [];
 
     const results = await readString(csvFile, {
       delimiter: ",",
@@ -85,7 +98,8 @@ class Container extends React.Component {
               completed: null,
               clubId: parseInt(customer[0]),
               beers: populateBeersArray(headers, customer)
-            }
+            },
+            beersCompleted: parseInt(customer[3])
           };
           
 
