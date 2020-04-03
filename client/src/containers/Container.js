@@ -24,100 +24,100 @@ class Container extends React.Component {
   async componentDidMount() {
     await this.loadData();
     ///// CSV CONVERSION
-    const list = this.props.beers;
-    let existingCustomersArray = [];
+    // const list = this.props.beers;
+    // let existingCustomersArray = [];
 
-    // const checkCompletion = beers => {
-    //   let value = true;
-    //   for (let i = 0; i < beers.length; i++) {
-    //     if (beers[i].finished === false) {
-    //       return (value = false);
+    // // const checkCompletion = beers => {
+    // //   let value = true;
+    // //   for (let i = 0; i < beers.length; i++) {
+    // //     if (beers[i].finished === false) {
+    // //       return (value = false);
+    // //     }
+    // //   }
+    // //   if (value === true) {
+    // //     this.setState({
+    // //       completed: true
+    // //     })
+    // //   }
+    // // };
+
+    // const populateBeersArray = (headers, customer) => {
+    //   let map = {};
+    //   let beersList = [...list];
+    //   // Mapping the customer's array of completed beers
+    //   for (let i = 5; i < customer.length; i++) {
+    //     const beer = headers[i];        
+    //     if (customer[i] === "1") {
+    //       map[beer] = true;   
+    //     } else {
+    //       map[beer] = false;
     //     }
+    //   };
+      
+    //   for (let item of beersList) {
+    //     console.log(item.name, map[item.name]);
+        
+    //     // if(map[item.name] === true) {
+    //     //   item.finished = true;
+    //     //   console.log(item.name, item.finished);
+    //     // }
+        
     //   }
-    //   if (value === true) {
-    //     this.setState({
-    //       completed: true
-    //     })
-    //   }
-    // };
+    //   // console.log(beersList);
+      
+    //   // for (let beer in map) {
+    //   //   // console.log(beer, map[beer]);
+    //   //   for (let i = 0; i < beersList.length; i++) {
+    //   //     if (beer === beersList[i].name) {
+    //   //       beersList[i].finished = true;
+    //   //       console.log(beersList[i].finished);
+    //   //       break;
+    //   //     } 
+    //   //   }
+        
+    //   // }
+    //   // console.log(beersList);
+      
+    //   return beersList;
+    // }
 
-    const populateBeersArray = (headers, customer) => {
-      let map = {};
-      let beersList = [...list];
-      // Mapping the customer's array of completed beers
-      for (let i = 5; i < customer.length; i++) {
-        const beer = headers[i];        
-        if (customer[i] === "1") {
-          map[beer] = true;   
-        } else {
-          map[beer] = false;
-        }
-      };
-      
-      for (let item of beersList) {
-        console.log(item.name, map[item.name]);
-        
-        // if(map[item.name] === true) {
-        //   item.finished = true;
-        //   console.log(item.name, item.finished);
-        // }
-        
-      }
-      // console.log(beersList);
-      
-      // for (let beer in map) {
-      //   // console.log(beer, map[beer]);
-      //   for (let i = 0; i < beersList.length; i++) {
-      //     if (beer === beersList[i].name) {
-      //       beersList[i].finished = true;
-      //       console.log(beersList[i].finished);
-      //       break;
-      //     } 
-      //   }
-        
-      // }
-      // console.log(beersList);
-      
-      return beersList;
-    }
-
-    const results = await readString(csvFile, {
-      delimiter: ",",
-      download: true,
-      complete: function(results) {
-        let headers = results.data[0];
-        let i = 1;        
-        while (i < results.data.length) {
-          let customer = results.data[i];
-          let temp = {
-            name: {
-              first: customer[1],
-              last: customer[2]
-            },
-            mugClub: {
-              completed: null,
-              clubId: parseInt(customer[0]),
-              beers: populateBeersArray(headers, customer)
-            },
-            beersCompleted: parseInt(customer[3])
-          };
+    // const results = await readString(csvFile, {
+    //   delimiter: ",",
+    //   download: true,
+    //   complete: function(results) {
+    //     let headers = results.data[0];
+    //     let i = 1;        
+    //     while (i < results.data.length) {
+    //       let customer = results.data[i];
+    //       let temp = {
+    //         name: {
+    //           first: customer[1],
+    //           last: customer[2]
+    //         },
+    //         mugClub: {
+    //           completed: null,
+    //           clubId: parseInt(customer[0]),
+    //           beers: populateBeersArray(headers, customer)
+    //         },
+    //         beersCompleted: parseInt(customer[3])
+    //       };
           
 
-          if (customer[3] >= list.length) {
-            temp.mugClub.completed = true;
-          } else {
-            temp.mugClub.completed = false;
-          }
-          existingCustomersArray.push(temp);
-          i++;
-        }
+    //       if (customer[3] >= list.length) {
+    //         temp.mugClub.completed = true;
+    //       } else {
+    //         temp.mugClub.completed = false;
+    //       }
+    //       existingCustomersArray.push(temp);
+    //       i++;
+    //     }
         
-      }
-    })
+    //   }
+    // })
   
-    await this.setState({
-      existingCustomers: existingCustomersArray
-    })
+    // await this.setState({
+    //   existingCustomers: existingCustomersArray
+    // })
     await console.log(this.state.existingCustomers);
   }
 
@@ -144,6 +144,9 @@ class Container extends React.Component {
     try {
       await this.props.fetchBeers();
       await this.props.fetchCustomers();
+      console.log(this.props.customers);
+      console.log(this.props.beers);
+      
     } catch (error) {
       throw new Error(
         "Cannot connect to database. Server may be busy or unavailable."
@@ -181,7 +184,8 @@ class Container extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  beers: state.beers.beers
+  beers: state.beers.beers,
+  customers: state.customers.customers
 });
 
 export default connect(mapStateToProps, actions)(Container);
