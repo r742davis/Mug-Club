@@ -121,23 +121,23 @@ class Container extends React.Component {
     await console.log(this.state.existingCustomers);
   }
 
-  saveCustomersToDatabase = (customersArray) => {
-    for (let customer of customersArray) {
-      const newCustomer = {
-        name: {
-          first: customer.name.first,
-          last: customer.name.last
-        },
-        mugClub: {
-          completed: customer.mugClub.completed,
-          clubId: customer.mugClub.clubId,
-          beers: customer.mugClub.beers
-        }
-      };
-      this.props.createCustomer(newCustomer);
-      console.log("Customer created");
-    }
-  }
+  // saveCustomersToDatabase = (customersArray) => {
+  //   for (let customer of customersArray) {
+  //     const newCustomer = {
+  //       name: {
+  //         first: customer.name.first,
+  //         last: customer.name.last
+  //       },
+  //       mugClub: {
+  //         completed: customer.mugClub.completed,
+  //         clubId: customer.mugClub.clubId,
+  //         beers: customer.mugClub.beers
+  //       }
+  //     };
+  //     this.props.createCustomer(newCustomer);
+  //     console.log("Customer created");
+  //   }
+  // }
   
 
   loadData = async () => {

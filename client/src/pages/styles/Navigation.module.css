@@ -9,11 +9,14 @@
   width: 100%;
   z-index: 10;
 }
+
+.navbar * {
+  font-family: "Montserrat", sans-serif;
+}
 .navbar h1 {
   color: white;
   width: 200px;
   font-size: 2rem;
-  font-family: 'Montserrat', serif;
   margin: 1rem 1rem 0 2rem;
 }
 .list {
@@ -64,7 +67,7 @@
   cursor: pointer;
 }
 .Logout:hover {
-  background: #B72E3E;
+  background: #b72e3e;
   color: white;
 }
 .hamburgerContainer {
@@ -82,7 +85,7 @@
   }
   .hamburgerContainer {
     display: flex;
-    padding: .5rem;
+    padding: 0.5rem;
   }
   .hamburgerList {
     position: absolute;
@@ -91,7 +94,7 @@
     margin-top: 5rem;
     left: rem;
     background: black;
-    opacity: 0.90;
+    opacity: 0.9;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -106,13 +109,9 @@
     width: 100%;
     text-align: center;
     padding: 1rem;
-
   }
   .hamburgerItem:hover {
     background: #696969;
     cursor: pointer;
   }
 }
-
-
-

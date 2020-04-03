@@ -112,6 +112,7 @@ class EditCustomer extends Component {
           <Grow in={true}>
             <div className={classes.Modal}>
               <h2 className={classes.ModalTitle}>Edit Customer</h2>
+              <div className={classes.ModalContent}>
               <form
                 className={classes.Form}
                 onSubmit={e => this.props.handleSubmit(e)}
@@ -159,7 +160,7 @@ class EditCustomer extends Component {
                   </label>
                 </div>
                 <div>
-                  <label htmlFor="beerList" id={classes.ListLabel}>
+                  <label htmlFor="beerList" className={classes.BeerLabel}>
                     Beer List
                   </label>
                   <BeersList
@@ -170,6 +171,7 @@ class EditCustomer extends Component {
                   />
                 </div>
               </form>
+              </div>
             </div>
           </Grow>
         </section>

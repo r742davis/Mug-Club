@@ -10,11 +10,12 @@
 .SearchTitle {
   padding: 2rem;
   padding-bottom: 1rem;
-  font-size: 5rem;
+  font-size: 4rem;
   background: black;
   color: whitesmoke;
   display: flex;
   justify-content: space-between;
+  font-family: 'Montserrat', sans-serif;
 }
 .Input {
   margin: 5rem;

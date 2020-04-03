@@ -1,15 +1,17 @@
 .CustomerCard {
-  min-width: 350px;
+  width: 100%;
   margin-top: 2rem;
   margin-bottom: 1rem;
   border-radius: 1rem;
   background: white;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   transition: 0.125s;
 }
 .CustomerCard:hover {
-  transform: scale(1.01);
-  transition: 0.125s;
+  transform: translateY(-0.25rem);
+  transition: 0.2s;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.16);
+
 }
 .IncompleteTitleContainer {
   background: black;
@@ -22,7 +24,7 @@
   margin-bottom: 1rem;
 }
 .CompletedTitleContainer {
-  background: #00A287;
+  background: #00a287;
   color: whitesmoke;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
@@ -49,32 +51,8 @@
 .ButtonContainer {
   margin-left: 2rem;
 }
-.EditButton,
-.DeleteButton {
-  width: 5rem;
-  height: 5rem;
-  padding: 1rem;
-  margin: 1rem 1rem 1rem 0;
-  background: white;
-  color: black;
-  border: none;
-  border-radius: 10rem;
-  font-size: 2rem;
-  cursor: pointer;
-  transition: 0.2s;
-}
 .Span {
   display: flex;
-}
-.EditButton:hover {
-  background: #00A287;
-  color: white;
-  transition: 0.2s;
-}
-.DeleteButton:hover {
-  background: #B72E3E;
-  color: white;
-  transition: 0.2s;
 }
 .CheckIcon {
   font-size: 4rem;

@@ -12,7 +12,7 @@ const actions = {
   openModal,
   closeModal,
   createBeer,
-  fetchBeers
+  fetchBeers,
 };
 
 class NewBeerModal extends Component {
@@ -20,13 +20,13 @@ class NewBeerModal extends Component {
 
   static propTypes = {};
 
-  handleInputChange = e => {
+  handleInputChange = (e) => {
     const target = e.target;
     const name = target.name;
     this.setState({ [name]: e.target.value });
   };
 
-  handleSubmit = async e => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const newBeer = {
@@ -35,22 +35,22 @@ class NewBeerModal extends Component {
         brewery: this.state.brewery,
         breweryLocation: this.state.breweryLocation,
         url: this.state.beerUrl,
-        finished: false
+        finished: false,
       };
       await this.props.createBeer(newBeer);
       swal({
         title: `${this.state.name} has been created!`,
         icon: "success",
-        button: "Cool!"
+        button: "Cool!",
       });
       await this.props.fetchBeers();
-      this.props.closeModal()
+      this.props.closeModal();
     } catch (e) {
       console.error(e);
       swal({
         title: `Oops! Something went wrong :(`,
         icon: "fail",
-        button: "Crap!"
+        button: "Crap!",
       });
     }
   };
@@ -61,103 +61,103 @@ class NewBeerModal extends Component {
         <Grow in={true}>
           <div className={classes.Modal}>
             <h2 className={classes.ModalTitle}>Create New Beer</h2>
-            <form
-              className={classes.ModalForm}
-              onSubmit={e => this.props.handleSubmit(e)}
-            >
-              <div className={classes.Group}>
-                <input
-                  type="text"
-                  name="name"
-                  className={classes.Input}
-                  value={this.state.name}
-                  onChange={this.handleInputChange}
-                  required
-                />
-                <span className={classes.Bar}></span>
-                <label htmlFor="name" className={classes.Label}>
-                  Beer Name
-                </label>
-              </div>
+            <div className={classes.ModalContent}>
+              <form
+                className={classes.ModalForm}
+                onSubmit={(e) => this.props.handleSubmit(e)}
+              >
+                <div className={classes.Group}>
+                  <input
+                    type="text"
+                    name="name"
+                    className={classes.Input}
+                    value={this.state.name}
+                    onChange={this.handleInputChange}
+                    required
+                  />
+                  <span className={classes.Bar}></span>
+                  <label htmlFor="name" className={classes.Label}>
+                    Beer Name
+                  </label>
+                </div>
 
-              <div className={classes.Group}>
-                <label htmlFor="type" className={classes.SelectLabel}>
-                  Type
-                </label>
-                <select
-                  name="type"
-                  className={classes.Select}
-                  onChange={this.handleInputChange}
-                  value={this.state.type}
-                  placeholder="Select Type of Beer"
-                >
-                  <optgroup label="Current Beer Type">
-                    <option value={this.state.type}>
-                      {this.state.type}
-                    </option>
-                  </optgroup>
-                  {typeMap}
-                </select>
-              </div>
+                <div className={classes.Group}>
+                  <label htmlFor="type" className={classes.SelectLabel}>
+                    Type
+                  </label>
+                  <select
+                    name="type"
+                    className={classes.Select}
+                    onChange={this.handleInputChange}
+                    value={this.state.type}
+                    placeholder="Select Type of Beer"
+                  >
+                    <optgroup label="Current Beer Type">
+                      <option value={this.state.type}>{this.state.type}</option>
+                    </optgroup>
+                    {typeMap}
+                  </select>
+                </div>
 
-              <div className={classes.Group}>
-                <input
-                  type="text"
-                  name="brewery"
-                  className={classes.Input}
-                  value={this.state.brewery}
-                  onChange={this.handleInputChange}
-                  required
-                />
-                <span className={classes.Bar}></span>
-                <label htmlFor="brewery" className={classes.Label}>
-                  Brewery
-                </label>
-              </div>
+                <div className={classes.Group}>
+                  <input
+                    type="text"
+                    name="brewery"
+                    className={classes.Input}
+                    value={this.state.brewery}
+                    onChange={this.handleInputChange}
+                    required
+                  />
+                  <span className={classes.Bar}></span>
+                  <label htmlFor="brewery" className={classes.Label}>
+                    Brewery
+                  </label>
+                </div>
 
-              <div className={classes.Group}>
-                <input
-                  type="text"
-                  name="breweryLocation"
-                  className={classes.Input}
-                  value={this.state.breweryLocation}
-                  onChange={this.handleInputChange}
-                  required
-                />
-                <span className={classes.Bar}></span>
-                <label htmlFor="breweryLocation" className={classes.Label}>
-                  Brewery Location
-                </label>
-              </div>
+                <div className={classes.Group}>
+                  <input
+                    type="text"
+                    name="breweryLocation"
+                    className={classes.Input}
+                    value={this.state.breweryLocation}
+                    onChange={this.handleInputChange}
+                    required
+                  />
+                  <span className={classes.Bar}></span>
+                  <label htmlFor="breweryLocation" className={classes.Label}>
+                    Brewery Location
+                  </label>
+                </div>
 
-              <div className={classes.Group}>
+                <div className={classes.Group}>
+                  <input
+                    type="text"
+                    name="beerUrl"
+                    className={classes.Input}
+                    value={this.state.beerUrl}
+                    onChange={this.handleInputChange}
+                    required
+                  />
+                  <span className={classes.Bar}></span>
+                  <label htmlFor="beerUrl" className={classes.Label}>
+                    Beer/Brewery Image URL
+                  </label>
+                </div>
                 <input
-                  type="text"
-                  name="beerUrl"
-                  className={classes.Input}
-                  value={this.state.beerUrl}
-                  onChange={this.handleInputChange}
-                  required
+                  type="submit"
+                  value="Create New Beer"
+                  onClick={(e) => this.handleSubmit(e)}
+                  className={classes.EditButton}
                 />
-                <span className={classes.Bar}></span>
-                <label htmlFor="beerUrl" className={classes.Label}>
-                  Beer/Brewery Image URL
-                </label>
-              </div>
-              <input
-                type="submit"
-                value="Create New Beer"
-                onClick={e => this.handleSubmit(e)}
-                className={classes.EditButton}
-              />
-              <input
-                type="submit"
-                value="Cancel"
-                onClick={() => this.props.closeModal()}
-                className={classes.CancelButton}
-                formNoValidate
-              />
-            </form>
+                <input
+                  type="submit"
+                  value="Cancel"
+                  onClick={() => this.props.closeModal()}
+                  className={classes.CancelButton}
+                  formNoValidate
+                />
+              </form>
+            </div>
           </div>
         </Grow>
       </section>
@@ -165,6 +165,6 @@ class NewBeerModal extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = (state) => ({});
 
 export default connect(mapStateToProps, actions)(NewBeerModal);

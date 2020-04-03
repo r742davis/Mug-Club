@@ -18,6 +18,7 @@ const uniqid = require("uniqid");
 const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
+    
     height: "300px",
     backgroundColor: theme.palette.background.paper,
     display: "flex",
@@ -27,6 +28,7 @@ const useStyles = makeStyles(theme => ({
   },
   item: {
     width: "300px",
+    border: "1px solid blue",
     height: "50px",
     borderRadius: "0.5rem",
     boxShadow: "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)",

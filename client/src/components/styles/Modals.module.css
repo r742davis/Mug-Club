@@ -11,7 +11,6 @@
   transform: translate(-50%, -50%);
 }
 .Modal {
-  padding: 2rem;
   background: white;
   height: 75%;
   width: auto;
@@ -19,13 +18,25 @@
   flex-direction: column;
   align-items: center;
   backface-visibility: hidden;
-  -webkit-font-smoothing: subpixel-antialiased;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border-radius: 1rem;
 }
 .ModalTitle {
-  text-align: left;
-  font-size: 2rem;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 100;
+  padding: 1rem 1rem 1rem 2rem;
+  background: #00a5ff;
+  color: white;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+.ModalContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 2rem;
 }
 .ModalImage {
@@ -51,7 +62,7 @@
   display: block;
   width: 100%;
   border: none;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .Input:focus {
@@ -60,7 +71,7 @@
 
 /* Label */
 .Label {
-  color: #aaa;
+  color: #f0f0f0;
   font-size: 2rem;
   font-weight: normal;
   position: absolute;
@@ -83,7 +94,7 @@
   color: #00a5ff;
 }
 .Select {
-  color: #616161;
+  color: black;
   font-size: 2rem;
   height: 2.5rem;
   padding-top: 1.5rem;
@@ -91,7 +102,7 @@
   position: relative;
   width: 100%;
   border: none;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #e0e0e0;
 }
 .Input:focus ~ .Label,
 .Input:valid ~ .Label {
@@ -139,28 +150,38 @@
 .DeleteButton {
   padding: 1rem;
   margin: 0.5rem;
-  background: white;
-  color: black;
   border: none;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border-radius: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
   transition: 0.25s;
 }
-
-.EditButton:hover {
-  background: #00a287;
+.EditButton {
+  background: #00a5ff;
   color: white;
-  transition: 0.25s;
+}
+.CancelButton,
+.DeleteButton {
+  background: #f0f0f0;
+}
+.EditButton:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transform: translateY(-0.25rem);
+  transition: 0.1s;
 }
 .CancelButton:hover {
-  background: #b72e3e;
-  color: white;
-  transition: 0.25s;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transform: translateY(-0.25rem);
+  transition: 0.1s;
 }
 .DeleteButton:hover {
   background: #b72e3e;
   color: white;
-  transition: 0.25s;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transform: translateY(-0.25rem);
+  transition: 0.1s;
+}
+.BeerLabel {
+  font-size: 1.2rem;
+  color: #00a5ff;
 }

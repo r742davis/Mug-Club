@@ -40,10 +40,10 @@ class Navigation extends Component {
   };
 
   render() {
-    const { isAuthenticated } = this.props.auth;
-    if (!isAuthenticated) {
-      return <Redirect to="/" push={true} />;
-    }
+    // const { isAuthenticated } = this.props.auth;
+    // if (!isAuthenticated) {
+    //   return <Redirect to="/" push={true} />;
+    // }
     let hamburgerMenu = (
       <ul className={classes.hamburgerList}>
         <Link

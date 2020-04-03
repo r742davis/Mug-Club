@@ -14,10 +14,10 @@ class NewCustomer extends Component {
   state = {};
 
   static propTypes = {
-    customers: PropTypes.array
+    customers: PropTypes.array,
   };
 
-  customerIdCheck = customers => {
+  customerIdCheck = (customers) => {
     const enteredValue = this.state.clubId;
     for (let i = 0; i < customers.length; i++) {
       let id = customers[i].mugClub.clubId.toString();
@@ -27,13 +27,13 @@ class NewCustomer extends Component {
     }
   };
 
-  handleInputChange = e => {
+  handleInputChange = (e) => {
     const target = e.target;
     const name = target.name;
     this.setState({ [name]: e.target.value });
   };
 
-  handleSubmit = async e => {
+  handleSubmit = async (e) => {
     e.preventDefault();
 
     // Check if the submitted Mug Club Id is currently in the database
@@ -43,17 +43,17 @@ class NewCustomer extends Component {
         title: `Mug Club Number ${this.state.clubId} is already taken.`,
         text: "Please enter a new number.",
         icon: "info",
-        button: "Ok"
+        button: "Ok",
       });
     } else {
       const newCustomer = {
         name: {
           first: this.state.first,
-          last: this.state.last
+          last: this.state.last,
         },
         mugClub: {
-          clubId: this.state.clubId
-        }
+          clubId: this.state.clubId,
+        },
       };
       try {
         console.log("Saing customer...");
@@ -62,7 +62,7 @@ class NewCustomer extends Component {
         swal({
           title: `${this.state.first} has been created!`,
           icon: "success",
-          button: "Ok!"
+          button: "Ok!",
         });
         this.props.closeModal();
         console.log("Customer saved!");
@@ -71,7 +71,7 @@ class NewCustomer extends Component {
         swal({
           title: `Oops! Something went wrong :(`,
           icon: "info",
-          button: "Crap!"
+          button: "Crap!",
         });
       }
     }
@@ -84,63 +84,65 @@ class NewCustomer extends Component {
           <Grow in={true}>
             <div className={classes.Modal}>
               <h2 className={classes.ModalTitle}>Add New Customer</h2>
-              <form
-                className={classes.ModalForm}
-                onSubmit={e => this.handleSubmit(e)}
-              >
-                <div className={classes.Group}>
-                  <input
-                    type="text"
-                    name="first"
-                    className={classes.Input}
-                    defaultValue={this.state.first}
-                    onChange={this.handleInputChange}
-                    required
-                  />
-                  <span className={classes.Bar}></span>
-                  <label htmlFor="first" className={classes.Label}>
-                    First Name
-                  </label>
-                </div>
-                <div className={classes.Group}>
-                  <input
-                    type="text"
-                    name="last"
-                    className={classes.Input}
-                    defaultValue={this.state.last}
-                    onChange={this.handleInputChange}
-                    required
-                  />
-                  <span className={classes.Bar}></span>
-                  <label htmlFor="last" className={classes.Label}>
-                    Last Name
-                  </label>
-                </div>
-                <div className={classes.Group}>
-                  <input
-                    type="text"
-                    name="clubId"
-                    className={classes.Input}
-                    defaultValue={this.state.clubId}
-                    onChange={this.handleInputChange}
-                    required
-                  />
-                  <span className={classes.Bar}></span>
-                  <label htmlFor="clubId" className={classes.Label}>
-                    Mug Club ID
-                  </label>
-                </div>
-                <button type="submit" className={classes.EditButton}>
-                  Create New Customer
-                </button>
-                <button
-                  type="button"
-                  onClick={() => this.props.closeModal()}
-                  className={classes.CancelButton}
+              <div className={classes.ModalContent}>
+                <form
+                  className={classes.ModalForm}
+                  onSubmit={(e) => this.handleSubmit(e)}
                 >
-                  Cancel
-                </button>
-              </form>
+                  <div className={classes.Group}>
+                    <input
+                      type="text"
+                      name="first"
+                      className={classes.Input}
+                      defaultValue={this.state.first}
+                      onChange={this.handleInputChange}
+                      required
+                    />
+                    <span className={classes.Bar}></span>
+                    <label htmlFor="first" className={classes.Label}>
+                      First Name
+                    </label>
+                  </div>
+                  <div className={classes.Group}>
+                    <input
+                      type="text"
+                      name="last"
+                      className={classes.Input}
+                      defaultValue={this.state.last}
+                      onChange={this.handleInputChange}
+                      required
+                    />
+                    <span className={classes.Bar}></span>
+                    <label htmlFor="last" className={classes.Label}>
+                      Last Name
+                    </label>
+                  </div>
+                  <div className={classes.Group}>
+                    <input
+                      type="text"
+                      name="clubId"
+                      className={classes.Input}
+                      defaultValue={this.state.clubId}
+                      onChange={this.handleInputChange}
+                      required
+                    />
+                    <span className={classes.Bar}></span>
+                    <label htmlFor="clubId" className={classes.Label}>
+                      Mug Club ID
+                    </label>
+                  </div>
+                  <button type="submit" className={classes.EditButton}>
+                    Create New Customer
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => this.props.closeModal()}
+                    className={classes.CancelButton}
+                  >
+                    Cancel
+                  </button>
+                </form>
+              </div>
             </div>
           </Grow>
         </section>
@@ -149,8 +151,8 @@ class NewCustomer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  customers: state.customers.customers
+const mapStateToProps = (state) => ({
+  customers: state.customers.customers,
 });
 
 export default connect(mapStateToProps, actions)(NewCustomer);

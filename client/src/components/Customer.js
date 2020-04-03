@@ -1,16 +1,14 @@
 import React from "react";
 import classes from "./styles/Customer.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCheckCircle,
-  faPencilAlt,
-  faTrashAlt
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import DeleteIcon from "./DeleteIcon";
+import EditIcon from "./EditIcon";
 
 // Redux Imports
 import { connect } from "react-redux";
 
-const Customer = props => {
+const Customer = (props) => {
   return (
     <div className={classes.CustomerCard}>
       <div
@@ -37,25 +35,15 @@ const Customer = props => {
         </h2>
       </span>
       <span className={classes.ButtonContainer}>
-        <button
-          className={classes.EditButton}
-          onClick={props.openModal}
-        >
-          <FontAwesomeIcon icon={faPencilAlt} />
-        </button>
-        <button 
-          className={classes.DeleteButton}
-          onClick={props.deleteCustomer}
-        >
-          <FontAwesomeIcon icon={faTrashAlt} />
-        </button>
+        <EditIcon edit={props.openModal} />
+        <DeleteIcon delete={props.deleteCustomer} />
       </span>
     </div>
   );
 };
 
-const mapStateToProps = state => ({
-  modalOpen: state.modal.modalOpen
+const mapStateToProps = (state) => ({
+  modalOpen: state.modal.modalOpen,
 });
 
 export default connect(mapStateToProps)(Customer);

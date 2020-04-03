@@ -7,22 +7,23 @@
   align-items: center;
   flex-wrap: wrap;
   border-radius: 1rem;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 .BeersTitle {
   width: 100%;
-  font-size: 5rem;
+  font-size: 4rem;
   padding: 2rem;
   padding-bottom: 1rem;
   background: black;
   color: white;
   display: flex;
   justify-content: space-between;
+  font-family: "Montserrat", sans-serif;
 }
 .DisplayContainer h2 {
   font-size: 2rem;
   font-weight: lighter;
-} 
+}
 .DisplayContainer h3 {
   font-size: 1.5rem;
 }
@@ -32,12 +33,13 @@
   flex-wrap: wrap;
   width: 100%;
   padding: 1rem;
+  border: 1px solid blue;
 }
 .DisplayContainer .ListItem {
-  width: 300px;
+  width: 45%;
   margin: 1%;
   border-radius: 0.5rem;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background: white;
   height: 7.5rem !important;
   font-size: 2rem !important;
@@ -63,7 +65,7 @@
 }
 .AddIcon:hover {
   -webkit-animation: rotate-center 0.5s both;
-	        animation: rotate-center 0.5s both;
+  animation: rotate-center 0.5s both;
 }
 
 /* ----------------------------------------------
@@ -78,25 +80,23 @@
  * animation rotate-center
  * ----------------------------------------
  */
- @-webkit-keyframes rotate-center {
+@-webkit-keyframes rotate-center {
   0% {
     -webkit-transform: rotate(0);
-            transform: rotate(0);
+    transform: rotate(0);
   }
   100% {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 @keyframes rotate-center {
   0% {
     -webkit-transform: rotate(0);
-            transform: rotate(0);
+    transform: rotate(0);
   }
   100% {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
-
-
