@@ -7,7 +7,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Checkbox from "@material-ui/core/Checkbox";
 import Avatar from "@material-ui/core/Avatar";
-import styles from "./styles/Modals.module.css";
+import styles from "../styles/Modals.module.css";
 
 // Redux Imports
 import { connect } from "react-redux";

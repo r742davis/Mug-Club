@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./styles/Customer.module.css";
+import classes from "../styles/Customer.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import DeleteIcon from "./DeleteIcon";

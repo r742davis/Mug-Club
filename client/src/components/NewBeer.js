@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Grow from "@material-ui/core/Grow";
-import classes from "./styles/Modals.module.css";
+import classes from "../styles/Modals.module.css";
 import { typeMap } from "../lib/TypeMap";
 import swal from "@sweetalert/with-react";
 

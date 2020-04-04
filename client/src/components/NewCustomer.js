@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Grow from "@material-ui/core/Grow";
-import classes from "./styles/Modals.module.css";
+import classes from "../styles/Modals.module.css";
 import swal from "@sweetalert/with-react";
 
 // Redux Imports

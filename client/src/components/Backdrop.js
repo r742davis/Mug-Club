@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./styles/Backdrop.module.css";
+import classes from "../styles/Backdrop.module.css";
 
 // Redux imports
 import { connect } from "react-redux";

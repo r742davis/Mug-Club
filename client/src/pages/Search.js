@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import classes from "./styles/Search.module.css";
+import classes from "../styles/Search.module.css";
 import Customer from "../components/Customer"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";

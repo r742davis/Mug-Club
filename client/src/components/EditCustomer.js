@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import classes from "./styles/Modals.module.css";
+import classes from "../styles/Modals.module.css";
 import Grow from "@material-ui/core/Grow";
 import swal from "@sweetalert/with-react";
 import BeersList from "./BeersList";

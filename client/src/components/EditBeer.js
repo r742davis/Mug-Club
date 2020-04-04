@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import classes from "./styles/Modals.module.css";
+import classes from "../styles/Modals.module.css";
 import DeleteIcon from "./DeleteIcon";
 import { typeMap } from "../lib/TypeMap";
 import Grow from "@material-ui/core/Grow";
