@@ -1,35 +1,45 @@
+@import "./_mixins.scss";
+@import "./_library.scss";
+
 .InputContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 5rem;
   margin-top: 10rem;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: $box-shadow;
   border-radius: 0.5rem;
 }
 .SearchTitle {
-  padding: 2rem;
-  padding-bottom: 1rem;
-  font-size: 4rem;
+  padding-left: 3rem;
+  padding-top: 6rem;
+  padding-bottom: 0.5rem;
+  font-size: 5rem;
   background: black;
-  color: whitesmoke;
+  color: var(--primary);
   display: flex;
   justify-content: space-between;
-  font-family: 'Montserrat', sans-serif;
+}
+
+.SearchContainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: 3rem;
+  margin-top: 4rem;
 }
 .Input {
-  margin: 5rem;
-  padding: 10px;
-  border: none;
-  border: 3px solid black;
-  border-radius: 1rem;
+  padding: 1rem;
+  border: 3px solid var(--input-color);
+  border-radius: .5rem;
   font-size: 2rem;
-  font-family: 'Roboto', sans-serif;
-  color: #a9a9a9;
-  max-width: 750px;
+  color: var(--input-color);
+  width: 50%;
+}
+.InputLabel {
+  font-size: 1.5rem;
 }
 .CustomerContainer {
-  margin: 5rem;
+  margin: 4rem;
 }
 .AddIcon {
   font-size: 2rem;
@@ -37,8 +47,8 @@
   height: 5rem;
   width: 5rem;
   border-radius: 10rem;
-  background: #00a5ff;
-  color: white;
+  background: var(--secondary);
+  color: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,7 +56,7 @@
 }
 .AddIcon:hover {
   -webkit-animation: rotate-center 0.5s both;
-	        animation: rotate-center 0.5s both;
+  animation: rotate-center 0.5s both;
 }
 
 /* ----------------------------------------------
@@ -61,23 +71,23 @@
  * animation rotate-center
  * ----------------------------------------
  */
- @-webkit-keyframes rotate-center {
+@-webkit-keyframes rotate-center {
   0% {
     -webkit-transform: rotate(0);
-            transform: rotate(0);
+    transform: rotate(0);
   }
   100% {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 @keyframes rotate-center {
   0% {
     -webkit-transform: rotate(0);
-            transform: rotate(0);
+    transform: rotate(0);
   }
   100% {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }

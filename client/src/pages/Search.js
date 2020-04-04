@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import classes from "../css/Search.module.css";
-import Customer from "../components/Customer"
+import Customer from "../components/Customer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import swal from "@sweetalert/with-react";
@@ -16,30 +16,30 @@ const uniqid = require("uniqid");
 
 class Search extends Component {
   state = {
-    search: ""
+    search: "",
   };
 
   static propTypes = {
-    customers: PropTypes.array.isRequired
-  }
+    customers: PropTypes.array.isRequired,
+  };
 
-  updateSearch = event => {
+  updateSearch = (event) => {
     this.setState({ search: event.target.value });
   };
 
-  deleteCustomer = customer => {
+  deleteCustomer = (customer) => {
     swal({
       title: `Delete ${customer.name.first}?`,
       text: `Do you really want to delete this customer?`,
       buttons: true,
       icon: "warning",
-      dangerMode: true
-    }).then(willDelete => {
+      dangerMode: true,
+    }).then((willDelete) => {
       if (willDelete) {
         swal(
           `Boom! ${customer.name.first} ${customer.name.last} has been deleted!`,
           {
-            icon: "success"
+            icon: "success",
           }
         );
         this.props.deleteCustomer(customer._id);
@@ -49,7 +49,7 @@ class Search extends Component {
     });
   };
 
-  calculateCompletedBeers = arr => {
+  calculateCompletedBeers = (arr) => {
     if (arr) {
       let count = 0;
       for (let i = 0; i < arr.length; i++) {
@@ -65,7 +65,7 @@ class Search extends Component {
     let { search } = this.state;
     let filteredCustomers;
     if (this.props.customers && search) {
-      filteredCustomers = this.props.customers.filter(customer => {
+      filteredCustomers = this.props.customers.filter((customer) => {
         // Number Search
         let id = customer.mugClub.clubId.toString();
         let number = search === id ? customer : null;
@@ -118,13 +118,19 @@ class Search extends Component {
                 <FontAwesomeIcon icon={faPlus} />
               </div>
             </h1>
-            <input
-              type="text"
-              name="search"
-              className={classes.Input}
-              value={this.state.search}
-              onChange={this.updateSearch}
-            />
+            <div className={classes.SearchContainer}>
+              <label htmlFor="search" className={classes.InputLabel}>
+                Please Enter Name or Mug Club ID
+              </label>
+              <input
+                type="text"
+                name="search"
+                placeholder="For example: 'Danny Carrasco' or '12"
+                className={classes.Input}
+                value={this.state.search}
+                onChange={this.updateSearch}
+              />
+            </div>
 
             <div className={classes.CustomerContainer}>
               {search && mappedCustomers}
@@ -136,8 +142,8 @@ class Search extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  customers: state.customers.customers
+const mapStateToProps = (state) => ({
+  customers: state.customers.customers,
 });
 
 export default connect(mapStateToProps, actions)(Search);

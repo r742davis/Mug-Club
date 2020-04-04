@@ -1,0 +1,17 @@
+$breakpoints: (
+  'mobile': 375px,
+  'small': 600px,
+  'medium': 800px,
+  'large': 1065px,
+  'xl': 1250px,
+  'xxl': 1450px
+)
+!default;
+// Mixin that responds to @include
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}

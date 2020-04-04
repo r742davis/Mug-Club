@@ -1,20 +1,28 @@
+:root {
+  --primary: white;
+  --secondary: #00a5ff;
+  --tertiary: #686868;
+  --input-color: #a9a9a9;
+  --completed: #00a287; }
+
 .CustomerCard {
   width: 100%;
   margin-top: 2rem;
   margin-bottom: 1rem;
-  border-radius: 1rem;
-  background: white;
+  margin-left: -1rem;
+  border-radius: 0.5rem;
+  background: var(--primary);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   transition: 0.125s; }
 
 .CustomerCard:hover {
   transform: translateY(-0.25rem);
   transition: 0.2s;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.16); }
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
 
 .IncompleteTitleContainer {
   background: black;
-  color: whitesmoke;
+  color: var(--primary);
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
   display: flex;
@@ -23,8 +31,8 @@
   margin-bottom: 1rem; }
 
 .CompletedTitleContainer {
-  background: #00a287;
-  color: whitesmoke;
+  background: var(--completed);
+  color: var(--primary);
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
   display: flex;
@@ -37,7 +45,7 @@
   padding-top: 2rem;
   font-size: 4.5rem;
   border-radius: 1rem;
-  color: white;
+  color: var(--primary);
   display: flex;
   justify-content: space-between; }
 
