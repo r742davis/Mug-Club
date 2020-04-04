@@ -125,7 +125,7 @@ class Search extends Component {
               <input
                 type="text"
                 name="search"
-                placeholder="For example: 'Danny Carrasco' or '12"
+                placeholder="For example: 'Danny' or '12'"
                 className={classes.Input}
                 value={this.state.search}
                 onChange={this.updateSearch}
