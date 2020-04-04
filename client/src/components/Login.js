@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import classes from "../styles/Login.module.css";
+import classes from "../css/Login.module.css";
 import { Redirect } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";

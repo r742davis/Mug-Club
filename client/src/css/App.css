@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Questrial|Roboto:wght@300&display=swap");
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 10px;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+ol, ul {
+  list-style: none; }
+
+input:focus,
+select:focus {
+  outline: none; }
+
+.box-shadow {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }

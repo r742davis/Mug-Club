@@ -1,0 +1,23 @@
+.EditButton,
+.DeleteButton {
+  width: 5rem;
+  height: 5rem;
+  padding: 1rem;
+  margin: 1rem 1rem 1rem 0;
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 10rem;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: 0.2s; }
+
+.EditButton:hover {
+  background: #00A287;
+  color: white;
+  transition: 0.2s; }
+
+.DeleteButton:hover {
+  background: #B72E3E;
+  color: white;
+  transition: 0.2s; }

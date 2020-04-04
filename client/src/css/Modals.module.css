@@ -1,0 +1,182 @@
+.ModalContainer {
+  position: fixed;
+  z-index: 500;
+  width: auto;
+  top: 50%;
+  left: 50%;
+  padding-bottom: 25px;
+  display: block;
+  margin: 0 auto;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); }
+
+.Modal {
+  background: white;
+  height: 75%;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  backface-visibility: hidden;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 1rem; }
+
+.ModalTitle {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 100;
+  padding: 1rem 1rem 1rem 2rem;
+  background: #00a5ff;
+  color: white;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem; }
+
+.ModalContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem; }
+
+.ModalImage {
+  width: 150px;
+  height: 150px;
+  border-radius: 5rem; }
+
+.ModalForm {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased; }
+
+/* Inputs */
+.Group {
+  position: relative;
+  margin-bottom: 2rem; }
+
+.Input {
+  font-size: 2rem;
+  padding-top: 1.5rem;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #e0e0e0; }
+
+.Input:focus {
+  outline: none; }
+
+/* Label */
+.Label {
+  color: #f0f0f0;
+  font-size: 2rem;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  top: 1rem;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all; }
+
+.SelectLabel {
+  color: #00a5ff;
+  font-size: 1.2rem;
+  font-weight: normal;
+  pointer-events: none;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all; }
+
+.ListLabel {
+  color: #00a5ff; }
+
+.Select {
+  color: black;
+  font-size: 2rem;
+  height: 2.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  position: relative;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #e0e0e0; }
+
+.Input:focus ~ .Label,
+.Input:valid ~ .Label {
+  top: -0.25rem;
+  font-size: 1.2rem;
+  color: #00a5ff; }
+
+.Select:focus ~ .SelectLabel,
+.Select:valid ~ .SelectLabel {
+  color: #00a5ff; }
+
+/* Bar Changes */
+.Bar {
+  position: relative;
+  display: block;
+  width: auto; }
+
+.Bar:before,
+.Bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 0px;
+  position: absolute;
+  background: #00a5ff;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all; }
+
+.Bar:before {
+  left: 50%; }
+
+.Bar:after {
+  right: 50%; }
+
+/* active state */
+.Input:focus ~ .Bar:before,
+.Input:focus ~ .Bar:after {
+  width: 50%; }
+
+.EditButton,
+.CancelButton,
+.DeleteButton {
+  padding: 1rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: 0.25s; }
+
+.EditButton {
+  background: #00a5ff;
+  color: white; }
+
+.CancelButton,
+.DeleteButton {
+  background: #f0f0f0; }
+
+.EditButton:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transform: translateY(-0.25rem);
+  transition: 0.1s; }
+
+.CancelButton:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transform: translateY(-0.25rem);
+  transition: 0.1s; }
+
+.DeleteButton:hover {
+  background: #b72e3e;
+  color: white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transform: translateY(-0.25rem);
+  transition: 0.1s; }
+
+.BeerLabel {
+  font-size: 1.2rem;
+  color: #00a5ff; }

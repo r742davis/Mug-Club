@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../css/Modals.module.css";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -7,7 +8,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Checkbox from "@material-ui/core/Checkbox";
 import Avatar from "@material-ui/core/Avatar";
-import styles from "../styles/Modals.module.css";
 
 // Redux Imports
 import { connect } from "react-redux";

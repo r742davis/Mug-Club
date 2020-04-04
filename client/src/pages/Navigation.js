@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import classes from "../styles/Navigation.module.css";
+import classes from "../css/Navigation.module.css";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

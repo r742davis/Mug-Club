@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import classes from "../styles/Icons.module.css";
+import classes from "../css/Icons.module.css";
 
 const DeleteIcon = (props) => {
   return (

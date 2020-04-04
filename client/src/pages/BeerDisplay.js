@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "../styles/BeerDisplay.module.css";
+import classes from "../css/BeerDisplay.module.css";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
