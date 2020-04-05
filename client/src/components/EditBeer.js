@@ -92,11 +92,11 @@ class EditBeer extends Component {
           <div className={classes.Modal}>
             <h2 className={classes.ModalTitle}>Edit Beer</h2>
             <div className={classes.ModalContent}>
-              <img
+              {/* <img
                 className={classes.ModalImage}
                 src={this.props.url}
                 alt={this.props.name}
-              />
+              /> */}
               <form
                 className={classes.ModalForm}
                 onSubmit={(e) => this.handleSubmit(e)}
@@ -175,18 +175,21 @@ class EditBeer extends Component {
                     Beer/Brewery Image URL
                   </label>
                 </div>
-                <input
-                  type="submit"
-                  value="Submit Edit"
-                  onClick={(e) => this.handleSubmit(e)}
-                  className={classes.EditButton}
-                />
-                <input
-                  type="submit"
-                  value="Cancel"
-                  onClick={() => this.props.closeModal()}
-                  className={classes.CancelButton}
-                />
+                <div className={classes.ButtonContainer}>
+                  <input
+                    type="submit"
+                    value="Submit"
+                    onClick={(e) => this.handleSubmit(e)}
+                    className={classes.EditButton}
+                  />
+                  <input
+                    type="submit"
+                    value="Cancel"
+                    onClick={() => this.props.closeModal()}
+                    className={classes.CancelButton}
+                  />
+                </div>
+                
               </form>
               <DeleteIcon delete={() => this.deleteBeerAlert()} />
             </div>

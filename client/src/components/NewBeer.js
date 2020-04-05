@@ -81,9 +81,6 @@ class NewBeerModal extends Component {
                   </label>
                 </div>
                 <div className={classes.Group}>
-                  <label htmlFor="type" className={classes.SelectLabel}>
-                    Type
-                  </label>
                   <select
                     name="type"
                     className={classes.Select}
@@ -96,6 +93,9 @@ class NewBeerModal extends Component {
                     </optgroup>
                     {typeMap}
                   </select>
+                  <label htmlFor="type" className={classes.Label}>
+                    Type
+                  </label>
                 </div>
                 <div className={classes.Group}>
                   <input
@@ -139,19 +139,21 @@ class NewBeerModal extends Component {
                     Beer/Brewery Image URL
                   </label>
                 </div>
-                <input
-                  type="submit"
-                  value="Create New Beer"
-                  onClick={(e) => this.handleSubmit(e)}
-                  className={classes.EditButton}
-                />
-                <input
-                  type="submit"
-                  value="Cancel"
-                  onClick={() => this.props.closeModal()}
-                  className={classes.CancelButton}
-                  formNoValidate
-                />
+                <div className={classes.ButtonContainer}>
+                  <input
+                    type="submit"
+                    value="Create New Beer"
+                    onClick={(e) => this.handleSubmit(e)}
+                    className={classes.EditButton}
+                  />
+                  <input
+                    type="submit"
+                    value="Cancel"
+                    onClick={() => this.props.closeModal()}
+                    className={classes.CancelButton}
+                    formNoValidate
+                  />
+                </div>
               </form>
             </div>
           </div>

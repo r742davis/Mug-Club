@@ -131,16 +131,21 @@ class NewCustomer extends Component {
                       Mug Club ID
                     </label>
                   </div>
-                  <button type="submit" className={classes.EditButton}>
-                    Create New Customer
-                  </button>
-                  <button
-                    type="button"
+                  <div className={classes.ButtonContainer}>
+                  <input
+                    type="submit"
+                    value="Create New Beer"
+                    onClick={(e) => this.handleSubmit(e)}
+                    className={classes.EditButton}
+                  />
+                  <input
+                    type="submit"
+                    value="Cancel"
                     onClick={() => this.props.closeModal()}
                     className={classes.CancelButton}
-                  >
-                    Cancel
-                  </button>
+                    formNoValidate
+                  />
+                </div>
                 </form>
               </div>
             </div>

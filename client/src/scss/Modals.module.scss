@@ -24,18 +24,16 @@
 
 }
 .ModalTitle {
-  text-align: center;
+  text-align: left;
   font-size: 4rem;
   letter-spacing: 0.1rem;
   font-weight: 100;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 4rem;
+  padding-left: 2rem;
+  padding-bottom: 0;
   background: var(--secondary);
   color: var(--primary);
   width: 100%;
-
-  // border-top-left-radius: 1rem;
-  // border-top-right-radius: 1rem;
 }
 .ModalContent {
   display: flex;
@@ -63,7 +61,7 @@
 }
 .Input {
   font-size: 1.6rem;
-  padding: 2rem 1rem 0.5rem 1rem;
+  padding: 2rem 1rem 1rem 1rem;
   display: block;
   width: 100%;
   border: none;
@@ -85,29 +83,32 @@
   padding-left: 1rem;
   position: absolute;
   pointer-events: none;
-  top: 1.25rem;
+  top: 2rem;
   transition: 0.2s ease all;
-  -moz-transition: 0.2s ease all;
-  -webkit-transition: 0.2s ease all;
+  z-index: 100;
 }
-.SelectLabel {
-  color: var(--secondary);
-  font-size: 1.2rem;
-  font-weight: normal;
-  pointer-events: none;
-  transition: 0.2s ease all;
-  -moz-transition: 0.2s ease all;
-  -webkit-transition: 0.2s ease all;
-}
+// .SelectLabel {
+//   color: var(--input-color);
+//   font-size: 1.6rem;
+//   font-weight: normal;
+//   padding-left: 1rem;
+//   position: absolute;
+//   pointer-events: none;
+//   top: 1.25rem;
+//   transition: 0.2s ease all;
+//   z-index: 100;
+// }
 .ListLabel {
   color: var(--secondary);
   padding-left: 1rem;
 }
 .Select {
+  overflow-y: scroll;
+  display: block;
   color: black;
   background: #f0f0f0;
   font-size: 1.6rem;
-  height: 4rem;
+  height: 5rem;
   position: relative;
   width: 100%;
   border: none;
@@ -115,16 +116,18 @@
   border-bottom: 1px solid var(--input-color);
 }
 .Input:focus ~ .Label,
-.Input:valid ~ .Label {
+.Input:valid ~ .Label,
+.Select:focus ~ .Label,
+.Select:valid ~ .Label {
   top: -1rem;
   padding-left: 1rem;
   font-size: 1rem;
   color: var(--secondary);
 }
-.Select:focus ~ .SelectLabel,
-.Select:valid ~ .SelectLabel {
-  color: var(--secondary);
-}
+// .Select:focus ~ .SelectLabel,
+// .Select:valid ~ .SelectLabel {
+//   color: var(--secondary);
+// }
 
 /* Bar Changes */
 .Bar {
@@ -135,7 +138,7 @@
 .Bar:before,
 .Bar:after {
   content: "";
-  height: 1px;
+  height: 3px;
   width: 0;
   bottom: 0px;
   position: absolute;
@@ -156,15 +159,25 @@
 .Input:focus ~ .Bar:after {
   width: 50%;
 }
+
+
+// Buttons
+.ButtonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+}
+
 .EditButton,
-.CancelButton,
-.DeleteButton {
+.CancelButton {
+  width: 49%;
   padding: 1rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   border: none;
   border-radius: 0.5rem;
-  font-size: 2rem;
+  font-size: 1.6rem;
   cursor: pointer;
   transition: 0.25s;
 }
@@ -172,8 +185,7 @@
   background: var(--secondary);
   color: white;
 }
-.CancelButton,
-.DeleteButton {
+.CancelButton {
   background: #f0f0f0;
 }
 .EditButton:hover {
@@ -186,13 +198,7 @@
   transform: translateY(-0.25rem);
   transition: 0.1s;
 }
-.DeleteButton:hover {
-  background: #b72e3e;
-  color: white;
-  box-shadow: 0px 5px 6px 0px rgba(50, 50, 50, 0.31);
-  transform: translateY(-0.25rem);
-  transition: 0.1s;
-}
+
 .BeerLabel {
   font-size: 1.2rem;
   color: var(--secondary);

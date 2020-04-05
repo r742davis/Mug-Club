@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../css/Modals.module.css";
+import classes from "../css/Modals.module.css";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -18,13 +18,13 @@ const uniqid = require("uniqid");
 const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
-    
     height: "300px",
     backgroundColor: theme.palette.background.paper,
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center",
-    overflowY: "auto"
+    overflowY: "auto",
+    marginBottom: "1rem"
   },
   item: {
     width: "300px",
@@ -57,7 +57,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function BeerList(props) {
-  const classes = useStyles();
+  const styles = useStyles();
   const [checked, setChecked] = React.useState([-1]);
 
   const handleToggle = value => () => {
@@ -78,19 +78,19 @@ function BeerList(props) {
         onClick={handleToggle(beer)}
         dense
         button
-        className={beer.finished ? classes.completedItem : classes.item}
+        className={beer.finished ? styles.completedItem : styles.item}
       >
         <ListItemAvatar>
           <Avatar
-            className={classes.avatar}
+            className={styles.avatar}
             alt={`${beer.brewery}`}
             src={`${beer.url}`}
           />
         </ListItemAvatar>
         <ListItemText
           classes={{
-            primary: classes.primary,
-            secondary: classes.secondary
+            primary: styles.primary,
+            secondary: styles.secondary
           }}
           primary={`${beer.name}`}
           secondary={`${beer.brewery}`}
@@ -98,7 +98,7 @@ function BeerList(props) {
         <ListItemIcon>
           <Checkbox
             edge="end"
-            className={classes.checkbox}
+            className={styles.checkbox}
             checked={beer.finished || checked.indexOf(beer) !== -1}
             disabled={beer.finished}
           />
@@ -109,21 +109,21 @@ function BeerList(props) {
 
   return (
     <>
-      <List dense className={classes.root}>
+      <List dense className={styles.root}>
         {mappedBeers}
       </List>
-      <div className={classes.buttonContainer}>
+      <div className={classes.ButtonContainer}>
         <input
           type="submit"
           value="Submit Edit"
           onClick={e => props.handleSubmit(e, checked)}
-          className={styles.EditButton}
+          className={classes.EditButton}
         />
         <input
           type="submit"
           value="Cancel"
           onClick={() => props.closeModal()}
-          className={styles.CancelButton}
+          className={classes.CancelButton}
         />
       </div>
     </>
