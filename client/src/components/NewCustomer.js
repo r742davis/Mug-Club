@@ -134,7 +134,7 @@ class NewCustomer extends Component {
                   <div className={classes.ButtonContainer}>
                   <input
                     type="submit"
-                    value="Create New Beer"
+                    value="Submit"
                     onClick={(e) => this.handleSubmit(e)}
                     className={classes.EditButton}
                   />

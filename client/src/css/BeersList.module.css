@@ -1,4 +1,12 @@
-.root {
+:root {
+  --primary: white;
+  --secondary: #00a5ff;
+  --secondary-light: #b3e4ff;
+  --tertiary: #686868;
+  --input-color: #a9a9a9;
+  --delete: #b12723; }
+
+.ListContainer {
   width: 100%;
   height: 300px;
   margin-bottom: 2rem;
@@ -6,17 +14,58 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  overflow-y: auto; }
+  overflow-y: auto;
+  margin-bottom: 1rem; }
+  .ListContainer::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem; }
+  .ListContainer::-webkit-scrollbar-thumb {
+    background: var(--secondary); }
+  .ListContainer::-webkit-scrollbar-track {
+    background: var(--secondary-light); }
+  .ListContainer {
+    scrollbar-face-color: var(--secondary);
+    scrollbar-track-color: var(--secondary-light); }
 
-.item {
-  width: 300px;
-  height: 50px;
-  margin: 1rem 0 1rem 0;
+.Item {
+  width: 90%;
+  height: 6rem;
+  margin: 0.5rem 0 0.5rem 0;
+  padding: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  background: red; }
+  background: #f0d3d7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.2s; }
 
-.buttonContainer {
+.Item:hover {
+  transform: scale(1.05);
+  transition: 0.2s; }
+
+.NameContainer {
   width: 100%;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  margin-left: 2rem; }
+  .NameContainer h1 {
+    font-size: 1.6rem; }
+  .NameContainer h2 {
+    font-size: 1.2rem; }
+
+.Avatar {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 5rem; }
+
+.Completed {
+  background: var(--secondary-light); }
+
+.FinishedCheckbox {
+  display: none; }
+
+.CheckIcon {
+  font-size: 2.5rem;
+  color: white; }

@@ -87,20 +87,11 @@
   transition: 0.2s ease all;
   z-index: 100;
 }
-// .SelectLabel {
-//   color: var(--input-color);
-//   font-size: 1.6rem;
-//   font-weight: normal;
-//   padding-left: 1rem;
-//   position: absolute;
-//   pointer-events: none;
-//   top: 1.25rem;
-//   transition: 0.2s ease all;
-//   z-index: 100;
-// }
-.ListLabel {
-  color: var(--secondary);
+.BeerLabel {
+  position: relative;
+  font-size: 1rem;
   padding-left: 1rem;
+  color: var(--secondary);
 }
 .Select {
   overflow-y: scroll;
@@ -197,9 +188,4 @@
   box-shadow: 0px 5px 6px 0px rgba(50, 50, 50, 0.31);
   transform: translateY(-0.25rem);
   transition: 0.1s;
-}
-
-.BeerLabel {
-  font-size: 1.2rem;
-  color: var(--secondary);
 }

@@ -1,13 +1,8 @@
 import React from "react";
 import classes from "../css/Modals.module.css";
-import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import Checkbox from "@material-ui/core/Checkbox";
-import Avatar from "@material-ui/core/Avatar";
+import styles from "../css/BeersList.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 // Redux Imports
 import { connect } from "react-redux";
@@ -15,52 +10,10 @@ import { openModal, closeModal } from "../actions/modalActions";
 const actions = { openModal, closeModal };
 const uniqid = require("uniqid");
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    width: "100%",
-    height: "300px",
-    backgroundColor: theme.palette.background.paper,
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    overflowY: "auto",
-    marginBottom: "1rem"
-  },
-  item: {
-    width: "300px",
-    border: "1px solid blue",
-    height: "50px",
-    borderRadius: "0.5rem",
-    boxShadow: "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)",
-    margin: "2px",
-    background: "#F0D3D7"
-  },
-  completedItem: {
-    width: "300px",
-    height: "50px",
-    borderRadius: "0.5rem",
-    boxShadow: "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)",
-    margin: "2px",
-    background: "#BDE7DF"
-  },
-  primary: {
-    fontSize: "12px"
-  },
-  secondary: {
-    fontSize: "10px"
-  },
-  buttonContainer: {
-    width: "100%",
-    display: "flex",
-    flexDirection: "column"
-  }
-}));
-
 function BeerList(props) {
-  const styles = useStyles();
   const [checked, setChecked] = React.useState([-1]);
 
-  const handleToggle = value => () => {
+  const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
     if (currentIndex === -1) {
@@ -71,52 +24,56 @@ function BeerList(props) {
     setChecked(newChecked);
   };
 
-  const mappedBeers = props.beers.map(beer => {
+  const checkForIcon = (beer) => {
+    if (checked.indexOf(beer) !== -1 && !beer.finished) {
+      return (
+        <span className={styles.CheckIcon}>
+          <FontAwesomeIcon icon={faCheckCircle} />
+        </span>
+      );
+    } else {
+      return null;
+    }
+  };
+
+  const mappedBeers = props.beers.map((beer) => {
     return (
-      <ListItem
+      <li
         key={uniqid()}
         onClick={handleToggle(beer)}
-        dense
-        button
-        className={beer.finished ? styles.completedItem : styles.item}
+        className={
+          beer.finished ? `${styles.Item} ${styles.Completed}` : styles.Item
+        }
       >
-        <ListItemAvatar>
-          <Avatar
-            className={styles.avatar}
-            alt={`${beer.brewery}`}
-            src={`${beer.url}`}
-          />
-        </ListItemAvatar>
-        <ListItemText
-          classes={{
-            primary: styles.primary,
-            secondary: styles.secondary
-          }}
-          primary={`${beer.name}`}
-          secondary={`${beer.brewery}`}
+        <img
+          className={styles.Avatar}
+          alt={`${beer.brewery}`}
+          src={`${beer.url}`}
         />
-        <ListItemIcon>
-          <Checkbox
-            edge="end"
-            className={styles.checkbox}
-            checked={beer.finished || checked.indexOf(beer) !== -1}
-            disabled={beer.finished}
-          />
-        </ListItemIcon>
-      </ListItem>
+        <div className={styles.NameContainer}>
+          <h1>{`${beer.brewery}`}</h1>
+          <h2>{`${beer.name}`}</h2>
+        </div>
+        <div>
+          {checkForIcon(beer)}
+          {beer.finished && (
+            <span className={styles.CheckIcon}>
+              <FontAwesomeIcon icon={faCheckCircle} />
+            </span>
+          )}
+        </div>
+      </li>
     );
   });
 
   return (
     <>
-      <List dense className={styles.root}>
-        {mappedBeers}
-      </List>
+      <ul className={styles.ListContainer}>{mappedBeers}</ul>
       <div className={classes.ButtonContainer}>
         <input
           type="submit"
-          value="Submit Edit"
-          onClick={e => props.handleSubmit(e, checked)}
+          value="Submit"
+          onClick={(e) => props.handleSubmit(e, checked)}
           className={classes.EditButton}
         />
         <input
@@ -130,6 +87,6 @@ function BeerList(props) {
   );
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = (state) => ({});
 
 export default connect(mapStateToProps, actions)(BeerList);

@@ -10,16 +10,16 @@
   border-radius: 10rem;
   font-size: 2rem;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.15s;
 }
 .EditButton:hover {
-  background: #00A287;
+  background: var(--secondary);
   color: white;
-  transition: 0.2s;
+  transition: 0.15s;
 }
 .DeleteButton:hover {
-  background: #B72E3E;
+  background: var(--delete);
   color: white;
-  transition: 0.2s;
+  transition: 0.15s;
 }
 
