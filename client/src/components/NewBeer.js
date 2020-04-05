@@ -60,7 +60,7 @@ class NewBeerModal extends Component {
       <section className={classes.ModalContainer}>
         <Grow in={true}>
           <div className={classes.Modal}>
-            <h2 className={classes.ModalTitle}>Create New Beer</h2>
+            <h2 className={classes.ModalTitle}>New Beer</h2>
             <div className={classes.ModalContent}>
               <form
                 className={classes.ModalForm}
@@ -80,7 +80,6 @@ class NewBeerModal extends Component {
                     Beer Name
                   </label>
                 </div>
-
                 <div className={classes.Group}>
                   <label htmlFor="type" className={classes.SelectLabel}>
                     Type
@@ -98,7 +97,6 @@ class NewBeerModal extends Component {
                     {typeMap}
                   </select>
                 </div>
-
                 <div className={classes.Group}>
                   <input
                     type="text"
@@ -113,7 +111,6 @@ class NewBeerModal extends Component {
                     Brewery
                   </label>
                 </div>
-
                 <div className={classes.Group}>
                   <input
                     type="text"
@@ -128,7 +125,6 @@ class NewBeerModal extends Component {
                     Brewery Location
                   </label>
                 </div>
-
                 <div className={classes.Group}>
                   <input
                     type="text"

@@ -83,7 +83,7 @@ class NewCustomer extends Component {
         <section className={classes.ModalContainer}>
           <Grow in={true}>
             <div className={classes.Modal}>
-              <h2 className={classes.ModalTitle}>Add New Customer</h2>
+              <h2 className={classes.ModalTitle}>New Customer</h2>
               <div className={classes.ModalContent}>
                 <form
                   className={classes.ModalForm}
