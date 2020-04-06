@@ -10,13 +10,19 @@
   background: var(--primary);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   transition: 0.125s;
+  & h2 {
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 500;
+  }
 }
 .CustomerCard:hover {
   transform: translateY(-0.25rem);
   transition: 0.2s;
   box-shadow: $box-shadow;
 }
-.IncompleteTitleContainer {
+.TitleContainer {
   background: black;
   color: var(--primary);
   border-top-left-radius: 1rem;
@@ -26,30 +32,21 @@
   flex-direction: column;
   margin-bottom: 1rem;
 }
-.CompletedTitleContainer {
+.Completed {
   background: var(--secondary);
   color: var(--primary);
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  margin-bottom: 1rem;
 }
 .CustomerTitle {
   padding-left: 2rem;
   padding-top: 2rem;
-  font-size: 4.5rem;
+  font-size: 3.5rem;
   border-radius: 1rem;
   color: var(--primary);
   display: flex;
   justify-content: space-between;
 }
 .CustomerDetails {
-  padding-left: 2rem;
-  padding-bottom: 2rem;
-  font-size: 2rem;
-  font-weight: lighter;
+  
 }
 .ButtonContainer {
   margin-left: 2rem;

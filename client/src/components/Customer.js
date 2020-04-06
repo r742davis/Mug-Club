@@ -14,8 +14,8 @@ const Customer = (props) => {
       <div
         className={
           props.completed
-            ? classes.CompletedTitleContainer
-            : classes.IncompleteTitleContainer
+            ? `${classes.TitleContainer} ${classes.Completed}`
+            : classes.TitleContainer
         }
       >
         <h1 className={classes.CustomerTitle}>
