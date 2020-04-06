@@ -83,7 +83,7 @@
   margin: 4rem;
 }
 .AddIcon {
-  font-size: 2rem;
+  font-size: 1rem;
   margin-right: 4rem;
   height: 5rem;
   width: 5rem;
@@ -95,14 +95,18 @@
   justify-content: center;
   cursor: pointer;
   @include respond-to('small') {
-    font-size: 1.5rem;
-    height: 3rem;
-    width: 3rem;
+    position: fixed;
+    left: 79%;
+    bottom: 10%;
+    height: 6rem;
+    width: 6rem;
+    font-size: 1rem;
+    box-shadow: $box-shadow;
+    z-index: 500;
   }
 }
 .AddIcon:hover {
-  -webkit-animation: rotate-center 0.5s both;
-  animation: rotate-center 0.5s both;
+  background: var(--secondary-light);
 }
 
 /* ----------------------------------------------

@@ -110,7 +110,7 @@ class Search extends Component {
         <div className={classes.Background}>
           <div className={classes.InputContainer}>
             <h1 className={classes.SearchTitle}>
-              Search Customers
+              Search
               <div
                 className={classes.AddIcon}
                 onClick={() => this.props.openModal("NEW_CUSTOMER")}
