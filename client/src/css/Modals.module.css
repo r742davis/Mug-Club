@@ -37,7 +37,7 @@
   font-size: 4rem;
   letter-spacing: 0.1rem;
   font-weight: 100;
-  padding-top: 4rem;
+  padding-top: 2rem;
   padding-left: 2rem;
   padding-bottom: 0;
   background: var(--secondary);
@@ -102,9 +102,13 @@
 
 .BeerLabel {
   position: relative;
-  font-size: 1rem;
-  padding-left: 1rem;
-  color: var(--secondary); }
+  top: 0.7rem;
+  margin-left: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 1.3rem;
+  color: var(--secondary);
+  background: var(--primary); }
 
 .Select {
   overflow-y: scroll;

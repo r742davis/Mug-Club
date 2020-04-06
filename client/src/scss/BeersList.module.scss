@@ -5,12 +5,15 @@
   width: 300px;
   height: 300px;
   margin-bottom: 2rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
   background: white;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   overflow-y: auto;
-  margin-bottom: 1rem;
+  border: 2px solid var(--input-border);
+  border-radius: 0.5rem;
   @include scrollbars(0.5rem, var(--secondary), var(--secondary-light));
   @include respond-to('small') {
     height: 200px;

@@ -161,7 +161,7 @@ class EditCustomer extends Component {
                 </div>
                 <div>
                   <label htmlFor="beerList" className={classes.BeerLabel}>
-                    Beer List
+                    Select Beer to Mark as Complete:
                   </label>
                   <BeersList
                     beers={this.props.customerBeers}
