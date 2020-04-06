@@ -148,13 +148,13 @@ class Container extends React.Component {
                 <BeerDisplay />
               </Route>
             </Switch>
-            <button
+            {/* <button
               onClick={() =>
                 this.saveCustomersToDatabase(this.state.existingCustomers)
               }
             >
               Save Customers
-            </button>
+            </button> */}
           </div>
         </Router>
         {/* Modal Displays */}
