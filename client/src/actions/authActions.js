@@ -47,7 +47,7 @@ export const register = ({ name, email, password }) => dispatch => {
   const body = JSON.stringify({ name, email, password });
 
   axios
-    .post("http://localhost:5000/users", body, config)
+    .post("https://bear-mug-club-backend.herokuapp.com/users", body, config)
     .then(res =>
       dispatch({
         type: REGISTER_SUCCESS,
@@ -82,7 +82,7 @@ export const login = ({ email, password }) => dispatch => {
   //Request body
   const body = JSON.stringify({ email, password });
   axios
-    .post("http://localhost:5000/auth", body, config)
+    .post("https://bear-mug-club-backend.herokuapp.com/auth", body, config)
     .then(res =>
       dispatch({
         type: LOGIN_SUCCESS,

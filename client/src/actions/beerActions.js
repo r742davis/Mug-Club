@@ -12,7 +12,7 @@ import { returnErrors } from "./errorActions";
 export const fetchBeers = () => {
   return (dispatch, getState) => {
     dispatch(fetchBeersBegin());
-    return fetch("http://localhost:5000/beers")
+    return fetch("https://bear-mug-club-backend.herokuapp.com/beers")
       .then(res => res.json())
       .then(beers => {
         dispatch(fetchBeersSuccess(beers));
@@ -38,7 +38,7 @@ export const fetchBeersFailure = error => ({
 
 export const createBeer = newBeer => (dispatch, getState) => {
   axios
-    .post("http://localhost:5000/beers", newBeer)
+    .post("https://bear-mug-club-backend.herokuapp.com/beers", newBeer)
     .then(res =>
       dispatch({
         type: CREATE_BEER,
@@ -52,7 +52,7 @@ export const createBeer = newBeer => (dispatch, getState) => {
 
 export const deleteBeer = id => (dispatch, getState) => {
   axios
-    .delete("http://localhost:5000/beers/" + id)
+    .delete("https://bear-mug-club-backend.herokuapp.com/beers/" + id)
     .then(res =>
       dispatch({
         type: DELETE_BEER,
@@ -65,7 +65,7 @@ export const deleteBeer = id => (dispatch, getState) => {
 };
 
 export const updateBeer = (beer, id) => (dispatch, getState) => {
-  const beerURL = "http://localhost:5000/beers/" + id;
+  const beerURL = "https://bear-mug-club-backend.herokuapp.com/beers/" + id;
   axios
     .put(beerURL, beer)
     .then(dispatch(fetchBeers()))
