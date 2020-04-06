@@ -2,7 +2,7 @@
 @import "./_library.scss";
 
 .ListContainer {
-  width: 100%;
+  width: 300px;
   height: 300px;
   margin-bottom: 2rem;
   background: white;
@@ -12,6 +12,9 @@
   overflow-y: auto;
   margin-bottom: 1rem;
   @include scrollbars(0.5rem, var(--secondary), var(--secondary-light));
+  @include respond-to('small') {
+    height: 200px;
+  }
 }
 
 .Item {
@@ -27,6 +30,9 @@
   align-items: center;
   cursor: pointer;
   transition: 0.2s;
+  @include respond-to('small') {
+    height: 5rem;
+  }
 }
 .Item:hover {
   transform: scale(1.05);
@@ -37,17 +43,23 @@
   display: flex;
   flex-direction: column;
   margin-left: 2rem;
+  color: #505050;
   & h1 {
-    font-size: 1.6rem;
+    font-size: 1rem;
+    font-weight: 300;
   }
   & h2 {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
   }
 }
 .Avatar {
   height: 5rem;
   width: 5rem;
   border-radius: 5rem;
+  @include respond-to('small') {
+    height: 3rem;
+    width: 3rem;
+  }
 }
 .Completed {
   background: var(--secondary-light);
