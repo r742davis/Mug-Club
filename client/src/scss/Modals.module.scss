@@ -61,14 +61,14 @@
 }
 .Input {
   font-size: 1.6rem;
-  padding: 2rem 1rem 1rem 1rem;
+  padding: 2rem 1rem 1rem 1.5rem;
   display: block;
   width: 100%;
   border: none;
   background: var(--primary);
   border-bottom: 1px solid var(--input-color);
   border-radius: 0.5rem;
-  border: 1px solid #f2f2f2;
+  border: 2px solid var(--input-border);
 }
 
 .Input:focus {
@@ -80,7 +80,7 @@
   color: var(--input-color);
   font-size: 1.6rem;
   font-weight: normal;
-  padding-left: 1rem;
+  padding-left: 1.5rem;
   position: absolute;
   pointer-events: none;
   top: 2rem;
@@ -104,12 +104,14 @@
   width: 100%;
   border: none;
   border-radius: 0.5rem;
-  border: 2px solid #ccc;
+  border: 2px solid var(--input-border);
+  padding-left: 2rem;
+}
+option {
+  margin-left: 2rem;
 }
 .Input:focus,
-.Input:valid,
-.Select:focus,
-.Select:valid {
+.Select:focus {
   border: 2px solid var(--secondary);
   transition: 0.5s;
 }
