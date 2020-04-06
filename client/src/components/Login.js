@@ -168,6 +168,7 @@ class Login extends Component {
             {this.state.toggleReg && (
               <Register 
                 onSubmit={this.onSubmitReg}
+                toggleReg={this.toggleReg}
                 message={this.state.message}
                 onChange={this.onChange}
                 error={this.state.error} />

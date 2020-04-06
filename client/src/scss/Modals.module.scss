@@ -125,44 +125,8 @@ option {
   padding-right: 0.5rem;
   font-size: 1.2rem;
   color: var(--secondary);
-  background: white;
+  background: var(--primary);
 }
-// .Select:focus ~ .SelectLabel,
-// .Select:valid ~ .SelectLabel {
-//   color: var(--secondary);
-// }
-
-/* Bar Changes */
-// .Bar {
-//   position: relative;
-//   display: block;
-//   width: auto;
-// }
-// .Bar:before,
-// .Bar:after {
-//   content: "";
-//   height: 3px;
-//   width: 0;
-//   bottom: 0px;
-//   position: absolute;
-//   background: var(--secondary);
-//   transition: 0.2s ease all;
-//   -moz-transition: 0.2s ease all;
-//   -webkit-transition: 0.2s ease all;
-// }
-// .Bar:before {
-//   left: 50%;
-// }
-// .Bar:after {
-//   right: 50%;
-// }
-
-/* active state */
-.Input:focus ~ .Bar:before,
-.Input:focus ~ .Bar:after {
-  width: 50%;
-}
-
 
 // Buttons
 .ButtonContainer {
@@ -171,7 +135,6 @@ option {
   justify-content: space-between;
 
 }
-
 .EditButton,
 .CancelButton {
   width: 49%;
