@@ -2,6 +2,9 @@
   "name": "frontend",
   "version": "0.7.5",
   "private": true,
+  "engines": {
+    "node": "13.12.0"
+  },
   "dependencies": {
     "@animated-burgers/burger-squeeze": "^1.1.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
