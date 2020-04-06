@@ -21,7 +21,7 @@ router.get("/",  async (req, res) => {
 router.post("/",  async (req, res) => {
   try {
     //Pulled from 'beers' collection on Mongo database
-    // const beerList = await Beer.find();
+    const beerList = await Beer.find();
     const newCustomer = await new Customer({
       name: {
         first: req.body.name.first,
@@ -33,9 +33,9 @@ router.post("/",  async (req, res) => {
       mugClub: {
         completed: req.body.mugClub.completed,
         clubId: req.body.mugClub.clubId,
-        // beers: beerList
+        beers: (req.body.mugClub.beers ? req.body.mugClub.beers : beerList)
         // !!!!!!!IMPORTANT!!!!!! Must be changed back if existing customers have been uploaded to database
-        beers: req.body.mugClub.beers
+        // beers: req.body.mugClub.beers
       }
     });
     const savedNewCustomer = await newCustomer.save();
