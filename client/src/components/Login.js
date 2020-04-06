@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import classes from "../css/Login.module.css";
+import Register from "./Register";
 import { Redirect } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
@@ -165,63 +166,11 @@ class Login extends Component {
               </form>
             )}
             {this.state.toggleReg && (
-              <form onSubmit={e => this.onSubmitReg(e)}>
-                <div className={classes.LoginContainer}>
-                  {this.state.message && error}
-                  <div className={classes.Group}>
-                    <input
-                      type="text"
-                      name="name"
-                      onChange={this.onChange}
-                      className={classes.Input}
-                      required
-                    />
-                    <span className={classes.Bar}></span>
-                    <label htmlFor="name" className={classes.Label}>
-                      Name
-                    </label>
-                  </div>
-                  <div className={classes.Group}>
-                    <input
-                      type="email"
-                      name="email"
-                      onChange={this.onChange}
-                      className={classes.Input}
-                      required
-                    />
-                    <span className={classes.Bar}></span>
-                    <label htmlFor="email" className={classes.Label}>
-                      Email
-                    </label>
-                  </div>
-                  <div className={classes.Group}>
-                    <input
-                      type="password"
-                      name="password"
-                      onChange={this.onChange}
-                      className={classes.Input}
-                      required
-                    />
-                    <span className={classes.Bar}></span>
-                    <label htmlFor="password" className={classes.Label}>
-                      Password
-                    </label>
-                  </div>
-                  <button
-                    type="submit"
-                    name="register"
-                    className={`${classes.Button} ${classes.bounce}`}
-                  >
-                    Register
-                  </button>
-                  <div
-                    onClick={() => this.toggleReg()}
-                    className={classes.Back}
-                  >
-                    <FontAwesomeIcon icon={faArrowAltCircleLeft} />
-                  </div>
-                </div>
-              </form>
+              <Register 
+                onSubmit={this.onSubmitReg}
+                message={this.state.message}
+                onChange={this.onChange}
+                error={this.state.error} />
             )}
           </section>
         )}
