@@ -85,7 +85,7 @@ class Search extends Component {
     }
 
     const mappedCustomers = filteredCustomers
-      ? filteredCustomers.map((customer, index) => {
+      ? filteredCustomers.slice(0,20).map((customer, index) => {
           return (
             <Customer
               key={uniqid()}

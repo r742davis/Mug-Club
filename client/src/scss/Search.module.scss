@@ -31,7 +31,7 @@
   font-size: 1.6rem;
   padding: 2rem 1rem 1rem 1rem;
   display: block;
-  width: 50%;
+  width: 98%;
   border: none;
   background: white;
   border-bottom: 1px solid var(--input-color);
@@ -51,7 +51,6 @@
   pointer-events: none;
   top: 2rem;
   transition: 0.2s ease all;
-  z-index: 100;
 }
 .Input:focus {
   border: 2px solid var(--secondary);
