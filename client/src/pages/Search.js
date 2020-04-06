@@ -118,18 +118,18 @@ class Search extends Component {
                 <FontAwesomeIcon icon={faPlus} />
               </div>
             </h1>
-            <div className={classes.SearchContainer}>
-              <label htmlFor="search" className={classes.InputLabel}>
-                Please Enter Name or Mug Club ID
-              </label>
+            <div className={classes.Group}>
               <input
                 type="text"
                 name="search"
-                placeholder="For example: 'Danny' or '12'"
                 className={classes.Input}
-                value={this.state.search}
+                defaultValue={this.state.search}
                 onChange={this.updateSearch}
+                required
               />
+              <label htmlFor="search" className={classes.Label}>
+                Please Enter Name or Mug Club ID
+              </label>
             </div>
 
             <div className={classes.CustomerContainer}>

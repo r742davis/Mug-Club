@@ -85,8 +85,10 @@ class NewBeerModal extends Component {
                     name="type"
                     className={classes.Select}
                     onChange={this.handleInputChange}
+                    defaultValue={null}
                     value={this.state.type}
-                    placeholder="Select Type of Beer"
+                    placeholder="Beer Type"
+                    required
                   >
                     <optgroup label="Current Beer Type">
                       <option value={this.state.type}>{this.state.type}</option>

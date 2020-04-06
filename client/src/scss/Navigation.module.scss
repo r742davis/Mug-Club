@@ -1,3 +1,6 @@
+@import "./_mixins.scss";
+@import "./_library.scss";
+
 .navbar {
   position: fixed;
   background: black;
@@ -8,6 +11,7 @@
   top: 0;
   width: 100%;
   z-index: 10;
+  box-shadow: $box-shadow;
 }
 
 .navbar * {
@@ -32,7 +36,7 @@
   text-decoration: none;
   padding: 1rem;
   margin-right: 2rem;
-  font-size: 2rem;
+  font-size: 1.6rem;
   transition: 0.25s;
 }
 .link:hover {
@@ -45,7 +49,7 @@
   background: none;
   color: white;
   border: none;
-  font-size: 2rem;
+  font-size: 1.6rem;
   transition: 0.25s;
   cursor: pointer;
 }

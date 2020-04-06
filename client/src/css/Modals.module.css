@@ -64,10 +64,10 @@
   display: block;
   width: 100%;
   border: none;
-  background: #f0f0f0;
+  background: var(--primary);
   border-bottom: 1px solid var(--input-color);
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem; }
+  border-radius: 0.5rem;
+  border: 1px solid #f2f2f2; }
 
 .Input:focus {
   outline: none; }
@@ -94,48 +94,35 @@
   overflow-y: scroll;
   display: block;
   color: black;
-  background: #f0f0f0;
+  background: var(--primary);
   font-size: 1.6rem;
-  height: 5rem;
+  height: 5.5rem;
   position: relative;
   width: 100%;
   border: none;
-  border-radius: none;
-  border-bottom: 1px solid var(--input-color); }
+  border-radius: 0.5rem;
+  border: 2px solid #ccc; }
+
+.Input:focus,
+.Input:valid,
+.Select:focus,
+.Select:valid {
+  border: 2px solid var(--secondary);
+  transition: 0.5s; }
 
 .Input:focus ~ .Label,
 .Input:valid ~ .Label,
 .Select:focus ~ .Label,
 .Select:valid ~ .Label {
-  top: -1rem;
-  padding-left: 1rem;
-  font-size: 1rem;
-  color: var(--secondary); }
+  top: -0.5rem;
+  margin-left: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 1.2rem;
+  color: var(--secondary);
+  background: white; }
 
 /* Bar Changes */
-.Bar {
-  position: relative;
-  display: block;
-  width: auto; }
-
-.Bar:before,
-.Bar:after {
-  content: "";
-  height: 3px;
-  width: 0;
-  bottom: 0px;
-  position: absolute;
-  background: var(--secondary);
-  transition: 0.2s ease all;
-  -moz-transition: 0.2s ease all;
-  -webkit-transition: 0.2s ease all; }
-
-.Bar:before {
-  left: 50%; }
-
-.Bar:after {
-  right: 50%; }
-
 /* active state */
 .Input:focus ~ .Bar:before,
 .Input:focus ~ .Bar:after {

@@ -1,3 +1,12 @@
+:root {
+  --primary: white;
+  --secondary: #00a5ff;
+  --secondary-light: #b3e4ff;
+  --tertiary: #686868;
+  --input-color: #a9a9a9;
+  --input-border: #ccc;
+  --delete: #b12723; }
+
 .navbar {
   position: fixed;
   background: black;
@@ -7,7 +16,8 @@
   padding: 0;
   top: 0;
   width: 100%;
-  z-index: 10; }
+  z-index: 10;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
 
 .navbar * {
   font-family: "Montserrat", sans-serif; }
@@ -31,7 +41,7 @@
   text-decoration: none;
   padding: 1rem;
   margin-right: 2rem;
-  font-size: 2rem;
+  font-size: 1.6rem;
   transition: 0.25s; }
 
 .link:hover {
@@ -44,7 +54,7 @@
   background: none;
   color: white;
   border: none;
-  font-size: 2rem;
+  font-size: 1.6rem;
   transition: 0.25s;
   cursor: pointer; }
 

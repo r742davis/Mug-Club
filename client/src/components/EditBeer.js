@@ -116,14 +116,13 @@ class EditBeer extends Component {
                   </label>
                 </div>
                 <div className={classes.Group}>
-                  <label htmlFor="type" className={classes.ListLabel}>
-                    Type
-                  </label>
+                  
                   <select
                     name="type"
                     className={classes.Select}
                     onChange={this.handleInputChange}
                     defaultValue={this.props.type}
+                    required
                   >
                     <optgroup label="Current Beer Type">
                       <option defaultValue={this.props.type}>
@@ -132,6 +131,9 @@ class EditBeer extends Component {
                     </optgroup>
                     {typeMap}
                   </select>
+                  <label htmlFor="type" className={classes.Label}>
+                    Type
+                  </label>
                 </div>
                 <div className={classes.Group}>
                   <input
