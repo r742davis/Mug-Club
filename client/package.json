@@ -3,7 +3,7 @@
   "version": "0.7.5",
   "private": true,
   "engines": {
-    "node": "13.12.0"
+    "node": "12.16.1"
   },
   "dependencies": {
     "@animated-burgers/burger-squeeze": "^1.1.2",
