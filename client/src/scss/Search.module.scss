@@ -19,6 +19,9 @@
   color: var(--primary);
   display: flex;
   justify-content: space-between;
+  @include respond-to('small') {
+    font-size: 2.5rem;
+  }
 }
 
 // Inputs
@@ -31,7 +34,7 @@
   font-size: 1.6rem;
   padding: 2rem 1rem 1rem 1rem;
   display: block;
-  width: 98%;
+  width: 100%;
   border: none;
   background: white;
   border-bottom: 1px solid var(--input-color);
@@ -39,6 +42,9 @@
   border: 2px solid #ccc;
   &:focus {
     outline: none;
+  }
+  @include respond-to('small') {
+    padding-top: 1rem;
   }
 }
 .Label {
@@ -51,6 +57,10 @@
   pointer-events: none;
   top: 2rem;
   transition: 0.2s ease all;
+  @include respond-to('small') {
+    font-size: 1rem;
+
+  }
 }
 .Input:focus {
   border: 2px solid var(--secondary);
@@ -64,6 +74,10 @@
   font-size: 1.2rem;
   color: var(--secondary);
   background: white;
+  @include respond-to('small') {
+    font-size: 0.8rem;
+
+  }
 }
 .CustomerContainer {
   margin: 4rem;
@@ -80,6 +94,11 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  @include respond-to('small') {
+    font-size: 1.5rem;
+    height: 3rem;
+    width: 3rem;
+  }
 }
 .AddIcon:hover {
   -webkit-animation: rotate-center 0.5s both;

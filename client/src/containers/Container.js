@@ -28,74 +28,74 @@ class Container extends React.Component {
     const list = this.props.beers;
     let existingCustomersArray = [];
 
-    const populateBeersList = (headers, customer) => {
-      let map = {};
-      let beerList = [...list];
+    // const populateBeersList = (headers, customer) => {
+    //   let map = {};
+    //   let beerList = [...list];
 
-      // Mapping the customer's array of completed beers
-      for (let i = 5; i < customer.length; i++) {
-        const beer = headers[i];
-        if (customer[i] === "1") {
-          map[beer] = {
-            finished: true,
-          };
-        } else {
-          map[beer] = {
-            finished: false,
-          };
-        }
-      }
+    //   // Mapping the customer's array of completed beers
+    //   for (let i = 5; i < customer.length; i++) {
+    //     const beer = headers[i];
+    //     if (customer[i] === "1") {
+    //       map[beer] = {
+    //         finished: true,
+    //       };
+    //     } else {
+    //       map[beer] = {
+    //         finished: false,
+    //       };
+    //     }
+    //   }
 
-      let temp = [];
-      for (let [key, value] of Object.entries(map)) {
-        for (let beer in beerList) {
-          if (beerList[beer].name === key && value.finished === true) {
-            const merged = { ...beerList[beer], ...value };
-            temp.push(merged);
-          } else if (beerList[beer].name === key) {
-            temp.push(beerList[beer]);
-          }
-        }
-      }
-      return temp;
-    };
+    //   let temp = [];
+    //   for (let [key, value] of Object.entries(map)) {
+    //     for (let beer in beerList) {
+    //       if (beerList[beer].name === key && value.finished === true) {
+    //         const merged = { ...beerList[beer], ...value };
+    //         temp.push(merged);
+    //       } else if (beerList[beer].name === key) {
+    //         temp.push(beerList[beer]);
+    //       }
+    //     }
+    //   }
+    //   return temp;
+    // };
 
-    const results = readString(csvFile, {
-      delimiter: ",",
-      download: true,
-      complete: function (results) {
-        let headers = results.data[0];
-        let i = 1;
-        while (i < results.data.length) {
-          let customer = results.data[i];
-          let temp = {
-            name: {
-              first: customer[1],
-              last: customer[2],
-            },
-            mugClub: {
-              completed: null,
-              clubId: parseInt(customer[0]),
-              beers: populateBeersList(headers, customer),
-            },
-            beersCompleted: parseInt(customer[3]),
-          };
+    // const results = readString(csvFile, {
+    //   delimiter: ",",
+    //   download: true,
+    //   complete: function (results) {
+    //     let headers = results.data[0];
+    //     let i = 1;
+    //     while (i < results.data.length) {
+    //       let customer = results.data[i];
+    //       let temp = {
+    //         name: {
+    //           first: customer[1],
+    //           last: customer[2],
+    //         },
+    //         mugClub: {
+    //           completed: null,
+    //           clubId: parseInt(customer[0]),
+    //           beers: populateBeersList(headers, customer),
+    //         },
+    //         beersCompleted: parseInt(customer[3]),
+    //       };
 
-          if (customer[3] >= list.length) {
-            temp.mugClub.completed = true;
-          } else {
-            temp.mugClub.completed = false;
-          }
-          existingCustomersArray.push(temp);
-          i++;
-        }
-      },
-    });
+    //       if (customer[3] >= list.length) {
+    //         temp.mugClub.completed = true;
+    //       } else {
+    //         temp.mugClub.completed = false;
+    //       }
+    //       existingCustomersArray.push(temp);
+    //       i++;
+    //     }
+    //   },
+    // });
 
-    this.setState({
-      existingCustomers: existingCustomersArray,
-    });
-    console.table(this.state.existingCustomers);
+    // this.setState({
+    //   existingCustomers: existingCustomersArray,
+    // });
+    // console.table(this.state.existingCustomers);
   
   }
 

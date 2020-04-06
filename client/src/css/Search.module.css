@@ -25,6 +25,9 @@
   color: var(--primary);
   display: flex;
   justify-content: space-between; }
+  @media (max-width: 600px) {
+    .SearchTitle {
+      font-size: 2.5rem; } }
 
 .Group {
   margin: 4rem;
@@ -35,7 +38,7 @@
   font-size: 1.6rem;
   padding: 2rem 1rem 1rem 1rem;
   display: block;
-  width: 98%;
+  width: 100%;
   border: none;
   background: white;
   border-bottom: 1px solid var(--input-color);
@@ -43,6 +46,9 @@
   border: 2px solid #ccc; }
   .Input:focus {
     outline: none; }
+  @media (max-width: 600px) {
+    .Input {
+      padding-top: 1rem; } }
 
 .Label {
   color: var(--input-color);
@@ -54,6 +60,9 @@
   pointer-events: none;
   top: 2rem;
   transition: 0.2s ease all; }
+  @media (max-width: 600px) {
+    .Label {
+      font-size: 1rem; } }
 
 .Input:focus {
   border: 2px solid var(--secondary);
@@ -67,6 +76,10 @@
   font-size: 1.2rem;
   color: var(--secondary);
   background: white; }
+  @media (max-width: 600px) {
+    .Input:focus ~ .Label,
+    .Input:valid ~ .Label {
+      font-size: 0.8rem; } }
 
 .CustomerContainer {
   margin: 4rem; }
@@ -83,6 +96,11 @@
   align-items: center;
   justify-content: center;
   cursor: pointer; }
+  @media (max-width: 600px) {
+    .AddIcon {
+      font-size: 1.5rem;
+      height: 3rem;
+      width: 3rem; } }
 
 .AddIcon:hover {
   -webkit-animation: rotate-center 0.5s both;

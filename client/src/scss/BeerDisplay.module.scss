@@ -9,6 +9,9 @@
   margin-top: 10rem;
   box-shadow: $box-shadow;
   border-radius: 0.5rem;
+  @include respond-to('small') {
+    padding-bottom: 2rem;
+  }
 }
 .BeersTitle {
   padding-left: 3rem;
@@ -19,13 +22,20 @@
   color: var(--primary);
   display: flex;
   justify-content: space-between;
+  @include respond-to('small') {
+    font-size: 3rem;
+    padding-left: 2rem;
+  }
 }
 .DisplayContainer h2 {
-  font-size: 2rem;
-  font-weight: lighter;
+  font-size: 1.6rem;
+  font-weight: 300;
+  margin-top: 0.25rem;
 }
 .DisplayContainer h3 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 100;
+  color: var(--secondary);
 }
 .List {
   display: flex;
@@ -43,6 +53,12 @@
   height: 7.5rem !important;
   font-size: 2rem !important;
   transition: 0.25s;
+  @include respond-to('small') {
+    width: 100%;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+  }
 }
 .ListItem:hover {
   background: whitesmoke !important;
@@ -61,6 +77,11 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  @include respond-to('small') {
+    font-size: 1.5rem;
+    height: 3rem;
+    width: 3rem;
+  }
 }
 .AddIcon:hover {
   -webkit-animation: rotate-center 0.5s both;

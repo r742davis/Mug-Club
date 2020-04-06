@@ -2,12 +2,12 @@
   background-image: url("../assets/backgrounds/bar-background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  filter: blur(3px);
-  height: 100vh; }
+  height: 101vh;
+  width: 100%; }
 
 .Container {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 500px; }
+  min-width: 80%; }
