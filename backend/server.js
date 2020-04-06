@@ -11,8 +11,8 @@ const cors = require("cors");
 //-------------------------//
 const port = process.env.PORT || 5000;
 const database = "mug_club";
-const mongoURL =
-  process.env.MONGODB_URL || "mongodb://localhost:27017/" + database;
+const MONGODB_URI =
+  process.env.MONGODB_URI || "mongodb://localhost:27017/" + database;
 
 //---------------------------//
 //  App Listener: Port 5000  //
@@ -25,7 +25,7 @@ app.listen(port, () => {
 //  Connect to Mongooose  //
 //------------------------//
 mongoose.connect(
-  mongoURL,
+  MONGODB_URI,
   { useNewUrlParser: true, useUnifiedTopology: true },
   () => {
     console.log("The connection with mongod is established");

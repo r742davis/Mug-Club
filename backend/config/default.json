@@ -1,3 +1,4 @@
 {
-  "jwtSecret": "lannister_pays_their_debts"
+  "jwtSecret": "lannister_pays_their_debts",
+  "MONGODB_URI": "mongodb://heroku_lvfmkg09:ok4m74kmta7615nobqghr2gluu@ds015995.mlab.com:15995/heroku_lvfmkg09"
 }
