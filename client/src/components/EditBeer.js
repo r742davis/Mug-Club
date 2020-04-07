@@ -71,13 +71,13 @@ class EditBeer extends Component {
       buttons: true,
       icon: "warning",
       dangerMode: true,
-    }).then((willDelete) => {
+    }).then(async (willDelete) => {
       if (willDelete) {
         swal(`Hasta la Vista! ${this.props.name} has been deleted!`, {
           icon: "success",
         });
-        this.props.deleteBeer(this.props.id);
-        this.props.fetchBeers();
+        await this.props.deleteBeer(this.props.id);
+        await this.props.fetchBeers();
         this.props.closeModal();
       } else {
         swal(`Today is your luck day, you sweet sweet miracle drink!`);

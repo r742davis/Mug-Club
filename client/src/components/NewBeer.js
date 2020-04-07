@@ -43,6 +43,7 @@ class NewBeerModal extends Component {
         icon: "success",
         button: "Cool!",
       });
+      console.log("Fetching beers...")
       await this.props.fetchBeers();
       this.props.closeModal();
     } catch (e) {
