@@ -3,6 +3,6 @@
     "node": "12.16.1"
   },
   "scripts": {
-    "start": "nodemon backend/server.js"
+    "start": "node backend/server.js"
   }
 }
