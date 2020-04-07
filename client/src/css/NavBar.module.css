@@ -20,13 +20,11 @@
   z-index: 10;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
 
-.navbar * {
-  font-family: "Montserrat", sans-serif; }
-
 .navbar h1 {
   color: white;
   width: 200px;
   font-size: 2rem;
+  font-family: "Montserrat", sans-serif;
   margin: 1rem 1rem 0 2rem; }
 
 .list {
@@ -46,7 +44,7 @@
   transition: 0.25s; }
 
 .link:hover {
-  color: #00a5ff;
+  color: var(--secondary);
   transition: 0.25s; }
 
 .NewButton {
@@ -60,7 +58,7 @@
   cursor: pointer; }
 
 .NewButton:hover {
-  color: #00a5ff;
+  color: var(--secondary);
   transition: 0.25s; }
 
 .NewButton:focus {
@@ -97,24 +95,39 @@
   .hamburgerList {
     position: absolute;
     height: auto;
-    width: 100%;
-    margin-top: 5rem;
-    left: rem;
-    background: black;
-    opacity: 0.9;
+    width: 96%;
+    margin-top: 5.5rem;
+    left: 2%;
+    border-radius: 1rem;
+    background: var(--primary);
+    opacity: 1;
     display: flex;
     flex-direction: column;
-    align-items: center; }
+    align-items: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
   .hamburgerItem {
     text-decoration: none;
-    font-size: 3rem;
+    font-size: 1.5rem;
     font-weight: bold;
-    background: black;
-    color: white;
+    background: none;
     border: none;
+    border-top: 0.5px solid var(--input-border);
     width: 100%;
-    text-align: center;
-    padding: 1rem; }
+    text-align: left; }
   .hamburgerItem:hover {
-    background: #696969;
-    cursor: pointer; } }
+    background: whitesmoke;
+    cursor: pointer; }
+  .LinkDiv {
+    display: flex;
+    font-size: 1.5rem;
+    align-items: center;
+    margin-left: 2rem;
+    padding: 1rem;
+    color: var(--secondary); }
+    .LinkDiv h2 {
+      margin: 0;
+      font-size: 2rem;
+      color: var(--secondary);
+      font-weight: 300; }
+    .LinkDiv * {
+      margin-right: 1.5rem; } }

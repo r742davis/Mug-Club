@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import classes from "../css/Navigation.module.css";
+import classes from "../css/NavBar.module.css";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faSearch, faBeer, faUserTimes } from "@fortawesome/free-solid-svg-icons";
 import Burger from "@animated-burgers/burger-squeeze";
 import "@animated-burgers/burger-squeeze/dist/styles.css";
 
@@ -14,7 +14,7 @@ import { openModal } from "../actions/modalActions";
 import { logout } from "../actions/authActions";
 const actions = { logout, openModal };
 
-class Navigation extends Component {
+class NavBar extends Component {
   state = {
     burgerOpen: false,
   };
@@ -46,7 +46,6 @@ class Navigation extends Component {
     //   return <Redirect to="/" push={true} />;
     // }
 
-
     let hamburgerMenu = (
       <ul className={classes.hamburgerList}>
         <Link
@@ -54,29 +53,44 @@ class Navigation extends Component {
           className={classes.hamburgerItem}
           onClick={() => this.toggleMenu()}
         >
-          Search
+          <div className={classes.LinkDiv}>
+            <FontAwesomeIcon icon={faSearch} />
+            <h2>Search</h2>
+          </div>
         </Link>
         <Link
           to={`${urlName}/beers-list`}
           className={classes.hamburgerItem}
           onClick={() => this.toggleMenu()}
         >
-          Beers List
+          <div className={classes.LinkDiv}>
+            <FontAwesomeIcon icon={faBeer} />
+            <h2>Beers</h2>
+          </div>
         </Link>
         <button
           onClick={() => this.comboToggle("NEW_CUSTOMER")}
           className={classes.hamburgerItem}
         >
-          <FontAwesomeIcon icon={faPlus} /> New Customer
+          <div className={classes.LinkDiv}>
+            <FontAwesomeIcon icon={faPlus} />
+            <h2>New Customer</h2>
+          </div>
         </button>
         <button
           onClick={() => this.comboToggle("NEW_BEER")}
           className={classes.hamburgerItem}
         >
-          <FontAwesomeIcon icon={faPlus} /> New Beer
+          <div className={classes.LinkDiv}>
+            <FontAwesomeIcon icon={faPlus} />
+            <h2>New Beer</h2>
+          </div>
         </button>
         <button onClick={this.logout} className={classes.hamburgerItem}>
-          Log Out
+          <div className={classes.LinkDiv}>
+            <FontAwesomeIcon icon={faUserTimes} />
+            <h2>Log Out</h2>
+          </div>
         </button>
       </ul>
     );
@@ -140,4 +154,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, actions)(Navigation);
+export default connect(mapStateToProps, actions)(NavBar);

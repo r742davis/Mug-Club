@@ -133,7 +133,16 @@ class Search extends Component {
             </div>
 
             <div className={classes.CustomerContainer}>
-              {search && mappedCustomers}
+              
+              {search && (
+                <>
+                  <h3>Results:</h3>
+                  {mappedCustomers}
+                  <h4>Max 20 Results</h4>
+                </>
+                  
+                )
+              }
             </div>
           </div>
         </div>

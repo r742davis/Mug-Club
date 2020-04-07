@@ -13,9 +13,9 @@ import { openModal, closeModal } from "../actions/modalActions";
 const actions = { openModal, closeModal };
 const uniqid = require("uniqid");
 
-const BeerDisplay = props => {
+const BeerDisplay = (props) => {
   const beerList = props.beers
-    ? props.beers.map(beer => {
+    ? props.beers.map((beer) => {
         return (
           <ListItem
             key={uniqid()}
@@ -25,7 +25,7 @@ const BeerDisplay = props => {
             onClick={() => props.openModal("EDIT_BEER", beer)}
           >
             <ListItemAvatar>
-              <Avatar alt={`${beer.brewery}`} src={beer.url} />
+              <Avatar className={classes.Avatar} alt={`${beer.brewery}`} src={beer.url} />
             </ListItemAvatar>
             <div className={classes.Group}>
               <h3>{beer.brewery}</h3>
@@ -47,15 +47,15 @@ const BeerDisplay = props => {
           <FontAwesomeIcon icon={faPlus} />
         </div>
       </h1>
-      <List dense className={classes.List}>
+      <List dense className={classes.ListContainer}>
         {beerList}
       </List>
     </section>
   );
 };
 
-const mapStateToProps = state => ({
-  beers: state.beers.beers
+const mapStateToProps = (state) => ({
+  beers: state.beers.beers,
 });
 
 export default connect(mapStateToProps, actions)(BeerDisplay);

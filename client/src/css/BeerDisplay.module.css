@@ -19,6 +19,18 @@
   @media (max-width: 600px) {
     .DisplayContainer {
       padding-bottom: 2rem; } }
+  .DisplayContainer h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-top: 0.25rem; }
+  .DisplayContainer h3 {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--beer-names); }
+  .DisplayContainer h4 {
+    margin: 2rem;
+    margin-bottom: 0;
+    color: var(--secondary); }
 
 .BeersTitle {
   padding-left: 3rem;
@@ -34,22 +46,12 @@
       font-size: 3rem;
       padding-left: 2rem; } }
 
-.DisplayContainer h2 {
-  font-size: 1.8rem;
-  font-weight: 300;
-  margin-top: 0.25rem; }
-
-.DisplayContainer h3 {
-  font-size: 1rem;
-  font-weight: 100;
-  color: var(--beer-names); }
-
-.List {
+.ListContainer {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
-  padding: 1rem; }
+  padding: 2rem; }
 
 .DisplayContainer .ListItem {
   width: 45%;
