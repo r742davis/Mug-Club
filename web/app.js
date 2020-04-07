@@ -17,20 +17,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 
-//  Production vs. Local React Environment //
-//-----------------------------------------//
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/build")));
-} else {
-  app.use(express.static(path.join(__dirname, "/client/public/index.html")));
-}
-
-//  Reroute for Client-Side Server Rendering  //
-//--------------------------------------------//
-app.get("/app/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
-
 //  Customers Controller  //
 //------------------------//
 const customersController = require("./controllers/customers.js");
@@ -50,5 +36,19 @@ app.use("/api/users", usersController);
 //-------------------//
 const authController = require("./controllers/auth.js");
 app.use("/api/auth", authController);
+
+//  Production vs. Local React Environment //
+//-----------------------------------------//
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/build")));
+} else {
+  app.use(express.static(path.join(__dirname, "/client/public/index.html")));
+}
+
+//  Reroute for Client-Side Server Rendering  //
+//--------------------------------------------//
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 module.exports = app;

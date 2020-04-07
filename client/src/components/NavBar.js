@@ -40,7 +40,7 @@ class Navigation extends Component {
   };
 
   render() {
-    const urlName = "/app";
+    const urlName = "";
     // const { isAuthenticated } = this.props.auth;
     // if (!isAuthenticated) {
     //   return <Redirect to="/" push={true} />;
