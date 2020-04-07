@@ -20,21 +20,21 @@ app.use(methodOverride("_method"));
 //  Customers Controller  //
 //------------------------//
 const customersController = require("./controllers/customers.js");
-app.use("/customers", customersController);
+app.use("/api/customers", customersController);
 
 //  Beers Controller  //
 //------------------------//
 const beersController = require("./controllers/beers.js");
-app.use("/beers", beersController);
+app.use("/api/beers", beersController);
 
 //  Users Controller  //
 //--------------------//
 const usersController = require("./controllers/users.js");
-app.use("/users", usersController);
+app.use("/api/users", usersController);
 
 //  Auth Controller  //
 //-------------------//
 const authController = require("./controllers/auth.js");
-app.use("/auth", authController);
+app.use("/api/auth", authController);
 
 module.exports = app;
