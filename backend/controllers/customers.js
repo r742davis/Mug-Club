@@ -34,8 +34,6 @@ router.post("/",  async (req, res) => {
         completed: req.body.mugClub.completed,
         clubId: req.body.mugClub.clubId,
         beers: (req.body.mugClub.beers ? req.body.mugClub.beers : beerList)
-        // !!!!!!!IMPORTANT!!!!!! Must be changed back if existing customers have been uploaded to database
-        // beers: req.body.mugClub.beers
       }
     });
     const savedNewCustomer = await newCustomer.save();
