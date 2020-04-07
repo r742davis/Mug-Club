@@ -15,7 +15,12 @@ app.use(
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, '/build')));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, '/build')));
+} else {
+  app.use(express.static(path.join(__dirname, '/client/public/index.html')));
+}
+
 app.use(methodOverride("_method"));
 
 //  Customers Controller  //
