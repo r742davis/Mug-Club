@@ -1,8 +1,5 @@
 import React from "react";
-import Search from "../pages/Search";
-import Home from "../pages/Home";
-import Navigation from "../pages/Navigation";
-import BeerDisplay from "../pages/BeerDisplay";
+import Routing from "../components/Routing";
 import Backdrop from "../components/Backdrop";
 import RenderModal from "../components/RenderModal";
 
@@ -96,13 +93,12 @@ class Container extends React.Component {
     //   existingCustomers: existingCustomersArray,
     // });
     // console.table(this.state.existingCustomers);
-  
   }
 
   saveCustomersToDatabase = (customersArray) => {
     for (let customer of customersArray) {
       console.table(customer);
-      
+
       const newCustomer = {
         name: {
           first: customer.name.first,
@@ -133,30 +129,7 @@ class Container extends React.Component {
   render() {
     return (
       <>
-        {/* Router Navigation */}
-        <Router>
-          <div>
-            <Navigation />
-            <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route path="/searchCustomers">
-                <Search />
-              </Route>
-              <Route path="/beersList">
-                <BeerDisplay />
-              </Route>
-            </Switch>
-            {/* <button
-              onClick={() =>
-                this.saveCustomersToDatabase(this.state.existingCustomers)
-              }
-            >
-              Save Customers
-            </button> */}
-          </div>
-        </Router>
+        <Routing />
         {/* Modal Displays */}
         <Backdrop></Backdrop>
         <RenderModal />
@@ -171,3 +144,13 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, actions)(Container);
+
+{
+  /* <button
+              onClick={() =>
+                this.saveCustomersToDatabase(this.state.existingCustomers)
+              }
+            >
+              Save Customers
+            </button> */
+}

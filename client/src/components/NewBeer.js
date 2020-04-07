@@ -16,7 +16,13 @@ const actions = {
 };
 
 class NewBeerModal extends Component {
-  state = {};
+  state = {
+    name: "",
+    type: "",
+    brewery: "",
+    breweryLocation: "",
+    url: "",
+  };
 
   static propTypes = {};
 

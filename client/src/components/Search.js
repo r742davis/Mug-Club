@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import classes from "../css/Search.module.css";
-import Customer from "../components/Customer";
+import Customer from "./Customer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import swal from "@sweetalert/with-react";

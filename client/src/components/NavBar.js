@@ -16,12 +16,12 @@ const actions = { logout, openModal };
 
 class Navigation extends Component {
   state = {
-    burgerOpen: false
+    burgerOpen: false,
   };
 
   static propTypes = {
     auth: PropTypes.object.isRequired,
-    isAuthenticated: PropTypes.bool
+    isAuthenticated: PropTypes.bool,
   };
 
   logout = () => {
@@ -30,11 +30,11 @@ class Navigation extends Component {
 
   toggleMenu = () => {
     this.setState({
-      burgerOpen: !this.state.burgerOpen
+      burgerOpen: !this.state.burgerOpen,
     });
   };
 
-  comboToggle = modalType => {
+  comboToggle = (modalType) => {
     this.props.openModal(modalType);
     this.toggleMenu();
   };
@@ -134,9 +134,9 @@ class Navigation extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth,
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps, actions)(Navigation);
