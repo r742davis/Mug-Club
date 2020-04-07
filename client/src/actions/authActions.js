@@ -19,7 +19,7 @@ export const loadUser = () => (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
 
   axios
-    .get("http://locahost:5000/auth/user", tokenConfig(getState))
+    .get("https://bearmugclub.herokuapp.com/api/auth/user", tokenConfig(getState))
     .then(res =>
       dispatch({
         type: USER_LOADED,
@@ -47,7 +47,7 @@ export const register = ({ name, email, password }) => dispatch => {
   const body = JSON.stringify({ name, email, password });
 
   axios
-    .post("https://bearmugclub.herokuapp.com/users", body, config)
+    .post("https://bearmugclub.herokuapp.com/api/users", body, config)
     .then(res =>
       dispatch({
         type: REGISTER_SUCCESS,
@@ -82,7 +82,7 @@ export const login = ({ email, password }) => dispatch => {
   //Request body
   const body = JSON.stringify({ email, password });
   axios
-    .post("https://bearmugclub.herokuapp.com/auth", body, config)
+    .post("https://bearmugclub.herokuapp.com/api/auth", body, config)
     .then(res =>
       dispatch({
         type: LOGIN_SUCCESS,

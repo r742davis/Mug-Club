@@ -12,7 +12,7 @@ import { returnErrors } from "./errorActions";
 export const fetchCustomers = () => {
   return (dispatch, getState) => {
     dispatch(fetchCustomersBegin());
-    return fetch("https://bearmugclub.herokuapp.com/customers", tokenConfig(getState))
+    return fetch("https://bearmugclub.herokuapp.com/api/customers", tokenConfig(getState))
       .then(res => res.json())
       .then(customers => {
         dispatch(fetchCustomersSuccess(customers));
@@ -38,7 +38,7 @@ export const fetchCustomersFailure = error => ({
 
 export const createCustomer = newCustomer => (dispatch, getState) => {
   axios
-    .post("https://bearmugclub.herokuapp.com/customers", newCustomer, tokenConfig(getState))
+    .post("https://bearmugclub.herokuapp.com/api/customers", newCustomer, tokenConfig(getState))
     .then(res =>
       dispatch({
         type: CREATE_CUSTOMER,
@@ -51,7 +51,7 @@ export const createCustomer = newCustomer => (dispatch, getState) => {
 };
 
 export const updateCustomer = (customer, id) => (dispatch, getState) => {
-  const customerURL = "https://bearmugclub.herokuapp.com/customers/" + id;
+  const customerURL = "https://bearmugclub.herokuapp.com/api/customers/" + id;
   axios
     .put(customerURL, customer)
     .then(dispatch(fetchCustomers()))
@@ -62,7 +62,7 @@ export const updateCustomer = (customer, id) => (dispatch, getState) => {
 
 export const deleteCustomer = id => (dispatch, getState) => {
   axios
-    .delete("https://bearmugclub.herokuapp.com/customers/" + id, tokenConfig(getState))
+    .delete("https://bearmugclub.herokuapp.com/api/customers/" + id, tokenConfig(getState))
     .then(res =>
       dispatch({
         type: DELETE_CUSTOMER,
