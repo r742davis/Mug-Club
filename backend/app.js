@@ -14,7 +14,7 @@ app.use(
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.resolve(__dirname, './build')));
+app.use(express.static(path.resolve(__dirname, './build/static')));
 app.use(methodOverride("_method"));
 
 // app.get('*', function(request, response) {
