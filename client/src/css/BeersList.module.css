@@ -39,9 +39,7 @@
   width: 90%;
   height: 6rem;
   margin: 0.5rem 0 0.5rem 0;
-  padding: 1rem;
   border-radius: 0.5rem;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background: #f0d3d7;
   display: flex;
   justify-content: space-between;
@@ -53,14 +51,14 @@
       height: 5rem; } }
 
 .Item:hover {
-  transform: scale(1.05);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   transition: 0.2s; }
 
 .NameContainer {
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-left: 2rem;
+  margin-left: 1rem;
   color: #505050; }
   .NameContainer h1 {
     font-size: 1rem;
@@ -71,7 +69,8 @@
 .Avatar {
   height: 5rem;
   width: 5rem;
-  border-radius: 5rem; }
+  border-radius: 5rem;
+  margin-left: 1rem; }
   @media (max-width: 600px) {
     .Avatar {
       height: 3rem;
@@ -84,5 +83,8 @@
   display: none; }
 
 .CheckIcon {
-  font-size: 2.5rem;
+  font-size: 3rem;
+  height: 100%;
+  width: 100%;
+  margin-right: 1rem;
   color: white; }

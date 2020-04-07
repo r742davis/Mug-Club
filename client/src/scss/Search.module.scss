@@ -39,8 +39,9 @@
   border: none;
   background: white;
   border-bottom: 1px solid var(--input-color);
-  border-radius: 0.5rem;
-  border: 2px solid #ccc;
+  border: 2px solid var(--input-border);
+  -webkit-appearance: none;
+  -webkit-border-radius: 0.5rem;
   &:focus {
     outline: none;
   }
@@ -58,6 +59,8 @@
   pointer-events: none;
   top: 2rem;
   transition: 0.2s ease all;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
   @include respond-to('small') {
     font-size: 1rem;
 

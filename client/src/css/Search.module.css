@@ -44,8 +44,9 @@
   border: none;
   background: white;
   border-bottom: 1px solid var(--input-color);
-  border-radius: 0.5rem;
-  border: 2px solid #ccc; }
+  border: 2px solid var(--input-border);
+  -webkit-appearance: none;
+  -webkit-border-radius: 0.5rem; }
   .Input:focus {
     outline: none; }
   @media (max-width: 600px) {
@@ -61,7 +62,9 @@
   position: absolute;
   pointer-events: none;
   top: 2rem;
-  transition: 0.2s ease all; }
+  transition: 0.2s ease all;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0; }
   @media (max-width: 600px) {
     .Label {
       font-size: 1rem; } }

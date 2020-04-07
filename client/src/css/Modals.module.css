@@ -80,8 +80,9 @@
   border: none;
   background: var(--primary);
   border-bottom: 1px solid var(--input-text);
-  border-radius: 0.5rem;
-  border: 2px solid var(--input-border); }
+  border: 2px solid var(--input-border);
+  -webkit-appearance: none;
+  -webkit-border-radius: 0.5rem; }
   @media (max-width: 600px) {
     .Input {
       padding-top: 1rem; } }
@@ -119,9 +120,10 @@
   position: relative;
   width: 100%;
   border: none;
-  border-radius: 0.5rem;
   border: 2px solid var(--input-border);
-  padding-left: 2rem; }
+  padding-left: 2rem;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0.5rem; }
   @media (max-width: 600px) {
     .Select {
       height: 4.5rem;
@@ -133,7 +135,7 @@ option {
 .Input:focus,
 .Select:focus {
   border: 2px solid var(--secondary);
-  transition: 0.5s; }
+  transition: 0.25s ease-in-out; }
 
 .Input:focus ~ .Label,
 .Input:valid ~ .Label,
@@ -162,7 +164,9 @@ option {
   border-radius: 0.5rem;
   font-size: 1.6rem;
   cursor: pointer;
-  transition: 0.25s; }
+  transition: 0.25s;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0.5rem; }
 
 .EditButton {
   background: var(--secondary);
