@@ -4,7 +4,7 @@ const beersList = [
     type: "American Lager",
     brewery: "Anheuser Busch",
     breweryLocation: "St. Louis, MO",
-    url: "https://www.google.com/url?sa=i&url=https%3A%2F%2F1000logos.net%2Fbudweiser-logo%2F&psig=AOvVaw1cv59hWiwPdNOIFd1d3L0a&ust=1585597850455000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIC4sb-6wOgCFQAAAAAdAAAAABAD",
+    url: "https://i.imgur.com/dZTSk9c.jpg",
     finished: false
   },
   {
@@ -12,7 +12,7 @@ const beersList = [
     type: "American Light Lager",
     brewery: "Anheuser Busch",
     breweryLocation: "St. Louis, MO",
-    url: "https://www.google.com/url?sa=i&url=https%3A%2F%2Ftwitter.com%2Fbudlight&psig=AOvVaw1S9I1Uv3VzaN6Vq-BFeAHY&ust=1585597962656000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCND5ve26wOgCFQAAAAAdAAAAABAD",
+    url: "https://i.imgur.com/bIYuRhI.jpg",
     finished: false
   },
   {
@@ -20,7 +20,7 @@ const beersList = [
     type: "American Lager",
     brewery: "Coors Brewing Company",
     breweryLocation: "Golden, CO",
-    url: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.taphunter.com%2Fbeer%2Fcoors-banquet%2F5103350571073536&psig=AOvVaw0BNYLmvkU9ZzQ1OTdtAYJE&ust=1585598111237000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPjIy7u7wOgCFQAAAAAdAAAAABAD",
+    url: "https://i.imgur.com/ebuBl1N.png",
     finished: false
   },
   {
@@ -28,7 +28,7 @@ const beersList = [
     type: "American Light Lager",
     brewery: "Coors Brewing Company",
     breweryLocation: "Golden, CO",
-    url: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.logopik.com%2Fitem%2Fcoors-light-logo-vector%2F&psig=AOvVaw2xd6IgfclYBfDHtUdyRgRL&ust=1585598159221000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMjl6su7wOgCFQAAAAAdAAAAABAl",
+    url: "https://i.imgur.com/hk6r6kQ.png",
     finished: false
   },
   {
