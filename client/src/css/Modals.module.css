@@ -85,9 +85,8 @@
   @media (max-width: 600px) {
     .Input {
       padding-top: 1rem; } }
-
-.Input:focus {
-  outline: none; }
+  .Input:focus {
+    outline: none; }
 
 /* Label */
 .Label {

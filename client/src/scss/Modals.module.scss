@@ -79,10 +79,9 @@
   @include respond-to('small') {
     padding-top: 1rem;
   }
-}
-
-.Input:focus {
-  outline: none;
+  &:focus {
+    outline: none;
+  }
 }
 
 /* Label */

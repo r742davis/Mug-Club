@@ -12,6 +12,10 @@
 ol, ul {
   list-style: none; }
 
+button {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0; }
+
 input:focus,
 select:focus,
 button:focus {
