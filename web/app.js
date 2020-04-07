@@ -15,13 +15,23 @@ app.use(
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride("_method"));
+
+//  Production vs. Local React Environment //
+//-----------------------------------------//
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, '/build')));
 } else {
   app.use(express.static(path.join(__dirname, '/client/public/index.html')));
 }
 
-app.use(methodOverride("_method"));
+//  Reroute for Client-Side Server Rendering  //
+//--------------------------------------------//
+app.get("/searchCustomers", (req, res) => {
+  res.sendFile(express.static(path.join(__dirname, '/build')))
+}
+
+
 
 //  Customers Controller  //
 //------------------------//
@@ -29,7 +39,7 @@ const customersController = require("./controllers/customers.js");
 app.use("/api/customers", customersController);
 
 //  Beers Controller  //
-//------------------------//
+//--------------------//
 const beersController = require("./controllers/beers.js");
 app.use("/api/beers", beersController);
 
