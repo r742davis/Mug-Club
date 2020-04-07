@@ -31,7 +31,7 @@ class Container extends Component {
     return (
       <>
         <Routing />
-        <LoadExistingCustomers />
+        {/* Only run in Production <LoadExistingCustomers /> */}
         <Backdrop></Backdrop>
         <RenderModal />
       </>

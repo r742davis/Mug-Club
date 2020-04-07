@@ -33,8 +33,7 @@ router.post("/",  async (req, res) => {
       mugClub: {
         completed: req.body.mugClub.completed,
         clubId: req.body.mugClub.clubId,
-        beers: req.body.mugClub.beers
-        // beers: (req.body.mugClub.beers ? req.body.mugClub.beers : beerList)
+        beers: (req.body.mugClub.beers ? req.body.mugClub.beers : beerList)
       }
     });
     const savedNewCustomer = await newCustomer.save();

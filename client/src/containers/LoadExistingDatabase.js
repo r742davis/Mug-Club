@@ -104,7 +104,7 @@ class LoadExistingDatabase extends Component {
           beers: customer.mugClub.beers,
         },
       };
-      // this.props.createCustomer(newCustomer);
+      this.props.createCustomer(newCustomer);
       console.log(newCustomer);
       
       // console.log("Customer created");
