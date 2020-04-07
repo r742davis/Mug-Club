@@ -5,7 +5,7 @@ const config = require('config');
 const jwt = require('jsonwebtoken');
 const auth = require('../middleware/auth');
 
-const User = require('../models/User.js');
+const User = require('../models/user.js');
 
 //POST auth route
 router.post("/", (req, res) => {

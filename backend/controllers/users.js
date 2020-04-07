@@ -6,7 +6,7 @@ const config = require("config");
 const jwt = require("jsonwebtoken");
 
 //-- User Model
-const User = require("../models/User.js");
+const User = require("../models/user.js");
 
 // GET /users Route
 router.get("/",  async (req, res) => {
