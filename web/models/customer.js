@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Beer = require('./beer.js');
 const BeerSchema = mongoose.model('Beer').schema;
 const Schema = mongoose.Schema;
 
