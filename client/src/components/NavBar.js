@@ -40,28 +40,29 @@ class Navigation extends Component {
   };
 
   render() {
+    const urlName = "/app";
     // const { isAuthenticated } = this.props.auth;
     // if (!isAuthenticated) {
     //   return <Redirect to="/" push={true} />;
     // }
+
+
     let hamburgerMenu = (
       <ul className={classes.hamburgerList}>
         <Link
-          to="/searchCustomers"
+          to={`${urlName}/search-customers`}
           className={classes.hamburgerItem}
           onClick={() => this.toggleMenu()}
         >
           Search
         </Link>
-
         <Link
-          to="/beersList"
+          to={`${urlName}/beers-list`}
           className={classes.hamburgerItem}
           onClick={() => this.toggleMenu()}
         >
           Beers List
         </Link>
-
         <button
           onClick={() => this.comboToggle("NEW_CUSTOMER")}
           className={classes.hamburgerItem}
@@ -88,12 +89,12 @@ class Navigation extends Component {
         ) : (
           <ul className={classes.list}>
             <li className={classes.item}>
-              <Link to="/searchCustomers" className={classes.link}>
+              <Link to={`${urlName}/search-customers`} className={classes.link}>
                 Search
               </Link>
             </li>
             <li className={classes.item}>
-              <Link to="/beersList" className={classes.link}>
+              <Link to={`${urlName}/beers-list`} className={classes.link}>
                 Beers List
               </Link>
             </li>

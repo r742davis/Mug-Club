@@ -6,19 +6,20 @@ import NavBar from "../components/NavBar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const Routing = props => {
+  const urlName = "/app"
   return (
     <>
     <Router>
       <div>
       <NavBar />
         <Switch>
-          <Route exact path="/">
+          <Route exact path={`${urlName}`}>
             <HomePage />
           </Route>
-          <Route path="/searchCustomers">
+          <Route path={`${urlName}/search-customers`}>
             <SearchPage />
           </Route>
-          <Route path="/beersList">
+          <Route path={`${urlName}/beers-list`}>
             <BeersPage />
           </Route>
         </Switch>

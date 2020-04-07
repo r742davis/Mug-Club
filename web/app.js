@@ -4,13 +4,13 @@ const express = require("express");
 const app = express();
 const methodOverride = require("method-override");
 const cors = require("cors");
-const path = require('path');
+const path = require("path");
 
 //  Middleware  //
 //--------------//
 app.use(
   cors({
-    origin: true
+    origin: true,
   })
 );
 app.use(express.json());
@@ -20,18 +20,16 @@ app.use(methodOverride("_method"));
 //  Production vs. Local React Environment //
 //-----------------------------------------//
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, '/build')));
+  app.use(express.static(path.join(__dirname, "/build")));
 } else {
-  app.use(express.static(path.join(__dirname, '/client/public/index.html')));
+  app.use(express.static(path.join(__dirname, "/client/public/index.html")));
 }
 
 //  Reroute for Client-Side Server Rendering  //
 //--------------------------------------------//
-app.get('/*', function (req, res) {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-  });
-
-
+app.get("/app/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 //  Customers Controller  //
 //------------------------//
