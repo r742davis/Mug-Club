@@ -14,7 +14,7 @@
   transform: translate(-50%, -50%);
 }
 .Modal {
-  background: white;
+  background: var(--primary);
   height: 75%;
   max-height: 90%;
   width: 100%;
@@ -73,7 +73,7 @@
   width: 100%;
   border: none;
   background: var(--primary);
-  border-bottom: 1px solid var(--input-color);
+  border-bottom: 1px solid var(--input-text);
   border-radius: 0.5rem;
   border: 2px solid var(--input-border);
   @include respond-to('small') {
@@ -87,7 +87,7 @@
 
 /* Label */
 .Label {
-  color: var(--input-color);
+  color: var(--input-text);
   font-size: 1.6rem;
   font-weight: normal;
   padding-left: 1.5rem;

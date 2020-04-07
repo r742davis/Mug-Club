@@ -57,15 +57,16 @@ class NewCustomer extends Component {
       };
       try {
         console.log("Saing customer...");
-        this.props.createCustomer(newCustomer);
-        this.props.fetchCustomers();
+        await this.props.createCustomer(newCustomer);
+        console.log("Refetching customers...")
+        await this.props.fetchCustomers();
         swal({
           title: `${this.state.first} has been created!`,
           icon: "success",
           button: "Ok!",
         });
+        console.log(`${this.state.first} ${this.state.last} was saved!`);
         this.props.closeModal();
-        console.log("Customer saved!");
       } catch (e) {
         console.log(e);
         swal({
