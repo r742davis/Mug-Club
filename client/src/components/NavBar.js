@@ -19,11 +19,11 @@ import { connect } from "react-redux";
 import { openModal } from "../actions/modalActions";
 import { openNav, closeNav } from "../actions/navActions";
 import { logout } from "../actions/authActions";
-const actions = { 
-  logout, 
-  openModal, 
-  openNav, 
-  closeNav 
+const actions = {
+  logout,
+  openModal,
+  openNav,
+  closeNav,
 };
 
 class NavBar extends Component {
@@ -32,7 +32,7 @@ class NavBar extends Component {
   static propTypes = {
     auth: PropTypes.object.isRequired,
     isAuthenticated: PropTypes.bool,
-    navOpen: PropTypes.bool
+    navOpen: PropTypes.bool,
   };
 
   logout = () => {
@@ -46,10 +46,10 @@ class NavBar extends Component {
 
   render() {
     const urlName = "";
-    // const { isAuthenticated } = this.props.auth;
-    // if (!isAuthenticated) {
-    //   return <Redirect to="/" push={true} />;
-    // }
+    const { isAuthenticated } = this.props.auth;
+    if (!isAuthenticated) {
+      return <Redirect to={`${urlName}/`} push={true} />;
+    }
 
     let hamburgerMenu = (
       <ul className={classes.HamburgerList}>
@@ -99,9 +99,7 @@ class NavBar extends Component {
             <h2>New Beer</h2>
           </div>
         </button>
-        <button 
-          onClick={() => this.logout()} 
-          className={classes.HamburgerItem}>
+        <button onClick={() => this.logout()} className={classes.HamburgerItem}>
           <div className={classes.LinkDiv}>
             <div>
               <FontAwesomeIcon icon={faUserTimes} />
@@ -156,9 +154,9 @@ class NavBar extends Component {
           <Burger
             isOpen={this.props.navOpen}
             onClick={
-              this.props.navOpen 
-              ? () => this.props.closeNav()
-              : () => this.props.openNav()
+              this.props.navOpen
+                ? () => this.props.closeNav()
+                : () => this.props.openNav()
             }
           />
         </div>
@@ -169,7 +167,7 @@ class NavBar extends Component {
     return (
       <>
         <Backdrop />
-        {authLinks}
+        {this.props.isAuthenticated && authLinks}
       </>
     );
   }
@@ -178,7 +176,7 @@ class NavBar extends Component {
 const mapStateToProps = (state) => ({
   auth: state.auth,
   isAuthenticated: state.auth.isAuthenticated,
-  navOpen: state.modal.navOpen
+  navOpen: state.modal.navOpen,
 });
 
 export default connect(mapStateToProps, actions)(NavBar);

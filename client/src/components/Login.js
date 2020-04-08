@@ -19,14 +19,14 @@ class Login extends Component {
     password: "",
     message: null,
     toggleLogin: false,
-    toggleReg: false
+    toggleReg: false,
   };
 
   static propTypes = {
     isAuthenticated: PropTypes.bool,
     error: PropTypes.object.isRequired,
     login: PropTypes.func.isRequired,
-    clearErrors: PropTypes.func.isRequired
+    clearErrors: PropTypes.func.isRequired,
   };
 
   componentDidUpdate(prevProps) {
@@ -41,29 +41,29 @@ class Login extends Component {
     }
   }
 
-  onChange = e => {
+  onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   //-- Submit for Login and Register
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault();
     const { email, password } = this.state;
     const user = {
       email,
-      password
+      password,
     };
     //Attempt to log in
     this.props.login(user);
   };
 
-  onSubmitReg = e => {
+  onSubmitReg = (e) => {
     e.preventDefault();
     const { name, email, password } = this.state;
     const newUser = {
       name,
       email,
-      password
+      password,
     };
     //Attempt to register
     this.props.register(newUser);
@@ -73,13 +73,13 @@ class Login extends Component {
   toggleLogin = () => {
     this.props.clearErrors();
     this.setState({
-      toggleLogin: !this.state.toggleLogin
+      toggleLogin: !this.state.toggleLogin,
     });
   };
   toggleReg = () => {
     this.props.clearErrors();
     this.setState({
-      toggleReg: !this.state.toggleReg
+      toggleReg: !this.state.toggleReg,
     });
   };
 
@@ -114,7 +114,9 @@ class Login extends Component {
 
     return (
       <div>
-        {this.props.isAuthenticated ? <Redirect to="/searchCustomers" /> : null}
+        {this.props.isAuthenticated && (
+          <Redirect to="/search-customers" />
+        )}
         {!this.props.isAuthenticated && (
           <section className={classes.Container}>
             <h1 className={classes.Title}>Mug Club 🍻</h1>
@@ -166,12 +168,13 @@ class Login extends Component {
               </form>
             )}
             {this.state.toggleReg && (
-              <Register 
+              <Register
                 onSubmit={this.onSubmitReg}
                 toggleReg={this.toggleReg}
                 message={this.state.message}
                 onChange={this.onChange}
-                error={this.state.error} />
+                error={this.state.error}
+              />
             )}
           </section>
         )}
@@ -180,11 +183,9 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  error: state.error
+  error: state.error,
 });
 
-export default connect(mapStateToProps, actions)(
-  Login
-);
+export default connect(mapStateToProps, actions)(Login);
