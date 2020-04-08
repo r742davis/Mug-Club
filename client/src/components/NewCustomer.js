@@ -120,7 +120,7 @@ class NewCustomer extends Component {
                   </div>
                   <div className={classes.Group}>
                     <input
-                      type="text"
+                      type="number"
                       name="clubId"
                       className={classes.Input}
                       defaultValue={this.state.clubId}
