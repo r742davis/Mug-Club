@@ -85,7 +85,8 @@
   -webkit-border-radius: 0.5rem; }
   @media (max-width: 600px) {
     .Input {
-      padding-top: 1rem; } }
+      padding-top: 1rem;
+      font-size: 2rem; } }
   .Input:focus {
     outline: none; }
 

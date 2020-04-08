@@ -12,8 +12,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 5rem;
-  margin-top: 10rem;
+  margin: 10rem 2rem 5rem 2rem;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border-radius: 0.5rem; }
 
@@ -28,7 +27,7 @@
   justify-content: space-between; }
   @media (max-width: 600px) {
     .SearchTitle {
-      font-size: 2.5rem; } }
+      font-size: 3rem; } }
 
 .Group {
   margin: 4rem;
@@ -51,7 +50,8 @@
     outline: none; }
   @media (max-width: 600px) {
     .Input {
-      padding-top: 1rem; } }
+      padding-top: 1rem;
+      font-size: 2rem; } }
 
 .Label {
   color: var(--input-color);
@@ -67,7 +67,7 @@
   -webkit-border-radius: 0; }
   @media (max-width: 600px) {
     .Label {
-      font-size: 1rem; } }
+      font-size: 1.2rem; } }
 
 .Input:focus {
   border: 2px solid var(--secondary);

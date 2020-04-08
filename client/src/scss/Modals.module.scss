@@ -79,6 +79,7 @@
   -webkit-border-radius: 0.5rem;
   @include respond-to('small') {
     padding-top: 1rem;
+    font-size: 2rem;
   }
   &:focus {
     outline: none;
