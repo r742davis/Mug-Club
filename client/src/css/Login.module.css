@@ -12,10 +12,10 @@
   padding-bottom: 0.5rem;
   padding-left: 2rem;
   font-size: 4rem;
-  font-weight: 300;
   background: black;
   color: white;
-  border-top: 2px solid black; }
+  border-top: 2px solid black;
+  font-family: 'Montserrat', sans-serif; }
 
 .LoginContainer {
   display: flex;
@@ -39,7 +39,8 @@
   border: none;
   background: var(--primary);
   border-bottom: 1px solid var(--input-color);
-  border-radius: 0.5rem;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0.5rem;
   border: 2px solid var(--input-border); }
   .Input:focus {
     outline: none;

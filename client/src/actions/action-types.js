@@ -25,3 +25,6 @@ export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 export const OPEN_MODAL = "OPEN_MODAL";
 export const CLOSE_MODAL = "CLOSE_MODAL";
+
+export const OPEN_NAV = "OPEN_NAV";
+export const CLOSE_NAV = "CLOSE_NAV";

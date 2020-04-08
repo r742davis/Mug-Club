@@ -1,9 +1,15 @@
 import React, { Component } from "react";
 import classes from "../css/NavBar.module.css";
+import Backdrop from "./Backdrop";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faSearch, faBeer, faUserTimes } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPlus,
+  faSearch,
+  faBeer,
+  faUserTimes,
+} from "@fortawesome/free-solid-svg-icons";
 import Burger from "@animated-burgers/burger-squeeze";
 import "@animated-burgers/burger-squeeze/dist/styles.css";
 
@@ -11,32 +17,31 @@ import "@animated-burgers/burger-squeeze/dist/styles.css";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { openModal } from "../actions/modalActions";
+import { openNav, closeNav } from "../actions/navActions";
 import { logout } from "../actions/authActions";
-const actions = { logout, openModal };
+const actions = { 
+  logout, 
+  openModal, 
+  openNav, 
+  closeNav 
+};
 
 class NavBar extends Component {
-  state = {
-    burgerOpen: false,
-  };
+  state = {};
 
   static propTypes = {
     auth: PropTypes.object.isRequired,
     isAuthenticated: PropTypes.bool,
+    navOpen: PropTypes.bool
   };
 
   logout = () => {
     this.props.logout();
   };
 
-  toggleMenu = () => {
-    this.setState({
-      burgerOpen: !this.state.burgerOpen,
-    });
-  };
-
-  comboToggle = (modalType) => {
-    this.props.openModal(modalType);
-    this.toggleMenu();
+  comboToggle = async (modalType) => {
+    await this.props.closeNav();
+    await this.props.openModal(modalType);
   };
 
   render() {
@@ -47,48 +52,60 @@ class NavBar extends Component {
     // }
 
     let hamburgerMenu = (
-      <ul className={classes.hamburgerList}>
+      <ul className={classes.HamburgerList}>
         <Link
           to={`${urlName}/search-customers`}
-          className={classes.hamburgerItem}
-          onClick={() => this.toggleMenu()}
+          className={classes.HamburgerItem}
+          onClick={() => this.props.closeNav()}
         >
           <div className={classes.LinkDiv}>
-            <FontAwesomeIcon icon={faSearch} />
+            <div>
+              <FontAwesomeIcon icon={faSearch} />
+            </div>
             <h2>Search</h2>
           </div>
         </Link>
         <Link
           to={`${urlName}/beers-list`}
-          className={classes.hamburgerItem}
-          onClick={() => this.toggleMenu()}
+          className={classes.HamburgerItem}
+          onClick={() => this.props.closeNav()}
         >
           <div className={classes.LinkDiv}>
-            <FontAwesomeIcon icon={faBeer} />
+            <div>
+              <FontAwesomeIcon icon={faBeer} />
+            </div>
             <h2>Beers</h2>
           </div>
         </Link>
         <button
           onClick={() => this.comboToggle("NEW_CUSTOMER")}
-          className={classes.hamburgerItem}
+          className={classes.HamburgerItem}
         >
           <div className={classes.LinkDiv}>
-            <FontAwesomeIcon icon={faPlus} />
+            <div>
+              <FontAwesomeIcon icon={faPlus} />
+            </div>
             <h2>New Customer</h2>
           </div>
         </button>
         <button
           onClick={() => this.comboToggle("NEW_BEER")}
-          className={classes.hamburgerItem}
+          className={classes.HamburgerItem}
         >
           <div className={classes.LinkDiv}>
-            <FontAwesomeIcon icon={faPlus} />
+            <div>
+              <FontAwesomeIcon icon={faPlus} />
+            </div>
             <h2>New Beer</h2>
           </div>
         </button>
-        <button onClick={this.logout} className={classes.hamburgerItem}>
+        <button 
+          onClick={() => this.logout()} 
+          className={classes.HamburgerItem}>
           <div className={classes.LinkDiv}>
-            <FontAwesomeIcon icon={faUserTimes} />
+            <div>
+              <FontAwesomeIcon icon={faUserTimes} />
+            </div>
             <h2>Log Out</h2>
           </div>
         </button>
@@ -96,62 +113,72 @@ class NavBar extends Component {
     );
 
     let authLinks = (
-      <nav className={classes.navbar}>
+      <nav className={classes.Navbar}>
         <h1>MUG CLUB 🍻</h1>
-        {this.state.burgerOpen ? (
+        {this.props.navOpen ? (
           hamburgerMenu
         ) : (
-          <ul className={classes.list}>
-            <li className={classes.item}>
-              <Link to={`${urlName}/search-customers`} className={classes.link}>
+          <ul className={classes.List}>
+            <li className={classes.Item}>
+              <Link to={`${urlName}/search-customers`} className={classes.Link}>
                 Search
               </Link>
             </li>
-            <li className={classes.item}>
-              <Link to={`${urlName}/beers-list`} className={classes.link}>
+            <li className={classes.Item}>
+              <Link to={`${urlName}/beers-list`} className={classes.Link}>
                 Beers List
               </Link>
             </li>
-            <li className={classes.item}>
+            <li className={classes.Item}>
               <button
                 onClick={() => this.props.openModal("NEW_CUSTOMER")}
                 className={classes.NewButton}
               >
-                <FontAwesomeIcon icon={faPlus} /> New Customer
+                New Customer
               </button>
             </li>
-            <li>
+            <li className={classes.Item}>
               <button
                 onClick={() => this.props.openModal("NEW_BEER")}
                 className={classes.NewButton}
               >
-                <FontAwesomeIcon icon={faPlus} /> New Beer
+                New Beer
               </button>
             </li>
-            <li className={classes.item}>
+            <li className={classes.Item}>
               <button onClick={this.logout} className={classes.Logout}>
                 Log Out
               </button>
             </li>
           </ul>
         )}
-        <div className={classes.hamburgerContainer}>
+        <div className={classes.HamburgerContainer}>
           <Burger
-            isOpen={this.state.burgerOpen}
-            onClick={() => this.toggleMenu()}
+            isOpen={this.props.navOpen}
+            onClick={
+              this.props.navOpen 
+              ? () => this.props.closeNav()
+              : () => this.props.openNav()
+            }
           />
         </div>
       </nav>
     );
 
     // return <>{this.props.isAuthenticated && authLinks}</>;
-    return authLinks;
+    return (
+      <>
+        <Backdrop />
+        {authLinks}
+      </>
+    );
   }
 }
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
   isAuthenticated: state.auth.isAuthenticated,
+  navOpen: state.modal.navOpen
 });
 
 export default connect(mapStateToProps, actions)(NavBar);

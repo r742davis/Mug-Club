@@ -8,7 +8,7 @@
   --beer-names: #505050;
   --delete: #b12723; }
 
-.navbar {
+.Navbar {
   position: fixed;
   background: black;
   height: 5rem;
@@ -17,17 +17,17 @@
   padding: 0;
   top: 0;
   width: 100%;
-  z-index: 10;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  z-index: 100; }
 
-.navbar h1 {
-  color: white;
+.Navbar h1 {
+  color: var(--primary);
   width: 200px;
   font-size: 2rem;
   font-family: "Montserrat", sans-serif;
   margin: 1rem 1rem 0 2rem; }
 
-.list {
+.List {
   width: 100%;
   list-style: none;
   display: flex;
@@ -35,15 +35,15 @@
   align-items: center;
   margin: 0 1rem 0 2rem; }
 
-.link {
-  color: white;
+.Link {
+  color: var(--primary);
   text-decoration: none;
   padding: 1rem;
   margin-right: 2rem;
   font-size: 1.6rem;
   transition: 0.25s; }
 
-.link:hover {
+.Link:hover {
   color: var(--secondary);
   transition: 0.25s; }
 
@@ -51,7 +51,7 @@
   padding: 1rem;
   margin-right: 2rem;
   background: none;
-  color: white;
+  color: var(--primary);
   border: none;
   font-size: 1.6rem;
   transition: 0.25s;
@@ -66,9 +66,9 @@
 
 .Logout {
   padding: 1rem;
-  background: white;
+  background: var(--primary);
   color: black;
-  border: white;
+  border: var(--primary);
   border-radius: 10rem;
   font-size: 1.5rem;
   transition: 0.25s;
@@ -76,23 +76,25 @@
 
 .Logout:hover {
   background: #b72e3e;
-  color: white; }
+  color: var(--primary); }
 
-.hamburgerContainer {
+.HamburgerContainer {
   display: none; }
 
 /* Collapsible menu */
 @media (max-width: 850px) {
-  .link,
-  .list,
+  .Link,
+  .List,
   .NewButton,
   .Logout {
     display: none;
     width: 0; }
-  .hamburgerContainer {
+  .HamburgerContainer {
     display: flex;
-    padding: 0.5rem; }
-  .hamburgerList {
+    padding: 0.5rem;
+    position: relative;
+    z-index: 110; }
+  .HamburgerList {
     position: absolute;
     height: auto;
     width: 96%;
@@ -100,34 +102,41 @@
     left: 2%;
     border-radius: 1rem;
     background: var(--primary);
-    opacity: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
-  .hamburgerItem {
+  .HamburgerItem,
+  .Logout {
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: bold;
     background: none;
     border: none;
-    border-top: 0.5px solid var(--input-border);
     width: 100%;
     text-align: left; }
-  .hamburgerItem:hover {
+  .HamburgerItem:hover,
+  .Logout:hover {
     background: whitesmoke;
+    border-radius: 1rem;
     cursor: pointer; }
   .LinkDiv {
     display: flex;
     font-size: 1.5rem;
     align-items: center;
     margin-left: 2rem;
-    padding: 1rem;
+    padding: 1.5rem;
     color: var(--secondary); }
     .LinkDiv h2 {
       margin: 0;
       font-size: 2rem;
       color: var(--secondary);
       font-weight: 300; }
-    .LinkDiv * {
-      margin-right: 1.5rem; } }
+    .LinkDiv div {
+      width: 2rem;
+      margin-right: 2rem;
+      height: 2rem;
+      font-size: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center; } }
