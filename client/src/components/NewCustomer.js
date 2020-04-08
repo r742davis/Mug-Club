@@ -56,7 +56,7 @@ class NewCustomer extends Component {
         },
       };
       try {
-        console.log("Saing customer...");
+        console.log("Saving customer...");
         await this.props.createCustomer(newCustomer);
         console.log("Refetching customers...")
         await this.props.fetchCustomers();
