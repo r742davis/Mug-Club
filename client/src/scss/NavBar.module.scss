@@ -35,11 +35,11 @@
   padding: 1rem;
   margin-right: 2rem;
   font-size: 1.6rem;
-  transition: 0.25s;
+  transition: $transition-time;
 }
 .Link:hover {
   color: var(--secondary);
-  transition: 0.25s;
+  transition: $transition-time;
 }
 .NewButton {
   padding: 1rem;
@@ -48,12 +48,12 @@
   color: var(--primary);
   border: none;
   font-size: 1.6rem;
-  transition: 0.25s;
+  transition: $transition-time;
   cursor: pointer;
 }
 .NewButton:hover {
   color: var(--secondary);
-  transition: 0.25s;
+  transition: $transition-time;
 }
 .NewButton:focus {
   outline: none;
@@ -65,7 +65,7 @@
   border: var(--primary);
   border-radius: 10rem;
   font-size: 1.5rem;
-  transition: 0.25s;
+  transition: $transition-time;
   cursor: pointer;
 }
 .Logout:hover {
@@ -112,7 +112,6 @@
     font-weight: bold;
     background: none;
     border: none;
-    // border-top: 0.5px solid var(--input-border);
     width: 100%;
     text-align: left;
   }

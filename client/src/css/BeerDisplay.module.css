@@ -60,7 +60,7 @@
   background: white;
   height: 7.5rem !important;
   font-size: 2rem !important;
-  transition: 0.25s; }
+  transition: 0.2s; }
   @media (max-width: 600px) {
     .DisplayContainer .ListItem {
       width: 100%;
@@ -71,7 +71,7 @@
 .ListItem:hover {
   background: whitesmoke !important;
   transform: scale(1.05);
-  transition: 0.25s; }
+  transition: 0.2s; }
 
 .AddIcon {
   font-size: 1.25rem;

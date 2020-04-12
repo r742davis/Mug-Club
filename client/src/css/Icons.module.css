@@ -1,3 +1,13 @@
+:root {
+  --primary: white;
+  --secondary: #00a5ff;
+  --secondary-light: #b3e4ff;
+  --tertiary: #686868;
+  --input-text: #a9a9a9;
+  --input-border: #eaeaea;
+  --beer-names: #505050;
+  --delete: #b12723; }
+
 .EditButton,
 .DeleteButton {
   width: 5rem;
@@ -10,14 +20,14 @@
   border-radius: 10rem;
   font-size: 2rem;
   cursor: pointer;
-  transition: 0.15s; }
+  transition: 0.2s; }
 
 .EditButton:hover {
   background: var(--secondary);
   color: white;
-  transition: 0.15s; }
+  transition: 0.2s; }
 
 .DeleteButton:hover {
   background: var(--delete);
   color: white;
-  transition: 0.15s; }
+  transition: 0.2s; }

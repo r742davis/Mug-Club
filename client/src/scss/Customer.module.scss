@@ -8,7 +8,7 @@
   border-radius: $border-radius;
   background: var(--primary);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-  transition: 0.125s;
+  transition: $transition-time;
   & h2 {
     padding-left: 2rem;
     padding-bottom: 2rem;
@@ -22,7 +22,7 @@
 }
 .CustomerCard:hover {
   transform: translateY(-0.25rem);
-  transition: 0.2s;
+  transition: $transition-time;
   box-shadow: $box-shadow;
 }
 .TitleContainer {

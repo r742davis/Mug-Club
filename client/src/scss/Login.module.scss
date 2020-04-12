@@ -1,3 +1,6 @@
+@import "./_mixins.scss";
+@import "./_library.scss";
+
 .Container {
   width: 100%;
   max-width: 400px;
@@ -24,7 +27,7 @@
   padding-left: 2rem;
   padding-right: 2rem;
   padding-top: 2rem;
-  transition: 1s;
+  transition: $transition-time;
 }
 .Group {
   position: relative;
@@ -57,7 +60,7 @@
   position: absolute;
   pointer-events: none;
   top: 2rem;
-  transition: 0.2s ease all;
+  transition: $transition-time;
   z-index: 100;
 }
 
@@ -85,7 +88,7 @@
   color: black;
   border: none;
   font-size: 3rem;
-  transition: 0.2s;
+  transition: $transition-time;
 }
 .Back {
   margin-top: -0.5rem;
@@ -96,19 +99,19 @@
   color: black;
   border: none;
   font-size: 4rem;
-  transition: 0.2s;
+  transition: $transition-time;
 }
 .Back:hover {
   background: white;
   color: #ccc;
   cursor: pointer;
-  transition: 0.2s;
+  transition: $transition-time;
 }
 .Button:hover {
   background: white;
   color: #ccc;
   cursor: pointer;
-  transition: 0.2s;
+  transition: $transition-time;
 }
 
 /* Errors */

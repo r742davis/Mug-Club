@@ -24,23 +24,21 @@
   width: 95%;
   height: 6rem;
   margin: 0.5rem 0 0.5rem 0;
-  // padding-left: 0.5rem;
-  // padding-right: 0.5rem;
   border-radius: 0.5rem;
   background: #f0d3d7;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  transition: 0.2s;
+  transition: $transition-time;
   @include respond-to('small') {
     height: 5rem;
   }
   
 }
 .Item:hover {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  transition: 0.2s;
+  box-shadow: $box-shadow;
+  transition: $transition-time;
 }
 .NameContainer {
   width: 100%;

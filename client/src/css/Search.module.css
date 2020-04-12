@@ -62,7 +62,7 @@
   position: absolute;
   pointer-events: none;
   top: 2rem;
-  transition: 0.2s ease all;
+  transition: 0.2s;
   -webkit-appearance: none;
   -webkit-border-radius: 0; }
   @media (max-width: 600px) {
@@ -71,7 +71,7 @@
 
 .Input:focus {
   border: 2px solid var(--secondary);
-  transition: 0.5s; }
+  transition: 0.2s; }
 
 .Input:focus ~ .Label,
 .Input:valid ~ .Label {

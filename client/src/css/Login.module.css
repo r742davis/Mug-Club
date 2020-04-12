@@ -1,3 +1,13 @@
+:root {
+  --primary: white;
+  --secondary: #00a5ff;
+  --secondary-light: #b3e4ff;
+  --tertiary: #686868;
+  --input-text: #a9a9a9;
+  --input-border: #eaeaea;
+  --beer-names: #505050;
+  --delete: #b12723; }
+
 .Container {
   width: 100%;
   max-width: 400px;
@@ -24,7 +34,7 @@
   padding-left: 2rem;
   padding-right: 2rem;
   padding-top: 2rem;
-  transition: 1s; }
+  transition: 0.2s; }
 
 .Group {
   position: relative;
@@ -55,7 +65,7 @@
   position: absolute;
   pointer-events: none;
   top: 2rem;
-  transition: 0.2s ease all;
+  transition: 0.2s;
   z-index: 100; }
 
 .Input:focus ~ .Label,

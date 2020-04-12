@@ -58,7 +58,7 @@
   position: absolute;
   pointer-events: none;
   top: 2rem;
-  transition: 0.2s ease all;
+  transition: $transition-time;
   -webkit-appearance: none;
   -webkit-border-radius: 0;
   @include respond-to('small') {
@@ -67,7 +67,7 @@
 }
 .Input:focus {
   border: 2px solid var(--secondary);
-  transition: 0.5s;
+  transition: $transition-time;
 }
 .Input:focus ~ .Label,
 .Input:valid ~ .Label  {

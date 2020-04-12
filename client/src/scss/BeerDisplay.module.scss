@@ -52,11 +52,11 @@
   width: 45%;
   margin: 1%;
   border-radius: 0.5rem;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: $box-shadow;
   background: white;
   height: 7.5rem !important;
   font-size: 2rem !important;
-  transition: 0.25s;
+  transition: $transition-time;
   @include respond-to('small') {
     width: 100%;
     margin-left: 2rem;
@@ -67,7 +67,7 @@
 .ListItem:hover {
   background: whitesmoke !important;
   transform: scale(1.05);
-  transition: 0.25s;
+  transition: $transition-time;
 }
 .AddIcon {
   font-size: 1.25rem;
@@ -81,7 +81,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: 0.2s;
+  transition: $transition-time;
   @include respond-to('small') {
     position: fixed;
     left: 80%;
@@ -94,6 +94,6 @@
 }
 .AddIcon:hover {
   background: var(--secondary-light);
-  transition: 0.2s;
+  transition: $transition-time;
 }
 
