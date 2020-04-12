@@ -116,7 +116,6 @@ class EditBeer extends Component {
                   </label>
                 </div>
                 <div className={classes.Group}>
-                  
                   <select
                     name="type"
                     className={classes.Select}
@@ -191,7 +190,6 @@ class EditBeer extends Component {
                     className={classes.CancelButton}
                   />
                 </div>
-                
               </form>
               <DeleteIcon delete={() => this.deleteBeerAlert()} />
             </div>

@@ -3,7 +3,7 @@ import classes from "../css/Login.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
-const Register = props => {
+const Register = (props) => {
   return (
     <form onSubmit={(e) => props.onSubmit(e)}>
       <div className={classes.LoginContainer}>

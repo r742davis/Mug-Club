@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 
 class RenderModal extends Component {
   static propTypes = {
-    modalType: PropTypes.string
+    modalType: PropTypes.string,
   };
 
   render() {
@@ -33,8 +33,8 @@ class RenderModal extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  modalType: state.modal.modalType
+const mapStateToProps = (state) => ({
+  modalType: state.modal.modalType,
 });
 
 export default connect(mapStateToProps)(RenderModal);

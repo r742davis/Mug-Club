@@ -2,7 +2,7 @@ import React from "react";
 import classes from "../css/Home.module.css";
 import Login from "./Login";
 
-const home = props => {
+const home = (props) => {
   return (
     <>
       <div className={classes.BgImage}></div>

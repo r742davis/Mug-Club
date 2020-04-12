@@ -85,7 +85,7 @@ class Search extends Component {
     }
 
     const mappedCustomers = filteredCustomers
-      ? filteredCustomers.slice(0,20).map((customer, index) => {
+      ? filteredCustomers.slice(0, 20).map((customer, index) => {
           return (
             <Customer
               key={uniqid()}
@@ -133,16 +133,13 @@ class Search extends Component {
             </div>
 
             <div className={classes.CustomerContainer}>
-              
               {search && (
                 <>
                   <h3>Results:</h3>
                   {mappedCustomers}
                   <h4>Max 20 Results</h4>
                 </>
-                  
-                )
-              }
+              )}
             </div>
           </div>
         </div>

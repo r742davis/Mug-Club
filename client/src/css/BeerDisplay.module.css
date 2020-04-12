@@ -70,7 +70,6 @@
 
 .ListItem:hover {
   background: whitesmoke !important;
-  transform: scale(1.05);
   transition: 0.2s; }
 
 .AddIcon {
@@ -79,7 +78,7 @@
   height: 5rem;
   width: 5rem;
   border-radius: 10rem;
-  background: #00a5ff;
+  background: var(--secondary);
   color: white;
   display: flex;
   align-items: center;

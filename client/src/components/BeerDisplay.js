@@ -25,7 +25,11 @@ const BeerDisplay = (props) => {
             onClick={() => props.openModal("EDIT_BEER", beer)}
           >
             <ListItemAvatar>
-              <Avatar className={classes.Avatar} alt={`${beer.brewery}`} src={beer.url} />
+              <Avatar
+                className={classes.Avatar}
+                alt={`${beer.brewery}`}
+                src={beer.url}
+              />
             </ListItemAvatar>
             <div className={classes.Group}>
               <h3>{beer.brewery}</h3>

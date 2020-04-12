@@ -58,7 +58,7 @@ class NewCustomer extends Component {
       try {
         console.log("Saving customer...");
         await this.props.createCustomer(newCustomer);
-        console.log("Refetching customers...")
+        console.log("Refetching customers...");
         await this.props.fetchCustomers();
         swal({
           title: `${this.state.first} has been created!`,
@@ -133,20 +133,20 @@ class NewCustomer extends Component {
                     </label>
                   </div>
                   <div className={classes.ButtonContainer}>
-                  <input
-                    type="submit"
-                    value="Submit"
-                    onClick={(e) => this.handleSubmit(e)}
-                    className={classes.EditButton}
-                  />
-                  <input
-                    type="submit"
-                    value="Cancel"
-                    onClick={() => this.props.closeModal()}
-                    className={classes.CancelButton}
-                    formNoValidate
-                  />
-                </div>
+                    <input
+                      type="submit"
+                      value="Submit"
+                      onClick={(e) => this.handleSubmit(e)}
+                      className={classes.EditButton}
+                    />
+                    <input
+                      type="submit"
+                      value="Cancel"
+                      onClick={() => this.props.closeModal()}
+                      className={classes.CancelButton}
+                      formNoValidate
+                    />
+                  </div>
                 </form>
               </div>
             </div>

@@ -17,16 +17,17 @@ const Backdrop = (props) => {
         ></div>
       )}
       {props.navOpen && (
-        <div 
-          className={`${classes.Backdrop} ${classes.Nav}`} 
-          onClick={() => props.closeNav()}></div>
-      )} 
+        <div
+          className={`${classes.Backdrop} ${classes.Nav}`}
+          onClick={() => props.closeNav()}
+        ></div>
+      )}
     </>
   );
 };
 const mapStateToProps = (state) => ({
   modalOpen: state.modal.modalOpen,
-  navOpen: state.modal.navOpen
+  navOpen: state.modal.navOpen,
 });
 
 export default connect(mapStateToProps, actions)(Backdrop);

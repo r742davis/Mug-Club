@@ -12,7 +12,7 @@ import { updateCustomer, fetchCustomers } from "../actions/customerActions";
 const actions = {
   closeModal,
   updateCustomer,
-  fetchCustomers
+  fetchCustomers,
 };
 
 class EditCustomer extends Component {
@@ -22,7 +22,7 @@ class EditCustomer extends Component {
     clubId: this.props.clubId,
     customerId: this.props.customerId,
     completed: this.props.completed,
-    customerBeers: this.props.customerBeers
+    customerBeers: this.props.customerBeers,
   };
 
   static propTypes = {
@@ -31,10 +31,10 @@ class EditCustomer extends Component {
     clubId: PropTypes.number,
     completed: PropTypes.bool,
     customerBeers: PropTypes.array,
-    customerId: PropTypes.string
+    customerId: PropTypes.string,
   };
 
-  updateCompletedBeers = checkedArr => {
+  updateCompletedBeers = (checkedArr) => {
     let updatedArr = this.state.customerBeers;
     for (let k = 0; k < updatedArr.length; k++) {
       for (let h = 1; h < checkedArr.length; h++) {
@@ -44,11 +44,11 @@ class EditCustomer extends Component {
       }
     }
     this.setState({
-      customerBeers: updatedArr
+      customerBeers: updatedArr,
     });
   };
 
-  checkCompletion = beers => {
+  checkCompletion = (beers) => {
     let value = true;
     for (let i = 0; i < beers.length; i++) {
       if (beers[i].finished === false) {
@@ -57,12 +57,12 @@ class EditCustomer extends Component {
     }
     if (value === true) {
       this.setState({
-        completed: true
-      })
+        completed: true,
+      });
     }
   };
 
-  handleInputChange = e => {
+  handleInputChange = (e) => {
     const target = e.target;
     const name = target.name;
     this.setState({ [name]: e.target.value });
@@ -75,13 +75,13 @@ class EditCustomer extends Component {
     const updatedCustomer = await {
       name: {
         first: this.state.first,
-        last: this.state.last
+        last: this.state.last,
       },
       mugClub: {
         clubId: this.state.clubId,
         completed: this.state.completed,
-        beers: this.state.customerBeers
-      }
+        beers: this.state.customerBeers,
+      },
     };
     try {
       await this.props.updateCustomer(updatedCustomer, this.props.customerId);
@@ -89,7 +89,7 @@ class EditCustomer extends Component {
       swal({
         title: `You've updated ${this.state.first} ${this.state.last}!`,
         icon: "success",
-        button: "Ok!"
+        button: "Ok!",
       });
       this.props.closeModal();
     } catch (e) {
@@ -97,7 +97,7 @@ class EditCustomer extends Component {
       swal({
         title: `Oops! Something went wrong :(`,
         icon: "fail",
-        button: "Crap!"
+        button: "Crap!",
       });
     }
   };
@@ -113,64 +113,64 @@ class EditCustomer extends Component {
             <div className={classes.Modal}>
               <h2 className={classes.ModalTitle}>Edit Customer</h2>
               <div className={classes.ModalContent}>
-              <form
-                className={classes.Form}
-                onSubmit={e => this.props.handleSubmit(e)}
-              >
-                <div className={classes.Group}>
-                  <input
-                    type="text"
-                    name="first"
-                    className={classes.Input}
-                    defaultValue={this.props.first}
-                    onChange={this.handleInputChange}
-                    required
-                  />
-                  <span className={classes.Bar}></span>
-                  <label htmlFor="first" className={classes.Label}>
-                    First Name
-                  </label>
-                </div>
-                <div className={classes.Group}>
-                  <input
-                    type="text"
-                    name="last"
-                    className={classes.Input}
-                    defaultValue={this.props.last}
-                    onChange={this.handleInputChange}
-                    required
-                  />
-                  <span className={classes.Bar}></span>
-                  <label htmlFor="last" className={classes.Label}>
-                    Last Name
-                  </label>
-                </div>
-                <div className={classes.Group}>
-                  <input
-                    type="text"
-                    name="clubId"
-                    className={classes.Input}
-                    defaultValue={this.props.clubId}
-                    onChange={this.handleInputChange}
-                    required
-                  />
-                  <span className={classes.Bar}></span>
-                  <label htmlFor="clubId" className={classes.Label}>
-                    Mug Club ID
-                  </label>
-                </div>
-                <div>
-                  <label htmlFor="beerList" className={classes.BeerLabel}>
-                    Select Beer to Mark as Complete:
-                  </label>
-                  <BeersList
-                    beers={this.props.customerBeers}
-                    updateCompletedBeers={this.updateCompletedBeers}
-                    handleSubmit={this.handleSubmit}
-                    toggleModal={() => this.props.closeModal()}
-                  />
-                </div>
-              </form>
+                <form
+                  className={classes.Form}
+                  onSubmit={(e) => this.props.handleSubmit(e)}
+                >
+                  <div className={classes.Group}>
+                    <input
+                      type="text"
+                      name="first"
+                      className={classes.Input}
+                      defaultValue={this.props.first}
+                      onChange={this.handleInputChange}
+                      required
+                    />
+                    <span className={classes.Bar}></span>
+                    <label htmlFor="first" className={classes.Label}>
+                      First Name
+                    </label>
+                  </div>
+                  <div className={classes.Group}>
+                    <input
+                      type="text"
+                      name="last"
+                      className={classes.Input}
+                      defaultValue={this.props.last}
+                      onChange={this.handleInputChange}
+                      required
+                    />
+                    <span className={classes.Bar}></span>
+                    <label htmlFor="last" className={classes.Label}>
+                      Last Name
+                    </label>
+                  </div>
+                  <div className={classes.Group}>
+                    <input
+                      type="text"
+                      name="clubId"
+                      className={classes.Input}
+                      defaultValue={this.props.clubId}
+                      onChange={this.handleInputChange}
+                      required
+                    />
+                    <span className={classes.Bar}></span>
+                    <label htmlFor="clubId" className={classes.Label}>
+                      Mug Club ID
+                    </label>
+                  </div>
+                  <div>
+                    <label htmlFor="beerList" className={classes.BeerLabel}>
+                      Select Beer to Mark as Complete:
+                    </label>
+                    <BeersList
+                      beers={this.props.customerBeers}
+                      updateCompletedBeers={this.updateCompletedBeers}
+                      handleSubmit={this.handleSubmit}
+                      toggleModal={() => this.props.closeModal()}
+                    />
+                  </div>
+                </form>
               </div>
             </div>
           </Grow>
@@ -180,13 +180,13 @@ class EditCustomer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   first: state.modal.info.name.first,
   last: state.modal.info.name.last,
   clubId: state.modal.info.mugClub.clubId,
   completed: state.modal.info.mugClub.completed,
   customerBeers: state.modal.info.mugClub.beers,
-  customerId: state.modal.info._id
+  customerId: state.modal.info._id,
 });
 
 export default connect(mapStateToProps, actions)(EditCustomer);
