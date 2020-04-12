@@ -12,7 +12,7 @@ import { returnErrors } from "./errorActions";
 export const fetchCustomers = () => {
   return (dispatch, getState) => {
     dispatch(fetchCustomersBegin());
-    return fetch("https://bearmugclub.herokuapp.com/api/customers", tokenConfig(getState))
+    return fetch("https://bearmugclub.herokuapp.com/api/customers")
       .then(res => res.json())
       .then(customers => {
         dispatch(fetchCustomersSuccess(customers));
@@ -53,7 +53,7 @@ export const createCustomer = newCustomer => (dispatch, getState) => {
 export const updateCustomer = (customer, id) => (dispatch, getState) => {
   const customerURL = "https://bearmugclub.herokuapp.com/api/customers/" + id;
   axios
-    .put(customerURL, customer)
+    .put(customerURL, customer, tokenConfig(getState))
     .then(dispatch(fetchCustomers()))
     .catch(err =>
       dispatch(returnErrors(err.response.data, err.response.status))

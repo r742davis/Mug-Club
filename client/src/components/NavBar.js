@@ -9,6 +9,7 @@ import {
   faSearch,
   faBeer,
   faUserTimes,
+  faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import Burger from "@animated-burgers/burger-squeeze";
 import "@animated-burgers/burger-squeeze/dist/styles.css";
@@ -99,6 +100,18 @@ class NavBar extends Component {
             <h2>New Beer</h2>
           </div>
         </button>
+        <Link
+          to={`${urlName}/account`}
+          className={classes.HamburgerItem}
+          onClick={() => this.props.closeNav()}
+        >
+          <div className={classes.LinkDiv}>
+            <div>
+              <FontAwesomeIcon icon={faUserCircle} />
+            </div>
+            <h2>Account</h2>
+          </div>
+        </Link>
         <button onClick={() => this.logout()} className={classes.HamburgerItem}>
           <div className={classes.LinkDiv}>
             <div>
@@ -112,7 +125,7 @@ class NavBar extends Component {
 
     let authLinks = (
       <nav className={classes.Navbar}>
-        <h1>MUG CLUB 🍻</h1>
+        <h1>MUG CLUB <span role="img" aria-label="mugs of beers">🍻</span></h1>
         {this.props.navOpen ? (
           hamburgerMenu
         ) : (
@@ -142,6 +155,11 @@ class NavBar extends Component {
               >
                 New Beer
               </button>
+            </li>
+            <li className={classes.Item}>
+              <Link to={`${urlName}/account`} className={classes.Link}>
+                Account
+              </Link>
             </li>
             <li className={classes.Item}>
               <button onClick={this.logout} className={classes.Logout}>
