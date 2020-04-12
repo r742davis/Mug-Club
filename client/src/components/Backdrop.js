@@ -12,13 +12,13 @@ const Backdrop = (props) => {
     <>
       {props.modalOpen && (
         <div
-          className={classes.ModalBackdrop}
+          className={`${classes.Backdrop} ${classes.Modal}`}
           onClick={() => props.closeModal()}
         ></div>
       )}
       {props.navOpen && (
         <div 
-          className={classes.NavBackdrop} 
+          className={`${classes.Backdrop} ${classes.Nav}`} 
           onClick={() => props.closeNav()}></div>
       )} 
     </>
