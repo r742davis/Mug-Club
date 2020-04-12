@@ -5,9 +5,13 @@ const app = express();
 const methodOverride = require("method-override");
 const cors = require("cors");
 const path = require("path");
+const session = require("express-session");
+const dotenv = require('dotenv');
+
 
 //  Middleware  //
 //--------------//
+// dotenv.load();
 app.use(
   cors({
     origin: true,
@@ -16,6 +20,11 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
+// app.use(session({
+//   secret: "Danny Goatee",
+//   resave: false,
+//   saveUninitialized: false
+// }))
 
 //  Customers Controller  //
 //------------------------//

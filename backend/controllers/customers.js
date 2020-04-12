@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const auth = require('../middleware/auth');
 
 //GET route
-router.get("/", auth, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const customers = await Customer.find();
     res.status(200).json(customers);
