@@ -1,6 +1,8 @@
 # Mug Club
 
-## Current Development Stage - April 3, 20202
+## Website Link: https://bearmugclub.herokuapp.com/
+
+## Current Development Stage - April 3, 2020
 
 The app's design and functionality is essentially complete at this stage. Much of the work now involves minor details, unit testing, authentication, and developing the CSV-to-JSON conversion algorithm. 
 
@@ -11,18 +13,19 @@ I am currently using Papaparse to parse the CSV file that will be sent from the 
 
 
 ## Motivation
-
-A full stack, mobile-responsive React web app that checks you into Mug Club at the Madison Bear Garden. The Bear currently uses an Excel spreadsheet and laptop computer to look through over 14,000 names in order to find out whether someone has completed their series of challenges and is officially in their Mug Club. What I plan to do is create a web application so the customer can quickly pull up their ID and the Bear employees can check the ID as well as add customers via the companion website.
+A full stack, mobile-responsive React web app that checks you into Mug Club at the Madison Bear Garden. The Bear currently uses an Excel spreadsheet and laptop computer to look through over 14,000 names in order to find out whether someone has completed their series of challenges and is officially in their Mug Club. What I did was create a web application so the customer can quickly pull up their ID and the Bear employees can check the ID as well as add customers.
 
 ## Tech Stack:
-* [MongoDB](https://www.mongodb.com/)
-* [Mongoose](https://mongoosejs.com/)
-* [Express.js](https://expressjs.com/)
 * [React](https://reactjs.org/)
 * [Node.js](https://nodejs.org/en/)
+* [Express.js](https://expressjs.com/)
+* [MongoDB](https://www.mongodb.com/)
+* [Mongoose](https://mongoosejs.com/)
+* [Sass](https://sass-lang.com/)
+
 
 ## Versioning
-#### Version 1.0 - Backend Suite with React UI (In Development)
+#### Version 1.0 - Backend Node.js/Express.js Suite with React UI 
 
 ## Authors
 * Richard Davis
