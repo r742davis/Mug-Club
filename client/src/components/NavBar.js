@@ -13,6 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Burger from "@animated-burgers/burger-squeeze";
 import "@animated-burgers/burger-squeeze/dist/styles.css";
+import swal from "@sweetalert/with-react";
 
 // Redux Imports
 import PropTypes from "prop-types";
@@ -37,8 +38,26 @@ class NavBar extends Component {
   };
 
   logout = () => {
-    this.props.logout();
-  };
+    try {
+      swal({
+        title: "Log out?",
+        icon: "warning",
+        button: "Yes, log me out",
+      }).then((willLogout) => {
+        if(willLogout) {
+          this.props.logout();
+        }
+      })
+    } catch (e) {
+      console.error(e);
+      swal({
+        title: "Oops! Something went wrong",
+        icon: "fail",
+        button: "Ok",
+      });
+    }
+  }
+    
 
   comboToggle = async (modalType) => {
     await this.props.closeNav();
@@ -162,7 +181,9 @@ class NavBar extends Component {
               </Link>
             </li>
             <li className={classes.Item}>
-              <button onClick={this.logout} className={classes.Logout}>
+              <button 
+                onClick={this.logout} 
+                className={classes.Logout}>
                 Log Out
               </button>
             </li>
