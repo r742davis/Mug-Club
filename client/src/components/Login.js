@@ -84,8 +84,10 @@ class Login extends Component {
   };
 
   render() {
+    const { toggleLogin, toggleReg } = this.state;
+    const isAuthenticated = this.props.isAuthenticated;
     let buttons;
-    if (!this.state.toggleLogin && !this.state.toggleReg) {
+    if (!toggleLogin && !toggleReg) {
       buttons = (
         <div className={classes.ButtonContainer}>
           <button
@@ -114,10 +116,8 @@ class Login extends Component {
 
     return (
       <div>
-        {this.props.isAuthenticated && (
-          <Redirect to="/search-customers" />
-        )}
-        {!this.props.isAuthenticated && (
+        {isAuthenticated && <Redirect to="/search-customers" />}
+        {!isAuthenticated && (
           <section className={classes.Container}>
             <h1 className={classes.Title}>Mug Club 🍻</h1>
             {buttons}
