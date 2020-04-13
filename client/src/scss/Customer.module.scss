@@ -7,7 +7,7 @@
   margin-bottom: 1rem;
   border-radius: $border-radius;
   background: var(--primary);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  box-shadow: $box-shadow;
   transition: $transition-time;
   & h2 {
     padding-left: 2rem;
@@ -28,8 +28,8 @@
 .TitleContainer {
   background: black;
   color: var(--primary);
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -43,7 +43,7 @@
   padding-left: 2rem;
   padding-top: 2rem;
   font-size: 3.5rem;
-  border-radius: 1rem;
+  border-radius: $border-radius;
   color: var(--primary);
   display: flex;
   justify-content: space-between;
