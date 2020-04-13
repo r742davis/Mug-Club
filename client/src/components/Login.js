@@ -86,27 +86,6 @@ class Login extends Component {
   render() {
     const { toggleLogin, toggleReg } = this.state;
     const isAuthenticated = this.props.isAuthenticated;
-    let buttons;
-    if (!toggleLogin && !toggleReg) {
-      buttons = (
-        <div className={classes.ButtonContainer}>
-          <button
-            name="login"
-            onClick={() => this.toggleLogin()}
-            className={classes.Button}
-          >
-            Login
-          </button>
-          <button
-            name="register"
-            onClick={() => this.toggleReg()}
-            className={classes.Button}
-          >
-            Register
-          </button>
-        </div>
-      );
-    }
 
     let error = (
       <div>
@@ -119,9 +98,10 @@ class Login extends Component {
         {isAuthenticated && <Redirect to="/search-customers" />}
         {!isAuthenticated && (
           <section className={classes.Container}>
-            <h1 className={classes.Title}>Mug Club 🍻</h1>
-            {buttons}
-            {this.state.toggleLogin && (
+            <h1 className={classes.Title}>
+              <h2>Welcome to</h2>Mug Club 🍻
+            </h1>
+            {!toggleReg && (
               <form onSubmit={this.onSubmit}>
                 <div className={classes.LoginContainer}>
                   {this.state.message && error}
@@ -133,7 +113,6 @@ class Login extends Component {
                       onChange={this.onChange}
                       required
                     />
-                    <span className={classes.Bar}></span>
                     <label htmlFor="email" className={classes.Label}>
                       Email
                     </label>
@@ -146,27 +125,30 @@ class Login extends Component {
                       onChange={this.onChange}
                       required
                     />
-                    <span className={classes.Bar}></span>
                     <label htmlFor="password" className={classes.Label}>
                       Password
                     </label>
                   </div>
-                  <button
-                    type="submit"
-                    name="login"
-                    className={`${classes.Button} ${classes.bounce}`}
-                  >
-                    Login
-                  </button>
-                  <div
-                    onClick={() => this.toggleLogin()}
-                    className={classes.Back}
-                  >
-                    <FontAwesomeIcon icon={faArrowAltCircleLeft} />
+                  <div className={classes.ButtonContainer}>
+                    <button
+                      type="submit"
+                      name="login"
+                      className={classes.Button}
+                    >
+                      Login
+                    </button>
+                    <button
+                      name="register"
+                      onClick={() => this.toggleReg()}
+                      className={classes.Button}
+                    >
+                      Register
+                    </button>
                   </div>
                 </div>
               </form>
             )}
+
             {this.state.toggleReg && (
               <Register
                 onSubmit={this.onSubmitReg}

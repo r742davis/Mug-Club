@@ -50,7 +50,7 @@ const Register = (props) => {
         <button
           type="submit"
           name="register"
-          className={`${classes.Button} ${classes.bounce}`}
+          className={classes.Button}
         >
           Register
         </button>
