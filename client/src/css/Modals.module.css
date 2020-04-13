@@ -72,8 +72,8 @@
   margin-bottom: 2rem; }
 
 .Input {
-  font-size: 1.6rem;
-  padding: 2rem 1rem 1rem 1.25rem;
+  font-size: 2rem;
+  padding: 2rem 1rem .5rem 1.25rem;
   display: block;
   width: 100%;
   border: none;
@@ -120,13 +120,13 @@
   width: 100%;
   border: none;
   border: 2px solid var(--input-border);
-  padding-left: 2rem;
+  padding-left: 1.25rem;
   -webkit-appearance: none;
   -webkit-border-radius: 0.5rem; }
   @media (max-width: 600px) {
     .Select {
       height: 4.5rem;
-      padding-left: 1.25rem; } }
+      padding-bottom: 0.5rem; } }
 
 option {
   margin-left: 2rem; }
