@@ -73,7 +73,7 @@
 
 .Input {
   font-size: 2rem;
-  padding: 2rem 1rem .5rem 1.25rem;
+  padding: 2rem 1rem 1rem 1.25rem;
   display: block;
   width: 100%;
   border: none;
@@ -134,7 +134,7 @@ option {
 .Input:focus,
 .Select:focus {
   border: 2px solid var(--secondary);
-  transition: 0.2s; }
+  transition: calc(3 * 0.2s); }
 
 .Input:focus ~ .Label,
 .Input:valid ~ .Label,
