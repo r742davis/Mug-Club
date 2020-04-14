@@ -34,12 +34,17 @@ class EditCustomer extends Component {
     customerId: PropTypes.string,
   };
 
-  updateCompletedBeers = (checkedArr) => {
+  updateCompletedBeers = (checkedArr, unchecked) => {
     let updatedArr = this.state.customerBeers;
     for (let k = 0; k < updatedArr.length; k++) {
       for (let h = 1; h < checkedArr.length; h++) {
         if (updatedArr[k]._id === checkedArr[h]._id) {
           updatedArr[k].finished = true;
+        }
+      }
+      for (let h = 1; h < unchecked.length; h++) {
+        if (updatedArr[k]._id === unchecked[h]._id) {
+          updatedArr[k].finished = false;
         }
       }
     }
@@ -68,9 +73,9 @@ class EditCustomer extends Component {
     this.setState({ [name]: e.target.value });
   };
 
-  handleSubmit = async (e, checkedArr) => {
+  handleSubmit = async (e, checkedArr, unchecked) => {
     e.preventDefault();
-    await this.updateCompletedBeers(checkedArr);
+    await this.updateCompletedBeers(checkedArr, unchecked);
     await this.checkCompletion(this.state.customerBeers);
     const updatedCustomer = await {
       name: {

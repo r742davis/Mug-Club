@@ -12,16 +12,29 @@ const uniqid = require("uniqid");
 
 function BeerList(props) {
   const [checked, setChecked] = React.useState([-1]);
+  const [unchecked, setUnchecked] = React.useState([-1]);
 
-  const handleToggle = (value) => () => {
-    const currentIndex = checked.indexOf(value);
+  const handleToggle = (beer) => () => {
+    const currentIndex = checked.indexOf(beer);
     const newChecked = [...checked];
     if (currentIndex === -1) {
-      newChecked.push(value);
+      newChecked.push(beer);
     } else {
       newChecked.splice(currentIndex, 1);
     }
     setChecked(newChecked);
+
+    if (beer.finished === true) {
+      const currentIndex = unchecked.indexOf(beer);
+      const newChecked = [...unchecked];
+      if (currentIndex === -1) {
+        newChecked.push(beer);
+      } else {
+        newChecked.splice(currentIndex, 1);
+      }
+      setUnchecked(newChecked);
+    }
+    console.log(unchecked);
   };
 
   const checkForIcon = (beer) => {
@@ -31,8 +44,11 @@ function BeerList(props) {
           <FontAwesomeIcon icon={faCheckCircle} />
         </span>
       );
-    } else {
-      return null;
+    }
+  };
+
+  const removeIcon = (beer) => {
+    for (let beer of unchecked) {
     }
   };
 
@@ -42,9 +58,7 @@ function BeerList(props) {
         key={uniqid()}
         onClick={handleToggle(beer)}
         className={
-          beer.finished 
-          ? `${styles.Item} ${styles.Completed}` 
-          : styles.Item
+          beer.finished ? `${styles.Item} ${styles.Completed}` : styles.Item
         }
       >
         <img
@@ -58,7 +72,7 @@ function BeerList(props) {
         </div>
         <div>
           {checkForIcon(beer)}
-          {beer.finished && (
+          {beer.finished && unchecked.indexOf(beer) !== -1 && (
             <span className={styles.CheckIcon}>
               <FontAwesomeIcon icon={faCheckCircle} />
             </span>
@@ -75,7 +89,7 @@ function BeerList(props) {
         <input
           type="submit"
           value="Submit"
-          onClick={(e) => props.handleSubmit(e, checked)}
+          onClick={(e) => props.handleSubmit(e, checked, unchecked)}
           className={classes.EditButton}
         />
         <input
