@@ -38,7 +38,10 @@ function BeerList(props) {
   };
 
   const checkForIcon = (beer) => {
-    if (checked.indexOf(beer) !== -1 && !beer.finished) {
+    if (
+      checked.indexOf(beer) !== -1 && !beer.finished ||
+      beer.finished && unchecked.indexOf(beer) !== -1 || beer.finished 
+      ) {
       return (
         <span className={styles.CheckIcon}>
           <FontAwesomeIcon icon={faCheckCircle} />
@@ -72,11 +75,6 @@ function BeerList(props) {
         </div>
         <div>
           {checkForIcon(beer)}
-          {beer.finished && unchecked.indexOf(beer) !== -1 && (
-            <span className={styles.CheckIcon}>
-              <FontAwesomeIcon icon={faCheckCircle} />
-            </span>
-          )}
         </div>
       </li>
     );
