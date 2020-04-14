@@ -62,9 +62,11 @@ class Search extends Component {
   };
 
   render() {
-    let { search } = this.state;
+    const { search } = this.state;
+    const loading = this.props.loading;
     let filteredCustomers;
     if (this.props.customers && search) {
+      if (loading) return <h2>Loading...</h2>
       filteredCustomers = this.props.customers.filter((customer) => {
         // Number Search
         let id = customer.mugClub.clubId.toString();
@@ -133,7 +135,7 @@ class Search extends Component {
             </div>
 
             <div className={classes.CustomerContainer}>
-              {search && (
+              {search &&  (
                 <>
                   <h3>Results:</h3>
                   {mappedCustomers}
@@ -150,6 +152,7 @@ class Search extends Component {
 
 const mapStateToProps = (state) => ({
   customers: state.customers.customers,
+  loading: state.customers.loading,
 });
 
 export default connect(mapStateToProps, actions)(Search);
