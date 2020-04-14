@@ -42,7 +42,9 @@ function BeerList(props) {
         key={uniqid()}
         onClick={handleToggle(beer)}
         className={
-          beer.finished ? `${styles.Item} ${styles.Completed}` : styles.Item
+          beer.finished 
+          ? `${styles.Item} ${styles.Completed}` 
+          : styles.Item
         }
       >
         <img
