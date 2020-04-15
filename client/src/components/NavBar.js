@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import classes from "../css/NavBar.module.css";
 import Backdrop from "./Backdrop";
 import HamburgerNav from "./HamburgerNav";
+import RegularNav from "./RegularNav";
+
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import Burger from "@animated-burgers/burger-squeeze";
@@ -66,48 +68,13 @@ class NavBar extends Component {
           <HamburgerNav 
             logoutAlert={this.logoutAlert}
             comboToggle={this.comboToggle}
+            urlName={urlName}
           />
         ) : (
-          <ul className={classes.List}>
-            <li className={classes.Item}>
-              <Link to={`${urlName}/search-customers`} className={classes.Link}>
-                Search
-              </Link>
-            </li>
-            <li className={classes.Item}>
-              <Link to={`${urlName}/beers-list`} className={classes.Link}>
-                Beers List
-              </Link>
-            </li>
-            <li className={classes.Item}>
-              <button
-                onClick={() => this.props.openModal("NEW_CUSTOMER")}
-                className={classes.NewButton}
-              >
-                New Customer
-              </button>
-            </li>
-            <li className={classes.Item}>
-              <button
-                onClick={() => this.props.openModal("NEW_BEER")}
-                className={classes.NewButton}
-              >
-                New Beer
-              </button>
-            </li>
-            {/* <li className={classes.Item}>
-              <Link to={`${urlName}/account`} className={classes.Link}>
-                Account
-              </Link>
-            </li> */}
-            <li className={classes.Item}>
-              <button 
-                onClick={this.logout} 
-                className={classes.Logout}>
-                Log Out
-              </button>
-            </li>
-          </ul>
+          <RegularNav 
+            logoutAlert={this.logoutAlert}
+            urlName={urlName}
+          />
         )}
         <div className={classes.HamburgerContainer}>
           <Burger
@@ -134,7 +101,6 @@ class NavBar extends Component {
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-  isAuthenticated: state.auth.isAuthenticated,
   navOpen: state.modal.navOpen,
 });
 
