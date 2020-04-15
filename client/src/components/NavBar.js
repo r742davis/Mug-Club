@@ -28,24 +28,23 @@ class NavBar extends Component {
 
   static propTypes = {
     auth: PropTypes.object.isRequired,
-    isAuthenticated: PropTypes.bool,
     navOpen: PropTypes.bool,
   };
 
   logoutAlert = () => {
-      swal({
-        title: "Log out?",
-        icon: "warning",
-        buttons: ["Cancel", "Logout"],
-        dangerMode: true,
-      }).then((willLogout) => {
-        if(willLogout) {
-          this.props.logout();
-        } else {
-          swal("You have not been logged out")
-        }
-      })
-  }
+    swal({
+      title: "Log out?",
+      icon: "warning",
+      buttons: ["Cancel", "Logout"],
+      dangerMode: true,
+    }).then((willLogout) => {
+      if (willLogout) {
+        this.props.logout();
+      } else {
+        swal("You have not been logged out");
+      }
+    });
+  };
 
   comboToggle = async (modalType) => {
     await this.props.closeNav();
@@ -59,23 +58,23 @@ class NavBar extends Component {
     //   return <Redirect to={`${urlName}/`} push={true} />
     // }
 
-    let regularNav = (
+    const Navigation = (
       <nav className={classes.Navbar}>
-        <h1>MUG CLUB 
-          <span role="img" aria-label="mugs of beers">🍻</span>
+        <h1>
+          MUG CLUB
+          <span role="img" aria-label="mugs of beers">
+            🍻
+          </span>
         </h1>
-        {this.props.navOpen ? (
-          <HamburgerNav 
-            logoutAlert={this.logoutAlert}
-            comboToggle={this.comboToggle}
-            urlName={urlName}
-          />
-        ) : (
-          <RegularNav 
-            logoutAlert={this.logoutAlert}
-            urlName={urlName}
-          />
-        )}
+        {this.props.navOpen 
+          ? <HamburgerNav
+              logoutAlert={this.logoutAlert}
+              comboToggle={this.comboToggle}
+              urlName={urlName} />
+          : <RegularNav 
+              logoutAlert={this.logoutAlert} 
+              urlName={urlName} />
+        }
         <div className={classes.HamburgerContainer}>
           <Burger
             isOpen={this.props.navOpen}
@@ -92,8 +91,8 @@ class NavBar extends Component {
     return (
       <>
         <Backdrop />
-        {/* {this.props.isAuthenticated && authLinks} */}
-        {regularNav}
+        {/* {isAuthenticated && Navigation} */}
+        {Navigation}
       </>
     );
   }
