@@ -61,33 +61,39 @@ class Search extends Component {
     }
   };
 
+  filterCustomers = (customers, search = this.state.search) => {
+    let filtered = customers
+      .filter((customer) => {
+      // Number Search
+      let id = customer.mugClub.clubId.toString();
+      let number = search === id ? customer : null;
+
+      // Name Search
+      let strings =
+        customer.name.first.toLowerCase().includes(search.toLowerCase()) ||
+        customer.name.last.toLowerCase().includes(search.toLowerCase());
+
+      if (strings) {
+        return strings;
+      }
+      if (number) {
+        return number;
+      }
+    });
+    return filtered;
+  }
+
   render() {
     const { search } = this.state;
     const loading = this.props.loading;
     let filteredCustomers;
     if (this.props.customers && search) {
       if (loading) return <h2>Loading...</h2>
-      filteredCustomers = this.props.customers.filter((customer) => {
-        // Number Search
-        let id = customer.mugClub.clubId.toString();
-        let number = search === id ? customer : null;
-
-        // Name Search
-        let strings =
-          customer.name.first.toLowerCase().includes(search.toLowerCase()) ||
-          customer.name.last.toLowerCase().includes(search.toLowerCase());
-
-        if (strings) {
-          return strings;
-        }
-        if (number) {
-          return number;
-        }
-      });
+      filteredCustomers = this.filterCustomers(this.props.customers, this.state.search)
     }
 
     const mappedCustomers = filteredCustomers
-      ? filteredCustomers.slice(0, 20).map((customer, index) => {
+      ? filteredCustomers.slice(0, 20).map((customer) => {
           return (
             <Customer
               key={uniqid()}
