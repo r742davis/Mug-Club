@@ -21,7 +21,7 @@ const actions = {
 };
 const urlName = "";
 
-const HamburgerMenu = (props) => {
+const HamburgerNav = (props) => {
   return (
     <ul className={classes.HamburgerList}>
       <Link
@@ -96,4 +96,4 @@ const HamburgerMenu = (props) => {
 
 const mapStateToProps = (state) => ({});
 
-export default connect(mapStateToProps, actions)(HamburgerMenu);
+export default connect(mapStateToProps, actions)(HamburgerNav);

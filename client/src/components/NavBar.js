@@ -1,17 +1,9 @@
 import React, { Component } from "react";
 import classes from "../css/NavBar.module.css";
 import Backdrop from "./Backdrop";
-import HamburgerMenu from "./HamburgerMenu";
+import HamburgerNav from "./HamburgerNav";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPlus,
-  faSearch,
-  faBeer,
-  faUserTimes,
-  faUserCircle,
-} from "@fortawesome/free-solid-svg-icons";
 import Burger from "@animated-burgers/burger-squeeze";
 import "@animated-burgers/burger-squeeze/dist/styles.css";
 import swal from "@sweetalert/with-react";
@@ -52,7 +44,6 @@ class NavBar extends Component {
         }
       })
   }
-    
 
   comboToggle = async (modalType) => {
     await this.props.closeNav();
@@ -66,15 +57,13 @@ class NavBar extends Component {
     //   return <Redirect to={`${urlName}/`} push={true} />
     // }
 
-    
-
-    let authLinks = (
+    let regularNav = (
       <nav className={classes.Navbar}>
         <h1>MUG CLUB 
           <span role="img" aria-label="mugs of beers">🍻</span>
         </h1>
         {this.props.navOpen ? (
-          <HamburgerMenu 
+          <HamburgerNav 
             logoutAlert={this.logoutAlert}
             comboToggle={this.comboToggle}
           />
@@ -137,7 +126,7 @@ class NavBar extends Component {
       <>
         <Backdrop />
         {/* {this.props.isAuthenticated && authLinks} */}
-        {authLinks}
+        {regularNav}
       </>
     );
   }
