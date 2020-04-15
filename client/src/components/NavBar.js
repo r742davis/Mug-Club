@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import classes from "../css/NavBar.module.css";
 import Backdrop from "./Backdrop";
+import HamburgerMenu from "./HamburgerMenu";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -37,25 +38,18 @@ class NavBar extends Component {
     navOpen: PropTypes.bool,
   };
 
-  logout = () => {
-    try {
+  logoutAlert = () => {
+    
       swal({
         title: "Log out?",
         icon: "warning",
-        button: "Yes, log me out",
+        button: true,
+        dangerMode: true,
       }).then((willLogout) => {
         if(willLogout) {
           this.props.logout();
         }
       })
-    } catch (e) {
-      console.error(e);
-      swal({
-        title: "Oops! Something went wrong",
-        icon: "fail",
-        button: "Ok",
-      });
-    }
   }
     
 
@@ -68,85 +62,21 @@ class NavBar extends Component {
     const urlName = "";
     const { isAuthenticated } = this.props.auth;
     if (!isAuthenticated) {
-      return <Redirect to={`${urlName}/`} push={true} />;
+      return <Redirect to={`${urlName}/`} push={true} />
     }
 
-    let hamburgerMenu = (
-      <ul className={classes.HamburgerList}>
-        <Link
-          to={`${urlName}/search-customers`}
-          className={classes.HamburgerItem}
-          onClick={() => this.props.closeNav()}
-        >
-          <div className={classes.LinkDiv}>
-            <div>
-              <FontAwesomeIcon icon={faSearch} />
-            </div>
-            <h2>Search</h2>
-          </div>
-        </Link>
-        <Link
-          to={`${urlName}/beers-list`}
-          className={classes.HamburgerItem}
-          onClick={() => this.props.closeNav()}
-        >
-          <div className={classes.LinkDiv}>
-            <div>
-              <FontAwesomeIcon icon={faBeer} />
-            </div>
-            <h2>Beers</h2>
-          </div>
-        </Link>
-        <button
-          onClick={() => this.comboToggle("NEW_CUSTOMER")}
-          className={classes.HamburgerItem}
-        >
-          <div className={classes.LinkDiv}>
-            <div>
-              <FontAwesomeIcon icon={faPlus} />
-            </div>
-            <h2>New Customer</h2>
-          </div>
-        </button>
-        <button
-          onClick={() => this.comboToggle("NEW_BEER")}
-          className={classes.HamburgerItem}
-        >
-          <div className={classes.LinkDiv}>
-            <div>
-              <FontAwesomeIcon icon={faPlus} />
-            </div>
-            <h2>New Beer</h2>
-          </div>
-        </button>
-        <Link
-          to={`${urlName}/account`}
-          className={classes.HamburgerItem}
-          onClick={() => this.props.closeNav()}
-        >
-          <div className={classes.LinkDiv}>
-            <div>
-              <FontAwesomeIcon icon={faUserCircle} />
-            </div>
-            <h2>Account</h2>
-          </div>
-        </Link>
-        <button onClick={() => this.logout()} className={classes.HamburgerItem}>
-          <div className={classes.LinkDiv}>
-            <div>
-              <FontAwesomeIcon icon={faUserTimes} />
-            </div>
-            <h2>Log Out</h2>
-          </div>
-        </button>
-      </ul>
-    );
+    
 
     let authLinks = (
       <nav className={classes.Navbar}>
-        <h1>MUG CLUB <span role="img" aria-label="mugs of beers">🍻</span></h1>
+        <h1>MUG CLUB 
+          <span role="img" aria-label="mugs of beers">🍻</span>
+        </h1>
         {this.props.navOpen ? (
-          hamburgerMenu
+          <HamburgerMenu 
+            logoutAlert={this.logoutAlert}
+            comboToggle={this.comboToggle}
+          />
         ) : (
           <ul className={classes.List}>
             <li className={classes.Item}>
@@ -175,11 +105,11 @@ class NavBar extends Component {
                 New Beer
               </button>
             </li>
-            <li className={classes.Item}>
+            {/* <li className={classes.Item}>
               <Link to={`${urlName}/account`} className={classes.Link}>
                 Account
               </Link>
-            </li>
+            </li> */}
             <li className={classes.Item}>
               <button 
                 onClick={this.logout} 
@@ -202,7 +132,6 @@ class NavBar extends Component {
       </nav>
     );
 
-    // return <>{this.props.isAuthenticated && authLinks}</>;
     return (
       <>
         <Backdrop />
