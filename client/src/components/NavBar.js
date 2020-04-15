@@ -39,15 +39,16 @@ class NavBar extends Component {
   };
 
   logoutAlert = () => {
-    
       swal({
         title: "Log out?",
         icon: "warning",
-        button: true,
+        buttons: ["Cancel", "Logout"],
         dangerMode: true,
       }).then((willLogout) => {
         if(willLogout) {
           this.props.logout();
+        } else {
+          swal("You have not been logged out")
         }
       })
   }
@@ -61,9 +62,9 @@ class NavBar extends Component {
   render() {
     const urlName = "";
     const { isAuthenticated } = this.props.auth;
-    if (!isAuthenticated) {
-      return <Redirect to={`${urlName}/`} push={true} />
-    }
+    // if (!isAuthenticated) {
+    //   return <Redirect to={`${urlName}/`} push={true} />
+    // }
 
     
 
@@ -135,7 +136,8 @@ class NavBar extends Component {
     return (
       <>
         <Backdrop />
-        {this.props.isAuthenticated && authLinks}
+        {/* {this.props.isAuthenticated && authLinks} */}
+        {authLinks}
       </>
     );
   }

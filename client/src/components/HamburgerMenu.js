@@ -14,10 +14,8 @@ import {
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { openModal } from "../actions/modalActions";
-import { logout } from "../actions/authActions";
 import { closeNav } from "../actions/navActions";
 const actions = {
-  logout,
   openModal,
   closeNav
 };
