@@ -35,6 +35,7 @@ router.get("/:id", async (req, res) => {
 // POST /users route
 router.post("/", (req, res) => {
   const { name, email, password } = req.body;
+  const permissions = "PUBLIC"
 
   //Simple Validation
   if (!name || !email || !password) {
@@ -53,6 +54,7 @@ router.post("/", (req, res) => {
       name,
       email,
       password,
+      permissions
     });
 
     //Create salt and hash
@@ -63,7 +65,10 @@ router.post("/", (req, res) => {
         newUser.save().then((user) => {
           //JSON Web Token Creation along with user info sent over to database
           jwt.sign(
-            { id: user.id },
+            { 
+              id: user.id,
+              permissions: user.permissions
+            },
             config.get("jwtSecret"),
             { expiresIn: 3600 },
             (err, token) => {
@@ -74,7 +79,7 @@ router.post("/", (req, res) => {
                   id: user.id,
                   name: user.name,
                   email: user.email,
-                  permissions: "PUBLIC",
+                  permissions: user.permissions
                 },
               });
             }

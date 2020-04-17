@@ -13,6 +13,8 @@ function auth(req, res, next) {
   try {
     //Verify token
     const decoded = jwt.verify(token, config.get("jwtSecret"));
+    //Error Catch
+    if (decoded.permissions === "PUBLIC") throw new Error("You do not have permission to do that!")
     //Add user from payload
     req.user = decoded;
     next();
