@@ -153,9 +153,8 @@ class Login extends Component {
               <Register
                 onSubmit={this.onSubmitReg}
                 toggleReg={this.toggleReg}
-                message={this.state.message}
+                error={this.state.message}
                 onChange={this.onChange}
-                error={this.state.error}
               />
             )}
           </section>

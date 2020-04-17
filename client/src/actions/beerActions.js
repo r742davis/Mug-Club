@@ -71,7 +71,7 @@ export const deleteBeer = id => (dispatch, getState) => {
 export const updateBeer = (beer, id) => (dispatch, getState) => {
   const beerURL = URL + id;
   axios
-    .put(beerURL, beer)
+    .put(beerURL, beer, tokenConfig(getState))
     .then(dispatch(fetchBeers()))
     .catch(err =>
       dispatch(returnErrors(err.response.data, err.response.status))

@@ -7,7 +7,11 @@ const Register = (props) => {
   return (
     <form onSubmit={(e) => props.onSubmit(e)}>
       <div className={classes.LoginContainer}>
-        {props.message && props.error}
+        {props.error && (
+          <div>
+            <h3 className={classes.Error}>{props.message}</h3>
+          </div>
+        )}
         <div className={classes.Group}>
           <input
             type="text"
@@ -47,11 +51,7 @@ const Register = (props) => {
             Password
           </label>
         </div>
-        <button
-          type="submit"
-          name="register"
-          className={classes.Button}
-        >
+        <button type="submit" name="register" className={classes.Button}>
           Register
         </button>
         <div onClick={() => props.toggleReg()} className={classes.Back}>
