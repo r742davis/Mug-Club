@@ -4,6 +4,8 @@ const Beer = require("../models/beer.js");
 const mongoose = require("mongoose");
 const auth = require('../middleware/auth');
 
+const User = require("../models/user.js");
+
 //GET route
 router.get("/", async (req, res) => {
   try {
@@ -65,7 +67,7 @@ router.delete("/:id",  async (req, res) => {
 });
 
 //UPDATE route
-router.put("/:id",  async (req, res) => {
+router.put("/:id", auth, async (req, res) => {
   try {
     const updateBeer = await Beer.findByIdAndUpdate(req.params.id, req.body, {
       new: true

@@ -64,10 +64,12 @@ router.post("/", (req, res) => {
 
     //Create salt and hash
     bcrypt.genSalt(10, (err, salt) => {
-      bcrypt.hash(newUser.password, salt, (error, hash) => {
+      bcrypt.hash(newUser.password, salt, (err, hash) => {
         if (err) throw err;
         newUser.password = hash;
-        newUser.save().then((user) => {
+        newUser
+          .save()
+          .then((user) => {
           //JSON Web Token Creation along with user info sent over to database
           jwt.sign(
             { id: user.id },
