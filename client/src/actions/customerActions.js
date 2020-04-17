@@ -12,7 +12,9 @@ import { returnErrors } from "./errorActions";
 export const fetchCustomers = () => {
   return (dispatch, getState) => {
     dispatch(fetchCustomersBegin());
-    return fetch("https://bearmugclub.herokuapp.com/api/customers")
+    return fetch(process.env.NODE_ENV === "production" 
+    ? "https://bearmugclub.herokuapp.com/api/customers"
+    : "http://localhost:5000/api/customers")
       .then(res => res.json())
       .then(customers => {
         dispatch(fetchCustomersSuccess(customers));
@@ -38,7 +40,9 @@ export const fetchCustomersFailure = error => ({
 
 export const createCustomer = newCustomer => (dispatch, getState) => {
   axios
-    .post("https://bearmugclub.herokuapp.com/api/customers", newCustomer, tokenConfig(getState))
+    .post(process.env.NODE_ENV === "production" 
+    ? "https://bearmugclub.herokuapp.com/api/customers"
+    : "http://localhost:5000/api/customers", newCustomer, tokenConfig(getState))
     .then(res =>
       dispatch({
         type: CREATE_CUSTOMER,
@@ -51,7 +55,9 @@ export const createCustomer = newCustomer => (dispatch, getState) => {
 };
 
 export const updateCustomer = (customer, id) => (dispatch, getState) => {
-  const customerURL = "https://bearmugclub.herokuapp.com/api/customers/" + id;
+  const customerURL = process.env.NODE_ENV === "production" 
+  ? "https://bearmugclub.herokuapp.com/api/customers/" + id
+  : "http://localhost:5000/api/customers/" + id;
   axios
     .put(customerURL, customer, tokenConfig(getState))
     .then(dispatch(fetchCustomers()))
@@ -62,7 +68,9 @@ export const updateCustomer = (customer, id) => (dispatch, getState) => {
 
 export const deleteCustomer = id => (dispatch, getState) => {
   axios
-    .delete("https://bearmugclub.herokuapp.com/api/customers/" + id, tokenConfig(getState))
+    .delete(process.env.NODE_ENV === "production" 
+    ? "https://bearmugclub.herokuapp.com/api/customers/" + id
+    : "http://localhost:5000/api/customers/" + id, tokenConfig(getState))
     .then(res =>
       dispatch({
         type: DELETE_CUSTOMER,

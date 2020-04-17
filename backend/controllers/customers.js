@@ -46,7 +46,7 @@ router.post("/", auth, async (req, res) => {
 });
 
 //DELETE route
-router.delete("/:id", auth,  async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const findCustomer = await Customer.findById(req.params.id);
     const foundCustomer = await findCustomer.remove();

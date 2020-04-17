@@ -34,7 +34,10 @@ router.get("/:id",  async (req, res) => {
 
 // POST /users route
 router.post("/", (req, res) => {
-  const { name, email, password } = req.body;
+  const { 
+    name, 
+    email, 
+    password } = req.body;
 
   //Simple Validation
   if (!name || !email || !password) {
@@ -71,7 +74,8 @@ router.post("/", (req, res) => {
                 user: {
                   id: user.id,
                   name: user.name,
-                  email: user.email
+                  email: user.email,
+                  permissions: "PUBLIC",
                 }
               });
             }
