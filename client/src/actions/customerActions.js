@@ -9,12 +9,14 @@ import axios from "axios";
 import { tokenConfig } from "./authActions";
 import { returnErrors } from "./errorActions";
 
+const URL = process.env.NODE_ENV === "production" 
+? "https://bearmugclub.herokuapp.com/api/customers/"
+: "http://localhost:5000/api/customers/";
+
 export const fetchCustomers = () => {
   return (dispatch, getState) => {
     dispatch(fetchCustomersBegin());
-    return fetch(process.env.NODE_ENV === "production" 
-    ? "https://bearmugclub.herokuapp.com/api/customers"
-    : "http://localhost:5000/api/customers")
+    return fetch(URL)
       .then(res => res.json())
       .then(customers => {
         dispatch(fetchCustomersSuccess(customers));
@@ -40,9 +42,7 @@ export const fetchCustomersFailure = error => ({
 
 export const createCustomer = newCustomer => (dispatch, getState) => {
   axios
-    .post(process.env.NODE_ENV === "production" 
-    ? "https://bearmugclub.herokuapp.com/api/customers"
-    : "http://localhost:5000/api/customers", newCustomer, tokenConfig(getState))
+    .post(URL, newCustomer, tokenConfig(getState))
     .then(res =>
       dispatch({
         type: CREATE_CUSTOMER,
@@ -55,11 +55,8 @@ export const createCustomer = newCustomer => (dispatch, getState) => {
 };
 
 export const updateCustomer = (customer, id) => (dispatch, getState) => {
-  const customerURL = process.env.NODE_ENV === "production" 
-  ? "https://bearmugclub.herokuapp.com/api/customers/" + id
-  : "http://localhost:5000/api/customers/" + id;
   axios
-    .put(customerURL, customer, tokenConfig(getState))
+    .put(URL + id, customer, tokenConfig(getState))
     .then(dispatch(fetchCustomers()))
     .catch(err =>
       dispatch(returnErrors(err.response.data, err.response.status))
@@ -68,9 +65,7 @@ export const updateCustomer = (customer, id) => (dispatch, getState) => {
 
 export const deleteCustomer = id => (dispatch, getState) => {
   axios
-    .delete(process.env.NODE_ENV === "production" 
-    ? "https://bearmugclub.herokuapp.com/api/customers/" + id
-    : "http://localhost:5000/api/customers/" + id, tokenConfig(getState))
+    .delete(URL + id, tokenConfig(getState))
     .then(res =>
       dispatch({
         type: DELETE_CUSTOMER,

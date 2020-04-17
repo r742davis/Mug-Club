@@ -9,10 +9,14 @@ import axios from "axios";
 import { tokenConfig } from "./authActions";
 import { returnErrors } from "./errorActions";
 
+const URL = process.env.NODE_ENV === "production" 
+? "https://bearmugclub.herokuapp.com/api/beers/"
+: "http://localhost:5000/api/beers/";
+
 export const fetchBeers = () => {
   return (dispatch, getState) => {
     dispatch(fetchBeersBegin());
-    return fetch("https://bearmugclub.herokuapp.com/api/beers")
+    return fetch(URL)
       .then(res => res.json())
       .then(beers => {
         dispatch(fetchBeersSuccess(beers));
@@ -38,7 +42,7 @@ export const fetchBeersFailure = error => ({
 
 export const createBeer = newBeer => (dispatch, getState) => {
   axios
-    .post("https://bearmugclub.herokuapp.com/api/beers", newBeer)
+    .post(URL, newBeer)
     .then(res =>
       dispatch({
         type: CREATE_BEER,
@@ -52,7 +56,7 @@ export const createBeer = newBeer => (dispatch, getState) => {
 
 export const deleteBeer = id => (dispatch, getState) => {
   axios
-    .delete("https://bearmugclub.herokuapp.com/api/beers/" + id)
+    .delete(URL + id)
     .then(res =>
       dispatch({
         type: DELETE_BEER,
@@ -65,7 +69,7 @@ export const deleteBeer = id => (dispatch, getState) => {
 };
 
 export const updateBeer = (beer, id) => (dispatch, getState) => {
-  const beerURL = "https://bearmugclub.herokuapp.com/api/beers/" + id;
+  const beerURL = URL + id;
   axios
     .put(beerURL, beer)
     .then(dispatch(fetchBeers()))
