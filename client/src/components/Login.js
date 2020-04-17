@@ -30,7 +30,7 @@ class Login extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    const { error, isAuthenticated } = this.props;
+    const { error } = this.props;
     if (error !== prevProps.error) {
       //Check for register error
       if (error.id === "LOGIN_FAIL") {
@@ -85,7 +85,7 @@ class Login extends Component {
 
   render() {
     const { toggleLogin, toggleReg } = this.state;
-    const isAuthenticated = this.props.isAuthenticated;
+    const { isAuthenticated } = this.props.auth;
 
     let error = (
       <div>
@@ -165,6 +165,7 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => ({
+  auth: state.auth,
   isAuthenticated: state.auth.isAuthenticated,
   error: state.error,
 });

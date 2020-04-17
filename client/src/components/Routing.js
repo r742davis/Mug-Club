@@ -13,12 +13,12 @@ import { connect } from "react-redux";
 
 const Routing = (props) => {
   const urlName = "";
-  const { isAuthenticated } = props.auth;
+  const { token, isAuthenticated } = props.auth;
 
   return (
     <>
       <Router>
-        {!isAuthenticated && <Redirect to={`${urlName}/`} push={true} />}
+        {!isAuthenticated && !token && <Redirect to={`${urlName}/`} push={true} />}
         <div>
           <NavBar />
           <Switch>

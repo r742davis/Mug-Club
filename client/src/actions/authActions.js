@@ -87,11 +87,11 @@ export const login = ({ email, password }) => dispatch => {
   const body = JSON.stringify({ email, password });
   axios
     .post(process.env.NODE_ENV === "development" ?  "http://localhost:5000/api/auth" : "https://bearmugclub.herokuapp.com/api/auth", body, config)
-    .then(res =>
+    .then(res =>{
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data
-      })
+      })}
     )
     //For an error with the login
     .catch(err => {

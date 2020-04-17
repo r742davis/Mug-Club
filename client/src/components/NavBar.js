@@ -4,7 +4,6 @@ import Backdrop from "./Backdrop";
 import HamburgerNav from "./HamburgerNav";
 import RegularNav from "./RegularNav";
 
-import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import Burger from "@animated-burgers/burger-squeeze";
 import "@animated-burgers/burger-squeeze/dist/styles.css";
@@ -53,8 +52,8 @@ class NavBar extends Component {
 
   render() {
     const urlName = "";
-    const { isAuthenticated } = this.props.auth;
-    // if (!isAuthenticated) {
+    const { token, isAuthenticated } = this.props.auth;
+    // if (!isAuthenticated && !token) {
     //   return <Redirect to={`${urlName}/`} push={true} />
     // }
 
@@ -91,8 +90,8 @@ class NavBar extends Component {
     return (
       <>
         <Backdrop />
-        {/* {isAuthenticated && Navigation} */}
-        {Navigation}
+        {token && Navigation}
+        {/* {Navigation} */}
       </>
     );
   }

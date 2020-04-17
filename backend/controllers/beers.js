@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
 });
 
 //CREATE route
-router.post("/",  async (req, res) => {
+router.post("/", auth, async (req, res) => {
   try {
     // const beerList = await Beer.find();
     const newBeer = await new Beer({
@@ -52,7 +52,7 @@ router.get("/:id", async (req, res) => {
 });
 
 //DELETE route
-router.delete("/:id",  async (req, res) => {
+router.delete("/:id", auth, async (req, res) => {
   try {
     const findBeer = await Beer.findById(req.params.id);
     const foundBeer = await findBeer.remove();

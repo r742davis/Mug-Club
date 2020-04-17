@@ -43,7 +43,6 @@ export default function(state = initialState, action) {
     case LOGIN_FAIL:
     case LOGOUT_SUCCESS:
     case REGISTER_FAIL:
-      //Makes sure everything is reset if there is an error
       localStorage.removeItem("token");
       return {
         ...state,

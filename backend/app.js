@@ -56,10 +56,10 @@ app.use("/api/auth", authController);
 
 //  Reroute for Client-Side Server Rendering  //
 //--------------------------------------------//
-if (process.env.NODE_ENV === "production") {
-  app.get("/*", function (req, res) {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
-  });
-}
+// if (process.env.NODE_ENV === "production") {
+//   app.get("/*", function (req, res) {
+//     res.sendFile(path.join(__dirname, "build", "index.html"));
+//   });
+// }
 
 module.exports = app;
