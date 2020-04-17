@@ -13,6 +13,7 @@ import {
   REGISTER_FAIL
 } from "./action-types";
 
+
 //Check for token and then load the user
 export const loadUser = () => (dispatch, getState) => {
   // User loading
@@ -20,7 +21,7 @@ export const loadUser = () => (dispatch, getState) => {
 
   axios
     .get(
-      process.env.NODE_ENV === "development" ?  "http://localhost:5000/auth/user" : "https://bearmugclub.herokuapp.com/api/auth/user", tokenConfig(getState)
+      process.env.NODE_ENV === "development" ?  "http://localhost:5000/api/auth/user" : "https://bearmugclub.herokuapp.com/api/auth/user", tokenConfig(getState)
       )
     .then(res =>
       dispatch({
@@ -50,7 +51,7 @@ export const register = ({ name, email, password }) => dispatch => {
 
   axios
     .post(
-      process.env.NODE_ENV === "development" ?  "http://localhost:5000/users" : "https://bearmugclub.herokuapp.com/api/auth/users", body, config)
+      process.env.NODE_ENV === "development" ?  "http://localhost:5000/api/users" : "https://bearmugclub.herokuapp.com/api/users", body, config)
     .then(res =>
       dispatch({
         type: REGISTER_SUCCESS,
@@ -85,7 +86,7 @@ export const login = ({ email, password }) => dispatch => {
   //Request body
   const body = JSON.stringify({ email, password });
   axios
-    .post(process.env.NODE_ENV === "development" ?  "http://localhost:5000/auth" : "https://bearmugclub.herokuapp.com/api/auth", body, config)
+    .post(process.env.NODE_ENV === "development" ?  "http://localhost:5000/api/auth" : "https://bearmugclub.herokuapp.com/api/auth", body, config)
     .then(res =>
       dispatch({
         type: LOGIN_SUCCESS,
