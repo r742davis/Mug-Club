@@ -21,13 +21,28 @@
   font-size: 2rem;
   cursor: pointer;
   transition: 0.2s; }
+  @media (max-width: 600px) {
+    .EditButton,
+    .DeleteButton {
+      font-size: 1.5rem;
+      width: 3.5rem;
+      height: 3.5rem;
+      padding: 1rem; } }
 
 .EditButton:hover {
   background: var(--secondary);
   color: white;
   transition: 0.2s; }
+  @media (max-width: 600px) {
+    .EditButton:hover {
+      background: none;
+      color: black; } }
 
 .DeleteButton:hover {
   background: var(--delete);
   color: white;
   transition: 0.2s; }
+  @media (max-width: 600px) {
+    .DeleteButton:hover {
+      background: none;
+      color: black; } }

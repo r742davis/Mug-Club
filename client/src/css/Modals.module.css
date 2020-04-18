@@ -33,9 +33,8 @@
 
 .ModalTitle {
   text-align: left;
-  font-size: 4rem;
-  letter-spacing: 0.1rem;
-  font-weight: 100;
+  font-size: 3rem;
+  font-weight: 300;
   padding-top: 2rem;
   padding-left: 2rem;
   padding-bottom: 0;
@@ -44,8 +43,8 @@
   width: 100%; }
   @media (max-width: 600px) {
     .ModalTitle {
-      font-size: 3rem;
-      padding-top: 1rem; } }
+      font-size: 2rem;
+      padding-top: 2rem; } }
 
 .ModalContent {
   display: flex;
@@ -83,8 +82,8 @@
   -webkit-border-radius: 0.5rem; }
   @media (max-width: 600px) {
     .Input {
-      padding-top: 1rem;
-      font-size: 2rem; } }
+      padding: 1rem;
+      font-size: 1rem; } }
   .Input:focus {
     outline: none; }
 
@@ -98,6 +97,10 @@
   pointer-events: none;
   top: 2rem;
   transition: 0.2s; }
+  @media (max-width: 600px) {
+    .Label {
+      font-size: 1rem;
+      top: 1.5rem; } }
 
 .BeerLabel {
   position: relative;
@@ -125,8 +128,8 @@
   -webkit-border-radius: 0.5rem; }
   @media (max-width: 600px) {
     .Select {
-      height: 4.5rem;
-      padding-bottom: 0.5rem; } }
+      height: 3.5rem;
+      font-size: 1rem; } }
 
 option {
   margin-left: 2rem; }
@@ -147,6 +150,13 @@ option {
   font-size: 1.2rem;
   color: var(--secondary);
   background: var(--primary); }
+  @media (max-width: 600px) {
+    .Input:focus ~ .Label,
+    .Input:valid ~ .Label,
+    .Select:focus ~ .Label,
+    .Select:valid ~ .Label {
+      font-size: 1rem;
+      padding-left: 0.25rem; } }
 
 .ButtonContainer {
   width: 100%;
@@ -166,6 +176,10 @@ option {
   transition: 0.2s;
   -webkit-appearance: none;
   -webkit-border-radius: 0.5rem; }
+  @media (max-width: 600px) {
+    .EditButton,
+    .CancelButton {
+      font-size: 1rem; } }
 
 .EditButton {
   background: var(--secondary);
@@ -174,10 +188,11 @@ option {
 .CancelButton {
   background: #f0f0f0; }
 
-.EditButton:hover {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  transition: 0.2s; }
-
+.EditButton:hover,
 .CancelButton:hover {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   transition: 0.2s; }
+  @media (max-width: 600px) {
+    .EditButton:hover,
+    .CancelButton:hover {
+      box-shadow: none; } }

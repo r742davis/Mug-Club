@@ -53,9 +53,9 @@ class NavBar extends Component {
   render() {
     const urlName = "";
     const { token, isAuthenticated } = this.props.auth;
-    // if (!isAuthenticated && !token) {
-    //   return <Redirect to={`${urlName}/`} push={true} />
-    // }
+    if (!isAuthenticated && !token) {
+      return <Redirect to={`${urlName}/`} push={true} />
+    }
 
     const Navigation = (
       <nav className={classes.Navbar}>

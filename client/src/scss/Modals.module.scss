@@ -26,9 +26,8 @@
 }
 .ModalTitle {
   text-align: left;
-  font-size: 4rem;
-  letter-spacing: 0.1rem;
-  font-weight: 100;
+  font-size: 3rem;
+  font-weight: 300;
   padding-top: 2rem;
   padding-left: 2rem;
   padding-bottom: 0;
@@ -36,8 +35,8 @@
   color: var(--primary);
   width: 100%;
   @include respond-to('small') {
-    font-size: 3rem;
-    padding-top: 1rem;
+    font-size: 2rem;
+    padding-top: 2rem;
   }
 }
 .ModalContent {
@@ -75,8 +74,9 @@
   -webkit-appearance: none;
   -webkit-border-radius: 0.5rem;
   @include respond-to('small') {
-    padding-top: 1rem;
-    font-size: 2rem;
+    padding: 1rem;
+    font-size: 1rem;
+
   }
   &:focus {
     outline: none;
@@ -93,6 +93,10 @@
   pointer-events: none;
   top: 2rem;
   transition: $transition-time;
+  @include respond-to('small') {
+    font-size: 1rem;
+    top: 1.5rem;
+  }
 }
 .BeerLabel {
   position: relative;
@@ -119,8 +123,9 @@
   -webkit-appearance: none;
   -webkit-border-radius: 0.5rem;
   @include respond-to('small') {
-    height: 4.5rem;
-    padding-bottom: 0.5rem;
+    height: 3.5rem;
+    // padding-bottom: 0.5rem;
+    font-size: 1rem;
   }
 }
 option {
@@ -142,6 +147,10 @@ option {
   font-size: 1.2rem;
   color: var(--secondary);
   background: var(--primary);
+  @include respond-to('small') {
+    font-size: 1rem;
+    padding-left: 0.25rem;
+  }
 }
 
 // Buttons
@@ -163,6 +172,9 @@ option {
   transition: $transition-time;
   -webkit-appearance: none;
   -webkit-border-radius: 0.5rem;
+  @include respond-to('small') {
+    font-size: 1rem;
+  }
 }
 .EditButton {
   background: var(--secondary);
@@ -171,11 +183,11 @@ option {
 .CancelButton {
   background: #f0f0f0;
 }
-.EditButton:hover {
-  box-shadow: $box-shadow;
-  transition: $transition-time;
-}
+.EditButton:hover,
 .CancelButton:hover {
   box-shadow: $box-shadow;
   transition: $transition-time;
+  @include respond-to('small') {
+    box-shadow: none;
+  }
 }
