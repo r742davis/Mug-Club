@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
 });
 
 //CREATE route
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
   try {
     //Pulled from 'beers' collection on Mongo database
     const beerList = await Beer.find();
@@ -46,7 +46,7 @@ router.post("/", async (req, res) => {
 });
 
 //DELETE route
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", auth, async (req, res) => {
   try {
     const findCustomer = await Customer.findById(req.params.id);
     const foundCustomer = await findCustomer.remove();
@@ -61,7 +61,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 //SHOW route
-router.get("/:id", async (req, res) => {
+router.get("/:id", auth, async (req, res) => {
   try {
     const foundCustomer = await Customer.findById(req.params.id);
     return res.send(foundCustomer);
@@ -73,7 +73,7 @@ router.get("/:id", async (req, res) => {
 });
 
 //UPDATE/EDIT route
-router.put("/:id",  async (req, res) => {
+router.put("/:id", auth, async (req, res) => {
   try {
     const updateCustomer = await Customer.findByIdAndUpdate(
       req.params.id,
