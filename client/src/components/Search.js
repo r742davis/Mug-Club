@@ -10,7 +10,14 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { openModal } from "../actions/modalActions";
 import { deleteCustomer } from "../actions/customerActions";
-const actions = { openModal, deleteCustomer };
+import { fetchBeers } from "../actions/beerActions";
+import { fetchCustomers } from "../actions/customerActions";
+const actions = { 
+  openModal, 
+  deleteCustomer, 
+  fetchBeers, 
+  fetchCustomers 
+};
 
 const uniqid = require("uniqid");
 
@@ -21,6 +28,21 @@ class Search extends Component {
 
   static propTypes = {
     customers: PropTypes.array.isRequired,
+  };
+
+  componentDidMount() {
+    this.loadData();
+  }
+
+  loadData = async () => {
+    try {
+      await this.props.fetchBeers();
+      await this.props.fetchCustomers();
+    } catch (error) {
+      throw new Error(
+        "Cannot connect to database. Server may be busy or unavailable."
+      );
+    }
   };
 
   updateSearch = (event) => {
@@ -62,8 +84,7 @@ class Search extends Component {
   };
 
   filterCustomers = (customers, search = this.state.search) => {
-    let filtered = customers
-      .filter((customer) => {
+    let filtered = customers.filter((customer) => {
       // Number Search
       let id = customer.mugClub.clubId.toString();
       let number = search === id ? customer : null;
@@ -81,15 +102,18 @@ class Search extends Component {
       }
     });
     return filtered;
-  }
+  };
 
   render() {
     const { search } = this.state;
     const loading = this.props.loading;
     let filteredCustomers;
     if (this.props.customers && search) {
-      if (loading) return <h2>Loading...</h2>
-      filteredCustomers = this.filterCustomers(this.props.customers, this.state.search)
+      if (loading) return <h2>Loading...</h2>;
+      filteredCustomers = this.filterCustomers(
+        this.props.customers,
+        this.state.search
+      );
     }
 
     const mappedCustomers = filteredCustomers
@@ -141,7 +165,7 @@ class Search extends Component {
             </div>
 
             <div className={classes.CustomerContainer}>
-              {search &&  (
+              {search && (
                 <>
                   <h3>Results:</h3>
                   {mappedCustomers}

@@ -11,21 +11,6 @@ import { fetchCustomers } from "../actions/customerActions";
 const actions = { fetchBeers, fetchCustomers };
 
 class Container extends Component {
-  
-  async componentDidMount() {
-    await this.loadData();
-  }
-
-  loadData = async () => {
-    try {
-      await this.props.fetchBeers();
-      await this.props.fetchCustomers();
-    } catch (error) {
-      throw new Error(
-        "Cannot connect to database. Server may be busy or unavailable."
-      );
-    }
-  };
 
   render() {
     return (
