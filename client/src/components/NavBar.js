@@ -91,7 +91,6 @@ class NavBar extends Component {
       <>
         <Backdrop />
         {token && Navigation}
-        {/* {Navigation} */}
       </>
     );
   }
