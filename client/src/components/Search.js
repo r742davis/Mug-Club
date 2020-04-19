@@ -71,7 +71,7 @@ class Search extends Component {
     }
   };
 
-  filterCustomers = (customers, search = this.state.search) => {
+  filterCustomers = (customers = [], search = this.state.search) => {
     let filtered = customers.filter((customer) => {
       // Number Search
       let id = customer.mugClub.clubId.toString();
