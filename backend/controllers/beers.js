@@ -1,14 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const Beer = require("../models/beer.js");
-const mongoose = require("mongoose");
-const auth = require("../middleware/auth");
+const authorizeToken = require("../middleware/authorizeToken");
 
-const User = require("../models/user.js");
-
-//GET route
-router.get("/", auth, async (req, res) => {
-  console.log(req.headers);
+// GET ALL BEERS route //
+////////////////////////
+router.get("/", authorizeToken, async (req, res) => {
   try {
     const beers = await Beer.find();
     res.status(200).json(beers);
@@ -19,10 +16,10 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
-//CREATE route
-router.post("/", auth, async (req, res) => {
+// CREATE BEER route //
+///////////////////////
+router.post("/", authorizeToken, async (req, res) => {
   try {
-    // const beerList = await Beer.find();
     const newBeer = await new Beer({
       name: req.body.name,
       type: req.body.type,
@@ -40,8 +37,9 @@ router.post("/", auth, async (req, res) => {
   }
 });
 
-//SHOW route
-router.get("/:id", async (req, res) => {
+// SHOW SINGLE BEER route //
+////////////////
+router.get("/:id", authorizeToken, async (req, res) => {
   try {
     const foundBeer = await Beer.findById(req.params.id);
     return res.send(foundBeer);
@@ -52,8 +50,9 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-//DELETE route
-router.delete("/:id", auth, async (req, res) => {
+// DELETE BEER route //
+//////////////////
+router.delete("/:id", authorizeToken, async (req, res) => {
   try {
     const findBeer = await Beer.findById(req.params.id);
     const foundBeer = await findBeer.remove();
@@ -67,8 +66,9 @@ router.delete("/:id", auth, async (req, res) => {
   }
 });
 
-//UPDATE route
-router.put("/:id", auth, async (req, res) => {
+// UPDATE BEER route //
+//////////////////
+router.put("/:id", authorizeToken, async (req, res) => {
   try {
     const updateBeer = await Beer.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
