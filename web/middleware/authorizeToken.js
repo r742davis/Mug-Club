@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const config = require("config");
 
-function auth(req, res, next) {
+function authorizeToken(req, res, next) {
   const token = req.header("x-auth-token");
   console.log(token);
 
@@ -29,4 +29,4 @@ function auth(req, res, next) {
   }
 }
 
-module.exports = auth;
+module.exports = authorizeToken;
