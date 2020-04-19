@@ -21,7 +21,9 @@ export const loadUser = () => (dispatch, getState) => {
 
   axios
     .get(
-      process.env.NODE_ENV === "development" ?  "http://localhost:5000/api/auth/user" : "https://bearmugclub.herokuapp.com/api/auth/user", tokenConfig(getState)
+      process.env.NODE_ENV === "development" 
+      ?  "http://localhost:5000/api/auth/user" 
+      : "https://bearmugclub.herokuapp.com/api/auth/user", tokenConfig(getState)
       )
     .then(res =>
       dispatch({
@@ -103,12 +105,6 @@ export const login = ({ email, password }) => dispatch => {
       });
     });
 };
-
-// const reauthenticate = (token) => dispatch => {
-
-//   type: USER_LOADING,
-//   payload: 
-// }
 
 // Setup config, headers, and token
 export const tokenConfig = getState => {

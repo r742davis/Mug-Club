@@ -6,11 +6,20 @@ import LoadExistingCustomers from "../containers/LoadExistingDatabase";
 
 // Redux Imports
 import { connect } from "react-redux";
+import { loadUser } from "../actions/authActions";
 import { fetchBeers } from "../actions/beerActions";
 import { fetchCustomers } from "../actions/customerActions";
-const actions = { fetchBeers, fetchCustomers };
+const actions = { loadUser,fetchBeers, fetchCustomers };
 
 class Container extends Component {
+  componentDidMount = () => {
+    // Checks if there is a token present on page refresh,
+    // then loads the current user
+    const { token } = this.props.auth;
+    if (token) {
+      this.props.loadUser();
+    } 
+  }
 
   render() {
     return (
@@ -24,6 +33,8 @@ class Container extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  auth: state.auth
+});
 
 export default connect(mapStateToProps, actions)(Container);
