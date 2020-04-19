@@ -5,7 +5,7 @@ const beersList = [
     brewery: "Anheuser Busch",
     breweryLocation: "St. Louis, MO",
     url: "https://i.imgur.com/dZTSk9c.jpg",
-    finished: false
+    finished: false,
   },
   {
     name: "Bud Light",
@@ -13,7 +13,7 @@ const beersList = [
     brewery: "Anheuser Busch",
     breweryLocation: "St. Louis, MO",
     url: "https://i.imgur.com/bIYuRhI.jpg",
-    finished: false
+    finished: false,
   },
   {
     name: "Coors",
@@ -21,7 +21,7 @@ const beersList = [
     brewery: "Coors Brewing Company",
     breweryLocation: "Golden, CO",
     url: "https://i.imgur.com/ebuBl1N.png",
-    finished: false
+    finished: false,
   },
   {
     name: "Coors Light",
@@ -29,7 +29,7 @@ const beersList = [
     brewery: "Coors Brewing Company",
     breweryLocation: "Golden, CO",
     url: "https://i.imgur.com/hk6r6kQ.png",
-    finished: false
+    finished: false,
   },
   {
     name: "Pale Ale",
@@ -37,7 +37,7 @@ const beersList = [
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
     url: "https://i.imgur.com/5bLXtLP.png",
-    finished: false
+    finished: false,
   },
   {
     name: "Kellerweis Hefeweizen",
@@ -45,7 +45,7 @@ const beersList = [
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
     url: "https://i.imgur.com/WXNVazi.png",
-    finished: false
+    finished: false,
   },
   {
     name: "Stout",
@@ -53,7 +53,7 @@ const beersList = [
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
     url: "https://i.imgur.com/Ken7GuF.jpg",
-    finished: false
+    finished: false,
   },
   {
     name: "Porter",
@@ -61,7 +61,7 @@ const beersList = [
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
     url: "https://i.imgur.com/txZEzTJ.jpg",
-    finished: false
+    finished: false,
   },
   {
     name: "Knightro",
@@ -69,7 +69,7 @@ const beersList = [
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
     url: "https://i.imgur.com/5QmkdCb.png",
-    finished: false
+    finished: false,
   },
   {
     name: "Seasonal",
@@ -77,7 +77,7 @@ const beersList = [
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
     url: "https://i.imgur.com/OCie6ls.png",
-    finished: false
+    finished: false,
   },
   {
     name: "Hop Hunter IPA",
@@ -85,7 +85,7 @@ const beersList = [
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
     url: "https://i.imgur.com/866YExV.png",
-    finished: false
+    finished: false,
   },
   {
     name: "Otra Vez",
@@ -93,7 +93,7 @@ const beersList = [
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
     url: "https://i.imgur.com/BkD54Li.png",
-    finished: false
+    finished: false,
   },
   {
     name: "Hop Bullet",
@@ -101,7 +101,7 @@ const beersList = [
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
     url: "https://i.imgur.com/O0z3mGr.jpg",
-    finished: false
+    finished: false,
   },
   {
     name: "Sierraveza",
@@ -109,7 +109,7 @@ const beersList = [
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
     url: "https://i.imgur.com/XCw18zr.png",
-    finished: false
+    finished: false,
   },
   {
     name: "Torpedo Extra IPA",
@@ -117,7 +117,7 @@ const beersList = [
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
     url: "https://i.imgur.com/vrsClqs.jpg",
-    finished: false
+    finished: false,
   },
   {
     name: "Tropical Torpedo IPA",
@@ -125,7 +125,7 @@ const beersList = [
     brewery: "Sierra Nevada",
     breweryLocation: "Chico, CA",
     url: "https://i.imgur.com/NJcgSfz.jpg",
-    finished: false
+    finished: false,
   },
   {
     name: "Mind Haze",
@@ -133,7 +133,7 @@ const beersList = [
     brewery: "Firestone Walker",
     breweryLocation: "Paso Robles, CA",
     url: "https://i.imgur.com/whQInzT.png",
-    finished: false
+    finished: false,
   },
   {
     name: "Shock Top Belgian White",
@@ -141,7 +141,7 @@ const beersList = [
     brewery: "Blue Moon",
     breweryLocation: "Golden, CO",
     url: "https://i.imgur.com/Xa3gSdK.png",
-    finished: false
+    finished: false,
   },
   {
     name: "Big Wave Golden Ale",
@@ -149,7 +149,7 @@ const beersList = [
     brewery: "Kona",
     breweryLocation: "Kailua-Kona, HI",
     url: "https://i.imgur.com/uvCAHxN.jpg",
-    finished: false
+    finished: false,
   },
   {
     name: "Macadamia Nut Porter On Nitro",
@@ -157,7 +157,7 @@ const beersList = [
     brewery: "Six Rivers",
     breweryLocation: "McKinleyville, CA",
     url: "https://i.imgur.com/fcBbxHh.png",
-    finished: false
+    finished: false,
   },
   {
     name: "Stella Artois Lager",
@@ -165,7 +165,7 @@ const beersList = [
     brewery: "Stella Artois",
     breweryLocation: "Leuven, Belgium",
     url: "https://i.imgur.com/qIJm7jT.png",
-    finished: false
+    finished: false,
   },
   {
     name: "805",
@@ -173,7 +173,7 @@ const beersList = [
     brewery: "Firestone Walker",
     breweryLocation: "Paso Robles, CA",
     url: "https://i.imgur.com/whQInzT.png",
-    finished: false
+    finished: false,
   },
   {
     name: "Scrimshaw Pilsner",
@@ -181,7 +181,7 @@ const beersList = [
     brewery: "North Coast",
     breweryLocation: "Fort Bragg, CA",
     url: "https://i.imgur.com/44kFYnG.jpg",
-    finished: false
+    finished: false,
   },
   {
     name: "Lagunitas IPA",
@@ -189,7 +189,7 @@ const beersList = [
     brewery: "Lagunitas",
     breweryLocation: "Petaluma, CA",
     url: "https://i.imgur.com/9SBroXx.jpg",
-    finished: false
+    finished: false,
   },
   {
     name: "Fruitlands Passion Fruit & Guava",
@@ -197,7 +197,7 @@ const beersList = [
     brewery: "Modern Times",
     breweryLocation: "San Diego, CA",
     url: "https://i.imgur.com/zHawXZz.png",
-    finished: false
+    finished: false,
   },
   {
     name: "Gummy Worms Hazy Pale",
@@ -205,7 +205,7 @@ const beersList = [
     brewery: "New Glory",
     breweryLocation: "Sacramento, CA",
     url: "https://i.imgur.com/FESgirx.png",
-    finished: false
+    finished: false,
   },
   {
     name: "Panic IPA",
@@ -213,7 +213,7 @@ const beersList = [
     brewery: "Track 7",
     breweryLocation: "Sacramento, CA",
     url: "https://i.imgur.com/fbR4ag6.png",
-    finished: false
+    finished: false,
   },
   {
     name: "Great White",
@@ -221,7 +221,7 @@ const beersList = [
     brewery: "Lost Coast",
     breweryLocation: "Eureka, CA",
     url: "https://i.imgur.com/arH05Oq.png",
-    finished: false
+    finished: false,
   },
   {
     name: "Modelo Especial",
@@ -229,7 +229,7 @@ const beersList = [
     brewery: "Grupo Modelo",
     breweryLocation: "Mazatlan, Mexico",
     url: "https://i.imgur.com/sp1OlDb.png",
-    finished: false
+    finished: false,
   },
   {
     name: "Guinness Draught",
@@ -237,8 +237,8 @@ const beersList = [
     brewery: "St. James Gate (Guinness)",
     breweryLocation: "Dublin, Ireland",
     url: "https://i.imgur.com/68Hj9dd.png",
-    finished: false
+    finished: false,
   },
-]
+];
 
 module.exports = beersList;

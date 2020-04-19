@@ -9,25 +9,25 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user.js");
 
 // GET /users Route
-router.get("/",  async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const users = await User.find();
     res.status(200).json(users);
   } catch (error) {
     res.status(400).json({
-      error: error.message
+      error: error.message,
     });
   }
 });
 
 // SHOW individual user
-router.get("/:id",  async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const foundUser = await User.findById(req.params.id);
     return res.send(foundUser);
   } catch (error) {
     res.status(400).json({
-      Error: "Uh oh! Could not find user."
+      Error: "Uh oh! Could not find user.",
     });
   }
 });
@@ -35,14 +35,17 @@ router.get("/:id",  async (req, res) => {
 // POST /users route
 router.post("/", (req, res) => {
   const { name, email, password } = req.body;
+  const permissions = "PUBLIC"
 
   //Simple Validation
   if (!name || !email || !password) {
-    return res.status(400).json({ message: "Please enter all fields: Name, Email, and Password" });
+    return res
+      .status(400)
+      .json({ message: "Please enter all fields: Name, Email, and Password" });
   }
 
   //Check for existing user
-  User.findOne({ email }).then(user => {
+  User.findOne({ email }).then((user) => {
     if (user) {
       return res.status(400).json({ message: "User already exists" });
     }
@@ -50,7 +53,8 @@ router.post("/", (req, res) => {
     const newUser = new User({
       name,
       email,
-      password
+      password,
+      permissions
     });
 
     //Create salt and hash
@@ -58,10 +62,13 @@ router.post("/", (req, res) => {
       bcrypt.hash(newUser.password, salt, (error, hash) => {
         if (err) throw err;
         newUser.password = hash;
-        newUser.save().then(user => {
+        newUser.save().then((user) => {
           //JSON Web Token Creation along with user info sent over to database
           jwt.sign(
-            { id: user.id },
+            { 
+              id: user.id,
+              permissions: user.permissions
+            },
             config.get("jwtSecret"),
             { expiresIn: 3600 },
             (err, token) => {
@@ -71,8 +78,9 @@ router.post("/", (req, res) => {
                 user: {
                   id: user.id,
                   name: user.name,
-                  email: user.email
-                }
+                  email: user.email,
+                  permissions: user.permissions
+                },
               });
             }
           );

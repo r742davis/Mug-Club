@@ -6,8 +6,7 @@ const methodOverride = require("method-override");
 const cors = require("cors");
 const path = require("path");
 const session = require("express-session");
-const dotenv = require('dotenv');
-
+const dotenv = require("dotenv");
 
 //  Middleware  //
 //--------------//
@@ -20,11 +19,20 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
+
 // app.use(session({
 //   secret: "Danny Goatee",
 //   resave: false,
 //   saveUninitialized: false
 // }))
+//  Production vs. Local React Environment //
+// -----------------------------------------//
+if (process.env.NODE_ENV === "development") {
+  app.use(express.static("public"));
+} else {
+  app.use(express.static(path.join(__dirname, "/build")));
+}
+
 
 //  Customers Controller  //
 //------------------------//
@@ -46,18 +54,12 @@ app.use("/api/users", usersController);
 const authController = require("./controllers/auth.js");
 app.use("/api/auth", authController);
 
-//  Production vs. Local React Environment //
-//-----------------------------------------//
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/build")));
-} else {
-  app.use(express.static(path.join(__dirname, "/client/public/index.html")));
-}
-
 //  Reroute for Client-Side Server Rendering  //
 //--------------------------------------------//
-app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
+// if (process.env.NODE_ENV === "production") {
+//   app.get("/*", function (req, res) {
+//     res.sendFile(path.join(__dirname, "build", "index.html"));
+//   });
+// }
 
 module.exports = app;

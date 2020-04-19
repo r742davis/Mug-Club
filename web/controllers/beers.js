@@ -4,6 +4,8 @@ const Beer = require("../models/beer.js");
 const mongoose = require("mongoose");
 const auth = require('../middleware/auth');
 
+const User = require("../models/user.js");
+
 //GET route
 router.get("/", async (req, res) => {
   try {
@@ -17,7 +19,7 @@ router.get("/", async (req, res) => {
 });
 
 //CREATE route
-router.post("/",  async (req, res) => {
+router.post("/", auth, async (req, res) => {
   try {
     // const beerList = await Beer.find();
     const newBeer = await new Beer({
@@ -50,7 +52,7 @@ router.get("/:id", async (req, res) => {
 });
 
 //DELETE route
-router.delete("/:id",  async (req, res) => {
+router.delete("/:id", auth, async (req, res) => {
   try {
     const findBeer = await Beer.findById(req.params.id);
     const foundBeer = await findBeer.remove();
@@ -65,7 +67,7 @@ router.delete("/:id",  async (req, res) => {
 });
 
 //UPDATE route
-router.put("/:id",  async (req, res) => {
+router.put("/:id", auth, async (req, res) => {
   try {
     const updateBeer = await Beer.findByIdAndUpdate(req.params.id, req.body, {
       new: true

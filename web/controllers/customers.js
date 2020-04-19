@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const auth = require('../middleware/auth');
 
 //GET route
-router.get("/", async (req, res) => {
+router.get("/", auth, async (req, res) => {
   try {
     const customers = await Customer.find();
     res.status(200).json(customers);
@@ -46,7 +46,7 @@ router.post("/", auth, async (req, res) => {
 });
 
 //DELETE route
-router.delete("/:id", auth,  async (req, res) => {
+router.delete("/:id", auth, async (req, res) => {
   try {
     const findCustomer = await Customer.findById(req.params.id);
     const foundCustomer = await findCustomer.remove();
@@ -73,7 +73,7 @@ router.get("/:id", auth, async (req, res) => {
 });
 
 //UPDATE/EDIT route
-router.put("/:id", auth,  async (req, res) => {
+router.put("/:id", auth, async (req, res) => {
   try {
     const updateCustomer = await Customer.findByIdAndUpdate(
       req.params.id,
