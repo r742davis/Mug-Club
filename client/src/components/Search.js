@@ -31,7 +31,7 @@ class Search extends Component {
   };
 
   componentDidMount() {
-    this.loadData();
+    this.props.isAuthenticated && this.loadData();
   }
 
   loadData = async () => {
@@ -44,6 +44,9 @@ class Search extends Component {
       );
     }
   };
+
+  // Fire reauthenticate to redux actions
+  // Actions fire update of isAuthenticated in redux reducers
 
   updateSearch = (event) => {
     this.setState({ search: event.target.value });
@@ -183,6 +186,7 @@ class Search extends Component {
 const mapStateToProps = (state) => ({
   customers: state.customers.customers,
   loading: state.customers.loading,
+  token: state.auth.isAuthenticated
 });
 
 export default connect(mapStateToProps, actions)(Search);

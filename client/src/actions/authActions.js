@@ -104,6 +104,12 @@ export const login = ({ email, password }) => dispatch => {
     });
 };
 
+// const reauthenticate = (token) => dispatch => {
+
+//   type: USER_LOADING,
+//   payload: 
+// }
+
 // Setup config, headers, and token
 export const tokenConfig = getState => {
   //Get token from local storage

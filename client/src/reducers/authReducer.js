@@ -51,6 +51,11 @@ export default function(state = initialState, action) {
         isAuthenticated: false,
         isLoading: false
       };
+    // case REAUTHENTICATE:
+    //     return {
+    //       ...state, 
+    //       isAuthenticated: true
+    //     }
     default:
       return state;
   }
