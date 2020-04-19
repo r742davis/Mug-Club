@@ -2,18 +2,19 @@ const express = require("express");
 const router = express.Router();
 const Beer = require("../models/beer.js");
 const mongoose = require("mongoose");
-const auth = require('../middleware/auth');
+const auth = require("../middleware/auth");
 
 const User = require("../models/user.js");
 
 //GET route
-router.get("/", async (req, res) => {
+router.get("/", auth, async (req, res) => {
+  console.log(req.headers);
   try {
     const beers = await Beer.find();
     res.status(200).json(beers);
   } catch (error) {
     res.status(400).json({
-      error: error.message
+      error: error.message,
     });
   }
 });
@@ -28,13 +29,13 @@ router.post("/", auth, async (req, res) => {
       brewery: req.body.brewery,
       breweryLocation: req.body.breweryLocation,
       url: req.body.url,
-      finished: req.body.finished
+      finished: req.body.finished,
     });
     const savedNewBeer = await newBeer.save();
     return res.json(savedNewBeer);
   } catch (error) {
     res.status(400).json({
-      error: error.message
+      error: error.message,
     });
   }
 });
@@ -46,7 +47,7 @@ router.get("/:id", async (req, res) => {
     return res.send(foundBeer);
   } catch (e) {
     res.status(400).json({
-      Error: "Uh oh! Could not find beer."
+      Error: "Uh oh! Could not find beer.",
     });
   }
 });
@@ -57,11 +58,11 @@ router.delete("/:id", auth, async (req, res) => {
     const findBeer = await Beer.findById(req.params.id);
     const foundBeer = await findBeer.remove();
     return res.json({
-      Success: "Beer was successfully deleted from database"
+      Success: "Beer was successfully deleted from database",
     });
   } catch (e) {
     res.status(400).json({
-      Error: "Uh oh! Could not delete beer."
+      Error: "Uh oh! Could not delete beer.",
     });
   }
 });
@@ -70,12 +71,12 @@ router.delete("/:id", auth, async (req, res) => {
 router.put("/:id", auth, async (req, res) => {
   try {
     const updateBeer = await Beer.findByIdAndUpdate(req.params.id, req.body, {
-      new: true
+      new: true,
     });
     res.status(200).json(updateBeer);
   } catch (e) {
     res.status(400).json({
-      Error: "Oh my, your beer could not be updated."
+      Error: "Oh my, your beer could not be updated.",
     });
   }
 });

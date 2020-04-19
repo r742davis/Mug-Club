@@ -16,7 +16,7 @@ const URL = process.env.NODE_ENV === "production"
 export const fetchBeers = () => {
   return (dispatch, getState) => {
     dispatch(fetchBeersBegin());
-    return fetch(URL)
+    return fetch(URL, tokenConfig(getState))
       .then(res => res.json())
       .then(beers => {
         dispatch(fetchBeersSuccess(beers));
@@ -42,7 +42,7 @@ export const fetchBeersFailure = error => ({
 
 export const createBeer = newBeer => (dispatch, getState) => {
   axios
-    .post(URL, newBeer)
+    .post(URL, newBeer, tokenConfig(getState))
     .then(res =>
       dispatch({
         type: CREATE_BEER,
@@ -56,7 +56,7 @@ export const createBeer = newBeer => (dispatch, getState) => {
 
 export const deleteBeer = id => (dispatch, getState) => {
   axios
-    .delete(URL + id)
+    .delete(URL + id, tokenConfig(getState))
     .then(res =>
       dispatch({
         type: DELETE_BEER,

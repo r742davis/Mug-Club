@@ -16,7 +16,7 @@ const URL = process.env.NODE_ENV === "production"
 export const fetchCustomers = () => {
   return (dispatch, getState) => {
     dispatch(fetchCustomersBegin());
-    return fetch(URL)
+    return fetch(URL, tokenConfig(getState))
       .then(res => res.json())
       .then(customers => {
         dispatch(fetchCustomersSuccess(customers));

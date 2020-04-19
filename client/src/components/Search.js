@@ -12,11 +12,11 @@ import { openModal } from "../actions/modalActions";
 import { deleteCustomer } from "../actions/customerActions";
 import { fetchBeers } from "../actions/beerActions";
 import { fetchCustomers } from "../actions/customerActions";
-const actions = { 
-  openModal, 
-  deleteCustomer, 
-  fetchBeers, 
-  fetchCustomers 
+const actions = {
+  openModal,
+  deleteCustomer,
+  fetchBeers,
+  fetchCustomers,
 };
 
 const uniqid = require("uniqid");
@@ -28,21 +28,6 @@ class Search extends Component {
 
   static propTypes = {
     customers: PropTypes.array.isRequired,
-  };
-
-  componentDidMount() {
-    this.props.isAuthenticated && this.loadData();
-  }
-
-  loadData = async () => {
-    try {
-      await this.props.fetchBeers();
-      await this.props.fetchCustomers();
-    } catch (error) {
-      throw new Error(
-        "Cannot connect to database. Server may be busy or unavailable."
-      );
-    }
   };
 
   // Fire reauthenticate to redux actions
@@ -186,7 +171,7 @@ class Search extends Component {
 const mapStateToProps = (state) => ({
   customers: state.customers.customers,
   loading: state.customers.loading,
-  token: state.auth.isAuthenticated
+  token: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps, actions)(Search);
