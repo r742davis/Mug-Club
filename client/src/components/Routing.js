@@ -2,6 +2,7 @@ import React from "react";
 import HomePage from "../pages/homePage";
 import SearchPage from "../pages/searchPage";
 import BeersPage from "../pages/beersPage";
+import AccountPage from "../pages/accountPage";
 import NavBar from "../components/NavBar";
 import {
   BrowserRouter as Router,
@@ -18,7 +19,9 @@ const Routing = (props) => {
   return (
     <>
       <Router>
-        {!isAuthenticated && !token && <Redirect to={`${urlName}/`} push={true} />}
+        {!isAuthenticated && !token && (
+          <Redirect to={`${urlName}/`} push={true} />
+        )}
         <div>
           <NavBar />
           <Switch>
@@ -30,6 +33,9 @@ const Routing = (props) => {
             </Route>
             <Route path={`${urlName}/beers-list`}>
               <BeersPage />
+            </Route>
+            <Route path={`${urlName}/account`}>
+              <AccountPage />
             </Route>
           </Switch>
         </div>

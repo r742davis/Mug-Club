@@ -1,7 +1,10 @@
 import React from 'react';
+import Account from "../components/Account";
 
-const Account = () => {
-  return <div>Hi I am the Account Page</div>
-}
+const AccountPage = props => (
+  <>
+    <Account />
+  </>
+)
 
-export default Account;
+export default AccountPage;
