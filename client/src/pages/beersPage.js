@@ -1,8 +1,8 @@
 import React from "react";
-import BeerDisplay from "../components/BeerDisplay";
+import BeersContainer from "../containers/BeersContainer";
 
 const BeerPage = (props) => {
-  return <BeerDisplay />;
+  return <BeersContainer />;
 };
 
 export default BeerPage;
