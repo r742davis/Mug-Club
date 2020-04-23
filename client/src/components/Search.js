@@ -32,34 +32,31 @@ class Search extends Component {
     customers: PropTypes.array.isRequired,
   };
 
-  componentDidMount = async () => {
-    // Checks if there is a token present on page refresh,
-    // then loads the current user
-    const { token } = this.props.auth;
-    if (token) {
-      this.props.loadUser();
-      setTimeout(this.loadDatabase, 1000);
-    }
-  };
+  // componentDidMount = async () => {
+  //   // Checks if there is a token present on page refresh,
+  //   // then loads the current user
+  //   const { token } = this.props.auth;
+  //   if (token) {
+  //     this.props.loadUser();
+  //     setTimeout(this.loadDatabase, 1000);
+  //   }
+  // };
 
-  loadDatabase = async () => {
-    const { token } = this.props.auth;
-    if (token) {
-      try {
-        this.props.fetchBeers();
-        this.props.fetchCustomers();
-      } catch (error) {
-        throw new Error(
-          "Cannot connect to database. Server may be busy or unavailable."
-        );
-      }
-    } else {
-      //Add error redirect to login page -> due to database not loading
-    }
-  };
-
-  // Fire reauthenticate to redux actions
-  // Actions fire update of isAuthenticated in redux reducers
+  // loadDatabase = async () => {
+  //   const { token } = this.props.auth;
+  //   if (token) {
+  //     try {
+  //       this.props.fetchBeers();
+  //       this.props.fetchCustomers();
+  //     } catch (error) {
+  //       throw new Error(
+  //         "Cannot connect to database. Server may be busy or unavailable."
+  //       );
+  //     }
+  //   } else {
+  //     //Add error redirect to login page -> due to database not loading
+  //   }
+  // };
 
   updateSearch = (event) => {
     this.setState({ search: event.target.value });
