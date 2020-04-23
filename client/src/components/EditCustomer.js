@@ -3,6 +3,7 @@ import classes from "../css/Modals.module.css";
 import Grow from "@material-ui/core/Grow";
 import swal from "@sweetalert/with-react";
 import BeersList from "./BeersList";
+import updateCompletedBeers from "../lib/updateCompletedBeers";
 
 //Redux Imports
 import { connect } from "react-redux";
@@ -12,7 +13,7 @@ import { updateCustomer, fetchCustomers } from "../actions/customerActions";
 const actions = {
   closeModal,
   updateCustomer,
-  fetchCustomers,
+  fetchCustomers
 };
 
 class EditCustomer extends Component {
@@ -22,7 +23,7 @@ class EditCustomer extends Component {
     clubId: this.props.clubId,
     customerId: this.props.customerId,
     completed: this.props.completed,
-    customerBeers: this.props.customerBeers,
+    customerBeers: this.props.customerBeers
   };
 
   static propTypes = {
@@ -31,29 +32,25 @@ class EditCustomer extends Component {
     clubId: PropTypes.number,
     completed: PropTypes.bool,
     customerBeers: PropTypes.array,
-    customerId: PropTypes.string,
+    customerId: PropTypes.string
   };
 
-  updateCompletedBeers = (checkedArr, unchecked) => {
-    let updatedArr = this.state.customerBeers;
-    for (let k = 0; k < updatedArr.length; k++) {
-      for (let h = 1; h < checkedArr.length; h++) {
-        if (updatedArr[k]._id === checkedArr[h]._id) {
-          updatedArr[k].finished = true;
-        }
-      }
-      for (let h = 1; h < unchecked.length; h++) {
-        if (updatedArr[k]._id === unchecked[h]._id) {
-          updatedArr[k].finished = false;
+  updateCompletedBeers = checked => {
+    const { customerBeers } = this.state
+    let updated = customerBeers;
+    for (let k = 0; k < updated.length; k++) {
+      for (let h = 1; h < checked.length; h++) {
+        if (updated[k]._id === checked[h]._id) {
+          updated[k].finished = true;
         }
       }
     }
     this.setState({
-      customerBeers: updatedArr,
+      customerBeers: updated
     });
   };
 
-  checkCompletion = (beers) => {
+  checkCompletion = beers => {
     let value = true;
     for (let i = 0; i < beers.length; i++) {
       if (beers[i].finished === false) {
@@ -62,31 +59,31 @@ class EditCustomer extends Component {
     }
     if (value === true) {
       this.setState({
-        completed: true,
-      });
+        completed: true
+      })
     }
   };
 
-  handleInputChange = (e) => {
+  handleInputChange = e => {
     const target = e.target;
     const name = target.name;
     this.setState({ [name]: e.target.value });
   };
 
-  handleSubmit = async (e, checkedArr, unchecked) => {
+  handleSubmit = async (e, checked) => {
     e.preventDefault();
-    await this.updateCompletedBeers(checkedArr, unchecked);
+    await this.updateCompletedBeers(checked);
     await this.checkCompletion(this.state.customerBeers);
     const updatedCustomer = await {
       name: {
         first: this.state.first,
-        last: this.state.last,
+        last: this.state.last
       },
       mugClub: {
         clubId: this.state.clubId,
         completed: this.state.completed,
-        beers: this.state.customerBeers,
-      },
+        beers: this.state.customerBeers
+      }
     };
     try {
       await this.props.updateCustomer(updatedCustomer, this.props.customerId);
@@ -94,7 +91,7 @@ class EditCustomer extends Component {
       swal({
         title: `You've updated ${this.state.first} ${this.state.last}!`,
         icon: "success",
-        button: "Ok!",
+        button: "Ok!"
       });
       this.props.closeModal();
     } catch (e) {
@@ -102,7 +99,7 @@ class EditCustomer extends Component {
       swal({
         title: `Oops! Something went wrong :(`,
         icon: "fail",
-        button: "Crap!",
+        button: "Crap!"
       });
     }
   };

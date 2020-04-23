@@ -70,7 +70,7 @@ const HamburgerNav = (props) => {
           <h2>New Beer</h2>
         </div>
       </button>
-      <Link
+      {/* <Link
         to={`${urlName}/account`}
         className={classes.HamburgerItem}
         onClick={() => props.closeNav()}
@@ -81,7 +81,7 @@ const HamburgerNav = (props) => {
           </div>
           <h2>Account</h2>
         </div>
-      </Link>
+      </Link> */}
       <button onClick={() => props.logoutAlert()} className={classes.HamburgerItem}>
         <div className={classes.LinkDiv}>
           <div>
