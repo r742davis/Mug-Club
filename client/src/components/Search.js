@@ -8,6 +8,7 @@ import swal from "@sweetalert/with-react";
 // Redux Imports
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { loadUser } from "../actions/authActions";
 import { openModal } from "../actions/modalActions";
 import { deleteCustomer } from "../actions/customerActions";
 import { fetchBeers } from "../actions/beerActions";
@@ -17,6 +18,7 @@ const actions = {
   deleteCustomer,
   fetchBeers,
   fetchCustomers,
+  loadUser
 };
 
 const uniqid = require("uniqid");
@@ -28,6 +30,32 @@ class Search extends Component {
 
   static propTypes = {
     customers: PropTypes.array.isRequired,
+  };
+
+  componentDidMount = async () => {
+    // Checks if there is a token present on page refresh,
+    // then loads the current user
+    const { token } = this.props.auth;
+    if (token) {
+      this.props.loadUser();
+      setTimeout(this.loadDatabase, 1000);
+    }
+  };
+
+  loadDatabase = async () => {
+    const { token } = this.props.auth;
+    if (token) {
+      try {
+        this.props.fetchBeers();
+        this.props.fetchCustomers();
+      } catch (error) {
+        throw new Error(
+          "Cannot connect to database. Server may be busy or unavailable."
+        );
+      }
+    } else {
+      //Add error redirect to login page -> due to database not loading
+    }
   };
 
   // Fire reauthenticate to redux actions
@@ -171,7 +199,7 @@ class Search extends Component {
 const mapStateToProps = (state) => ({
   customers: state.customers.customers,
   loading: state.customers.loading,
-  token: state.auth.isAuthenticated,
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, actions)(Search);

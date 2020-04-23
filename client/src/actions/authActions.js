@@ -10,9 +10,8 @@ import {
   LOGIN_FAIL,
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
-  REGISTER_FAIL
+  REGISTER_FAIL,
 } from "./action-types";
-
 
 //Check for token and then load the user
 export const loadUser = () => (dispatch, getState) => {
@@ -21,31 +20,32 @@ export const loadUser = () => (dispatch, getState) => {
 
   axios
     .get(
-      process.env.NODE_ENV === "development" 
-      ?  "http://localhost:5000/api/auth/user" 
-      : "https://bearmugclub.herokuapp.com/api/auth/user", tokenConfig(getState)
-      )
-    .then(res =>
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:5000/api/auth/user"
+        : "https://bearmugclub.herokuapp.com/api/auth/user",
+      tokenConfig(getState)
+    )
+    .then((res) =>
       dispatch({
         type: USER_LOADED,
-        payload: res.data
+        payload: res.data,
       })
     )
     //If token is invalid
-    .catch(err => {
+    .catch((err) => {
       dispatch(returnErrors(err.response.data, err.response.status));
       dispatch({
-        type: AUTH_ERROR
+        type: AUTH_ERROR,
       });
     });
 };
 
 //Register user
-export const register = ({ name, email, password }) => dispatch => {
+export const register = ({ name, email, password }) => (dispatch) => {
   const config = {
     headers: {
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
 
   //Request body
@@ -53,20 +53,25 @@ export const register = ({ name, email, password }) => dispatch => {
 
   axios
     .post(
-      process.env.NODE_ENV === "development" ?  "http://localhost:5000/api/users" : "https://bearmugclub.herokuapp.com/api/users", body, config)
-    .then(res =>
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:5000/api/users"
+        : "https://bearmugclub.herokuapp.com/api/users",
+      body,
+      config
+    )
+    .then((res) =>
       dispatch({
         type: REGISTER_SUCCESS,
-        payload: res.data
+        payload: res.data,
       })
     )
     //For an error with registration
-    .catch(err => {
+    .catch((err) => {
       dispatch(
         returnErrors(err.response.data, err.response.status, "REGISTER_FAIL")
       );
       dispatch({
-        type: REGISTER_FAIL
+        type: REGISTER_FAIL,
       });
     });
 };
@@ -74,40 +79,46 @@ export const register = ({ name, email, password }) => dispatch => {
 //Logout User
 export const logout = () => {
   return {
-    type: LOGOUT_SUCCESS
+    type: LOGOUT_SUCCESS,
   };
 };
 
 //Login User
-export const login = ({ email, password }) => dispatch => {
+export const login = ({ email, password }) => (dispatch) => {
   const config = {
     headers: {
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
   //Request body
   const body = JSON.stringify({ email, password });
   axios
-    .post(process.env.NODE_ENV === "development" ?  "http://localhost:5000/api/auth" : "https://bearmugclub.herokuapp.com/api/auth", body, config)
-    .then(res =>{
+    .post(
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:5000/api/auth"
+        : "https://bearmugclub.herokuapp.com/api/auth",
+      body,
+      config
+    )
+    .then((res) => {
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: res.data
-      })}
-    )
+        payload: res.data,
+      });
+    })
     //For an error with the login
-    .catch(err => {
+    .catch((err) => {
       dispatch(
         returnErrors(err.response.data, err.response.status, "LOGIN_FAIL")
       );
       dispatch({
-        type: LOGIN_FAIL
+        type: LOGIN_FAIL,
       });
     });
 };
 
 // Setup config, headers, and token
-export const tokenConfig = getState => {
+export const tokenConfig = (getState) => {
   //Get token from local storage
   const token = getState().auth.token;
 
@@ -115,8 +126,8 @@ export const tokenConfig = getState => {
   const config = {
     headers: {
       "Content-type": "application/json",
-      Authorization: `Bearer ${token}`
-    }
+      Authorization: `Bearer ${token}`,
+    },
   };
 
   //If token, add to headers

@@ -5,6 +5,7 @@ import {
   CREATE_CUSTOMER,
   DELETE_CUSTOMER,
   UPDATE_CUSTOMER_BEERS,
+  CLUB_COMPLETED,
 } from "./action-types";
 import axios from "axios";
 import { tokenConfig } from "./authActions";
@@ -82,4 +83,8 @@ export const deleteCustomer = (id) => (dispatch, getState) => {
 export const updateCustomerBeers = (updatedBeers) => ({
   type: UPDATE_CUSTOMER_BEERS,
   payload: updatedBeers,
+})
+
+export const clubCompleted = () => ({
+  type: CLUB_COMPLETED
 })
