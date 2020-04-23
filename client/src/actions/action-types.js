@@ -28,3 +28,6 @@ export const CLOSE_MODAL = "CLOSE_MODAL";
 
 export const OPEN_NAV = "OPEN_NAV";
 export const CLOSE_NAV = "CLOSE_NAV";
+
+export const UPDATE_CUSTOMER_BEERS = "UPDATE_CUSTOMER_BEERS";
+export const CHECK_CLUB_COMPLETION = "CHECK_CLUB_COMPLETION";

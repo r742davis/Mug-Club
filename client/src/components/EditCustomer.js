@@ -3,17 +3,21 @@ import classes from "../css/Modals.module.css";
 import Grow from "@material-ui/core/Grow";
 import swal from "@sweetalert/with-react";
 import BeersList from "./BeersList";
-import updateCompletedBeers from "../lib/updateCompletedBeers";
 
 //Redux Imports
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { closeModal } from "../actions/modalActions";
-import { updateCustomer, fetchCustomers } from "../actions/customerActions";
+import { 
+  updateCustomer, 
+  fetchCustomers, 
+  updateCustomerBeers 
+} from "../actions/customerActions";
 const actions = {
   closeModal,
   updateCustomer,
   fetchCustomers,
+  updateCustomerBeers
 };
 
 class EditCustomer extends Component {
@@ -37,17 +41,15 @@ class EditCustomer extends Component {
 
   updateCompletedBeers = (checked) => {
     const { customerBeers } = this.state;
-    let updated = customerBeers;
-    for (let k = 0; k < updated.length; k++) {
+    let updatedBeers = [...customerBeers];
+    for (let k = 0; k < updatedBeers.length; k++) {
       for (let h = 1; h < checked.length; h++) {
-        if (updated[k]._id === checked[h]._id) {
-          updated[k].finished = true;
+        if (updatedBeers[k]._id === checked[h]._id) {
+          updatedBeers[k].finished = true;
         }
       }
     }
-    this.setState({
-      customerBeers: updated,
-    });
+    this.props.updateCustomerBeers(updatedBeers);
   };
 
   checkCompletion = (beers) => {
@@ -82,18 +84,19 @@ class EditCustomer extends Component {
       mugClub: {
         clubId: this.state.clubId,
         completed: this.state.completed,
-        beers: this.state.customerBeers,
+        beers: this.props.updatedBeers,
       },
     };
     try {
       await this.props.updateCustomer(updatedCustomer, this.props.customerId);
       await this.props.fetchCustomers();
+      await this.props.closeModal();
       swal({
         title: `You've updated ${this.state.first} ${this.state.last}!`,
         icon: "success",
         button: "Ok!",
       });
-      this.props.closeModal();
+      
     } catch (e) {
       console.log(e);
       swal({
@@ -189,6 +192,7 @@ const mapStateToProps = (state) => ({
   completed: state.modal.info.mugClub.completed,
   customerBeers: state.modal.info.mugClub.beers,
   customerId: state.modal.info._id,
+  updatedBeers: state.customers.updatedBeers
 });
 
 export default connect(mapStateToProps, actions)(EditCustomer);
