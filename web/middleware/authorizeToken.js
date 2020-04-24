@@ -3,7 +3,6 @@ const config = require("config");
 
 function authorizeToken(req, res, next) {
   const token = req.header("x-auth-token");
-  console.log(token);
 
   //Check for token
   if (!token) {
