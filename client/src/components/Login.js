@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import classes from "../css/Login.module.css";
 import Register from "./Register";
 import { Redirect } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
 // Redux Imports
 import { connect } from "react-redux";

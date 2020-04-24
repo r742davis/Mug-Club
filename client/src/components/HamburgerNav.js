@@ -7,11 +7,9 @@ import {
   faSearch,
   faBeer,
   faUserTimes,
-  faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
 // Redux Imports
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { openModal } from "../actions/modalActions";
 import { closeNav } from "../actions/navActions";

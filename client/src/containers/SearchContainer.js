@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Search from "../components/Search";
 
 // Redux Imports
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loadUser } from "../actions/authActions";
 import { fetchCustomers } from "../actions/customerActions";
