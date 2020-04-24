@@ -4,6 +4,7 @@ import Customer from "./Customer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import swal from "@sweetalert/with-react";
+import filterCustomers from "../lib/filterCustomers";
 
 // Redux Imports
 import { connect } from "react-redux";
@@ -64,36 +65,16 @@ class Search extends Component {
     }
   };
 
-  filterCustomers = (customers = [], search = this.state.search) => {
-    let filtered = customers.filter((customer) => {
-      // Number Search
-      let id = customer.mugClub.clubId.toString();
-      let number = search === id ? customer : null;
-
-      // Name Search
-      let strings =
-        customer.name.first.toLowerCase().includes(search.toLowerCase()) ||
-        customer.name.last.toLowerCase().includes(search.toLowerCase());
-
-      if (strings) {
-        return strings;
-      }
-      if (number) {
-        return number;
-      }
-    });
-    return filtered;
-  };
-
   render() {
     const { search } = this.state;
+    const customers = this.props.customers;
     const loading = this.props.loading;
     let filteredCustomers;
-    if (this.props.customers && search) {
+    if (customers && search) {
       if (loading) return <h2>Loading...</h2>;
-      filteredCustomers = this.filterCustomers(
-        this.props.customers,
-        this.state.search
+      filteredCustomers = filterCustomers(
+        customers,
+        search
       );
     }
 

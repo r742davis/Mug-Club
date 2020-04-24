@@ -1,7 +1,5 @@
-import React from 'react';
-
-export const filterCustomers = (customers, search) => {
-  customers.filter((customer) => {
+export default function filterCustomers(customers = [], search) {
+  let filtered = customers.filter((customer) => {
     // Number Search
     let id = customer.mugClub.clubId.toString();
     let number = search === id ? customer : null;
@@ -18,4 +16,5 @@ export const filterCustomers = (customers, search) => {
       return number;
     }
   });
-}
+  return filtered;
+};
