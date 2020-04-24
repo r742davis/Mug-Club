@@ -52,6 +52,7 @@ const BeerDisplay = (props) => {
         </div>
       </h1>
       <List dense className={classes.ListContainer}>
+        {props.loading && <h2>Loading Beers Bro...</h2>}
         {beerList}
       </List>
     </section>
@@ -60,6 +61,7 @@ const BeerDisplay = (props) => {
 
 const mapStateToProps = (state) => ({
   beers: state.beers.beers,
+  loading: state.beers.loading
 });
 
 export default connect(mapStateToProps, actions)(BeerDisplay);
