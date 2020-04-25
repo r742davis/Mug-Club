@@ -8,17 +8,26 @@ import BeersList from "./BeersList";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { closeModal } from "../actions/modalActions";
-import { 
-  updateCustomer, 
-  fetchCustomers, 
-  updateCustomerBeers 
+import {
+  updateCustomer,
+  fetchCustomers,
+  updateCustomerBeers,
 } from "../actions/customerActions";
 const actions = {
   closeModal,
   updateCustomer,
   fetchCustomers,
-  updateCustomerBeers
+  updateCustomerBeers,
 };
+const mapStateToProps = (state) => ({
+  first: state.modal.info.name.first,
+  last: state.modal.info.name.last,
+  clubId: state.modal.info.mugClub.clubId,
+  completed: state.modal.info.mugClub.completed,
+  customerBeers: state.modal.info.mugClub.beers,
+  customerId: state.modal.info._id,
+  updatedBeers: state.customers.updatedBeers,
+});
 
 class EditCustomer extends Component {
   state = {
@@ -96,7 +105,6 @@ class EditCustomer extends Component {
         icon: "success",
         button: "Ok!",
       });
-      
     } catch (e) {
       console.log(e);
       swal({
@@ -184,15 +192,5 @@ class EditCustomer extends Component {
     );
   }
 }
-
-const mapStateToProps = (state) => ({
-  first: state.modal.info.name.first,
-  last: state.modal.info.name.last,
-  clubId: state.modal.info.mugClub.clubId,
-  completed: state.modal.info.mugClub.completed,
-  customerBeers: state.modal.info.mugClub.beers,
-  customerId: state.modal.info._id,
-  updatedBeers: state.customers.updatedBeers
-});
 
 export default connect(mapStateToProps, actions)(EditCustomer);

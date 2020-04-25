@@ -21,6 +21,10 @@ const actions = {
   openNav,
   closeNav,
 };
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  navOpen: state.modal.navOpen,
+});
 
 class NavBar extends Component {
   state = {};
@@ -95,10 +99,5 @@ class NavBar extends Component {
     );
   }
 }
-
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-  navOpen: state.modal.navOpen,
-});
 
 export default connect(mapStateToProps, actions)(NavBar);

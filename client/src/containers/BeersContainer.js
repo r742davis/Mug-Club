@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import BeerDisplay from "../components/BeerDisplay";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { loadUser } from "../actions/authActions";
 import { fetchBeers } from "../actions/beerActions";
 const actions = { loadUser, fetchBeers };
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
 
 class BeersContainer extends Component {
   componentDidMount = () => {
@@ -29,12 +32,8 @@ class BeersContainer extends Component {
     }
   };
   render() {
-    return <BeerDisplay />
+    return <BeerDisplay />;
   }
 }
-
-const mapStateToProps = state => ({
-  auth: state.auth
-})
 
 export default connect(mapStateToProps, actions)(BeersContainer);

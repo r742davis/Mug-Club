@@ -50,6 +50,4 @@ const RegularNav = (props) => (
   </ul>
 );
 
-const mapStateToProps = (state) => ({});
-
-export default connect(mapStateToProps, actions)(RegularNav);
+export default connect(null, actions)(RegularNav);

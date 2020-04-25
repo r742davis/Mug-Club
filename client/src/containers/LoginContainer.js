@@ -14,6 +14,10 @@ const actions = {
   register,
   clearErrors,
 };
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  error: state.error,
+});
 
 class LoginContainer extends Component {
   state = {
@@ -113,10 +117,5 @@ class LoginContainer extends Component {
     );
   }
 }
-
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-  error: state.error,
-});
 
 export default connect(mapStateToProps, actions)(LoginContainer);

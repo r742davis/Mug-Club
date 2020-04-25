@@ -15,7 +15,11 @@ const actions = {
   openModal,
   deleteCustomer,
 };
-
+const mapStateToProps = (state) => ({
+  customers: state.customers.customers,
+  loading: state.customers.loading,
+  auth: state.auth,
+});
 const uniqid = require("uniqid");
 
 class Search extends Component {
@@ -141,11 +145,5 @@ class Search extends Component {
     );
   }
 }
-
-const mapStateToProps = (state) => ({
-  customers: state.customers.customers,
-  loading: state.customers.loading,
-  auth: state.auth,
-});
 
 export default connect(mapStateToProps, actions)(Search);

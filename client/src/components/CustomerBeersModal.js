@@ -4,6 +4,9 @@ import BeersList from "./BeersList";
 
 // Redux Imports
 import { connect } from "react-redux";
+const mapStateToProps = (state) => ({
+  beers: state.beers.beers,
+});
 
 const CustomerBeersModal = (props) => {
   return (
@@ -18,9 +21,5 @@ const CustomerBeersModal = (props) => {
     </>
   );
 };
-
-const mapStateToProps = (state) => ({
-  beers: state.beers.beers,
-});
 
 export default connect(mapStateToProps)(CustomerBeersModal);

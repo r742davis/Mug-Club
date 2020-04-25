@@ -7,6 +7,9 @@ import NewBeer from "./NewBeer";
 // Redux Imports
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+const mapStateToProps = (state) => ({
+  modalType: state.modal.modalType,
+});
 
 class RenderModal extends Component {
   static propTypes = {
@@ -32,9 +35,5 @@ class RenderModal extends Component {
     }
   }
 }
-
-const mapStateToProps = (state) => ({
-  modalType: state.modal.modalType,
-});
 
 export default connect(mapStateToProps)(RenderModal);

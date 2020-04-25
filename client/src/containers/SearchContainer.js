@@ -9,6 +9,9 @@ const actions = {
   loadUser,
   fetchCustomers,
 };
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
 
 class SearchContainer extends Component {
   componentDidMount = () => {
@@ -38,9 +41,5 @@ class SearchContainer extends Component {
     return <Search />
   }
 }
-
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-});
 
 export default connect(mapStateToProps, actions)(SearchContainer);

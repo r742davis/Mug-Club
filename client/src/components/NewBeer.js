@@ -172,6 +172,5 @@ class NewBeerModal extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({});
 
-export default connect(mapStateToProps, actions)(NewBeerModal);
+export default connect(null, actions)(NewBeerModal);

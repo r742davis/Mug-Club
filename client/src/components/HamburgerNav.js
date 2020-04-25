@@ -15,7 +15,7 @@ import { openModal } from "../actions/modalActions";
 import { closeNav } from "../actions/navActions";
 const actions = {
   openModal,
-  closeNav
+  closeNav,
 };
 const urlName = "";
 
@@ -80,7 +80,10 @@ const HamburgerNav = (props) => {
           <h2>Account</h2>
         </div>
       </Link> */}
-      <button onClick={() => props.logoutAlert()} className={classes.HamburgerItem}>
+      <button
+        onClick={() => props.logoutAlert()}
+        className={classes.HamburgerItem}
+      >
         <div className={classes.LinkDiv}>
           <div>
             <FontAwesomeIcon icon={faUserTimes} />
@@ -92,6 +95,4 @@ const HamburgerNav = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
-
-export default connect(mapStateToProps, actions)(HamburgerNav);
+export default connect(null, actions)(HamburgerNav);

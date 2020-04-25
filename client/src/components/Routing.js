@@ -11,6 +11,10 @@ import {
   Redirect,
 } from "react-router-dom";
 import { connect } from "react-redux";
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  isAuthenticated: state.auth.isAuthenticated,
+});
 
 const Routing = (props) => {
   const urlName = "";
@@ -43,10 +47,5 @@ const Routing = (props) => {
     </>
   );
 };
-
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-  isAuthenticated: state.auth.isAuthenticated,
-});
 
 export default connect(mapStateToProps)(Routing);

@@ -7,6 +7,9 @@ import EditIcon from "./EditIcon";
 
 // Redux Imports
 import { connect } from "react-redux";
+const mapStateToProps = (state) => ({
+  modalOpen: state.modal.modalOpen,
+});
 
 const Customer = (props) => {
   return (
@@ -41,9 +44,5 @@ const Customer = (props) => {
     </div>
   );
 };
-
-const mapStateToProps = (state) => ({
-  modalOpen: state.modal.modalOpen,
-});
 
 export default connect(mapStateToProps)(Customer);

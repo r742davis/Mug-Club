@@ -96,6 +96,4 @@ function BeerList(props) {
   );
 }
 
-const mapStateToProps = (state) => ({});
-
-export default connect(mapStateToProps, actions)(BeerList);
+export default connect(null, actions)(BeerList);

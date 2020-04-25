@@ -8,11 +8,18 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { closeModal } from "../actions/modalActions";
 import { createCustomer, fetchCustomers } from "../actions/customerActions";
-const actions = { closeModal, createCustomer, fetchCustomers };
+const actions = { 
+  closeModal, 
+  createCustomer, 
+  fetchCustomers 
+};
+const mapStateToProps = (state) => ({
+  customers: state.customers.customers,
+});
 
 class NewCustomer extends Component {
   state = {};
-
+  
   static propTypes = {
     customers: PropTypes.array,
   };
@@ -156,9 +163,5 @@ class NewCustomer extends Component {
     );
   }
 }
-
-const mapStateToProps = (state) => ({
-  customers: state.customers.customers,
-});
 
 export default connect(mapStateToProps, actions)(NewCustomer);

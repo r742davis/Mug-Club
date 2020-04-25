@@ -16,6 +16,14 @@ const actions = {
   updateBeer,
   fetchBeers,
 };
+const mapStateToProps = (state) => ({
+  id: state.modal.info._id,
+  name: state.modal.info.name,
+  type: state.modal.info.type,
+  brewery: state.modal.info.brewery,
+  breweryLocation: state.modal.info.breweryLocation,
+  url: state.modal.info.url,
+});
 
 class EditBeer extends Component {
   state = {
@@ -199,14 +207,5 @@ class EditBeer extends Component {
     );
   }
 }
-
-const mapStateToProps = (state) => ({
-  id: state.modal.info._id,
-  name: state.modal.info.name,
-  type: state.modal.info.type,
-  brewery: state.modal.info.brewery,
-  breweryLocation: state.modal.info.breweryLocation,
-  url: state.modal.info.url,
-});
 
 export default connect(mapStateToProps, actions)(EditBeer);
