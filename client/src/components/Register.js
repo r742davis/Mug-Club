@@ -3,6 +3,11 @@ import classes from "../css/Login.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
+//Redux Imports
+import { connect } from "react-redux";
+import { closeRegister } from "../actions/authActions";
+const actions = { closeRegister };
+
 const Register = (props) => {
   return (
     <form onSubmit={(e) => props.onSubmit(e)}>
@@ -54,7 +59,9 @@ const Register = (props) => {
         <button type="submit" name="register" className={classes.Button}>
           Register
         </button>
-        <div onClick={() => props.toggleReg()} className={classes.Back}>
+        <div 
+          onClick={() => props.closeRegister()} 
+          className={classes.Back}>
           <FontAwesomeIcon icon={faArrowAltCircleLeft} />
         </div>
       </div>
@@ -62,4 +69,4 @@ const Register = (props) => {
   );
 };
 
-export default Register;
+export default connect(null, actions)(Register);

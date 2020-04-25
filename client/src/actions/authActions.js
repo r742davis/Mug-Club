@@ -11,6 +11,8 @@ import {
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
+  OPEN_REGISTER,
+  CLOSE_REGISTER,
 } from "./action-types";
 
 //Check for token and then load the user
@@ -137,3 +139,11 @@ export const tokenConfig = (getState) => {
 
   return config;
 };
+
+export const openRegister = () => ({
+  type: OPEN_REGISTER,
+});
+
+export const closeRegister = () => ({
+  type: CLOSE_REGISTER,
+});

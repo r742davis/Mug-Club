@@ -6,29 +6,32 @@ import {
   LOGIN_FAIL,
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
-  REGISTER_FAIL
+  REGISTER_FAIL,
+  OPEN_REGISTER,
+  CLOSE_REGISTER,
 } from "../actions/action-types";
 
 const initialState = {
   token: localStorage.getItem("token"),
   isAuthenticated: null,
   isLoading: false,
-  user: null
+  user: null,
+  registerOpen: false,
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case USER_LOADING:
       return {
         ...state,
-        isLoading: true
+        isLoading: true,
       };
     case USER_LOADED:
       return {
         ...state,
         isAuthenticated: true,
         isLoading: false,
-        user: action.payload
+        user: action.payload,
       };
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:
@@ -37,7 +40,7 @@ export default function(state = initialState, action) {
         ...state,
         ...action.payload,
         isAuthenticated: true,
-        isLoading: false
+        isLoading: false,
       };
     case AUTH_ERROR:
     case LOGIN_FAIL:
@@ -49,13 +52,18 @@ export default function(state = initialState, action) {
         token: null,
         user: null,
         isAuthenticated: false,
-        isLoading: false
+        isLoading: false,
       };
-    // case REAUTHENTICATE:
-    //     return {
-    //       ...state, 
-    //       isAuthenticated: true
-    //     }
+    case OPEN_REGISTER:
+      return {
+        ...state,
+        registerOpen: true,
+      };
+    case CLOSE_REGISTER:
+      return {
+        ...state,
+        registerOpen: false,
+      };
     default:
       return state;
   }

@@ -7,8 +7,17 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { clearErrors } from "../actions/errorActions";
-import { login, register } from "../actions/authActions";
-const actions = { login, register, clearErrors };
+import {
+  login,
+  register,
+  openRegister,
+} from "../actions/authActions";
+const actions = { 
+  login, 
+  register, 
+  openRegister, 
+  clearErrors 
+};
 
 class Login extends Component {
   state = {
@@ -16,7 +25,6 @@ class Login extends Component {
     email: "",
     password: "",
     message: null,
-    toggleLogin: false,
     toggleReg: false,
   };
 
@@ -68,22 +76,23 @@ class Login extends Component {
   };
 
   //-- Toggles for Login and Register
-  toggleLogin = () => {
-    this.props.clearErrors();
-    this.setState({
-      toggleLogin: !this.state.toggleLogin,
-    });
-  };
-  toggleReg = () => {
-    this.props.clearErrors();
-    this.setState({
-      toggleReg: !this.state.toggleReg,
-    });
-  };
+  // toggleLogin = () => {
+  //   this.props.clearErrors();
+  //   this.setState({
+  //     toggleLogin: !this.state.toggleLogin,
+  //   });
+  // };
+  // toggleReg = () => {
+  //   this.props.clearErrors();
+  //   this.setState({
+  //     toggleReg: !this.state.toggleReg,
+  //   });
+  // };
 
   render() {
-    const { toggleLogin, toggleReg } = this.state;
+    // const { toggleReg } = this.state;
     const { isAuthenticated } = this.props.auth;
+    const { registerOpen } = this.props.auth;
 
     let error = (
       <div>
@@ -99,7 +108,7 @@ class Login extends Component {
             <h1 className={classes.Title}>
               <h2>Welcome to</h2>Mug Club 🍻
             </h1>
-            {!toggleReg && (
+            {!registerOpen && (
               <form onSubmit={this.onSubmit}>
                 <div className={classes.LoginContainer}>
                   {this.state.message && error}
@@ -137,7 +146,7 @@ class Login extends Component {
                     </button>
                     <button
                       name="register"
-                      onClick={() => this.toggleReg()}
+                      onClick={() => this.props.openRegister()}
                       className={classes.Button}
                     >
                       Register
@@ -147,10 +156,9 @@ class Login extends Component {
               </form>
             )}
 
-            {this.state.toggleReg && (
+            {registerOpen && (
               <Register
                 onSubmit={this.onSubmitReg}
-                toggleReg={this.toggleReg}
                 error={this.state.message}
                 onChange={this.onChange}
               />
@@ -164,7 +172,6 @@ class Login extends Component {
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-  isAuthenticated: state.auth.isAuthenticated,
   error: state.error,
 });
 
