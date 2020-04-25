@@ -7,6 +7,7 @@ import swal from "@sweetalert/with-react";
 
 // Redux Imports
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { openModal, closeModal } from "../actions/modalActions";
 import { deleteBeer, updateBeer, fetchBeers } from "../actions/beerActions";
 const actions = {
@@ -44,7 +45,14 @@ class EditBeer extends Component {
     });
   };
 
-  static propTypes = {};
+  static propTypes = {
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    brewery: PropTypes.string.isRequired,
+    breweryLocation: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+  };
 
   handleInputChange = (e) => {
     const target = e.target;

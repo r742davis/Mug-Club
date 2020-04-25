@@ -50,6 +50,7 @@ class EditCustomer extends Component {
   };
 
   componentDidMount = () => {
+    console.log("Edit Customer Modal Mounted");
     const {
       first,
       last,
