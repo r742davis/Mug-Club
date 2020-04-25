@@ -9,16 +9,19 @@
   background: white;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
-.Container h1 {
+
+.Title {
+  background: black;
+  color: white;
   text-align: left;
   padding-top: 4rem;
   padding-bottom: 0.5rem;
   padding-left: 2rem;
-  font-size: 4rem;
-  background: black;
-  color: white;
   border-top: 2px solid black;
-  font-family: 'Montserrat', sans-serif;
+  h1 {
+    font-size: 4rem;
+    font-family: 'Montserrat', sans-serif;
+  }
   h2 {
     font-size: 1.6rem;
     position: relative;
