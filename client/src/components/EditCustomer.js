@@ -19,15 +19,23 @@ const actions = {
   fetchCustomers,
   updateCustomerBeers,
 };
-const mapStateToProps = (state) => ({
-  first: state.modal.info.name.first,
-  last: state.modal.info.name.last,
-  clubId: state.modal.info.mugClub.clubId,
-  completed: state.modal.info.mugClub.completed,
-  customerBeers: state.modal.info.mugClub.beers,
-  customerId: state.modal.info._id,
-  updatedBeers: state.customers.updatedBeers,
-});
+const mapStateToProps = (state) => {
+  const { 
+    name: { first, last}, 
+    mugClub: { clubId, beers, completed }, 
+    _id 
+  } = state.modal.info;
+  const { updatedBeers } = state.customers;
+  return {
+    first: first,
+    last: last,
+    clubId: clubId,
+    completed: completed,
+    customerBeers: beers,
+    customerId: _id,
+    updatedBeers: updatedBeers,
+  }
+};
 
 class EditCustomer extends Component {
   state = {
