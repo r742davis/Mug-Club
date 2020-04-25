@@ -15,6 +15,7 @@ export default function filterCustomers(customers = [], search) {
     if (number) {
       return number;
     }
+    return null;
   });
   return filtered;
 };

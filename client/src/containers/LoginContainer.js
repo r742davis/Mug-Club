@@ -14,9 +14,9 @@ const actions = {
   register,
   clearErrors,
 };
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-  error: state.error,
+const mapStateToProps = ({ auth, error }) => ({
+  auth: auth,
+  error: error,
 });
 
 class LoginContainer extends Component {
@@ -38,8 +38,8 @@ class LoginContainer extends Component {
   componentDidUpdate(prevProps) {
     const { error } = this.props;
     if (error !== prevProps.error) {
-      //Check for register error
-      if (error.id === "LOGIN_FAIL") {
+      //Check for login/register error
+      if (error.id === "LOGIN_FAIL" || error.id === "REGISTER_FAIL" ) {
         this.setState({ message: error.message.message });
       } else {
         this.setState({ message: null });
@@ -61,6 +61,7 @@ class LoginContainer extends Component {
     };
     //Attempt to log in
     this.props.login(user);
+    this.props.clearErrors();
   };
 
   onSubmitReg = (e) => {
@@ -73,17 +74,12 @@ class LoginContainer extends Component {
     };
     //Attempt to register
     this.props.register(newUser);
+    this.props.clearErrors();
   };
 
   render() {
     const { isAuthenticated } = this.props.auth;
     const { registerOpen } = this.props.auth;
-
-    let error = (
-      <div>
-        <h3 className={classes.Error}>{this.state.message}</h3>
-      </div>
-    );
 
     return (
       <div>

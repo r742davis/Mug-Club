@@ -13,6 +13,7 @@ import {
   REGISTER_FAIL,
   OPEN_REGISTER,
   CLOSE_REGISTER,
+  CLEAR_ERRORS,
 } from "./action-types";
 
 //Check for token and then load the user
@@ -140,10 +141,24 @@ export const tokenConfig = (getState) => {
   return config;
 };
 
-export const openRegister = () => ({
-  type: OPEN_REGISTER,
-});
+export const openRegister = () => {
+  return function (dispatch) {
+    dispatch({
+      type: OPEN_REGISTER,
+    });
+    dispatch({
+      type: CLEAR_ERRORS,
+    });
+  };
+};
 
-export const closeRegister = () => ({
-  type: CLOSE_REGISTER,
-});
+export const closeRegister = () => {
+  return function (dispatch) {
+    dispatch({
+      type: CLOSE_REGISTER,
+    });
+    dispatch({
+      type: CLEAR_ERRORS,
+    });
+  };
+};

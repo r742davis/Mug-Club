@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "../css/LoginContainer.module.css";
+import ErrorMessage from "./ErrorMessage";
 
 import { connect } from "react-redux";
 import { openRegister } from "../actions/authActions";
@@ -9,7 +10,8 @@ const Login = (props) => (
   <>
     <form onSubmit={props.onSubmit}>
       <div className={classes.LoginContainer}>
-        {props.message && props.error}
+
+        {props.error && <ErrorMessage error={props.error}/>}
         <div className={classes.Group}>
           <input
             type="text"

@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "../css/LoginContainer.module.css";
+import ErrorMessage from "./ErrorMessage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
@@ -12,11 +13,7 @@ const Register = (props) => {
   return (
     <form onSubmit={(e) => props.onSubmit(e)}>
       <div className={classes.LoginContainer}>
-        {props.error && (
-          <div>
-            <h3 className={classes.Error}>{props.message}</h3>
-          </div>
-        )}
+      {props.error && <ErrorMessage error={props.error}/>}
         <div className={classes.Group}>
           <input
             type="text"
