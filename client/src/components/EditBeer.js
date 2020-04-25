@@ -16,23 +16,32 @@ const actions = {
   updateBeer,
   fetchBeers,
 };
-const mapStateToProps = (state) => ({
-  id: state.modal.info._id,
-  name: state.modal.info.name,
-  type: state.modal.info.type,
-  brewery: state.modal.info.brewery,
-  breweryLocation: state.modal.info.breweryLocation,
-  url: state.modal.info.url,
-});
+const mapStateToProps = (state) => {
+  const { _id, name, type, brewery, breweryLocation, url } = state.modal.info;
+  return {
+    id: _id,
+    name: name,
+    type: type,
+    brewery: brewery,
+    breweryLocation: breweryLocation,
+    url: url,
+  };
+};
 
 class EditBeer extends Component {
-  state = {
-    id: this.props.id,
-    name: this.props.name,
-    type: this.props.type,
-    brewery: this.props.brewery,
-    breweryLocation: this.props.breweryLocation,
-    url: this.props.url,
+  state = {};
+
+  componentDidMount = () => {
+    console.log("Edit Beer Modal Mounted");
+    const { id, name, type, brewery, breweryLocation, url } = this.props;
+    this.setState({
+      id: id,
+      name: name,
+      type: type,
+      brewery: brewery,
+      breweryLocation: breweryLocation,
+      url: url,
+    });
   };
 
   static propTypes = {};

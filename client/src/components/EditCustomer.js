@@ -20,10 +20,10 @@ const actions = {
   updateCustomerBeers,
 };
 const mapStateToProps = (state) => {
-  const { 
-    name: { first, last}, 
-    mugClub: { clubId, beers, completed }, 
-    _id 
+  const {
+    _id,
+    name: { first, last },
+    mugClub: { clubId, beers, completed },
   } = state.modal.info;
   const { updatedBeers } = state.customers;
   return {
@@ -34,18 +34,11 @@ const mapStateToProps = (state) => {
     customerBeers: beers,
     customerId: _id,
     updatedBeers: updatedBeers,
-  }
+  };
 };
 
 class EditCustomer extends Component {
-  state = {
-    first: this.props.first,
-    last: this.props.last,
-    clubId: this.props.clubId,
-    customerId: this.props.customerId,
-    completed: this.props.completed,
-    customerBeers: this.props.customerBeers,
-  };
+  state = {};
 
   static propTypes = {
     first: PropTypes.string,
@@ -54,6 +47,25 @@ class EditCustomer extends Component {
     completed: PropTypes.bool,
     customerBeers: PropTypes.array,
     customerId: PropTypes.string,
+  };
+
+  componentDidMount = () => {
+    const {
+      first,
+      last,
+      clubId,
+      customerId,
+      completed,
+      customerBeers,
+    } = this.props;
+    this.setState({
+      first: first,
+      last: last,
+      clubId: clubId,
+      customerId: customerId,
+      completed: completed,
+      customerBeers: customerBeers,
+    });
   };
 
   updateCompletedBeers = (checked) => {
