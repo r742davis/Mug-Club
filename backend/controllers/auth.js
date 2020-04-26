@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const config = require("config");
 const jwt = require("jsonwebtoken");
 const authorizeToken = require("../middleware/authorizeToken");
-const { transport, makeANiceEmail } = require('../mail');
+const { transport, makeANiceEmail } = require("../mail");
 
 const User = require("../models/user.js");
 
@@ -15,21 +15,22 @@ router.post("/", (req, res) => {
 
   //Simple Validation
   if (!email || !password) {
-    return res.status(400).json({ 
-      message: "Please Enter All Fields" 
+    return res.status(400).json({
+      message: "Please Enter All Fields",
     });
   }
 
   //Check for existing user
   User.findOne({ email }).then((user) => {
     if (!user) {
-      return res.status(400).json({ 
-        message: "User Does Not Exist" 
+      return res.status(400).json({
+        message: "User Does Not Exist",
       });
     }
     //Validate password with bcrypt
     bcrypt.compare(password, user.password).then((isMatch) => {
-      if (!isMatch) return res.status(400).json({ message: "Incorrect Password" });
+      if (!isMatch)
+        return res.status(400).json({ message: "Incorrect Password" });
 
       if (isMatch) {
         jwt.sign(
@@ -62,20 +63,23 @@ router.get("/user", authorizeToken, (req, res) => {
 
 //POST Request Password Reset
 router.post("/requestReset", async (req, res) => {
-  console.log("Hi!")
+  const { email } = req.body;
   // Find user, check if they are real
-  // const user = User.findOne({ email });
-  // console.log(req);
+  User.findOne({ email }).then((user) => {
+    if (!user) {
+      return res.status(400).json({
+        message: "Email Does Not Exist - Please Enter Valid Email",
+      });
+    }
+    console.log(user);
+  });
   // Compare the user's email with the submitted email
   // Set a reset token and expiry on that user
   // Email them that reset token
   // Return a message on completion
-})
-
+});
 
 module.exports = router;
-
-
 
 // let createAuthToken = user => {
 //   return jwt.sign(

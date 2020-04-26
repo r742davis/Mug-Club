@@ -119,9 +119,10 @@ export const login = ({ email, password }) => (dispatch) => {
 };
 
 export const sendReset = (email) => (dispatch) => {
+  const userEmail = { email: email }
   axios.post(
     URL + "auth/requestReset",
-    email
+    userEmail
   ).catch((err) => {
     dispatch(
       returnErrors(
