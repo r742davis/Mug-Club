@@ -16,8 +16,8 @@ const mapStateToProps = ({ auth, customers: { customers } }) => ({
 
 class SearchContainer extends Component {
   componentDidMount = async () => {
-    const { token, customers } = this.props.auth;
-    if (token && !customers) {
+    const { token } = this.props.auth;
+    if (token && !this.props.customers) {
       await this.props.loadUser();
       await this.loadDatabase(token);
     }

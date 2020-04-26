@@ -9,7 +9,7 @@ import {
 const initialState = {
   loading: false,
   error: null,
-  beers: []
+  beers: null
 };
 
 export default function beerReducer(state = initialState, action) {
@@ -31,7 +31,7 @@ export default function beerReducer(state = initialState, action) {
         ...state,
         loading: false,
         error: action.payload.error,
-        beers: []
+        beers: null
       };
     case CREATE_BEER:
       return {

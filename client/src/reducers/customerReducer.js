@@ -11,7 +11,7 @@ const initialState = {
   loading: false,
   error: null,
   showEditCustomerModal: false,
-  customers: [],
+  customers: null,
   updatedBeers: [],
 };
 
@@ -34,7 +34,7 @@ export default function customerReducer(state = initialState, action) {
         ...state,
         loading: false,
         error: action.payload.error,
-        customers: [],
+        customers: null,
       };
     case CREATE_CUSTOMER:
       return {

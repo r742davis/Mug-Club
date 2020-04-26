@@ -4,18 +4,20 @@ import { connect } from "react-redux";
 import { loadUser } from "../actions/authActions";
 import { fetchBeers } from "../actions/beerActions";
 const actions = { loadUser, fetchBeers };
-const mapStateToProps = ({ auth, beers: { beers } }) => ({
+const mapStateToProps = ({ auth, beers }) => ({
   auth: auth,
   beers: beers
 });
 
 class BeersContainer extends Component {
   componentDidMount = async () => {
-    const { token, beers } = this.props.auth;
+    const { token } = this.props.auth;
+    const { beers } = this.props.beers;
     if (token && !beers) {
+      console.log(beers);
       await this.props.loadUser();
       await this.loadDatabase(token);
-    }
+    } 
   };
 
   loadDatabase = (token) => {
