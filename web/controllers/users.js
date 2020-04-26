@@ -34,6 +34,8 @@ router.get("/:id", async (req, res) => {
 
 // POST /users route
 router.post("/", (req, res) => {
+  // Pass permissions from Register page
+  // Need database user and password for admin / employee
   const { name, email, password } = req.body;
   const permissions = "PUBLIC"
 
