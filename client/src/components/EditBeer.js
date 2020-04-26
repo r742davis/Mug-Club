@@ -77,8 +77,8 @@ class EditBeer extends Component {
         icon: "success",
         button: "Sweet!",
       });
-      this.props.closeModal();
-      this.props.fetchBeers();
+      await this.props.fetchBeers();
+      await this.props.closeModal();
     } catch (e) {
       console.log(e);
       swal({
