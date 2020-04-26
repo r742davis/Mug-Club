@@ -18,17 +18,17 @@ import {
   CLEAR_ERRORS,
 } from "./action-types";
 
+const URL = process.env.NODE_ENV === "production" 
+? "https://bearmugclub.herokuapp.com/api/"
+: "http://localhost:5000/api/";
+
 //Check for token and then load the user
 export const loadUser = () => (dispatch, getState) => {
   // User loading
   dispatch({ type: USER_LOADING });
 
   axios
-    .get(
-      process.env.NODE_ENV === "development"
-        ? "http://localhost:5000/api/auth/user"
-        : "https://bearmugclub.herokuapp.com/api/auth/user",
-      tokenConfig(getState)
+    .get( URL + "auth/user", tokenConfig(getState)
     )
     .then((res) =>
       dispatch({
@@ -58,9 +58,7 @@ export const register = ({ name, email, password }) => (dispatch) => {
 
   axios
     .post(
-      process.env.NODE_ENV === "development"
-        ? "http://localhost:5000/api/users"
-        : "https://bearmugclub.herokuapp.com/api/users",
+      URL + "users",
       body,
       config
     )
@@ -99,9 +97,7 @@ export const login = ({ email, password }) => (dispatch) => {
   const body = JSON.stringify({ email, password });
   axios
     .post(
-      process.env.NODE_ENV === "development"
-        ? "http://localhost:5000/api/auth"
-        : "https://bearmugclub.herokuapp.com/api/auth",
+      URL + "auth",
       body,
       config
     )
@@ -120,6 +116,26 @@ export const login = ({ email, password }) => (dispatch) => {
         type: LOGIN_FAIL,
       });
     });
+};
+
+export const sendReset = (email) => (dispatch) => {
+  axios.post(
+    URL + "auth/requestReset",
+    email
+  ).catch((err) => {
+    dispatch(
+      returnErrors(
+        err.response.data, 
+        err.response.status, 
+        "RESET_PASSWORD_FAIL"
+      )
+    );
+    // dispatch({
+    //   type: LOGIN_FAIL,
+    // });
+  });
+
+  //Add redux store dispatches after successful firig of sendReset
 };
 
 // Setup config, headers, and token
@@ -171,10 +187,10 @@ export const openPasswordReset = () => {
       type: OPEN_PASSWORD_RESET,
     });
     dispatch({
-      type: CLEAR_ERRORS
-    })
-  }
-}
+      type: CLEAR_ERRORS,
+    });
+  };
+};
 
 export const closePasswordReset = () => {
   return function (dispatch) {
@@ -182,7 +198,7 @@ export const closePasswordReset = () => {
       type: CLOSE_PASSWORD_RESET,
     });
     dispatch({
-      type: CLEAR_ERRORS
-    })
-  }
-}
+      type: CLEAR_ERRORS,
+    });
+  };
+};

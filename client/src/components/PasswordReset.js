@@ -10,7 +10,7 @@ const actions = { closePasswordReset };
 const PasswordReset = (props) => {
   return (
     <>
-      <form>
+      <form onSubmit={props.onSubmit}>
         <div className={classes.LoginContainer}>
           {props.error && <ErrorMessage error={props.error} />}
           <div className={classes.Group}>
@@ -26,7 +26,10 @@ const PasswordReset = (props) => {
               Email
             </label>
           </div>
-          <button type="submit" name="send" className={classes.Button}>
+          <button 
+            type="submit" 
+            name="reset" 
+            className={classes.Button}>
             Send Email
           </button>
           <div

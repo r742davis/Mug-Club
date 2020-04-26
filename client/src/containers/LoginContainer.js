@@ -9,10 +9,11 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { clearErrors } from "../actions/errorActions";
-import { login, register } from "../actions/authActions";
+import { login, register, sendReset } from "../actions/authActions";
 const actions = {
   login,
   register,
+  sendReset,
   clearErrors,
 };
 const mapStateToProps = ({ auth, error }) => ({
@@ -78,6 +79,13 @@ class LoginContainer extends Component {
     this.props.clearErrors();
   };
 
+  onSubmitReset = (e) => {
+    e.preventDefault();
+    const { email } = this.state;
+    this.props.sendReset(email);
+    console.log(email);
+  }
+
   render() {
     const { isAuthenticated } = this.props.auth;
     const { registerOpen, passwordResetOpen } = this.props.auth;
@@ -113,6 +121,7 @@ class LoginContainer extends Component {
               <PasswordReset 
                 error={this.state.message}
                 onChange={this.onChange}
+                onSubmit={this.onSubmitReset}
               />
             )
 

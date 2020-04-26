@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const config = require("config");
 const jwt = require("jsonwebtoken");
 const authorizeToken = require("../middleware/authorizeToken");
+const { transport, makeANiceEmail } = require('../mail');
 
 const User = require("../models/user.js");
 
@@ -59,6 +60,23 @@ router.get("/user", authorizeToken, (req, res) => {
     .then((user) => res.json(user));
 });
 
+//POST Request Password Reset
+router.post("/requestReset", async (req, res) => {
+  console.log("Hi!")
+  // Find user, check if they are real
+  // const user = User.findOne({ email });
+  // console.log(req);
+  // Compare the user's email with the submitted email
+  // Set a reset token and expiry on that user
+  // Email them that reset token
+  // Return a message on completion
+})
+
+
+module.exports = router;
+
+
+
 // let createAuthToken = user => {
 //   return jwt.sign(
 //     { id: user.id },
@@ -78,23 +96,20 @@ router.get("/user", authorizeToken, (req, res) => {
 //   );
 // }
 
-let createRefreshToken = user => {
-  let refreshToken = jwt.sign({
-    type: 'refresh'
-  }, config.get("jwtSecret"), {
-    expiresIn: '20s'
-  });
+// let createRefreshToken = user => {
+//   let refreshToken = jwt.sign({
+//     type: 'refresh'
+//   }, config.get("jwtSecret"), {
+//     expiresIn: '20s'
+//   });
 
-  return Users.findOneAndUpdate({
-    email: user.email
-  }, {
-    refreshToken: refreshToken
-  }).then(() => {
-    return refreshToken;
-  }).catch(err => {
-    throw err;
-  })
-}
-
-
-module.exports = router;
+//   return Users.findOneAndUpdate({
+//     email: user.email
+//   }, {
+//     refreshToken: refreshToken
+//   }).then(() => {
+//     return refreshToken;
+//   }).catch(err => {
+//     throw err;
+//   })
+// }
