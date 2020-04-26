@@ -137,6 +137,14 @@ router.post("/requestReset", async (req, res) => {
   });
 });
 
+router.post("/resetPassword", (req, res) => {
+  const { password, confirmPassword } = req.body;
+  if (password !== confirmPassword) {
+    throw new Error("Your passwords don't match!")
+  }
+  console.log(password, confirmPassword);
+})
+
 module.exports = router;
 
 // let createAuthToken = user => {
