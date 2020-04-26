@@ -19,7 +19,7 @@ class SearchContainer extends Component {
     const { token, customers } = this.props.auth;
     if (token && !customers) {
       await this.props.loadUser();
-      await setTimeout(this.loadDatabase(token), 1000);
+      await this.loadDatabase(token);
     }
   };
 
