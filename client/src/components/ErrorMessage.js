@@ -1,12 +1,12 @@
 import React from "react";
-import classes from "../css/LoginContainer.module.css";
+import classes from "../css/ErrorMessage.module.css";
 
 import { connect } from "react-redux";
 const actions = {};
 
 const ErrorMessage = ({ error }) => (
   <>
-    <div>
+    <div className={classes.ErrorContainer}>
       <h3 className={classes.Error}>{error}</h3>
     </div>
   </>

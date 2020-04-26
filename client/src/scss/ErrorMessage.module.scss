@@ -1,0 +1,12 @@
+/* Errors */
+.ErrorContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.Error {
+  height: 5rem;
+  font-size: 1.5rem;
+  color: red;
+}

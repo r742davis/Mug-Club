@@ -3,8 +3,8 @@ import classes from "../css/LoginContainer.module.css";
 import ErrorMessage from "./ErrorMessage";
 
 import { connect } from "react-redux";
-import { openRegister } from "../actions/authActions";
-const actions = { openRegister };
+import { openRegister, openPasswordReset } from "../actions/authActions";
+const actions = { openRegister, openPasswordReset };
 
 const Login = (props) => (
   <>
@@ -37,7 +37,7 @@ const Login = (props) => (
           </label>
         </div>
         <div className={classes.Reset}>
-          <h2>Forgot Password?</h2>
+          <h2 onClick={() => props.openPasswordReset()}>Forgot Password?</h2>
         </div>
         <div className={classes.ButtonContainer}>
           <button type="submit" name="login" className={classes.Button}>

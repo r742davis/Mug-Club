@@ -9,6 +9,8 @@ import {
   REGISTER_FAIL,
   OPEN_REGISTER,
   CLOSE_REGISTER,
+  OPEN_PASSWORD_RESET,
+  CLOSE_PASSWORD_RESET,
 } from "../actions/action-types";
 
 const initialState = {
@@ -17,6 +19,7 @@ const initialState = {
   isLoading: false,
   user: null,
   registerOpen: false,
+  passwordResetOpen: false,
 };
 
 export default function (state = initialState, action) {
@@ -63,6 +66,16 @@ export default function (state = initialState, action) {
       return {
         ...state,
         registerOpen: false,
+      };
+    case OPEN_PASSWORD_RESET:
+      return {
+        ...state,
+        passwordResetOpen: true,
+      };
+    case CLOSE_PASSWORD_RESET:
+      return {
+        ...state,
+        passwordResetOpen: false,
       };
     default:
       return state;

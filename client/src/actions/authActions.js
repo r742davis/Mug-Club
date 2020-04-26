@@ -13,6 +13,8 @@ import {
   REGISTER_FAIL,
   OPEN_REGISTER,
   CLOSE_REGISTER,
+  OPEN_PASSWORD_RESET,
+  CLOSE_PASSWORD_RESET,
   CLEAR_ERRORS,
 } from "./action-types";
 
@@ -162,3 +164,25 @@ export const closeRegister = () => {
     });
   };
 };
+
+export const openPasswordReset = () => {
+  return function (dispatch) {
+    dispatch({
+      type: OPEN_PASSWORD_RESET,
+    });
+    dispatch({
+      type: CLEAR_ERRORS
+    })
+  }
+}
+
+export const closePasswordReset = () => {
+  return function (dispatch) {
+    dispatch({
+      type: CLOSE_PASSWORD_RESET,
+    });
+    dispatch({
+      type: CLEAR_ERRORS
+    })
+  }
+}

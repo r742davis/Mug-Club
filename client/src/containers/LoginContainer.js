@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import classes from "../css/LoginContainer.module.css";
 import Register from "../components/Register";
 import Login from "../components/Login";
+import PasswordReset from "../components/PasswordReset";
 import { Redirect } from "react-router-dom";
 
 // Redux Imports
@@ -79,7 +80,7 @@ class LoginContainer extends Component {
 
   render() {
     const { isAuthenticated } = this.props.auth;
-    const { registerOpen } = this.props.auth;
+    const { registerOpen, passwordResetOpen } = this.props.auth;
 
     return (
       <div>
@@ -92,7 +93,7 @@ class LoginContainer extends Component {
                 Mug Club 🍻
               </h1>
             </div>
-            {!registerOpen && (
+            {!registerOpen && !passwordResetOpen && (
               <Login
                 onSubmit={this.onSubmit}
                 error={this.state.message}
@@ -107,6 +108,15 @@ class LoginContainer extends Component {
                 onChange={this.onChange}
               />
             )}
+
+            {passwordResetOpen && (
+              <PasswordReset 
+                error={this.state.message}
+                onChange={this.onChange}
+              />
+            )
+
+            }
           </section>
         )}
       </div>

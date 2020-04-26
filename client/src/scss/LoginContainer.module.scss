@@ -45,7 +45,7 @@
 }
 .Input {
   font-size: 1.6rem;
-  padding: 2rem 1rem 1rem 1.5rem;
+  padding: 1.5rem 1rem 1rem 1.5rem;
   display: block;
   width: 100%;
   border: none;
@@ -138,22 +138,15 @@
   transition: $transition-time;
 }
 
-/* Errors */
-.Error {
-  height: 5rem;
-  font-size: 1.5rem;
-  color: red;
-  text-align: center;
-  vertical-align: middle;
-}
-
 .Reset {
   width: 100%;
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
+  margin-top: -1.5rem;
   h2 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+    font-weight: 300;
   }
   :hover {
     color: var(--secondary);
