@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
-const crypto = require('crypto');
-const { promisify } = require('util');
+const crypto = require("crypto");
+const { promisify } = require("util");
 const config = require("config");
 const jwt = require("jsonwebtoken");
 const authorizeToken = require("../middleware/authorizeToken");
-const { transport, makeANiceEmail } = require("../mail");
+const { transporter, makeANiceEmail } = require("../mail");
 
 const User = require("../models/user.js");
 
@@ -76,27 +76,65 @@ router.post("/requestReset", async (req, res) => {
 
     // Set a reset token and expiry on that user
     const buffer = crypto.randomBytes(25);
-    const resetToken = buffer.toString('hex');
+    const resetToken = buffer.toString("hex");
     const resetTokenExpiry = Date.now() + 3600000; // 1 hour from now
 
     const updateTokens = {
       resetPasswordToken: resetToken,
       resetPasswordExpires: resetTokenExpiry,
-    }
-    const response = User.findByIdAndUpdate(
-      user._id,
-      updateTokens,
-      {
-        new: true,
+    };
+
+    User.findByIdAndUpdate(user._id, updateTokens, { new: true }).then(
+      (res) => {
+        console.log(res);
       }
-    ).then((res) => {
-      console.log(res);
-    })
+    );
+
+    // Email them that reset token
+    // Return a message on completion
+    const nodemailer = require("nodemailer");
+
+    const transporter = nodemailer.createTransport({
+      host: "smtp.mailtrap.io",
+      port: 2525,
+      auth: {
+        user: "58da07d0cd4ab9",
+        pass: "fa1eec2c3c471f",
+      },
+    });
+    const makeANiceEmail = (text) => `
+      <div className="email" style="
+        border: 1px solid black;
+        padding: 20px;
+        font-family: sans-serif;
+        line-height: 2;
+        font-size: 20px;
+      ">
+        <h2>Hello ${user.name}</h2>
+        <p>${text}</p>
+
+        <p>Richard Davis</p>
+      </div>
+      `;
+
+    const mailOptions = {
+      from: '"Mr. Pigeon" <pigeon@poo.com>',
+      to: user.email,
+      subject: "Mug Club - Your Password Reset Token",
+      html: makeANiceEmail(`Your Mug Club Password Reset Token is here!
+      \n\n
+      <a href="${process.env.FRONTEND_URL}/reset?resetToken=${resetToken}">Click Here to Reset</a>`),
+    };
+
+    transporter.sendMail(mailOptions, function (error, response) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log(`Message sent to: ${user.email}`);
+      }
+      transporter.close();
+    });
   });
-  
-  
-  // Email them that reset token
-  // Return a message on completion
 });
 
 module.exports = router;

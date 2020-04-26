@@ -1,13 +1,22 @@
 const nodemailer = require('nodemailer');
 
-const transport = nodemailer.createTransport({
-  host: process.env.MAIL_HOST,
-  port: process.env.MAIL_PORT,
+const transporter = nodemailer.createTransport({
+  host: "smtp.mailtrap.io",
+  port: 2525,
   auth: {
-    user: process.env.MAIL_USER,
-    pass: process.env.MAIL_PASS,
-  },
-})
+    user: "58da07d0cd4ab9",
+    pass: "fa1eec2c3c471f"
+  }
+});
+
+// const transport = nodemailer.createTransport({
+//   host: process.env.MAIL_HOST,
+//   port: process.env.MAIL_PORT,
+//   auth: {
+//     user: process.env.MAIL_USER,
+//     pass: process.env.MAIL_PASS,
+//   },
+// })
 
 const makeANiceEmail = text => `
   <div className="email" style="
@@ -24,5 +33,5 @@ const makeANiceEmail = text => `
   </div>
   `;
 
-exports.transport = transport;
+exports.transport = transporter;
 exports.makeANiceEmail = makeANiceEmail;
