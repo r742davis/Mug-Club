@@ -15,11 +15,13 @@ const actions = {
   openModal,
   deleteCustomer,
 };
-const mapStateToProps = (state) => ({
-  customers: state.customers.customers,
-  loading: state.customers.loading,
-  auth: state.auth,
-});
+const mapStateToProps = ({ auth, customers: { customers, loading } }) => {
+  return {
+    customers: customers,
+    loading: loading,
+    auth: auth,
+  };
+};
 const uniqid = require("uniqid");
 
 class Search extends Component {
@@ -76,10 +78,7 @@ class Search extends Component {
     let filteredCustomers;
     if (customers && search) {
       if (loading) return <h2>Loading...</h2>;
-      filteredCustomers = filterCustomers(
-        customers,
-        search
-      );
+      filteredCustomers = filterCustomers(customers, search);
     }
 
     const mappedCustomers = filteredCustomers

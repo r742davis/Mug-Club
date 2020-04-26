@@ -5,10 +5,10 @@ import { connect } from "react-redux";
 const actions = {};
 const mapStateToProps = (state) => ({});
 
-const ErrorMessage = (props) => (
+const ErrorMessage = ({ error }) => (
   <>
     <div>
-      <h3 className={classes.Error}>{props.error}</h3>
+      <h3 className={classes.Error}>{error}</h3>
     </div>
   </>
 );

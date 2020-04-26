@@ -11,9 +11,9 @@ import {
   Redirect,
 } from "react-router-dom";
 import { connect } from "react-redux";
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-  isAuthenticated: state.auth.isAuthenticated,
+const mapStateToProps = ({ auth }) => ({
+  auth: auth,
+  isAuthenticated: auth.isAuthenticated,
 });
 
 const Routing = (props) => {
