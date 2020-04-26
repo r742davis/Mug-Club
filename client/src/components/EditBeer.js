@@ -17,8 +17,8 @@ const actions = {
   updateBeer,
   fetchBeers,
 };
-const mapStateToProps = (state) => {
-  const { _id, name, type, brewery, breweryLocation, url } = state.modal.info;
+const mapStateToProps = ({ modal: { info }}) => {
+  const { _id, name, type, brewery, breweryLocation, url } = info;
   return {
     id: _id,
     name: name,
@@ -216,7 +216,7 @@ class EditBeer extends Component {
                   />
                 </div>
               </form>
-              <DeleteIcon delete={() => this.deleteBeerAlert()} />
+              <DeleteIcon delete={this.deleteBeerAlert} />
             </div>
           </div>
         </Grow>

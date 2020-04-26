@@ -3,12 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import classes from "../css/Icons.module.css";
 
-const EditIcon = (props) => {
-  return (
-    <button className={classes.EditButton} onClick={props.edit}>
-      <FontAwesomeIcon icon={faPencilAlt} />
-    </button>
-  );
-};
+const EditIcon = ({ edit }) => (
+  <button className={classes.EditButton} onClick={edit}>
+    <FontAwesomeIcon icon={faPencilAlt} />
+  </button>
+);
 
 export default EditIcon;

@@ -7,8 +7,8 @@ import EditIcon from "./EditIcon";
 
 // Redux Imports
 import { connect } from "react-redux";
-const mapStateToProps = (state) => ({
-  modalOpen: state.modal.modalOpen,
+const mapStateToProps = ({ modal: { modalOpen } }) => ({
+  modalOpen: modalOpen,
 });
 
 const Customer = (props) => {

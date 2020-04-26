@@ -21,9 +21,9 @@ const actions = {
   openNav,
   closeNav,
 };
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-  navOpen: state.modal.navOpen,
+const mapStateToProps = ({ auth, modal }) => ({
+  auth: auth,
+  navOpen: modal.navOpen,
 });
 
 class NavBar extends Component {

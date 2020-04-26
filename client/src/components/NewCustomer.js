@@ -13,8 +13,8 @@ const actions = {
   createCustomer, 
   fetchCustomers 
 };
-const mapStateToProps = (state) => ({
-  customers: state.customers.customers,
+const mapStateToProps = ({ customers: { customers } }) => ({
+  customers: customers,
 });
 
 class NewCustomer extends Component {

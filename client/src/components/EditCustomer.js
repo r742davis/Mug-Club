@@ -19,13 +19,13 @@ const actions = {
   fetchCustomers,
   updateCustomerBeers,
 };
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ modal: { info }, customers}) => {
   const {
     _id,
     name: { first, last },
     mugClub: { clubId, beers, completed },
-  } = state.modal.info;
-  const { updatedBeers } = state.customers;
+  } = info;
+  const { updatedBeers } = customers;
   return {
     first: first,
     last: last,

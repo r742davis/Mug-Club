@@ -6,9 +6,9 @@ import { connect } from "react-redux";
 import { closeModal } from "../actions/modalActions";
 import { closeNav } from "../actions/navActions";
 const actions = { closeModal, closeNav };
-const mapStateToProps = (state) => ({
-  modalOpen: state.modal.modalOpen,
-  navOpen: state.modal.navOpen,
+const mapStateToProps = ({ modal: { modalOpen, navOpen} }) => ({
+  modalOpen: modalOpen,
+  navOpen: navOpen,
 });
 
 const Backdrop = (props) => (

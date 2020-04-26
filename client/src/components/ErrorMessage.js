@@ -3,7 +3,6 @@ import classes from "../css/LoginContainer.module.css";
 
 import { connect } from "react-redux";
 const actions = {};
-const mapStateToProps = (state) => ({});
 
 const ErrorMessage = ({ error }) => (
   <>
@@ -13,4 +12,4 @@ const ErrorMessage = ({ error }) => (
   </>
 );
 
-export default connect(mapStateToProps, actions)(ErrorMessage);
+export default connect(null, actions)(ErrorMessage);

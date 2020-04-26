@@ -11,15 +11,16 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import { openModal, closeModal } from "../actions/modalActions";
 const actions = { openModal, closeModal };
-const mapStateToProps = (state) => ({
-  beers: state.beers.beers,
-  loading: state.beers.loading
+const mapStateToProps = ({ beers: { beers, loading } }) => ({
+  beers: beers,
+  loading: loading
 });
 const uniqid = require("uniqid");
 
 const BeerDisplay = (props) => {
-  const beerList = props.beers
-    ? props.beers.map((beer) => {
+  const { beers } = props;
+  const beerList = beers
+    ? beers.map((beer) => {
         return (
           <ListItem
             key={uniqid()}

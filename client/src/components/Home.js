@@ -2,7 +2,7 @@ import React from "react";
 import classes from "../css/Home.module.css";
 import LoginContainer from "../containers/LoginContainer";
 
-const home = (props) => {
+const Home = () => {
   return (
     <>
       <div className={classes.BgImage}></div>
@@ -13,4 +13,4 @@ const home = (props) => {
   );
 };
 
-export default home;
+export default Home;
