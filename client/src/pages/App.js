@@ -1,6 +1,6 @@
 import React from "react";
 import "../css/App.css";
-import Container from "../containers/Container";
+import AppContainer from "../containers/AppContainer";
 
 import { Provider } from "react-redux";
 import store from "../store";
@@ -8,7 +8,7 @@ import store from "../store";
 function App() {
   return (
     <Provider store={store}>
-      <Container />
+      <AppContainer />
     </Provider>
   );
 }

@@ -1,8 +1,8 @@
 import React from "react";
-import HomePage from "../pages/homePage";
-import SearchPage from "../pages/searchPage";
-import BeersPage from "../pages/beersPage";
-import AccountPage from "../pages/accountPage";
+import HomePage from "./homePage";
+import SearchPage from "./searchPage";
+import BeersPage from "./beersPage";
+import AccountPage from "./accountPage";
 import NavBar from "../components/NavBar";
 import {
   BrowserRouter as Router,
