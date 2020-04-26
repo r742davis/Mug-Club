@@ -9,21 +9,21 @@ const actions = {
   loadUser,
   fetchCustomers,
 };
-const mapStateToProps = (state) => ({
-  auth: state.auth,
+const mapStateToProps = ({ auth, customers: { customers } }) => ({
+  auth: auth,
+  customers: customers,
 });
 
 class SearchContainer extends Component {
-  componentDidMount = () => {
-    const { token } = this.props.auth;
-    if (token) {
-      this.props.loadUser();
-      setTimeout(this.loadDatabase, 1000);
+  componentDidMount = async () => {
+    const { token, customers } = this.props.auth;
+    if (token && !customers) {
+      await this.props.loadUser();
+      await setTimeout(this.loadDatabase(token), 1000);
     }
   };
 
-  loadDatabase = () => {
-    const { token } = this.props.auth;
+  loadDatabase = (token) => {
     if (token) {
       try {
         this.props.fetchCustomers();

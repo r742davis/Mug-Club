@@ -4,21 +4,21 @@ import { connect } from "react-redux";
 import { loadUser } from "../actions/authActions";
 import { fetchBeers } from "../actions/beerActions";
 const actions = { loadUser, fetchBeers };
-const mapStateToProps = (state) => ({
-  auth: state.auth,
+const mapStateToProps = ({ auth, beers: { beers } }) => ({
+  auth: auth,
+  beers: beers
 });
 
 class BeersContainer extends Component {
-  componentDidMount = () => {
-    const { token } = this.props.auth;
-    if (token) {
-      this.props.loadUser();
-      setTimeout(this.loadDatabase, 1000);
+  componentDidMount = async () => {
+    const { token, beers } = this.props.auth;
+    if (token && !beers) {
+      await this.props.loadUser();
+      await this.loadDatabase(token);
     }
   };
 
-  loadDatabase = () => {
-    const { token } = this.props.auth;
+  loadDatabase = (token) => {
     if (token) {
       try {
         this.props.fetchBeers();
@@ -27,8 +27,6 @@ class BeersContainer extends Component {
           "Cannot connect to database. Server may be busy or unavailable."
         );
       }
-    } else {
-      //Add error redirect to login page -> due to database not loading
     }
   };
   render() {
