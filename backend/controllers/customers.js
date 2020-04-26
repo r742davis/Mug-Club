@@ -23,18 +23,25 @@ router.post("/", authorizeToken, async (req, res) => {
   try {
     //Pulled from 'beers' collection on Mongo database
     const beerList = await Beer.find();
+    const { 
+      name: { first, last },
+      mugClub: { completed, clubId, beers },
+      username,
+      password,
+      email,
+    } = req.body;
     const newCustomer = await new Customer({
       name: {
-        first: req.body.name.first,
-        last: req.body.name.last,
+        first: first,
+        last: last,
       },
-      username: req.body.username,
-      password: req.body.password,
-      email: req.body.email,
+      username: username,
+      password: password,
+      email: email,
       mugClub: {
-        completed: req.body.mugClub.completed,
-        clubId: req.body.mugClub.clubId,
-        beers: req.body.mugClub.beers ? req.body.mugClub.beers : beerList,
+        completed: completed,
+        clubId: clubId,
+        beers: beers ? beers : beerList,
       },
     });
     const savedNewCustomer = await newCustomer.save();

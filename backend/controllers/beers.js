@@ -19,14 +19,21 @@ router.get("/", authorizeToken, async (req, res) => {
 // CREATE BEER route //
 ///////////////////////
 router.post("/", authorizeToken, async (req, res) => {
+  const { 
+    name, 
+    type, 
+    brewery, 
+    breweryLocation, 
+    url, 
+    finished } = req.body;
   try {
     const newBeer = await new Beer({
-      name: req.body.name,
-      type: req.body.type,
-      brewery: req.body.brewery,
-      breweryLocation: req.body.breweryLocation,
-      url: req.body.url,
-      finished: req.body.finished,
+      name: name,
+      type: type,
+      brewery: brewery,
+      breweryLocation: breweryLocation,
+      url: url,
+      finished: finished,
     });
     const savedNewBeer = await newBeer.save();
     return res.json(savedNewBeer);
