@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
+const crypto = require('crypto');
+const { promisify } = require('util');
 const config = require("config");
 const jwt = require("jsonwebtoken");
 const authorizeToken = require("../middleware/authorizeToken");
@@ -68,13 +70,31 @@ router.post("/requestReset", async (req, res) => {
   User.findOne({ email }).then((user) => {
     if (!user) {
       return res.status(400).json({
-        message: "Email Does Not Exist - Please Enter Valid Email",
+        message: `No such user found for email ${user.email}`,
       });
     }
-    console.log(user);
+
+    // Set a reset token and expiry on that user
+    const buffer = crypto.randomBytes(25);
+    const resetToken = buffer.toString('hex');
+    const resetTokenExpiry = Date.now() + 3600000; // 1 hour from now
+
+    const updateTokens = {
+      resetPasswordToken: resetToken,
+      resetPasswordExpires: resetTokenExpiry,
+    }
+    const response = User.findByIdAndUpdate(
+      user._id,
+      updateTokens,
+      {
+        new: true,
+      }
+    ).then((res) => {
+      console.log(res);
+    })
   });
-  // Compare the user's email with the submitted email
-  // Set a reset token and expiry on that user
+  
+  
   // Email them that reset token
   // Return a message on completion
 });
