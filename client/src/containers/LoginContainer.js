@@ -34,14 +34,18 @@ class LoginContainer extends Component {
     error: PropTypes.object.isRequired,
     clearErrors: PropTypes.func.isRequired,
     login: PropTypes.func.isRequired,
-    register: PropTypes.func.isRequired
+    register: PropTypes.func.isRequired,
   };
 
   componentDidUpdate(prevProps) {
     const { error } = this.props;
     if (error !== prevProps.error) {
       //Check for login/register error
-      if (error.id === "LOGIN_FAIL" || error.id === "REGISTER_FAIL" ) {
+      if (
+        error.id === "LOGIN_FAIL" ||
+        error.id === "REGISTER_FAIL" ||
+        error.id === "RESET_PASSWORD_FAIL"
+      ) {
         this.setState({ message: error.message.message });
       } else {
         this.setState({ message: null });
@@ -53,7 +57,7 @@ class LoginContainer extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  //-- Submit for Login and Register
+  //-- Submit for Login, Register, and Password Reset
   onSubmit = (e) => {
     e.preventDefault();
     const { email, password } = this.state;
@@ -84,7 +88,7 @@ class LoginContainer extends Component {
     const { email } = this.state;
     this.props.sendReset(email);
     console.log(email);
-  }
+  };
 
   render() {
     const { isAuthenticated } = this.props.auth;
@@ -97,9 +101,7 @@ class LoginContainer extends Component {
           <section className={classes.Container}>
             <div className={classes.Title}>
               <h2>Welcome to</h2>
-              <h1>
-                Mug Club 🍻
-              </h1>
+              <h1>Mug Club 🍻</h1>
             </div>
             {!registerOpen && !passwordResetOpen && (
               <Login
@@ -118,14 +120,12 @@ class LoginContainer extends Component {
             )}
 
             {passwordResetOpen && (
-              <PasswordReset 
+              <PasswordReset
                 error={this.state.message}
                 onChange={this.onChange}
                 onSubmit={this.onSubmitReset}
               />
-            )
-
-            }
+            )}
           </section>
         )}
       </div>
