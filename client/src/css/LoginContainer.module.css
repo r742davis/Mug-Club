@@ -140,3 +140,14 @@
   color: red;
   text-align: center;
   vertical-align: middle; }
+
+.Reset {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem; }
+  .Reset h2 {
+    font-size: 1.4rem; }
+  .Reset :hover {
+    color: var(--secondary);
+    cursor: pointer; }

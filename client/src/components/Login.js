@@ -36,6 +36,9 @@ const Login = (props) => (
             Password
           </label>
         </div>
+        <div className={classes.Reset}>
+          <h2>Forgot Password?</h2>
+        </div>
         <div className={classes.ButtonContainer}>
           <button type="submit" name="login" className={classes.Button}>
             Login
