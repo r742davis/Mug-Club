@@ -18,7 +18,7 @@ const mapStateToProps = ({ auth }) => ({
 
 const Routing = (props) => {
   const urlName = "";
-  const { token, isAuthenticated } = props.auth;
+  const { token, isAuthenticated, resetPassword } = props.auth;
 
   return (
     <>
@@ -41,6 +41,9 @@ const Routing = (props) => {
             <Route path={`${urlName}/account`}>
               <AccountPage />
             </Route>
+            {/* <Route path={`${urlName}/resetPassword`}>
+              <AccountPage />
+            </Route> */}
           </Switch>
         </div>
       </Router>

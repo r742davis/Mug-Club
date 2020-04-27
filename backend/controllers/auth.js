@@ -66,14 +66,19 @@ router.get("/user", authorizeToken, (req, res) => {
 //POST Request Password Reset
 router.post("/requestReset", async (req, res) => {
   const { email } = req.body;
+  // res.status = 200;
+  // res.statusMessage = "Request Received! Yoooooo boy";
+  
   // Find user, check if they are real
   User.findOne({ email }).then((user) => {
     if (!user) {
       return res.status(400).json({
-        message: `No such user found for email ${user.email}`,
+        message: `No such user found for email`,
       });
     }
-
+    res.status(200).json({
+      message: "Email was Sent! Woooo!"
+    })
     // Set a reset token and expiry on that user
     const buffer = crypto.randomBytes(25);
     const resetToken = buffer.toString("hex");
@@ -84,16 +89,11 @@ router.post("/requestReset", async (req, res) => {
       resetPasswordExpires: resetTokenExpiry,
     };
 
-    User.findByIdAndUpdate(user._id, updateTokens, { new: true }).then(
-      (res) => {
-        console.log(res);
-      }
-    );
+    User.findByIdAndUpdate(user._id, updateTokens, { new: true })
 
     // Email them that reset token
     // Return a message on completion
     const nodemailer = require("nodemailer");
-
     const transporter = nodemailer.createTransport({
       host: "smtp.mailtrap.io",
       port: 2525,
@@ -126,15 +126,13 @@ router.post("/requestReset", async (req, res) => {
       <a href="${process.env.FRONTEND_URL}/reset?resetToken=${resetToken}">Click Here to Reset</a>`),
     };
 
-    transporter.sendMail(mailOptions, function (error, response) {
+    transporter.sendMail(mailOptions, function (error, res) {
       if (error) {
         console.log(error);
-      } else {
-        console.log(`Message sent to: ${user.email}`);
       }
       transporter.close();
     });
-  });
+  }).catch(err => console.log(err));
 });
 
 router.post("/resetPassword", (req, res) => {

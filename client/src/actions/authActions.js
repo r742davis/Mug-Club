@@ -15,6 +15,7 @@ import {
   CLOSE_REGISTER,
   OPEN_PASSWORD_RESET,
   CLOSE_PASSWORD_RESET,
+  SEND_EMAIL_SUCCESS,
   CLEAR_ERRORS,
 } from "./action-types";
 
@@ -120,10 +121,24 @@ export const login = ({ email, password }) => (dispatch) => {
 
 export const sendReset = (email) => (dispatch) => {
   const userEmail = { email: email }
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
   axios.post(
     URL + "auth/requestReset",
-    userEmail
-  ).catch((err) => {
+    userEmail,
+    config
+  )
+  .then((res) => {
+    console.log(res)
+    dispatch({
+      type: SEND_EMAIL_SUCCESS,
+      payload: res.data
+    })
+  })
+  .catch((err) => {
     dispatch(
       returnErrors(
         err.response.data, 

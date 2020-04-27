@@ -11,6 +11,7 @@ import {
   CLOSE_REGISTER,
   OPEN_PASSWORD_RESET,
   CLOSE_PASSWORD_RESET,
+  SEND_EMAIL_SUCCESS,
 } from "../actions/action-types";
 
 const initialState = {
@@ -20,6 +21,7 @@ const initialState = {
   user: null,
   registerOpen: false,
   passwordResetOpen: false,
+  successMessage: null,
 };
 
 export default function (state = initialState, action) {
@@ -77,6 +79,11 @@ export default function (state = initialState, action) {
         ...state,
         passwordResetOpen: false,
       };
+      case SEND_EMAIL_SUCCESS:
+          return {
+            ...state,
+            successMessage: action.payload
+          }
     default:
       return state;
   }

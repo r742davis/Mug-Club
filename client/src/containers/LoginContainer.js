@@ -27,6 +27,7 @@ class LoginContainer extends Component {
     email: "",
     password: "",
     message: null,
+    successMessage: null
   };
 
   static propTypes = {
@@ -39,6 +40,7 @@ class LoginContainer extends Component {
 
   componentDidUpdate(prevProps) {
     const { error } = this.props;
+    const { successMessage } = this.props.auth;
     if (error !== prevProps.error) {
       //Check for login/register error
       if (
@@ -51,6 +53,11 @@ class LoginContainer extends Component {
         this.setState({ message: null });
       }
     }
+    // if (successMessage) {
+
+    //     this.setState({ successMessage: successMessage.message })
+      
+    // }
   }
 
   onChange = (e) => {
@@ -124,6 +131,7 @@ class LoginContainer extends Component {
                 error={this.state.message}
                 onChange={this.onChange}
                 onSubmit={this.onSubmitReset}
+                message={this.state.successMessage}
               />
             )}
           </section>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import classes from "../css/LoginContainer.module.css";
 import ErrorMessage from "./ErrorMessage";
+import SuccessMessage from "./SuccessMessage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
@@ -13,6 +14,7 @@ const PasswordReset = (props) => {
       <form onSubmit={props.onSubmit}>
         <div className={classes.LoginContainer}>
           {props.error && <ErrorMessage error={props.error} />}
+          {props.message && <SuccessMessage message={props.message} />}
           <div className={classes.Group}>
             <input
               type="email"
