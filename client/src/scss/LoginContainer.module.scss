@@ -50,7 +50,7 @@
 }
 .Input {
   font-size: 1.6rem;
-  padding: 1.5rem 1rem 1rem 1.5rem;
+  padding: 1.5rem 1rem 1.5rem 1.5rem;
   display: block;
   width: 100%;
   border: none;
@@ -62,6 +62,9 @@
     outline: none;
     border: 1px solid var(--secondary);
     transition: $transition-time;
+  }
+  &:valid {
+    border: 1px solid var(--secondary);
   }
 }
 

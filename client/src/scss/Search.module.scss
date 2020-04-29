@@ -31,19 +31,24 @@
 }
 .Input {
   font-size: 1.6rem;
-  padding: 2rem 1rem 1rem 1rem;
+  padding: 1.5rem 1rem 1.5rem 1.5rem;
   display: block;
   width: 100%;
   max-width: 500px;
   border: none;
   background: white;
   border-bottom: 1px solid var(--input-color);
-  border: 2px solid var(--input-border);
+  border: 1px solid var(--input-border);
   -webkit-appearance: none;
   -webkit-border-radius: 0.5rem;
   outline-style: none;
   &:focus {
     outline: none;
+    border: 1px solid var(--secondary);
+    transition: $transition-time;
+  }
+  &:valid {
+    border: 1px solid var(--secondary);
   }
   @include respond-to('small') {
     padding-top: 1rem;
@@ -66,10 +71,7 @@
     font-size: 1.2rem;
   }
 }
-.Input:focus {
-  border: 2px solid var(--secondary);
-  transition: $transition-time;
-}
+
 .Input:focus ~ .Label,
 .Input:valid ~ .Label  {
   top: -0.5rem;

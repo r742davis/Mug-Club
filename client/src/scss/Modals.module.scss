@@ -65,21 +65,21 @@
 }
 .Input {
   font-size: 2rem;
-  padding: 2rem 1rem 1rem 1.25rem;
+  padding: 1.5rem 1rem 1rem 1.5rem;
   display: block;
   width: 100%;
   border: none;
   background: var(--primary);
-  border: 2px solid var(--input-border);
+  border: 1px solid var(--input-border);
   -webkit-appearance: none;
   -webkit-border-radius: 0.5rem;
+  &:valid {
+    border: 1px solid var(--secondary);
+  }
   @include respond-to('small') {
     padding: 1rem;
     font-size: 1rem;
 
-  }
-  &:focus {
-    outline: none;
   }
 }
 
@@ -118,7 +118,7 @@
   position: relative;
   width: 100%;
   border: none;
-  border: 2px solid var(--input-border);
+  border: 1px solid var(--input-border);
   padding-left: 1.25rem;
   -webkit-appearance: none;
   -webkit-border-radius: 0.5rem;
@@ -133,7 +133,8 @@ option {
 }
 .Input:focus,
 .Select:focus {
-  border: 2px solid var(--secondary);
+  outline: none;
+  border: 1px solid var(--secondary);
   transition: calc(3 * #{$transition-time});
 }
 .Input:focus ~ .Label,
