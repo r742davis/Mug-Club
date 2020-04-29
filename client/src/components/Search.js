@@ -31,6 +31,8 @@ class Search extends Component {
 
   static propTypes = {
     customers: PropTypes.array.isRequired,
+    loading: PropTypes.bool.isRequired,
+    auth: PropTypes.object.isRequired,
   };
 
   updateSearch = (event) => {
@@ -76,8 +78,7 @@ class Search extends Component {
     const customers = this.props.customers;
     const loading = this.props.loading;
     let filteredCustomers;
-    if (customers && search) {
-      if (loading) return <h2>Loading...</h2>;
+    if (customers && search && !loading) {
       filteredCustomers = filterCustomers(customers, search);
     }
 
