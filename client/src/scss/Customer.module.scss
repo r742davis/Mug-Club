@@ -4,10 +4,9 @@
 .CustomerCard {
   width: 100%;
   margin-top: 2rem;
-  margin-bottom: 1rem;
+  border: 1px solid var(--input-border);
   border-radius: $border-radius;
   background: var(--primary);
-  box-shadow: $box-shadow;
   transition: $transition-time;
   & h2 {
     padding-left: 2rem;
@@ -16,7 +15,6 @@
     font-weight: 500;
     @include respond-to('small') {
       font-size: 1.4rem;
-      
     }
   }
 }

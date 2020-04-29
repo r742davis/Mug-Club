@@ -11,10 +11,9 @@
 .CustomerCard {
   width: 100%;
   margin-top: 2rem;
-  margin-bottom: 1rem;
+  border: 1px solid var(--input-border);
   border-radius: 0.5rem;
   background: var(--primary);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   transition: 0.2s; }
   .CustomerCard h2 {
     padding-left: 2rem;
