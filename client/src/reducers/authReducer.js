@@ -12,6 +12,7 @@ import {
   OPEN_PASSWORD_RESET,
   CLOSE_PASSWORD_RESET,
   SEND_EMAIL_SUCCESS,
+  CLEAR_SUCCESS_MESSAGE,
 } from "../actions/action-types";
 
 const initialState = {
@@ -39,13 +40,18 @@ export default function (state = initialState, action) {
         user: action.payload,
       };
     case LOGIN_SUCCESS:
-    case REGISTER_SUCCESS:
+      // case REGISTER_SUCCESS:
       localStorage.setItem("token", action.payload.token);
       return {
         ...state,
         ...action.payload,
         isAuthenticated: true,
         isLoading: false,
+      };
+    case REGISTER_SUCCESS:
+      return {
+        ...state,
+        successMessage: action.payload.successMessage,
       };
     case AUTH_ERROR:
     case LOGIN_FAIL:
@@ -79,11 +85,11 @@ export default function (state = initialState, action) {
         ...state,
         passwordResetOpen: false,
       };
-      case SEND_EMAIL_SUCCESS:
-          return {
-            ...state,
-            successMessage: action.payload
-          }
+    case SEND_EMAIL_SUCCESS:
+      return {
+        ...state,
+        successMessage: action.payload,
+      };
     default:
       return state;
   }

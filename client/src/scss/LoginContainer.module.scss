@@ -37,6 +37,11 @@
   padding-right: 2rem;
   padding-top: 2rem;
   transition: $transition-time;
+  h1 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
 }
 .Group {
   position: relative;
@@ -50,13 +55,13 @@
   width: 100%;
   border: none;
   background: var(--primary);
-  border-bottom: 1px solid var(--input-color);
   -webkit-appearance: none;
   -webkit-border-radius: 0.5rem;
-  border: 2px solid var(--input-border);
+  border: 1px solid var(--input-border);
   &:focus {
     outline: none;
-    border: 2px solid var(--secondary);
+    border: 1px solid var(--secondary);
+    transition: $transition-time;
   }
 }
 
@@ -145,7 +150,7 @@
   margin-bottom: 2rem;
   margin-top: -1.5rem;
   h2 {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 300;
   }
   :hover {

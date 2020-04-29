@@ -10,8 +10,10 @@ const Login = (props) => (
   <>
     <form onSubmit={props.onSubmit}>
       <div className={classes.LoginContainer}>
-
-        {props.error && <ErrorMessage error={props.error}/>}
+        {/* <div>
+          <h1>Please Log In or Register</h1>
+        </div> */}
+        {props.error && <ErrorMessage error={props.error} />}
         <div className={classes.Group}>
           <input
             type="text"

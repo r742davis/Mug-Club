@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import classes from "../css/LoginContainer.module.css";
 import Register from "../components/Register";
 import Login from "../components/Login";
@@ -16,31 +16,32 @@ const actions = {
   sendReset,
   clearErrors,
 };
-const mapStateToProps = ({ auth, error }) => ({
+const mapStateToProps = ({ auth, error, success }) => ({
   auth: auth,
   error: error,
+  success: success
 });
 
-class LoginContainer extends Component {
+class LoginContainer extends React.Component {
   state = {
     name: "",
     email: "",
     password: "",
     message: null,
-    successMessage: null
+    success: null
   };
 
   static propTypes = {
     auth: PropTypes.object.isRequired,
     error: PropTypes.object.isRequired,
+    success: PropTypes.object.isRequired,
     clearErrors: PropTypes.func.isRequired,
     login: PropTypes.func.isRequired,
     register: PropTypes.func.isRequired,
   };
 
   componentDidUpdate(prevProps) {
-    const { error } = this.props;
-    const { successMessage } = this.props.auth;
+    const { error, success } = this.props;
     if (error !== prevProps.error) {
       //Check for login/register error
       if (
@@ -53,11 +54,14 @@ class LoginContainer extends Component {
         this.setState({ message: null });
       }
     }
-    // if (successMessage) {
-
-    //     this.setState({ successMessage: successMessage.message })
-      
-    // }
+    if (success !== prevProps.success) {
+      if (success.origin === "REGISTER") {
+        this.setState({ success: success.message })  
+        console.log(success.message)
+      } else {
+        this.setState({ success: null })
+      }
+    }
   }
 
   onChange = (e) => {
@@ -85,8 +89,9 @@ class LoginContainer extends Component {
       email,
       password,
     };
+    const message = "User Successfully Created! Please Login";
     //Attempt to register
-    this.props.register(newUser);
+    this.props.register(newUser, message);
     this.props.clearErrors();
   };
 
@@ -113,25 +118,27 @@ class LoginContainer extends Component {
             {!registerOpen && !passwordResetOpen && (
               <Login
                 onSubmit={this.onSubmit}
-                error={this.state.message}
                 onChange={this.onChange}
+                error={this.state.message}
+                success={this.state.success}
               />
             )}
 
             {registerOpen && (
               <Register
                 onSubmit={this.onSubmitReg}
-                error={this.state.message}
                 onChange={this.onChange}
+                error={this.state.message}
+                success={this.state.success}
               />
             )}
 
             {passwordResetOpen && (
               <PasswordReset
-                error={this.state.message}
                 onChange={this.onChange}
                 onSubmit={this.onSubmitReset}
-                message={this.state.successMessage}
+                error={this.state.message}
+                success={this.state.success}
               />
             )}
           </section>

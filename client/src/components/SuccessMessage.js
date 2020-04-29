@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 const SuccessMessage = (props) => (
   <>
     <div className={classes.ErrorContainer}>
-      <h3 className={classes.Error}>{props.message}</h3>
+      <h3 className={classes.Error}>{props.success}</h3>
     </div>
   </>
 );

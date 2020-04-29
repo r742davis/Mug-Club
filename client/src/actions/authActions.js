@@ -1,5 +1,6 @@
 import axios from "axios";
 import { returnErrors } from "./errorActions";
+import { returnSuccessMessage } from "./successActions";
 
 //Action types
 import {
@@ -17,11 +18,14 @@ import {
   CLOSE_PASSWORD_RESET,
   SEND_EMAIL_SUCCESS,
   CLEAR_ERRORS,
+  GET_SUCCESS_MESSAGE,
+  CLEAR_SUCCESS_MESSAGE,
 } from "./action-types";
 
-const URL = process.env.NODE_ENV === "production" 
-? "https://bearmugclub.herokuapp.com/api/"
-: "http://localhost:5000/api/";
+const URL =
+  process.env.NODE_ENV === "production"
+    ? "https://bearmugclub.herokuapp.com/api/"
+    : "http://localhost:5000/api/";
 
 //Check for token and then load the user
 export const loadUser = () => (dispatch, getState) => {
@@ -29,8 +33,7 @@ export const loadUser = () => (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
 
   axios
-    .get( URL + "auth/user", tokenConfig(getState)
-    )
+    .get(URL + "auth/user", tokenConfig(getState))
     .then((res) =>
       dispatch({
         type: USER_LOADED,
@@ -47,7 +50,7 @@ export const loadUser = () => (dispatch, getState) => {
 };
 
 //Register user
-export const register = ({ name, email, password }) => (dispatch) => {
+export const register = ({ name, email, password }, message) => (dispatch) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -58,16 +61,15 @@ export const register = ({ name, email, password }) => (dispatch) => {
   const body = JSON.stringify({ name, email, password });
 
   axios
-    .post(
-      URL + "users",
-      body,
-      config
-    )
+    .post(URL + "users", body, config)
     .then((res) =>
       dispatch({
         type: REGISTER_SUCCESS,
         payload: res.data,
-      })
+      }),
+      dispatch(
+        returnSuccessMessage(message, "REGISTER")
+      )
     )
     //For an error with registration
     .catch((err) => {
@@ -97,11 +99,7 @@ export const login = ({ email, password }) => (dispatch) => {
   //Request body
   const body = JSON.stringify({ email, password });
   axios
-    .post(
-      URL + "auth",
-      body,
-      config
-    )
+    .post(URL + "auth", body, config)
     .then((res) => {
       dispatch({
         type: LOGIN_SUCCESS,
@@ -120,36 +118,33 @@ export const login = ({ email, password }) => (dispatch) => {
 };
 
 export const sendReset = (email) => (dispatch) => {
-  const userEmail = { email: email }
+  const userEmail = { email: email };
   const config = {
     headers: {
       "Content-Type": "application/json",
     },
   };
-  axios.post(
-    URL + "auth/requestReset",
-    userEmail,
-    config
-  )
-  .then((res) => {
-    console.log(res)
-    dispatch({
-      type: SEND_EMAIL_SUCCESS,
-      payload: res.data
+  axios
+    .post(URL + "auth/requestReset", userEmail, config)
+    .then((res) => {
+      console.log(res);
+      dispatch({
+        type: SEND_EMAIL_SUCCESS,
+        payload: res.data,
+      });
     })
-  })
-  .catch((err) => {
-    dispatch(
-      returnErrors(
-        err.response.data, 
-        err.response.status, 
-        "RESET_PASSWORD_FAIL"
-      )
-    );
-    // dispatch({
-    //   type: LOGIN_FAIL,
-    // });
-  });
+    .catch((err) => {
+      dispatch(
+        returnErrors(
+          err.response.data,
+          err.response.status,
+          "RESET_PASSWORD_FAIL"
+        )
+      );
+      // dispatch({
+      //   type: LOGIN_FAIL,
+      // });
+    });
 
   //Add redux store dispatches after successful firig of sendReset
 };
@@ -215,6 +210,14 @@ export const closePasswordReset = () => {
     });
     dispatch({
       type: CLEAR_ERRORS,
+    });
+  };
+};
+
+export const clearSuccessMessage = () => {
+  return function (dispatch) {
+    dispatch({
+      type: CLEAR_SUCCESS_MESSAGE,
     });
   };
 };
