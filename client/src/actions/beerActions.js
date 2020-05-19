@@ -54,9 +54,11 @@ export const createBeer = newBeer => (dispatch, getState) => {
     );
 };
 
-export const deleteBeer = (id, role) => (dispatch, getState) => {
-  axios
-    .delete(URL + id, tokenConfig(getState), data: role) 
+export const deleteBeer = (id, role) => async (dispatch, getState) => {
+  const config = await tokenConfig(getState);
+  const headers = config.headers;
+  await axios
+    .delete(URL+id, {headers: headers, data: { role: role }}) 
     .then(res =>
       dispatch({
         type: DELETE_BEER,

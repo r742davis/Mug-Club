@@ -149,7 +149,7 @@ export const sendReset = (email) => (dispatch) => {
 };
 
 // Setup config, headers, and token
-export const tokenConfig = (getState, role) => {
+export const tokenConfig = (getState) => {
   //Get token from local storage
   const token = getState().auth.token;
 
