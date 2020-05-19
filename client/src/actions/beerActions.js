@@ -56,7 +56,7 @@ export const createBeer = newBeer => (dispatch, getState) => {
 
 export const deleteBeer = (id, role) => (dispatch, getState) => {
   axios
-    .delete(URL + id, tokenConfig(getState, role)) 
+    .delete(URL + id, tokenConfig(getState), data: role) 
     .then(res =>
       dispatch({
         type: DELETE_BEER,

@@ -158,8 +158,7 @@ export const tokenConfig = (getState, role) => {
     headers: {
       "Content-type": "application/json",
       Authorization: `Bearer ${token}`,
-    },
-    role: role,
+    }
   };
 
   //If token, add to headers
