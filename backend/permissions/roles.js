@@ -6,5 +6,4 @@ const ROLE = {
 
 module.exports = {
   ROLE: ROLE,
-  
 }
