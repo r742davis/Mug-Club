@@ -98,16 +98,17 @@ class EditBeer extends Component {
 
   deleteBeerAlert = () => {
     const { name, user, id } = this.props;
-    console.log(user);
-    if ( user.role !== "ADMIN") {
-      swal({
-        text: `You do not have permission to delete ${name}`,
-        icon: "error",
-        buttons: {
-          confirm: true,
-        }
-      })
-    } else {
+    console.log(user.role)
+    // if ( user.role !== "ADMIN") {
+    //   swal({
+    //     text: `You do not have permission to delete ${name}`,
+    //     icon: "error",
+    //     buttons: {
+    //       confirm: true,
+    //     }
+    //   })
+    // } else {
+
       swal({
         title: `Delete ${name}?`,
         text: `Do you really want to delete this beer?`,
@@ -119,7 +120,7 @@ class EditBeer extends Component {
           swal(`Hasta la Vista! ${name} has been deleted!`, {
             icon: "success",
           });
-          await this.props.deleteBeer(id);
+          await this.props.deleteBeer(id, user.role);
           await this.props.fetchBeers();
           this.props.closeModal();
         } else {
@@ -127,7 +128,7 @@ class EditBeer extends Component {
         }
       });
 
-    }
+    // }
 
   };
 

@@ -61,7 +61,8 @@ router.get("/:id", authorizeToken, async (req, res) => {
 
 // DELETE BEER route //
 ///////////////////////
-router.delete("/:id", authorizeToken, authRole(ROLE.PUBLIC), async (req, res) => {
+router.delete("/:id", authorizeToken, async (req, res) => {
+  console.log(req.data)
   try {
     const findBeer = await Beer.findById(req.params.id);
     const foundBeer = await findBeer.remove();
