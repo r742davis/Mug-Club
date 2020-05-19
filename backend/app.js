@@ -5,8 +5,8 @@ const app = express();
 const methodOverride = require("method-override");
 const cors = require("cors");
 const path = require("path");
-const session = require("express-session");
-const dotenv = require("dotenv");
+// const dotenv = require("dotenv");
+const { ROLE } = require("./permissions/roles.js");
 
 //  Middleware  //
 //--------------//
@@ -20,11 +20,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 
-// app.use(session({
-//   secret: "Danny Goatee",
-//   resave: false,
-//   saveUninitialized: false
-// }))
 //  Production vs. Local React Environment //
 // -----------------------------------------//
 if (process.env.NODE_ENV === "development") {
@@ -32,7 +27,6 @@ if (process.env.NODE_ENV === "development") {
 } else {
   app.use(express.static(path.join(__dirname, "/build")));
 }
-
 
 //  Customers Controller  //
 //------------------------//

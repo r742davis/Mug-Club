@@ -17,7 +17,7 @@ const actions = {
   updateBeer,
   fetchBeers,
 };
-const mapStateToProps = ({ modal: { info }}) => {
+const mapStateToProps = ({ modal: { info }, auth: { user } }) => {
   const { _id, name, type, brewery, breweryLocation, url } = info;
   return {
     id: _id,
@@ -26,11 +26,18 @@ const mapStateToProps = ({ modal: { info }}) => {
     brewery: brewery,
     breweryLocation: breweryLocation,
     url: url,
+    user: user,
   };
 };
 
 class EditBeer extends Component {
-  state = {};
+  state = {
+    name: "",
+    type: "",
+    brewery: "",
+    breweryLocation: "",
+    url: "",
+  };
 
   componentDidMount = () => {
     console.log("Edit Beer Modal Mounted");
@@ -90,24 +97,38 @@ class EditBeer extends Component {
   };
 
   deleteBeerAlert = () => {
-    swal({
-      title: `Delete ${this.props.name}?`,
-      text: `Do you really want to delete this beer?`,
-      buttons: true,
-      icon: "warning",
-      dangerMode: true,
-    }).then(async (willDelete) => {
-      if (willDelete) {
-        swal(`Hasta la Vista! ${this.props.name} has been deleted!`, {
-          icon: "success",
-        });
-        await this.props.deleteBeer(this.props.id);
-        await this.props.fetchBeers();
-        this.props.closeModal();
-      } else {
-        swal(`Today is your luck day, you sweet sweet miracle drink!`);
-      }
-    });
+    const { name, user, id } = this.props;
+    console.log(user);
+    if ( user.role !== "ADMIN") {
+      swal({
+        text: `You do not have permission to delete ${name}`,
+        icon: "error",
+        buttons: {
+          confirm: true,
+        }
+      })
+    } else {
+      swal({
+        title: `Delete ${name}?`,
+        text: `Do you really want to delete this beer?`,
+        buttons: true,
+        icon: "warning",
+        dangerMode: true,
+      }).then(async (willDelete) => {
+        if (willDelete) {
+          swal(`Hasta la Vista! ${name} has been deleted!`, {
+            icon: "success",
+          });
+          await this.props.deleteBeer(id);
+          await this.props.fetchBeers();
+          this.props.closeModal();
+        } else {
+          swal(`Today is your luck day, you sweet sweet miracle drink!`);
+        }
+      });
+
+    }
+
   };
 
   render() {

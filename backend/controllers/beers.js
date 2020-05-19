@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Beer = require("../models/beer.js");
 const authorizeToken = require("../middleware/authorizeToken");
+const { authRole } = require("../permissions/authRole");
+const { ROLE } = require("../permissions/roles")
 
 // GET ALL BEERS route //
 ////////////////////////
@@ -45,7 +47,7 @@ router.post("/", authorizeToken, async (req, res) => {
 });
 
 // SHOW SINGLE BEER route //
-////////////////
+////////////////////////////
 router.get("/:id", authorizeToken, async (req, res) => {
   try {
     const foundBeer = await Beer.findById(req.params.id);
@@ -58,8 +60,8 @@ router.get("/:id", authorizeToken, async (req, res) => {
 });
 
 // DELETE BEER route //
-//////////////////
-router.delete("/:id", authorizeToken, async (req, res) => {
+///////////////////////
+router.delete("/:id", authorizeToken, authRole(ROLE.PUBLIC), async (req, res) => {
   try {
     const findBeer = await Beer.findById(req.params.id);
     const foundBeer = await findBeer.remove();
@@ -74,7 +76,7 @@ router.delete("/:id", authorizeToken, async (req, res) => {
 });
 
 // UPDATE BEER route //
-//////////////////
+///////////////////////
 router.put("/:id", authorizeToken, async (req, res) => {
   try {
     const updateBeer = await Beer.findByIdAndUpdate(req.params.id, req.body, {
