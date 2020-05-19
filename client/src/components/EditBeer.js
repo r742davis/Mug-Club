@@ -98,7 +98,7 @@ class EditBeer extends Component {
 
   deleteBeerAlert = () => {
     const { name, user, id } = this.props;
-    console.log(user.role)
+    console.log(user)
     // if ( user.role !== "ADMIN") {
     //   swal({
     //     text: `You do not have permission to delete ${name}`,

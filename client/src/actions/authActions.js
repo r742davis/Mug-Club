@@ -62,14 +62,13 @@ export const register = ({ name, email, password }, message) => (dispatch) => {
 
   axios
     .post(URL + "users", body, config)
-    .then((res) =>
-      dispatch({
-        type: REGISTER_SUCCESS,
-        payload: res.data,
-      }),
-      dispatch(
-        returnSuccessMessage(message, "REGISTER")
-      )
+    .then(
+      (res) =>
+        dispatch({
+          type: REGISTER_SUCCESS,
+          payload: res.data,
+        }),
+      dispatch(returnSuccessMessage(message, "REGISTER"))
     )
     //For an error with registration
     .catch((err) => {
@@ -150,7 +149,7 @@ export const sendReset = (email) => (dispatch) => {
 };
 
 // Setup config, headers, and token
-export const tokenConfig = (getState) => {
+export const tokenConfig = (getState, role) => {
   //Get token from local storage
   const token = getState().auth.token;
 
@@ -160,6 +159,7 @@ export const tokenConfig = (getState) => {
       "Content-type": "application/json",
       Authorization: `Bearer ${token}`,
     },
+    role: role,
   };
 
   //If token, add to headers
