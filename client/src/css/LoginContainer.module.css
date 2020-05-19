@@ -106,17 +106,11 @@
   border-radius: 0.5rem;
   font-size: 2rem;
   transition: 0.2s; }
-  .Button:nth-child(1) {
-    background: black;
-    color: white; }
-    .Button:nth-child(1):hover {
-      background: var(--tertiary); }
-  .Button:nth-child(2) {
-    background: var(--secondary);
-    color: white; }
-    .Button:nth-child(2):hover {
-      background-color: var(--secondary-light);
-      color: white; }
+  .Button:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    background: #303030;
+    transition: 0.2s;
+    cursor: pointer; }
 
 .Back {
   margin-top: -0.5rem;
@@ -126,20 +120,12 @@
   background: none;
   color: black;
   border: none;
-  font-size: 4rem;
+  font-size: 5rem;
   transition: 0.2s; }
-
-.Back:hover {
-  background: white;
-  color: #ccc;
-  cursor: pointer;
-  transition: 0.2s; }
-
-.Button:hover {
-  background: white;
-  color: #ccc;
-  cursor: pointer;
-  transition: 0.2s; }
+  .Back svg:hover {
+    color: #303030;
+    transition: 0.2s;
+    cursor: pointer; }
 
 .Reset {
   width: 100%;

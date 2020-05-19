@@ -55,10 +55,10 @@ const Register = (props) => {
             Password
           </label>
         </div>
-        {/* <div>
-          <input type="radio" />
-        </div> */}
-        <button type="submit" name="register" className={classes.Button}>
+        <button 
+          type="submit" 
+          name="register" 
+          className={classes.Button}>
           Register
         </button>
         <div 
