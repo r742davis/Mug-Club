@@ -9,7 +9,7 @@ const actions = { openRegister, openPasswordReset };
 const Login = (props) => (
   <>
     <form onSubmit={props.onSubmit}>
-      <div className={classes.LoginContainer}>
+      <div className={classes.AuthContainer}>
         {props.error && <ErrorMessage error={props.error} />}
         <div className={classes.Group}>
           <input

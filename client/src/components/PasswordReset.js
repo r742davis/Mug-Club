@@ -12,7 +12,7 @@ const PasswordReset = (props) => {
   return (
     <>
       <form onSubmit={props.onSubmit}>
-        <div className={classes.LoginContainer}>
+        <div className={classes.AuthContainer}>
           {props.error && <ErrorMessage error={props.error} />}
           {props.message && <SuccessMessage message={props.message} />}
           <div className={classes.Group}>

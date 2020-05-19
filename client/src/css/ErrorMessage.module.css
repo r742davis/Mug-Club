@@ -1,10 +1,26 @@
+:root {
+  --primary: white;
+  --secondary: #00a5ff;
+  --secondary-light: #b3e4ff;
+  --tertiary: #686868;
+  --input-text: #a9a9a9;
+  --input-border: #eaeaea;
+  --beer-names: #505050;
+  --delete: #b12723; }
+
 /* Errors */
 .ErrorContainer {
-  width: 100%;
+  width: auto;
+  height: 2.5rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  border: 1px solid red;
+  border-radius: 0.5rem; }
 
 .Error {
-  height: 5rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: red; }

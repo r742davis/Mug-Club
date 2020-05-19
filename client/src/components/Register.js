@@ -13,7 +13,7 @@ const actions = { closeRegister };
 const Register = (props) => {
   return (
     <form onSubmit={(e) => props.onSubmit(e)}>
-      <div className={classes.LoginContainer}>
+      <div className={classes.AuthContainer}>
       {props.success && <SuccessMessage success={props.success}/>}
       {props.error && <ErrorMessage error={props.error}/>}
         <div className={classes.Group}>
