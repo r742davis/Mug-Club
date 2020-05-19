@@ -93,17 +93,19 @@
 }
 .ButtonContainer {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   width: 100%;
 }
 .Button {
   padding: 1rem;
   margin-bottom: 2rem;
-  width: 45%;
+  width: 100%;
   text-align: center;
   background: black;
   color: white;
   border: none;
+  border-radius: $border-radius;
   font-size: 2rem;
   transition: $transition-time;
   &:nth-child(1) {
