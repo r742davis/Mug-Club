@@ -1,12 +1,10 @@
-@import "./_mixins.scss";
 @import "./_library.scss";
 
 /* Errors */
 .ErrorContainer {
   width: auto;
-  height: 2.5rem;
   margin-bottom: 2rem;
-  padding: 2rem;
+  padding: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,6 +13,6 @@
   border-radius: $border-radius;
 }
 .Error {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: red;
 }
