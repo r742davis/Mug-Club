@@ -94,7 +94,7 @@ class NavBar extends Component {
     return (
       <>
         <Backdrop />
-        {token && Navigation}
+        {token && isAuthenticated && Navigation}
       </>
     );
   }
