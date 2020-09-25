@@ -1,9 +1,4 @@
-import {
-  OPEN_MODAL,
-  CLOSE_MODAL,
-  OPEN_NAV,
-  CLOSE_NAV,
-} from "../actions/action-types";
+import * as actionType from "../actions/actionTypes";
 
 const initialState = {
   modalType: "",
@@ -13,9 +8,9 @@ const initialState = {
   info: null,
 };
 
-export default function modalReducer(state = initialState, action) {
+const modalReducer = (state = initialState, action) => {
   switch (action.type) {
-    case OPEN_MODAL:
+    case actionType.OPEN_MODAL:
       return {
         ...state,
         modalOpen: true,
@@ -23,7 +18,7 @@ export default function modalReducer(state = initialState, action) {
         info: action.payload.data,
         error: null,
       };
-    case CLOSE_MODAL:
+    case actionType.CLOSE_MODAL:
       return {
         ...state,
         modalOpen: false,
@@ -31,13 +26,13 @@ export default function modalReducer(state = initialState, action) {
         info: null,
         error: null,
       };
-    case OPEN_NAV:
+    case actionType.OPEN_NAV:
       return {
         ...state,
         navOpen: true,
         error: null,
       };
-    case CLOSE_NAV:
+    case actionType.CLOSE_NAV:
       return {
         ...state,
         navOpen: false,
@@ -46,4 +41,6 @@ export default function modalReducer(state = initialState, action) {
     default:
       return state;
   }
-}
+};
+
+export default modalReducer;

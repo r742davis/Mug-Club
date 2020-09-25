@@ -1,10 +1,4 @@
-import {
-  FETCH_BEERS_BEGIN,
-  FETCH_BEERS_SUCCESS,
-  FETCH_BEERS_FAILURE,
-  CREATE_BEER,
-  DELETE_BEER
-} from "../actions/action-types";
+import * as actionType from "../actions/actionTypes";
 
 const initialState = {
   loading: false,
@@ -12,33 +6,33 @@ const initialState = {
   beers: null
 };
 
-export default function beerReducer(state = initialState, action) {
+const beerReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_BEERS_BEGIN:
+    case actionType.FETCH_BEERS_BEGIN:
       return {
         ...state,
         loading: true,
         error: null
       };
-    case FETCH_BEERS_SUCCESS:
+    case actionType.FETCH_BEERS_SUCCESS:
       return {
         ...state,
         loading: false,
         beers: action.payload
       };
-    case FETCH_BEERS_FAILURE:
+    case actionType.FETCH_BEERS_FAILURE:
       return {
         ...state,
         loading: false,
         error: action.payload.error,
         beers: null
       };
-    case CREATE_BEER:
+    case actionType.CREATE_BEER:
       return {
         ...state,
         beers: [...state.beers, action.payload]
       };
-    case DELETE_BEER:
+    case actionType.DELETE_BEER:
       return {
         ...state,
         beers: state.beers.filter(beer => beer._id !== action.payload)
@@ -47,3 +41,5 @@ export default function beerReducer(state = initialState, action) {
       return state;
   }
 }
+
+export default beerReducer;

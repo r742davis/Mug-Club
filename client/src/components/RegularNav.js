@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 //Redux Imports
 import { connect } from "react-redux";
-import { openModal } from "../actions/modalActions";
+import { openModal } from "../store/actions/modalActions";
 const actions = {
   openModal,
 };

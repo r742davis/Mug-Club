@@ -1,11 +1,4 @@
-import {
-  FETCH_CUSTOMERS_BEGIN,
-  FETCH_CUSTOMERS_SUCCESS,
-  FETCH_CUSTOMERS_FAILURE,
-  CREATE_CUSTOMER,
-  DELETE_CUSTOMER,
-  UPDATE_CUSTOMER_BEERS
-} from "../actions/action-types";
+import * as actionType from "../actions/actionTypes";
 
 const initialState = {
   loading: false,
@@ -15,40 +8,40 @@ const initialState = {
   updatedBeers: [],
 };
 
-export default function customerReducer(state = initialState, action) {
+const customerReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_CUSTOMERS_BEGIN:
+    case actionType.FETCH_CUSTOMERS_BEGIN:
       return {
         ...state,
         loading: true,
         error: null,
       };
-    case FETCH_CUSTOMERS_SUCCESS:
+    case actionType.FETCH_CUSTOMERS_SUCCESS:
       return {
         ...state,
         loading: false,
         customers: action.payload,
       };
-    case FETCH_CUSTOMERS_FAILURE:
+    case actionType.FETCH_CUSTOMERS_FAILURE:
       return {
         ...state,
         loading: false,
         error: action.payload.error,
         customers: null,
       };
-    case CREATE_CUSTOMER:
+    case actionType.CREATE_CUSTOMER:
       return {
         ...state,
         customers: [action.payload, ...state.customers],
       };
-    case DELETE_CUSTOMER:
+    case actionType.DELETE_CUSTOMER:
       return {
         ...state,
         customers: state.customers.filter(
           (customer) => customer._id !== action.payload
         ),
       };
-    case UPDATE_CUSTOMER_BEERS:
+    case actionType.UPDATE_CUSTOMER_BEERS:
       return {
         ...state,
         updatedBeers: action.payload,
@@ -56,4 +49,6 @@ export default function customerReducer(state = initialState, action) {
     default:
       return state;
   }
-}
+};
+
+export default customerReducer;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchBeers } from "../actions/beerActions";
-import { fetchCustomers, createCustomer } from "../actions/customerActions";
+import { fetchBeers } from "../store/actions/beerActions";
+import { fetchCustomers, createCustomer } from "../store/actions/customerActions";
 import { readString } from "react-papaparse";
 
 

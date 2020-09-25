@@ -1,10 +1,4 @@
-import {
-  FETCH_BEERS_BEGIN,
-  FETCH_BEERS_SUCCESS,
-  FETCH_BEERS_FAILURE,
-  CREATE_BEER,
-  DELETE_BEER
-} from "./action-types";
+import * as actionType from "./actionTypes";
 import axios from "axios";
 import { tokenConfig } from "./authActions";
 import { returnErrors } from "./errorActions";
@@ -27,16 +21,16 @@ export const fetchBeers = () => {
 };
 
 export const fetchBeersBegin = () => ({
-  type: FETCH_BEERS_BEGIN
+  type: actionType.FETCH_BEERS_BEGIN
 });
 
 export const fetchBeersSuccess = beers => ({
-  type: FETCH_BEERS_SUCCESS,
+  type: actionType.FETCH_BEERS_SUCCESS,
   payload: beers
 });
 
 export const fetchBeersFailure = error => ({
-  type: FETCH_BEERS_FAILURE,
+  type: actionType.FETCH_BEERS_FAILURE,
   payload: { error }
 });
 
@@ -45,7 +39,7 @@ export const createBeer = newBeer => (dispatch, getState) => {
     .post(URL, newBeer, tokenConfig(getState))
     .then(res =>
       dispatch({
-        type: CREATE_BEER,
+        type: actionType.CREATE_BEER,
         payload: res.data
       })
     )
@@ -61,7 +55,7 @@ export const deleteBeer = (id, role) => async (dispatch, getState) => {
     .delete(URL+id, {headers: headers, data: { role: role }}) 
     .then(res =>
       dispatch({
-        type: DELETE_BEER,
+        type: actionType.DELETE_BEER,
         payload: id
       })
     )

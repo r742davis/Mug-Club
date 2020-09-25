@@ -12,9 +12,9 @@ import swal from "@sweetalert/with-react";
 // Redux Imports
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { openModal } from "../actions/modalActions";
-import { openNav, closeNav } from "../actions/navActions";
-import { logout } from "../actions/authActions";
+import { openModal } from "../store/actions/modalActions";
+import { openNav, closeNav } from "../store/actions/navActions";
+import { logout } from "../store/actions/authActions";
 const actions = {
   logout,
   openModal,

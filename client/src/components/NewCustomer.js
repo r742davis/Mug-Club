@@ -6,8 +6,8 @@ import swal from "@sweetalert/with-react";
 // Redux Imports
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { closeModal } from "../actions/modalActions";
-import { createCustomer, fetchCustomers } from "../actions/customerActions";
+import { closeModal } from "../store/actions/modalActions";
+import { createCustomer, fetchCustomers } from "../store/actions/customerActions";
 const actions = { 
   closeModal, 
   createCustomer, 

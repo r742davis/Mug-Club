@@ -1,26 +1,7 @@
+import * as actionType from "./actionTypes";
 import axios from "axios";
 import { returnErrors } from "./errorActions";
 import { returnSuccessMessage } from "./successActions";
-
-//Action types
-import {
-  USER_LOADED,
-  USER_LOADING,
-  AUTH_ERROR,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
-  LOGOUT_SUCCESS,
-  REGISTER_SUCCESS,
-  REGISTER_FAIL,
-  OPEN_REGISTER,
-  CLOSE_REGISTER,
-  OPEN_PASSWORD_RESET,
-  CLOSE_PASSWORD_RESET,
-  SEND_EMAIL_SUCCESS,
-  CLEAR_ERRORS,
-  GET_SUCCESS_MESSAGE,
-  CLEAR_SUCCESS_MESSAGE,
-} from "./action-types";
 
 const URL =
   process.env.NODE_ENV === "production"
@@ -30,13 +11,13 @@ const URL =
 //Check for token and then load the user
 export const loadUser = () => (dispatch, getState) => {
   // User loading
-  dispatch({ type: USER_LOADING });
+  dispatch({ type: actionType.USER_LOADING });
 
   axios
     .get(URL + "auth/user", tokenConfig(getState))
     .then((res) =>
       dispatch({
-        type: USER_LOADED,
+        type: actionType.USER_LOADED,
         payload: res.data,
       })
     )
@@ -44,7 +25,7 @@ export const loadUser = () => (dispatch, getState) => {
     .catch((err) => {
       dispatch(returnErrors(err.response.data, err.response.status));
       dispatch({
-        type: AUTH_ERROR,
+        type: actionType.AUTH_ERROR,
       });
     });
 };
@@ -65,7 +46,7 @@ export const register = ({ name, email, password }, message) => (dispatch) => {
     .then(
       (res) =>
         dispatch({
-          type: REGISTER_SUCCESS,
+          type: actionType.REGISTER_SUCCESS,
           payload: res.data,
         }),
       dispatch(returnSuccessMessage(message, "REGISTER"))
@@ -76,7 +57,7 @@ export const register = ({ name, email, password }, message) => (dispatch) => {
         returnErrors(err.response.data, err.response.status, "REGISTER_FAIL")
       );
       dispatch({
-        type: REGISTER_FAIL,
+        type: actionType.REGISTER_FAIL,
       });
     });
 };
@@ -84,7 +65,7 @@ export const register = ({ name, email, password }, message) => (dispatch) => {
 //Logout User
 export const logout = () => {
   return {
-    type: LOGOUT_SUCCESS,
+    type: actionType.LOGOUT_SUCCESS,
   };
 };
 
@@ -101,7 +82,7 @@ export const login = ({ email, password }) => (dispatch) => {
     .post(URL + "auth", body, config)
     .then((res) => {
       dispatch({
-        type: LOGIN_SUCCESS,
+        type: actionType.LOGIN_SUCCESS,
         payload: res.data,
       });
     })
@@ -111,7 +92,7 @@ export const login = ({ email, password }) => (dispatch) => {
         returnErrors(err.response.data, err.response.status, "LOGIN_FAIL")
       );
       dispatch({
-        type: LOGIN_FAIL,
+        type: actionType.LOGIN_FAIL,
       });
     });
 };
@@ -128,7 +109,7 @@ export const sendReset = (email) => (dispatch) => {
     .then((res) => {
       console.log(res);
       dispatch({
-        type: SEND_EMAIL_SUCCESS,
+        type: actionType.SEND_EMAIL_SUCCESS,
         payload: res.data,
       });
     })
@@ -172,10 +153,10 @@ export const tokenConfig = (getState) => {
 export const openRegister = () => {
   return function (dispatch) {
     dispatch({
-      type: OPEN_REGISTER,
+      type: actionType.OPEN_REGISTER,
     });
     dispatch({
-      type: CLEAR_ERRORS,
+      type: actionType.CLEAR_ERRORS,
     });
   };
 };
@@ -183,10 +164,10 @@ export const openRegister = () => {
 export const closeRegister = () => {
   return function (dispatch) {
     dispatch({
-      type: CLOSE_REGISTER,
+      type: actionType.CLOSE_REGISTER,
     });
     dispatch({
-      type: CLEAR_ERRORS,
+      type: actionType.CLEAR_ERRORS,
     });
   };
 };
@@ -194,10 +175,10 @@ export const closeRegister = () => {
 export const openPasswordReset = () => {
   return function (dispatch) {
     dispatch({
-      type: OPEN_PASSWORD_RESET,
+      type: actionType.OPEN_PASSWORD_RESET,
     });
     dispatch({
-      type: CLEAR_ERRORS,
+      type: actionType.CLEAR_ERRORS,
     });
   };
 };
@@ -205,10 +186,10 @@ export const openPasswordReset = () => {
 export const closePasswordReset = () => {
   return function (dispatch) {
     dispatch({
-      type: CLOSE_PASSWORD_RESET,
+      type: actionType.CLOSE_PASSWORD_RESET,
     });
     dispatch({
-      type: CLEAR_ERRORS,
+      type: actionType.CLEAR_ERRORS,
     });
   };
 };
@@ -216,7 +197,7 @@ export const closePasswordReset = () => {
 export const clearSuccessMessage = () => {
   return function (dispatch) {
     dispatch({
-      type: CLEAR_SUCCESS_MESSAGE,
+      type: actionType.CLEAR_SUCCESS_MESSAGE,
     });
   };
 };

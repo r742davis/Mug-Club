@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import BeerDisplay from "../components/BeerDisplay";
 import { connect } from "react-redux";
-import { loadUser } from "../actions/authActions";
-import { fetchBeers } from "../actions/beerActions";
+import { loadUser } from "../store/actions/authActions";
+import { fetchBeers } from "../store/actions/beerActions";
 const actions = { loadUser, fetchBeers };
 const mapStateToProps = ({ auth, beers }) => ({
   auth: auth,

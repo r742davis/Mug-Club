@@ -7,12 +7,12 @@ import BeersList from "./BeersList";
 //Redux Imports
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { closeModal } from "../actions/modalActions";
+import { closeModal } from "../store/actions/modalActions";
 import {
   updateCustomer,
   fetchCustomers,
   updateCustomerBeers,
-} from "../actions/customerActions";
+} from "../store/actions/customerActions";
 const actions = {
   closeModal,
   updateCustomer,

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import EditCustomer from "./EditCustomer";
 import NewCustomer from "./NewCustomer";
 import EditBeer from "./EditBeer";

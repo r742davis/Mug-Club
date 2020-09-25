@@ -1,19 +1,4 @@
-import {
-  USER_LOADED,
-  USER_LOADING,
-  AUTH_ERROR,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
-  LOGOUT_SUCCESS,
-  REGISTER_SUCCESS,
-  REGISTER_FAIL,
-  OPEN_REGISTER,
-  CLOSE_REGISTER,
-  OPEN_PASSWORD_RESET,
-  CLOSE_PASSWORD_RESET,
-  SEND_EMAIL_SUCCESS,
-  CLEAR_SUCCESS_MESSAGE,
-} from "../actions/action-types";
+import * as actionType from "../actions/actionTypes";
 
 const initialState = {
   token: localStorage.getItem("token"),
@@ -25,22 +10,21 @@ const initialState = {
   successMessage: null,
 };
 
-export default function (state = initialState, action) {
+const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case USER_LOADING:
+    case actionType.USER_LOADING:
       return {
         ...state,
         isLoading: true,
       };
-    case USER_LOADED:
+    case actionType.USER_LOADED:
       return {
         ...state,
         isAuthenticated: true,
         isLoading: false,
         user: action.payload,
       };
-    case LOGIN_SUCCESS:
-      // case REGISTER_SUCCESS:
+    case actionType.LOGIN_SUCCESS:
       localStorage.setItem("token", action.payload.token);
       return {
         ...state,
@@ -48,15 +32,15 @@ export default function (state = initialState, action) {
         isAuthenticated: true,
         isLoading: false,
       };
-    case REGISTER_SUCCESS:
+    case actionType.REGISTER_SUCCESS:
       return {
         ...state,
         successMessage: action.payload.successMessage,
       };
-    case AUTH_ERROR:
-    case LOGIN_FAIL:
-    case LOGOUT_SUCCESS:
-    case REGISTER_FAIL:
+    case actionType.AUTH_ERROR:
+    case actionType.LOGIN_FAIL:
+    case actionType.LOGOUT_SUCCESS:
+    case actionType.REGISTER_FAIL:
       localStorage.removeItem("token");
       return {
         ...state,
@@ -65,27 +49,27 @@ export default function (state = initialState, action) {
         isAuthenticated: false,
         isLoading: false,
       };
-    case OPEN_REGISTER:
+    case actionType.OPEN_REGISTER:
       return {
         ...state,
         registerOpen: true,
       };
-    case CLOSE_REGISTER:
+    case actionType.CLOSE_REGISTER:
       return {
         ...state,
         registerOpen: false,
       };
-    case OPEN_PASSWORD_RESET:
+    case actionType.OPEN_PASSWORD_RESET:
       return {
         ...state,
         passwordResetOpen: true,
       };
-    case CLOSE_PASSWORD_RESET:
+    case actionType.CLOSE_PASSWORD_RESET:
       return {
         ...state,
         passwordResetOpen: false,
       };
-    case SEND_EMAIL_SUCCESS:
+    case actionType.SEND_EMAIL_SUCCESS:
       return {
         ...state,
         successMessage: action.payload,
@@ -94,3 +78,5 @@ export default function (state = initialState, action) {
       return state;
   }
 }
+
+export default authReducer;

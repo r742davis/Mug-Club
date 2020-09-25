@@ -8,8 +8,8 @@ import { Redirect } from "react-router-dom";
 // Redux Imports
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { clearErrors } from "../actions/errorActions";
-import { login, register, sendReset } from "../actions/authActions";
+import { clearErrors } from "../store/actions/errorActions";
+import { login, register, sendReset } from "../store/actions/authActions";
 const actions = {
   login,
   register,

@@ -1,21 +1,18 @@
-import {
-  GET_SUCCESS_MESSAGE,
-  CLEAR_SUCCESS_MESSAGE,
-} from "../actions/action-types";
+import * as actionType from "../actions/actionTypes";
 
 const initialState = {
   message: {},
   origin: null,
 };
 
-export default function (state = initialState, action) {
+const successreducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_SUCCESS_MESSAGE:
+    case actionType.GET_SUCCESS_MESSAGE:
       return {
         message: action.payload.message,
         origin: action.payload.origin,
       };
-    case CLEAR_SUCCESS_MESSAGE:
+    case actionType.CLEAR_SUCCESS_MESSAGE:
       return {
         message: {},
         origin: null,
@@ -24,3 +21,5 @@ export default function (state = initialState, action) {
       return state;
   }
 }
+
+export default successreducer;

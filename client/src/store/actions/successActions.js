@@ -1,14 +1,14 @@
-import { GET_SUCCESS_MESSAGE, CLEAR_SUCCESS_MESSAGE } from "./action-types";
+import * as actionType from "./actionTypes";
 
 export const returnSuccessMessage = (message, origin) => {
   return {
-    type: GET_SUCCESS_MESSAGE,
+    type: actionType.GET_SUCCESS_MESSAGE,
     payload: { message, origin },
   };
 };
 
 export const clearSuccessMessage = () => {
   return {
-    type: CLEAR_SUCCESS_MESSAGE,
+    type: actionType.CLEAR_SUCCESS_MESSAGE,
   };
 };

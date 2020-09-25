@@ -6,7 +6,7 @@ import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 // Redux Imports
 import { connect } from "react-redux";
-import { openModal, closeModal } from "../actions/modalActions";
+import { openModal, closeModal } from "../store/actions/modalActions";
 const actions = { openModal, closeModal };
 const uniqid = require("uniqid");
 

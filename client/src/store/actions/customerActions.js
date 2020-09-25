@@ -1,12 +1,4 @@
-import {
-  FETCH_CUSTOMERS_BEGIN,
-  FETCH_CUSTOMERS_SUCCESS,
-  FETCH_CUSTOMERS_FAILURE,
-  CREATE_CUSTOMER,
-  DELETE_CUSTOMER,
-  UPDATE_CUSTOMER_BEERS,
-  CLUB_COMPLETED,
-} from "./action-types";
+import * as actionType from "./actionTypes";
 import axios from "axios";
 import { tokenConfig } from "./authActions";
 import { returnErrors } from "./errorActions";
@@ -30,16 +22,16 @@ export const fetchCustomers = () => {
 };
 
 export const fetchCustomersBegin = () => ({
-  type: FETCH_CUSTOMERS_BEGIN,
+  type: actionType.FETCH_CUSTOMERS_BEGIN,
 });
 
 export const fetchCustomersSuccess = (customers) => ({
-  type: FETCH_CUSTOMERS_SUCCESS,
+  type: actionType.FETCH_CUSTOMERS_SUCCESS,
   payload: customers,
 });
 
 export const fetchCustomersFailure = (error) => ({
-  type: FETCH_CUSTOMERS_FAILURE,
+  type: actionType.FETCH_CUSTOMERS_FAILURE,
   payload: { error },
 });
 
@@ -48,7 +40,7 @@ export const createCustomer = (newCustomer) => (dispatch, getState) => {
     .post(URL, newCustomer, tokenConfig(getState))
     .then((res) =>
       dispatch({
-        type: CREATE_CUSTOMER,
+        type: actionType.CREATE_CUSTOMER,
         payload: res.data,
       })
     )
@@ -71,7 +63,7 @@ export const deleteCustomer = (id) => (dispatch, getState) => {
     .delete(URL + id, tokenConfig(getState))
     .then((res) =>
       dispatch({
-        type: DELETE_CUSTOMER,
+        type: actionType.DELETE_CUSTOMER,
         payload: id,
       })
     )
@@ -81,10 +73,10 @@ export const deleteCustomer = (id) => (dispatch, getState) => {
 };
 
 export const updateCustomerBeers = (updatedBeers) => ({
-  type: UPDATE_CUSTOMER_BEERS,
+  type: actionType.UPDATE_CUSTOMER_BEERS,
   payload: updatedBeers,
 })
 
 export const clubCompleted = () => ({
-  type: CLUB_COMPLETED
+  type: actionType.CLUB_COMPLETED
 })

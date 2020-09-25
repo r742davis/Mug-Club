@@ -5,7 +5,7 @@ import SuccessMessage from "./SuccessMessage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
-import { closePasswordReset } from "../actions/authActions";
+import { closePasswordReset } from "../store/actions/authActions";
 const actions = { closePasswordReset };
 
 const PasswordReset = (props) => {
