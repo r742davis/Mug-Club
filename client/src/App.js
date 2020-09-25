@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./css/App.css";
 import Routing from "./pages/Routing";
 import Backdrop from "./components/Backdrop";

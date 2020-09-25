@@ -3,7 +3,7 @@ import classes from "../css/LoginContainer.module.css";
 import ErrorMessage from "./ErrorMessage";
 
 import { connect } from "react-redux";
-import { openRegister, openPasswordReset } from "../store/actions/authActions";
+import { openRegister, openPasswordReset } from "../store/actions/index";
 const actions = { openRegister, openPasswordReset };
 
 const Login = (props) => (

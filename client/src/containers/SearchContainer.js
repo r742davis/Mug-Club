@@ -3,8 +3,7 @@ import Search from "../components/Search";
 
 // Redux Imports
 import { connect } from "react-redux";
-import { loadUser } from "../store/actions/authActions";
-import { fetchCustomers } from "../store/actions/customerActions";
+import { loadUser, fetchCustomers } from "../store/actions/index";
 const actions = {
   loadUser,
   fetchCustomers,

@@ -1,13 +1,13 @@
 import * as actionType from "./actionTypes";
 
-export const returnSuccessMessage = (message, origin) => {
+export const returnSuccess = (message, origin) => {
   return {
-    type: actionType.GET_SUCCESS_MESSAGE,
+    type: actionType.RETURN_SUCCESS_MESSAGE,
     payload: { message, origin },
   };
 };
 
-export const clearSuccessMessage = () => {
+export const clearSuccess = () => {
   return {
     type: actionType.CLEAR_SUCCESS_MESSAGE,
   };

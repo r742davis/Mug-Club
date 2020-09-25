@@ -9,8 +9,7 @@ import filterCustomers from "../lib/filterCustomers";
 // Redux Imports
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { openModal } from "../store/actions/modalActions";
-import { deleteCustomer } from "../store/actions/customerActions";
+import { openModal, deleteCustomer } from "../store/actions/index";
 const actions = {
   openModal,
   deleteCustomer,

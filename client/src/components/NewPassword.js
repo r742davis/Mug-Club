@@ -2,7 +2,7 @@ import React from "react";
 import classes from "../css/LoginContainer.module.css";
 import ErrorMessage from "./ErrorMessage";
 import { connect } from "react-redux";
-// import { closePasswordReset } from "../store/actions/authActions";
+// import { closePasswordReset } from "../store/actions/index";
 const actions = {  };
 
 const NewPassword = props => (

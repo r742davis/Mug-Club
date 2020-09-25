@@ -3,8 +3,7 @@ import classes from "../css/Backdrop.module.css";
 
 // Redux imports
 import { connect } from "react-redux";
-import { closeModal } from "../store/actions/modalActions";
-import { closeNav } from "../store/actions/navActions";
+import { closeModal, closeNav } from "../store/actions/index";
 const actions = { closeModal, closeNav };
 const mapStateToProps = ({ modal: { modalOpen, navOpen} }) => ({
   modalOpen: modalOpen,

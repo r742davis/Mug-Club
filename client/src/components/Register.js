@@ -7,7 +7,7 @@ import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
 //Redux Imports
 import { connect } from "react-redux";
-import { closeRegister } from "../store/actions/authActions";
+import { closeRegister } from "../store/actions/index";
 const actions = { closeRegister };
 
 const Register = (props) => {

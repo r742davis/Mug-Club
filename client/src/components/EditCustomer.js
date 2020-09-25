@@ -7,19 +7,20 @@ import BeersList from "./BeersList";
 //Redux Imports
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { closeModal } from "../store/actions/modalActions";
 import {
+  closeModal,
   updateCustomer,
   fetchCustomers,
   updateCustomerBeers,
-} from "../store/actions/customerActions";
+} from "../store/actions/index";
+
 const actions = {
   closeModal,
   updateCustomer,
   fetchCustomers,
   updateCustomerBeers,
 };
-const mapStateToProps = ({ modal: { info }, customers}) => {
+const mapStateToProps = ({ modal: { info }, customers }) => {
   const {
     _id,
     name: { first, last },

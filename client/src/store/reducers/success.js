@@ -5,9 +5,9 @@ const initialState = {
   origin: null,
 };
 
-const successreducer = (state = initialState, action) => {
+const successReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionType.GET_SUCCESS_MESSAGE:
+    case actionType.RETURN_SUCCESS_MESSAGE:
       return {
         message: action.payload.message,
         origin: action.payload.origin,
@@ -22,4 +22,4 @@ const successreducer = (state = initialState, action) => {
   }
 }
 
-export default successreducer;
+export default successReducer;

@@ -1,12 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 import classes from "../css/LoginContainer.module.css";
 import ErrorMessage from "./ErrorMessage";
 import SuccessMessage from "./SuccessMessage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
-import { closePasswordReset } from "../store/actions/authActions";
+import { closePasswordReset } from "../store/actions/index";
 const actions = { closePasswordReset };
+
+// TURN INTO COMPONENT
 
 const PasswordReset = (props) => {
   return (

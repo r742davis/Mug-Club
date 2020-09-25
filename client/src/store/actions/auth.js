@@ -1,14 +1,12 @@
 import * as actionType from "./actionTypes";
 import axios from "axios";
-import { returnErrors } from "./errorActions";
-import { returnSuccessMessage } from "./successActions";
+import { returnErrors, returnSuccess } from "./index";
 
 const URL =
   process.env.NODE_ENV === "production"
     ? "https://bearmugclub.herokuapp.com/api/"
     : "http://localhost:5000/api/";
 
-//Check for token and then load the user
 export const loadUser = () => (dispatch, getState) => {
   // User loading
   dispatch({ type: actionType.USER_LOADING });
@@ -30,7 +28,6 @@ export const loadUser = () => (dispatch, getState) => {
     });
 };
 
-//Register user
 export const register = ({ name, email, password }, message) => (dispatch) => {
   const config = {
     headers: {
@@ -49,7 +46,7 @@ export const register = ({ name, email, password }, message) => (dispatch) => {
           type: actionType.REGISTER_SUCCESS,
           payload: res.data,
         }),
-      dispatch(returnSuccessMessage(message, "REGISTER"))
+      dispatch(returnSuccess(message, "REGISTER"))
     )
     //For an error with registration
     .catch((err) => {
@@ -62,14 +59,12 @@ export const register = ({ name, email, password }, message) => (dispatch) => {
     });
 };
 
-//Logout User
 export const logout = () => {
   return {
     type: actionType.LOGOUT_SUCCESS,
   };
 };
 
-//Login User
 export const login = ({ email, password }) => (dispatch) => {
   const config = {
     headers: {
@@ -129,7 +124,6 @@ export const sendReset = (email) => (dispatch) => {
   //Add redux store dispatches after successful firig of sendReset
 };
 
-// Setup config, headers, and token
 export const tokenConfig = (getState) => {
   //Get token from local storage
   const token = getState().auth.token;
@@ -139,7 +133,7 @@ export const tokenConfig = (getState) => {
     headers: {
       "Content-type": "application/json",
       Authorization: `Bearer ${token}`,
-    }
+    },
   };
 
   //If token, add to headers
@@ -190,14 +184,6 @@ export const closePasswordReset = () => {
     });
     dispatch({
       type: actionType.CLEAR_ERRORS,
-    });
-  };
-};
-
-export const clearSuccessMessage = () => {
-  return function (dispatch) {
-    dispatch({
-      type: actionType.CLEAR_SUCCESS_MESSAGE,
     });
   };
 };

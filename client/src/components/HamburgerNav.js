@@ -11,8 +11,7 @@ import {
 
 // Redux Imports
 import { connect } from "react-redux";
-import { openModal } from "../store/actions/modalActions";
-import { closeNav } from "../store/actions/navActions";
+import { openModal, closeNav } from "../store/actions/index";
 const actions = {
   openModal,
   closeNav,

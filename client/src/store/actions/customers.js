@@ -1,7 +1,6 @@
 import * as actionType from "./actionTypes";
 import axios from "axios";
-import { tokenConfig } from "./authActions";
-import { returnErrors } from "./errorActions";
+import { tokenConfig, returnErrors } from "./index";
 
 const URL =
   process.env.NODE_ENV === "production"
@@ -75,8 +74,8 @@ export const deleteCustomer = (id) => (dispatch, getState) => {
 export const updateCustomerBeers = (updatedBeers) => ({
   type: actionType.UPDATE_CUSTOMER_BEERS,
   payload: updatedBeers,
-})
+});
 
 export const clubCompleted = () => ({
-  type: actionType.CLUB_COMPLETED
-})
+  type: actionType.CLUB_COMPLETED,
+});

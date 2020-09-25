@@ -6,8 +6,7 @@ import swal from "@sweetalert/with-react";
 
 // Redux Imports
 import { connect } from "react-redux";
-import { openModal, closeModal } from "../store/actions/modalActions";
-import { createBeer, fetchBeers } from "../store/actions/beerActions";
+import { openModal, closeModal, createBeer, fetchBeers } from "../store/actions/index";
 const actions = {
   openModal,
   closeModal,
