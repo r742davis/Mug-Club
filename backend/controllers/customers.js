@@ -6,7 +6,7 @@ const authorizeToken = require("../middleware/authorizeToken");
 
 // GET ALL CUSTOMERS route //
 /////////////////////////////
-router.get("/", authorizeToken, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const customers = await Customer.find();
     res.status(200).json(customers);

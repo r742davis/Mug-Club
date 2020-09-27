@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { openRegister, openPasswordReset } from "../store/actions/index";
 const actions = { openRegister, openPasswordReset };
 
-const Login = (props) => (
+const LoginComponent = (props) => (
   <>
     <form onSubmit={props.onSubmit}>
       <div className={classes.AuthContainer}>
@@ -55,4 +55,4 @@ const Login = (props) => (
   </>
 );
 
-export default connect(null, actions)(Login);
+export default connect(null, actions)(LoginComponent);

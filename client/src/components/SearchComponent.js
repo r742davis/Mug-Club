@@ -23,7 +23,7 @@ const mapStateToProps = ({ auth, customers: { customers, loading } }) => {
 };
 const uniqid = require("uniqid");
 
-class Search extends Component {
+class SearchComponent extends Component {
   state = {
     search: "",
   };
@@ -145,4 +145,4 @@ class Search extends Component {
   }
 }
 
-export default connect(mapStateToProps, actions)(Search);
+export default connect(mapStateToProps, actions)(SearchComponent);

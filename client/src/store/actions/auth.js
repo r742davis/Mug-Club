@@ -8,7 +8,6 @@ const URL =
     : "http://localhost:5000/api/";
 
 export const loadUser = () => (dispatch, getState) => {
-  // User loading
   dispatch({ type: actionType.USER_LOADING });
 
   axios
@@ -19,7 +18,6 @@ export const loadUser = () => (dispatch, getState) => {
         payload: res.data,
       })
     )
-    //If token is invalid
     .catch((err) => {
       dispatch(returnErrors(err.response.data, err.response.status));
       dispatch({
@@ -34,10 +32,7 @@ export const register = ({ name, email, password }, message) => (dispatch) => {
       "Content-Type": "application/json",
     },
   };
-
-  //Request body
   const body = JSON.stringify({ name, email, password });
-
   axios
     .post(URL + "users", body, config)
     .then(
@@ -48,7 +43,6 @@ export const register = ({ name, email, password }, message) => (dispatch) => {
         }),
       dispatch(returnSuccess(message, "REGISTER"))
     )
-    //For an error with registration
     .catch((err) => {
       dispatch(
         returnErrors(err.response.data, err.response.status, "REGISTER_FAIL")
@@ -71,17 +65,17 @@ export const login = ({ email, password }) => (dispatch) => {
       "Content-Type": "application/json",
     },
   };
-  //Request body
   const body = JSON.stringify({ email, password });
+  console.log(body);
   axios
     .post(URL + "auth", body, config)
     .then((res) => {
+      console.log(res);
       dispatch({
         type: actionType.LOGIN_SUCCESS,
         payload: res.data,
       });
     })
-    //For an error with the login
     .catch((err) => {
       dispatch(
         returnErrors(err.response.data, err.response.status, "LOGIN_FAIL")
@@ -125,10 +119,7 @@ export const sendReset = (email) => (dispatch) => {
 };
 
 export const tokenConfig = (getState) => {
-  //Get token from local storage
   const token = getState().auth.token;
-
-  //Headers
   const config = {
     headers: {
       "Content-type": "application/json",
@@ -136,7 +127,6 @@ export const tokenConfig = (getState) => {
     },
   };
 
-  //If token, add to headers
   if (token) {
     config.headers["x-auth-token"] = token;
   }

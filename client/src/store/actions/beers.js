@@ -49,7 +49,7 @@ export const createBeer = (newBeer) => (dispatch, getState) => {
 };
 
 export const deleteBeer = (id, role) => async (dispatch, getState) => {
-  const config = await tokenConfig(getState);
+  const config = tokenConfig(getState);
   const headers = config.headers;
   await axios
     .delete(URL + id, { headers: headers, data: { role: role } })

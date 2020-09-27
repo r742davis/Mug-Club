@@ -8,7 +8,7 @@ const mapStateToProps = ({ auth, beers }) => ({
   beers: beers
 });
 
-class BeersContainer extends Component {
+class Beers extends Component {
   componentDidMount = async () => {
     const { token } = this.props.auth;
     const { beers } = this.props.beers;
@@ -35,4 +35,4 @@ class BeersContainer extends Component {
   }
 }
 
-export default connect(mapStateToProps, actions)(BeersContainer);
+export default connect(mapStateToProps, actions)(Beers);

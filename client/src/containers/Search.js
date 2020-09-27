@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import Search from "../components/Search";
+import SearchComponent from "../components/SearchComponent";
 
-// Redux Imports
 import { connect } from "react-redux";
 import { loadUser, fetchCustomers } from "../store/actions/index";
 const actions = {
@@ -13,7 +12,7 @@ const mapStateToProps = ({ auth, customers: { customers } }) => ({
   customers: customers,
 });
 
-class SearchContainer extends Component {
+class Search extends Component {
   componentDidMount = async () => {
     const { token } = this.props.auth;
     if (token && !this.props.customers) {
@@ -37,8 +36,8 @@ class SearchContainer extends Component {
   };
 
   render() {
-    return <Search />
+    return <SearchComponent />
   }
 }
 
-export default connect(mapStateToProps, actions)(SearchContainer);
+export default connect(mapStateToProps, actions)(Search);

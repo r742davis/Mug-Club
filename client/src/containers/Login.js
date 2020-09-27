@@ -1,11 +1,10 @@
 import React from "react";
 import classes from "../css/LoginContainer.module.css";
 import Register from "../components/Register";
-import Login from "../components/Login";
+import LoginComponent from "../components/LoginComponent";
 import PasswordReset from "../components/PasswordReset";
 import { Redirect } from "react-router-dom";
 
-// Redux Imports
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { login, register, sendReset, clearErrors } from "../store/actions/index";
@@ -21,7 +20,7 @@ const mapStateToProps = ({ auth, error, success }) => ({
   success: success
 });
 
-class LoginContainer extends React.Component {
+class Login extends React.Component {
   state = {
     name: "",
     email: "",
@@ -115,7 +114,7 @@ class LoginContainer extends React.Component {
               <h1>Mug Club 🍻</h1>
             </div>
             {!registerOpen && !passwordResetOpen && (
-              <Login
+              <LoginComponent
                 onSubmit={this.onSubmit}
                 onChange={this.onChange}
                 error={this.state.message}
@@ -147,4 +146,4 @@ class LoginContainer extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, actions)(LoginContainer);
+export default connect(mapStateToProps, actions)(Login);
