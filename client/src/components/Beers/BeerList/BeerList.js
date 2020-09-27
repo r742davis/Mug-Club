@@ -3,16 +3,17 @@ import classes from "../../../css/Modals.module.css";
 import styles from "../../../css/BeersList.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import Beer from "../Beer/Beer"
 
 import { connect } from "react-redux";
 import { openModal, closeModal } from "../../../store/actions/index";
-const uniqid = require("uniqid");
 
 const BeerList = (props) => {
   const [checked, setChecked] = React.useState([-1]);
   const [unchecked, setUnchecked] = React.useState([-1]);
 
   const handleToggle = (beer) => () => {
+    console.log(beer)
     const currentIndex = checked.indexOf(beer);
     const newChecked = [...checked];
     if (currentIndex === -1) {
@@ -48,30 +49,19 @@ const BeerList = (props) => {
     }
   };
 
-  const mappedBeers = props.beers.map((beer) => {
-    return (
-      <li
-        key={uniqid()}
-        onClick={handleToggle(beer)}
-        className={
-          beer.finished ? `${styles.Item} ${styles.Completed}` : styles.Item
-        }
-      >
-        <img
-          className={styles.Avatar}
-          alt={`${beer.brewery}`}
-          src={`${beer.url}`}
-        />
-        <div className={styles.NameContainer}>
-          <h1>{`${beer.brewery}`}</h1>
-          <h2>{`${beer.name}`}</h2>
-        </div>
-        <div>
-          {checkForIcon(beer)}
-        </div>
-      </li>
-    );
-  });
+  React.useEffect(() => {
+    console.log(checked, unchecked)
+  }, [checked, unchecked])
+
+  const mappedBeers = props.beers.map((beer) => (
+    <Beer
+      {...beer}
+      styles={styles}
+      checked={checked}
+      complete={handleToggle(beer)}
+      checkForIcon={checkForIcon(beer)}
+    />
+  ));
 
   return (
     <>
