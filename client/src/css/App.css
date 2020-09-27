@@ -20,3 +20,17 @@ input:focus,
 select:focus,
 button:focus {
   outline: none; }
+
+  .BgImage {
+    background-image: url("../assets/backgrounds/bar-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 101vh;
+    width: 100%; }
+  
+  .Container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 80%; }

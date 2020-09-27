@@ -3,7 +3,8 @@ import HomePage from "./homePage";
 import SearchPage from "./searchPage";
 import BeersPage from "./beersPage";
 import AccountPage from "./accountPage";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/Navigation/NavBar/NavBar";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,10 +12,6 @@ import {
   Redirect,
 } from "react-router-dom";
 import { connect } from "react-redux";
-const mapStateToProps = ({ auth }) => ({
-  auth: auth,
-  isAuthenticated: auth.isAuthenticated,
-});
 
 const Routing = (props) => {
   const urlName = "";
@@ -50,5 +47,10 @@ const Routing = (props) => {
     </>
   );
 };
+
+const mapStateToProps = ({ auth }) => ({
+  auth: auth,
+  isAuthenticated: auth.isAuthenticated,
+});
 
 export default connect(mapStateToProps)(Routing);

@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import SearchComponent from "../components/SearchComponent";
+import React from "react";
+import SearchComponent from "../components/Search/SearchComponent";
 
 import { connect } from "react-redux";
 import { loadUser, fetchCustomers } from "../store/actions/index";
@@ -12,12 +12,12 @@ const mapStateToProps = ({ auth, customers: { customers } }) => ({
   customers: customers,
 });
 
-class Search extends Component {
+class Search extends React.Component {
   componentDidMount = async () => {
     const { token } = this.props.auth;
     if (token && !this.props.customers) {
       await this.props.loadUser();
-      await this.loadDatabase(token);
+      this.loadDatabase(token);
     }
   };
 

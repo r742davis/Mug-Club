@@ -1,22 +1,17 @@
-import React, { Component } from "react";
-import BeerDisplay from "../components/BeerDisplay";
+import React from "react";
+import BeerDisplay from "../components/Beers/BeerDisplay/BeerDisplay";
 import { connect } from "react-redux";
 import { loadUser, fetchBeers } from "../store/actions/index";
-const actions = { loadUser, fetchBeers };
-const mapStateToProps = ({ auth, beers }) => ({
-  auth: auth,
-  beers: beers
-});
 
-class Beers extends Component {
+class Beers extends React.Component {
   componentDidMount = async () => {
     const { token } = this.props.auth;
     const { beers } = this.props.beers;
     if (token && !beers) {
       console.log(beers);
       await this.props.loadUser();
-      await this.loadDatabase(token);
-    } 
+      this.loadDatabase(token);
+    }
   };
 
   loadDatabase = (token) => {
@@ -35,4 +30,10 @@ class Beers extends Component {
   }
 }
 
-export default connect(mapStateToProps, actions)(Beers);
+const mapDispatchToProps = { loadUser, fetchBeers };
+const mapStateToProps = ({ auth, beers }) => ({
+  auth: auth,
+  beers: beers,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Beers);

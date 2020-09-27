@@ -1,8 +1,8 @@
 import React from "react";
 import "./css/App.css";
 import Routing from "./pages/Routing";
-import Backdrop from "./components/Backdrop";
-import RenderModal from "./components/RenderModal";
+import Backdrop from "./components/UI/Backdrop/Backdrop";
+import RenderModal from "./components/UI/Modal/RenderModal";
 
 const App = () => {
   return (
