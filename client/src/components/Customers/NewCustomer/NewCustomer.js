@@ -13,20 +13,18 @@ import {
 
 class NewCustomer extends React.Component {
   state = {
-    name: {
-
-    },
+    name: {},
     mugClub: {},
-    first: '',
-    last: '',
-    clubId: ''
+    first: "",
+    last: "",
+    clubId: "",
   };
 
   static propTypes = {
     customers: PropTypes.array,
   };
 
-  customerIdCheck = (customers) => {
+  previousIdValidation = (customers) => {
     const enteredValue = this.state.clubId;
     for (let i = 0; i < customers.length; i++) {
       let id = customers[i].mugClub.clubId.toString();
@@ -44,7 +42,7 @@ class NewCustomer extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    let value = this.customerIdCheck(this.props.customers);
+    let value = this.previousIdValidation(this.props.customers);
     if (value) {
       swal({
         title: `Mug Club Number ${this.state.clubId} is already taken.`,
@@ -65,8 +63,6 @@ class NewCustomer extends React.Component {
       try {
         console.log("Saving customer...");
         await this.props.createCustomer(newCustomer);
-        console.log("Refetching customers...");
-        await this.props.fetchCustomers();
         swal({
           title: `${this.state.first} has been created!`,
           icon: "success",

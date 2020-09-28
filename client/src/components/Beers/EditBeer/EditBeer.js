@@ -17,6 +17,7 @@ import {
 
 class EditBeer extends React.Component {
   state = {
+    id: "",
     name: "",
     type: "",
     brewery: "",

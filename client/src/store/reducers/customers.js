@@ -1,4 +1,5 @@
 import * as actionType from "../actions/actionTypes";
+import { updateObject } from "../utilities/updateObject";
 
 const initialState = {
   loading: false,
@@ -8,7 +9,14 @@ const initialState = {
   updatedBeers: [],
 };
 
-const customerReducer = (state = initialState, action) => {
+// const deleteCustomer = (state, action) => {
+//   const updatedCustomers = state.customers.filter(
+//     (customer) => customer._id !== action.payload
+//   )
+//   return updateObject(state, { customers: updatedCustomers })
+// }
+
+const customersReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionType.FETCH_CUSTOMERS_BEGIN:
       return {
@@ -41,6 +49,11 @@ const customerReducer = (state = initialState, action) => {
           (customer) => customer._id !== action.payload
         ),
       };
+    case actionType.UPDATE_CUSTOMER:
+      return {
+        ...state,
+        customers: state.customers.filter
+      };
     case actionType.UPDATE_CUSTOMER_BEERS:
       return {
         ...state,
@@ -51,4 +64,4 @@ const customerReducer = (state = initialState, action) => {
   }
 };
 
-export default customerReducer;
+export default customersReducer;

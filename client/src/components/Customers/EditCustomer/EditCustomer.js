@@ -11,17 +11,18 @@ import {
   updateCustomer,
   fetchCustomers,
   updateCustomerBeers,
+  updateBeer,
 } from "../../../store/actions/index";
 
 class EditCustomer extends React.Component {
   state = {
-    first: '',
-    last: '',
-    clubId: '',
-    customerId: '',
-    completed: '',
-    customerBeers: '',
-  }
+    first: "",
+    last: "",
+    clubId: "",
+    customerId: "",
+    completed: "",
+    customerBeers: [],
+  };
 
   static propTypes = {
     first: PropTypes.string,
@@ -53,16 +54,17 @@ class EditCustomer extends React.Component {
   };
 
   updateCompletedBeers = (checked) => {
-    const { customerBeers } = this.state;
-    let updatedBeers = [...customerBeers];
-    for (let k = 0; k < updatedBeers.length; k++) {
-      for (let h = 1; h < checked.length; h++) {
-        if (updatedBeers[k]._id === checked[h]._id) {
-          updatedBeers[k].finished = true;
-        }
-      }
+    let updatedBeers = checked.filter((item) => item !== -1);
+    updatedBeers.forEach((item) => (item.finished = true));
+
+    let newCustomerBeersArray = [...this.state.customerBeers];
+    let merged = { ...updatedBeers, ...newCustomerBeersArray };
+    let updated = [];
+    for (let obj in merged) {
+      updated.push(merged[obj]);
     }
-    this.props.updateCustomerBeers(updatedBeers);
+
+    return updated;
   };
 
   checkCompletion = (beers) => {
@@ -87,7 +89,6 @@ class EditCustomer extends React.Component {
 
   handleSubmit = async (e, checked) => {
     e.preventDefault();
-    this.updateCompletedBeers(checked);
     this.checkCompletion(this.state.customerBeers);
     const updatedCustomer = {
       name: {
@@ -97,13 +98,14 @@ class EditCustomer extends React.Component {
       mugClub: {
         clubId: this.state.clubId,
         completed: this.state.completed,
-        beers: this.props.updatedBeers,
+        beers: this.updateCompletedBeers(checked),
       },
     };
     try {
+      console.log(updatedCustomer);
       await this.props.updateCustomer(updatedCustomer, this.props.customerId);
-      await this.props.fetchCustomers();
       await this.props.closeModal();
+      await this.props.fetchCustomers();
       swal({
         title: `You've updated ${this.state.first} ${this.state.last}!`,
         icon: "success",
@@ -201,7 +203,6 @@ const mapDispatchToProps = {
   closeModal,
   updateCustomer,
   fetchCustomers,
-  updateCustomerBeers,
 };
 const mapStateToProps = ({ modal: { info }, customers }) => {
   const {

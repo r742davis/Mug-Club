@@ -22,6 +22,7 @@ const BeerList = (props) => {
       newChecked.splice(currentIndex, 1);
     }
     setChecked(newChecked);
+    console.log(checked)
 
     if (beer.finished === true) {
       const currentIndex = unchecked.indexOf(beer);
@@ -70,7 +71,7 @@ const BeerList = (props) => {
         <input
           type="submit"
           value="Submit"
-          onClick={(e) => props.handleSubmit(e, checked, unchecked)}
+          onClick={(e) => props.handleSubmit(e, checked)}
           className={classes.EditButton}
         />
         <input

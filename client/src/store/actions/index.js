@@ -27,7 +27,6 @@ export {
   createCustomer,
   updateCustomer,
   deleteCustomer,
-  updateCustomerBeers,
   clubCompleted,
 } from "./customers";
 export { returnErrors, clearErrors } from "./error";

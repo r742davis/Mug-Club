@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { fetchBeers } from "../store/actions/beerActions";
 import { fetchCustomers, createCustomer } from "../store/actions/customerActions";
@@ -8,7 +8,7 @@ import { readString } from "react-papaparse";
 const actions = { fetchBeers, fetchCustomers, createCustomer };
 const csvFile = require("./Test.csv");
 
-class LoadExistingDatabase extends Component {
+class LoadExistingDatabase extends React.Component {
   state = {
     existingCustomers: "",
   };

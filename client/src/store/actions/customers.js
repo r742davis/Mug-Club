@@ -43,14 +43,16 @@ export const createCustomer = (newCustomer) => (dispatch, getState) => {
         payload: res.data,
       })
     )
+    .then((res) => fetchCustomers())
     .catch((err) =>
       dispatch(returnErrors(err.response.data, err.response.status))
     );
 };
 
-export const updateCustomer = (customer, id) => (dispatch, getState) => {
+export const updateCustomer = (updatedCustomer, id) => (dispatch, getState) => {
   axios
-    .put(URL + id, customer, tokenConfig(getState))
+    .put(URL + id, updatedCustomer, tokenConfig(getState))
+    .then((res) => dispatch({ type: actionType.UPDATE_CUSTOMER, payload: res.data}))
     .then(dispatch(fetchCustomers()))
     .catch((err) =>
       dispatch(returnErrors(err.response.data, err.response.status))
@@ -71,10 +73,10 @@ export const deleteCustomer = (id) => (dispatch, getState) => {
     );
 };
 
-export const updateCustomerBeers = (updatedBeers) => ({
-  type: actionType.UPDATE_CUSTOMER_BEERS,
-  payload: updatedBeers,
-});
+// export const updateCustomerBeers = (updatedBeers) => ({
+//   type: actionType.UPDATE_CUSTOMER_BEERS,
+//   payload: updatedBeers,
+// });
 
 export const clubCompleted = () => ({
   type: actionType.CLUB_COMPLETED,

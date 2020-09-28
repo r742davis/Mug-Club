@@ -58,7 +58,7 @@ router.post("/", authorizeToken, async (req, res) => {
 router.delete("/:id", authorizeToken, async (req, res) => {
   try {
     const findCustomer = await Customer.findById(req.params.id);
-    const foundCustomer = await findCustomer.remove();
+    await findCustomer.remove();
     return res.json({
       Success: "Customer was successfully deleted from database",
     });
@@ -86,7 +86,7 @@ router.get("/:id", authorizeToken, async (req, res) => {
 ///////////////////////////
 router.put("/:id", authorizeToken, async (req, res) => {
   try {
-    const updateCustomer = await Customer.findByIdAndUpdate(
+    await Customer.findByIdAndUpdate(
       req.params.id,
       req.body,
       {
