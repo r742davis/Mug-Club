@@ -7,10 +7,8 @@ import RenderModal from "./components/UI/Modal/RenderModal";
 const App = () => {
   return (
     <div className="App">
-      <Backdrop>
         <Routing />
         <RenderModal />
-      </Backdrop>
     </div>
   );
 };

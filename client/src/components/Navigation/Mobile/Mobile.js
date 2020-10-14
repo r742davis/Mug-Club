@@ -1,5 +1,7 @@
 import React from "react";
 import classes from "../../../css/NavBar.module.css";
+import NavItem from "../NavItem/NavItem";
+
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,15 +14,13 @@ import {
 import { connect } from "react-redux";
 import { openModal, closeNav } from "../../../store/actions/index";
 
-const urlName = "";
 
 const mobile = (props) => {
   return (
     <ul className={classes.HamburgerList}>
-      <Link
-        to={`${urlName}/search-customers`}
-        className={classes.HamburgerItem}
-        onClick={() => props.closeNav()}
+      <NavItem 
+      link={'/search-customers'}
+      close={() => props.closeNav()}
       >
         <div className={classes.LinkDiv}>
           <div>
@@ -28,9 +28,9 @@ const mobile = (props) => {
           </div>
           <h2>Search</h2>
         </div>
-      </Link>
+      </NavItem>
       <Link
-        to={`${urlName}/beers-list`}
+        to={'/beers'}
         className={classes.HamburgerItem}
         onClick={() => props.closeNav()}
       >
@@ -63,18 +63,6 @@ const mobile = (props) => {
           <h2>New Beer</h2>
         </div>
       </button>
-      {/* <Link
-        to={`${urlName}/account`}
-        className={classes.HamburgerItem}
-        onClick={() => props.closeNav()}
-      >
-        <div className={classes.LinkDiv}>
-          <div>
-            <FontAwesomeIcon icon={faUserCircle} />
-          </div>
-          <h2>Account</h2>
-        </div>
-      </Link> */}
       <button
         onClick={() => props.logoutAlert()}
         className={classes.HamburgerItem}

@@ -1,0 +1,31 @@
+@media (min-width: 850px) {
+  .NavItem {
+    box-sizing: border-box;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    width: auto;
+    height: 100%;
+  }
+
+  .NavItem a {
+    font-size: 1.5rem;
+    color: #8f5c2c;
+    text-decoration: none;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    color: white;
+    height: 100%;
+    padding: 20px 20px;
+    border-bottom: 4px solid transparent;
+  }
+
+  .NavItem a:hover,
+  .NavItem a:active,
+  .NavItem a.active {
+    color: black;
+    background-color: whitesmoke;
+    border-bottom: 4px solid var(--secondary);
+  }
+}

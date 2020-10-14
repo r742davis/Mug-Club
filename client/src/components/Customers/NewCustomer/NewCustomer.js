@@ -131,7 +131,8 @@ class NewCustomer extends React.Component {
                   />
                   <span className={classes.Bar}></span>
                   <label htmlFor="clubId" className={classes.Label}>
-                    Mug Club ID (Suggested #: {this.props.customers.length})
+                    Mug Club ID
+                    {/* (Suggested #: {this.props.customers.length }) */}
                   </label>
                 </div>
                 <div className={classes.ButtonContainer}>

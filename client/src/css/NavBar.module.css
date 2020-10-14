@@ -38,13 +38,13 @@
   align-items: center;
   margin: 0 1rem 0 2rem; }
 
-.Link {
+/* .Link {
   color: var(--primary);
   text-decoration: none;
   padding: 1rem;
   margin-right: 2rem;
   font-size: 1.6rem;
-  transition: 0.2s; }
+  transition: 0.2s; } */
 
 .Link:hover {
   color: var(--secondary);

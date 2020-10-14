@@ -30,7 +30,7 @@ class Routing extends React.Component {
         <Switch>
           {/* <Route path={"reset-password"} component={Auth} /> */}
           <Route path={"/search-customers"} component={Search} />
-          <Route path={"/beers-list"} component={Beers} />
+          <Route path={"/beers"} component={Beers} />
           <Route path={"/account"} component={Auth} />
           <Route path="/" component={Home} />
           <Redirect to="/"/>

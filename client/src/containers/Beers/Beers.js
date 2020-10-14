@@ -8,7 +8,6 @@ class Beers extends React.Component {
     const { token } = this.props.auth;
     const { beers } = this.props.beers;
     if (token && !beers) {
-      console.log(beers);
       await this.props.loadUser();
       this.loadDatabase(token);
     }
