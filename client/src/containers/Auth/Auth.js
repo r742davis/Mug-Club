@@ -1,8 +1,8 @@
 import React from "react";
-import classes from "../css/LoginContainer.module.css";
-import Register from "../components/Auth/Register/Register";
-import LoginComponent from "../components/Auth/Login/LoginComponent";
-import PasswordReset from "../components/Auth/Password/ResetPassword/PasswordReset";
+import classes from "../../css/LoginContainer.module.css";
+import Register from "../../components/Auth/Register/Register";
+import LoginComponent from "../../components/Auth/Login/LoginComponent";
+import PasswordReset from "../../components/Auth/Password/ResetPassword/PasswordReset";
 import { Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
@@ -12,9 +12,9 @@ import {
   register,
   sendReset,
   clearErrors,
-} from "../store/actions/index";
+} from "../../store/actions/index";
 
-class Login extends React.Component {
+class Auth extends React.Component {
   state = {
     name: "",
     email: "",
@@ -101,7 +101,12 @@ class Login extends React.Component {
           <section className={classes.Container}>
             <div className={classes.Title}>
               <h2>Welcome to</h2>
-              <h1>Mug Club <span role="img" aria-label="Beers clinking together">🍻</span></h1>
+              <h1>
+                Mug Club{" "}
+                <span role="img" aria-label="Beers clinking together">
+                  🍻
+                </span>
+              </h1>
             </div>
             {!registerOpen && !passwordResetOpen && (
               <LoginComponent
@@ -148,4 +153,4 @@ const mapStateToProps = ({ auth, error, success }) => ({
   success: success,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);

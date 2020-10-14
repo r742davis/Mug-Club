@@ -1,7 +1,7 @@
 import React from "react";
-import BeerDisplay from "../components/Beers/BeerDisplay/BeerDisplay";
+import BeerDisplay from "../../components/Beers/BeerDisplay/BeerDisplay";
 import { connect } from "react-redux";
-import { loadUser, fetchBeers } from "../store/actions/index";
+import { loadUser, fetchBeers } from "../../store/actions/index";
 
 class Beers extends React.Component {
   componentDidMount = async () => {

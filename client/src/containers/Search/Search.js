@@ -1,16 +1,8 @@
 import React from "react";
-import SearchComponent from "../components/Search/SearchComponent";
+import SearchComponent from "../../components/Search/SearchComponent";
 
 import { connect } from "react-redux";
-import { loadUser, fetchCustomers } from "../store/actions/index";
-const actions = {
-  loadUser,
-  fetchCustomers,
-};
-const mapStateToProps = ({ auth, customers: { customers } }) => ({
-  auth: auth,
-  customers: customers,
-});
+import { loadUser, fetchCustomers } from "../../store/actions/index";
 
 class Search extends React.Component {
   componentDidMount = async () => {
@@ -36,8 +28,18 @@ class Search extends React.Component {
   };
 
   render() {
-    return <SearchComponent />
+    return <SearchComponent />;
   }
 }
 
-export default connect(mapStateToProps, actions)(Search);
+const mapDispatchToProps = {
+  loadUser,
+  fetchCustomers,
+};
+
+const mapStateToProps = ({ auth, customers: { customers } }) => ({
+  auth: auth,
+  customers: customers,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

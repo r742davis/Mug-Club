@@ -1,13 +1,13 @@
 import React from "react";
-import classes from "../css/Home.module.css";
-import Login from "../containers/Login";
+import classes from "../../css/Home.module.css";
+import Auth from "../Auth/Auth";
 
 const Home = () => {
   return (
     <>
       <div className={classes.BgImage}></div>
       <div className={classes.Container}>
-        <Login />
+        <Auth />
       </div>
     </>
   );

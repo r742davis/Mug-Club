@@ -18,6 +18,7 @@ const Backdrop = (props) => (
         onClick={() => props.closeNav()}
       ></div>
     )}
+    {props.children}
   </>
 );
 

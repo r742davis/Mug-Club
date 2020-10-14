@@ -6,9 +6,9 @@ import swal from "@sweetalert/with-react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import {
+  closeModal,
   createCustomer,
   fetchCustomers,
-  closeModal,
 } from "../../../store/actions/index";
 
 class NewCustomer extends React.Component {
@@ -83,90 +83,89 @@ class NewCustomer extends React.Component {
 
   render() {
     return (
-      <>
-        <section className={classes.ModalContainer}>
-          <Grow in={true}>
-            <div className={classes.Modal}>
-              <h2 className={classes.ModalTitle}>New Customer</h2>
-              <div className={classes.ModalContent}>
-                <form
-                  className={classes.ModalForm}
-                  onSubmit={(e) => this.handleSubmit(e)}
-                >
-                  <div className={classes.Group}>
-                    <input
-                      type="text"
-                      name="first"
-                      className={classes.Input}
-                      defaultValue={this.state.first}
-                      onChange={this.handleInputChange}
-                      required
-                    />
-                    <span className={classes.Bar}></span>
-                    <label htmlFor="first" className={classes.Label}>
-                      First Name
-                    </label>
-                  </div>
-                  <div className={classes.Group}>
-                    <input
-                      type="text"
-                      name="last"
-                      className={classes.Input}
-                      defaultValue={this.state.last}
-                      onChange={this.handleInputChange}
-                      required
-                    />
-                    <span className={classes.Bar}></span>
-                    <label htmlFor="last" className={classes.Label}>
-                      Last Name
-                    </label>
-                  </div>
-                  <div className={classes.Group}>
-                    <input
-                      type="number"
-                      name="clubId"
-                      className={classes.Input}
-                      defaultValue={this.state.clubId}
-                      onChange={this.handleInputChange}
-                      required
-                    />
-                    <span className={classes.Bar}></span>
-                    <label htmlFor="clubId" className={classes.Label}>
-                      Mug Club ID (Suggested #: {this.props.customers.length})
-                    </label>
-                  </div>
-                  <div className={classes.ButtonContainer}>
-                    <input
-                      type="submit"
-                      value="Submit"
-                      onClick={(e) => this.handleSubmit(e)}
-                      className={classes.EditButton}
-                    />
-                    <input
-                      type="submit"
-                      value="Cancel"
-                      onClick={() => this.props.closeModal()}
-                      className={classes.CancelButton}
-                      formNoValidate
-                    />
-                  </div>
-                </form>
-              </div>
+      <section className={classes.ModalContainer}>
+        <Grow in={true}>
+          <div className={classes.Modal}>
+            <h2 className={classes.ModalTitle}>New Customer</h2>
+            <div className={classes.ModalContent}>
+              <form
+                className={classes.ModalForm}
+                onSubmit={(e) => this.handleSubmit(e)}
+              >
+                <div className={classes.Group}>
+                  <input
+                    type="text"
+                    name="first"
+                    className={classes.Input}
+                    defaultValue={this.state.first}
+                    onChange={this.handleInputChange}
+                    required
+                  />
+                  <span className={classes.Bar}></span>
+                  <label htmlFor="first" className={classes.Label}>
+                    First Name
+                  </label>
+                </div>
+                <div className={classes.Group}>
+                  <input
+                    type="text"
+                    name="last"
+                    className={classes.Input}
+                    defaultValue={this.state.last}
+                    onChange={this.handleInputChange}
+                    required
+                  />
+                  <span className={classes.Bar}></span>
+                  <label htmlFor="last" className={classes.Label}>
+                    Last Name
+                  </label>
+                </div>
+                <div className={classes.Group}>
+                  <input
+                    type="number"
+                    name="clubId"
+                    className={classes.Input}
+                    defaultValue={this.state.clubId}
+                    onChange={this.handleInputChange}
+                    required
+                  />
+                  <span className={classes.Bar}></span>
+                  <label htmlFor="clubId" className={classes.Label}>
+                    Mug Club ID (Suggested #: {this.props.customers.length})
+                  </label>
+                </div>
+                <div className={classes.ButtonContainer}>
+                  <input
+                    type="submit"
+                    value="Submit"
+                    onClick={(e) => this.handleSubmit(e)}
+                    className={classes.EditButton}
+                  />
+                  <input
+                    type="submit"
+                    value="Cancel"
+                    onClick={() => this.props.closeModal()}
+                    className={classes.CancelButton}
+                    formNoValidate
+                  />
+                </div>
+              </form>
             </div>
-          </Grow>
-        </section>
-      </>
+          </div>
+        </Grow>
+      </section>
     );
   }
 }
+
+const mapStateToProps = ({ customers: { customers } }) => ({
+  customers: customers,
+});
 
 const mapDispatchToProps = {
   closeModal,
   createCustomer,
   fetchCustomers,
 };
-const mapStateToProps = ({ customers: { customers } }) => ({
-  customers: customers,
-});
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewCustomer);
