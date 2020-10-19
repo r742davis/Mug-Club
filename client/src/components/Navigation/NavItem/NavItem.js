@@ -3,15 +3,20 @@ import classes from "./NavItem.module.css";
 
 import { NavLink } from "react-router-dom";
 
-const navItem = (props) => (
+const navItem = ({ link, exact, active, closeNav, openModal, children}) => (
   <li className={classes.NavItem}>
     <NavLink
-      to={props.link}
-      exact={props.exact}
+      to={link}
+      exact={exact}
       activeClassName={classes.active}
-      onClick={props.clicked}
+      onClick={() => {
+        closeNav();
+        if (openModal) {
+          openModal();
+        }
+      }}
     >
-      {props.children}
+      {children}
     </NavLink>
   </li>
 );

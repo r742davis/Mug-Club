@@ -1,10 +1,10 @@
 import React from "react";
 import classes from "../../../css/NavBar.module.css";
-import { Link } from "react-router-dom";
 import NavItem from "../NavItem/NavItem";
 
 import { connect } from "react-redux";
 import { openModal } from "../../../store/actions/index";
+
 
 const toolbar = (props) => (
   <ul className={classes.List}>

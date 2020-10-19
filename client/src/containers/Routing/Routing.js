@@ -14,10 +14,6 @@ import {
 import { connect } from "react-redux";
 
 class Routing extends React.Component {
-  componentDidMount() {
-    console.log("[Routing]");
-  }
-
   render() {
     let routes = (
       <Switch>

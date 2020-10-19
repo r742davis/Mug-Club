@@ -1,11 +1,19 @@
 import React from "react";
 import classes from "../../css/NavBar.module.css";
 import Backdrop from "../../components/UI/Backdrop/Backdrop";
-import Mobile from "../../components/Navigation/Mobile/Mobile";
+import NavItem from "../../components/Navigation/NavItem/NavItem";
 import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
 import Burger from "@animated-burgers/burger-squeeze";
 import "@animated-burgers/burger-squeeze/dist/styles.css";
 import swal from "@sweetalert/with-react";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPlus,
+  faSearch,
+  faBeer,
+  faUserTimes,
+} from "@fortawesome/free-solid-svg-icons";
 
 import { connect } from "react-redux";
 import {
@@ -16,38 +24,89 @@ import {
 } from "../../store/actions/index";
 
 class Layout extends React.Component {
-  state = {};
-
-  logoutAlert = () => {
-    swal({
-      title: "Log out?",
-      icon: "warning",
-      buttons: ["Cancel", "Logout"],
-      dangerMode: true,
-    }).then((willLogout) => {
-      if (willLogout) {
-        this.props.logout();
-      } else {
-        swal("You have not been logged out");
-      }
-    });
-  };
-
-  comboToggle = (modalType) => {
-    this.props.closeNav();
-    this.props.openModal(modalType);
+  state = {
+    navLinks: [
+      {
+        link: "/search-customers",
+        actions: {
+          closeNav: () => this.props.closeNav(),
+          openModal: null,
+        },
+        details: {
+          icon: faSearch,
+          text: "Search",
+        },
+      },
+      {
+        link: "/beers",
+        actions: {
+          closeNav: () => this.props.closeNav(),
+          openModal: null,
+        },
+        details: {
+          icon: faBeer,
+          text: "Beers",
+        },
+      },
+      {
+        link: "/",
+        actions: {
+          closeNav: () => this.props.closeNav(),
+          openModal: () => this.props.openModal("NEW_CUSTOMER"),
+        },
+        details: {
+          icon: faPlus,
+          text: "Create New Customer",
+        },
+      },
+      {
+        link: "/",
+        actions: {
+          closeNav: () => this.props.closeNav(),
+          openModal: () => this.props.openModal("NEW_BEER"),
+        },
+        details: {
+          icon: faPlus,
+          text: "Create New Beer",
+        },
+      },
+      {
+        link: "/",
+        actions: {
+          closeNav: () => this.props.closeNav(),
+          openModal: () => this.props.logout(),
+        },
+        details: {
+          icon: faUserTimes,
+          text: "Logout",
+        },
+      },
+    ],
   };
 
   render() {
+    const links = this.state.navLinks.map((navLink) => (
+      <NavItem
+        link={navLink.link}
+        closeNav={navLink.actions.closeNav}
+        openModal={navLink.actions.openModal}
+      >
+        <div className={classes.LinkDiv}>
+          <div>
+            <FontAwesomeIcon icon={navLink.details.icon} />
+          </div>
+          <h2>{navLink.details.text}</h2>
+        </div>
+      </NavItem>
+    ));
+
     let navigation = null;
-    let mobileNav = null;
+    let mobile = null;
 
     if (this.props.navOpen) {
-      mobileNav = (
-        <Mobile logoutAlert={this.logoutAlert} comboToggle={this.comboToggle} />
-      );
+      mobile = <ul className={classes.HamburgerList}>{links}</ul>;
     } else {
-      mobileNav = <Toolbar logoutAlert={this.logoutAlert} />;
+      mobile = <Toolbar logoutAlert={this.logoutAlert} />;
     }
 
     if (this.props.isAuthenticated) {
@@ -59,7 +118,7 @@ class Layout extends React.Component {
               🍻
             </span>
           </h1>
-          {mobileNav}
+          {mobile}
           <div className={classes.HamburgerContainer}>
             <Burger
               isOpen={this.props.navOpen}
@@ -77,7 +136,6 @@ class Layout extends React.Component {
     return (
       <Backdrop>
         {/* <Toolbar /> */}
-        {/* <MobileNav /> */}
         {navigation}
         {this.props.children}
       </Backdrop>
