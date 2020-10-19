@@ -1,13 +1,10 @@
 import React from "react";
-import classes from "../../css/NavBar.module.css";
 import Backdrop from "../../components/UI/Backdrop/Backdrop";
 import NavItem from "../../components/Navigation/NavItem/NavItem";
-import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
-import Burger from "@animated-burgers/burger-squeeze";
+import Navigation from "../../components/Navigation/Navigation";
+import NavIcon from "../../components/UI/Icons/NavIcon/NavIcon";
 import "@animated-burgers/burger-squeeze/dist/styles.css";
-import swal from "@sweetalert/with-react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlus,
   faSearch,
@@ -85,57 +82,33 @@ class Layout extends React.Component {
   };
 
   render() {
+    let navigation = null;
+
     const links = this.state.navLinks.map((navLink) => (
       <NavItem
         link={navLink.link}
         closeNav={navLink.actions.closeNav}
         openModal={navLink.actions.openModal}
       >
-        <div className={classes.LinkDiv}>
-          <div>
-            <FontAwesomeIcon icon={navLink.details.icon} />
-          </div>
-          <h2>{navLink.details.text}</h2>
-        </div>
+        <NavIcon icon={navLink.details.icon}>
+        {navLink.details.text}
+        </NavIcon>
       </NavItem>
     ));
 
-    let navigation = null;
-    let mobile = null;
-
-    if (this.props.navOpen) {
-      mobile = <ul className={classes.HamburgerList}>{links}</ul>;
-    } else {
-      mobile = <Toolbar logoutAlert={this.logoutAlert} />;
-    }
-
     if (this.props.isAuthenticated) {
       navigation = (
-        <nav className={classes.Navbar}>
-          <h1>
-            MUG CLUB
-            <span role="img" aria-label="mugs of beers">
-              🍻
-            </span>
-          </h1>
-          {mobile}
-          <div className={classes.HamburgerContainer}>
-            <Burger
-              isOpen={this.props.navOpen}
-              onClick={
-                this.props.navOpen
-                  ? () => this.props.closeNav()
-                  : () => this.props.openNav()
-              }
-            />
-          </div>
-        </nav>
+        <Navigation
+          renderedLinks={links}
+          navOpen={this.props.navOpen}
+          close={this.props.closeNav}
+          open={this.props.openNav}
+        />
       );
     }
 
     return (
       <Backdrop>
-        {/* <Toolbar /> */}
         {navigation}
         {this.props.children}
       </Backdrop>

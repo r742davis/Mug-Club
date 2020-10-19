@@ -1,0 +1,129 @@
+.Open {
+  animation: fadeIn;
+  animation-duration: 0.25s;
+  animation-timing-function: ease-in-out;
+}
+
+.Close {
+  opacity: 0;
+}
+
+.Navbar {
+  position: fixed;
+  background: black;
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  padding-right: 1rem;
+  top: 0;
+  width: 100%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  z-index: 100;
+}
+
+.Navbar h1 {
+  color: var(--primary);
+  width: 200px;
+  font-size: 2rem;
+  font-family: "Montserrat", sans-serif;
+  margin: 1rem 1rem 0 2rem;
+}
+.Navbar h1 span {
+  font-size: 2rem;
+}
+
+.Burger {
+  display: flex;
+  padding: 0.5rem;
+  position: relative;
+  z-index: 110;
+}
+.List {
+  position: absolute;
+  height: auto;
+  width: 96%;
+  margin-top: 5.5rem;
+  left: 2%;
+  border-radius: 1rem;
+  background: var(--primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-sizing: border-box;
+  z-index: 110;
+}
+
+
+@media (min-width: 768px) {
+  .Close {
+    opacity: 1;
+  }
+
+  .Burger {
+    display: none;
+  }
+
+  .List {
+    position: relative;
+    height: auto;
+    width: 100%;
+    margin: 0;
+    left: 0;
+    border-radius: 0;
+    background: transparent;
+    flex-direction: row;
+    justify-content: flex-end;
+    box-shadow: none;
+  }
+
+  .NewButton {
+    padding: 1rem;
+    margin-right: 2rem;
+    background: none;
+    color: var(--primary);
+    border: none;
+    font-size: 1.6rem;
+    transition: 0.2s;
+    cursor: pointer;
+  }
+
+  .NewButton:hover {
+    color: var(--secondary);
+    transition: 0.2s;
+  }
+
+  .NewButton:focus {
+    outline: none;
+  }
+
+  .Logout {
+    padding: 1rem;
+    background: var(--primary);
+    color: black;
+    border: var(--primary);
+    border-radius: 10rem;
+    font-size: 1.5rem;
+    transition: 0.2s;
+    cursor: pointer;
+  }
+
+  .Logout:hover {
+    background: #b72e3e;
+    color: var(--primary);
+  }
+
+  .HamburgerContainer {
+    display: none;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
