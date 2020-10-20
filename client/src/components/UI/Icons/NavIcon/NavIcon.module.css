@@ -1,15 +1,31 @@
 .NavIcon {
+  padding: 1rem 0 1rem 2rem;
   display: flex;
-  font-size: 1.2rem;
-  align-items: center;
-  margin-left: 0;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 2.5rem;
 }
 
-
 .NavIcon div {
-  width: auto;
   margin-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .NavIcon {
+    display: flex;
+    font-size: inherit;
+    align-items: center;
+    margin-left: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 2.5rem;
+  }
+  
+  
+  .NavIcon div {
+    width: auto;
+    margin-right: 0.5rem;
+  }
+
+  .NavIcon svg {
+    font-size: 1rem;
+  }
+
 }

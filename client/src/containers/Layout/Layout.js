@@ -53,7 +53,7 @@ class Layout extends React.Component {
         },
         details: {
           icon: faPlus,
-          text: "Create New Customer",
+          text: "New Customer",
         },
       },
       {
@@ -64,7 +64,7 @@ class Layout extends React.Component {
         },
         details: {
           icon: faPlus,
-          text: "Create New Beer",
+          text: "New Beer",
         },
       },
       {

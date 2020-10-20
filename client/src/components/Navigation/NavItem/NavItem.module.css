@@ -1,11 +1,17 @@
 .NavItem {
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
   background: none;
   border: none;
   width: auto;
   text-align: left;
+  width: 100%;
+}
+
+.NavItem a {
+  color: var(--secondary);
+  text-decoration: none;
 }
 
 .NavItem:hover {
@@ -16,21 +22,19 @@
 
 @media (min-width: 768px) {
   .NavItem {
-    font-size: 1rem;
+    font-size: 1.5rem;
     box-sizing: border-box;
     margin: 0;
     display: flex;
     align-items: center;
     height: 100%;
+    width: auto;
+    color: white;
   }
 
   .NavItem a {
-    font-size: 1rem;
-    color: #8f5c2c;
-    text-decoration: none;
-    box-sizing: border-box;
-    display: block;
     color: white;
+    font-size: inherit;
     height: 100%;
     border-bottom: 4px solid transparent;
   }
