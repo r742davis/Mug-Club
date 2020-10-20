@@ -7,7 +7,7 @@ const navIcon = (props) => (
     <div>
       <FontAwesomeIcon icon={props.icon} />
     </div>
-    {props.children}
+    <p>{props.children}</p>
   </div>
 );
 

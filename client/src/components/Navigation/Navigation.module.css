@@ -33,19 +33,12 @@
   font-size: 2rem;
 }
 
-.Burger {
-  display: flex;
-  padding: 0.5rem;
-  position: relative;
-  z-index: 110;
-}
 .List {
   position: absolute;
   height: auto;
   width: 96%;
   margin-top: 5.5rem;
   left: 2%;
-  border-radius: 1rem;
   background: var(--primary);
   display: flex;
   flex-direction: column;
@@ -57,10 +50,6 @@
 @media (min-width: 768px) {
   .Close {
     opacity: 1;
-  }
-
-  .Burger {
-    display: none;
   }
 
   .List {
@@ -108,10 +97,6 @@
   .Logout:hover {
     background: #b72e3e;
     color: var(--primary);
-  }
-
-  .HamburgerContainer {
-    display: none;
   }
 }
 

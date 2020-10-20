@@ -57,7 +57,7 @@ class Layout extends React.Component {
         },
       },
       {
-        link: "/",
+        link: "/beers",
         actions: {
           closeNav: () => this.props.closeNav(),
           openModal: () => this.props.openModal("NEW_BEER"),
@@ -108,7 +108,7 @@ class Layout extends React.Component {
     }
 
     return (
-      <Backdrop>
+      <Backdrop navOpen={this.props.navOpen}>
         {navigation}
         {this.props.children}
       </Backdrop>

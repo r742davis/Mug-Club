@@ -1,0 +1,12 @@
+.BurgerNav {
+  display: flex;
+  padding: 0.5rem;
+  position: relative;
+  z-index: 110;
+}
+
+@media (min-width: 768px) {
+  .BurgerNav {
+    display: none;
+  }
+}

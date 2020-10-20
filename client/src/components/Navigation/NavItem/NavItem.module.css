@@ -1,9 +1,6 @@
 .NavItem {
   text-decoration: none;
-  font-size: 2rem;
-  font-weight: bold;
-  background: none;
-  border: none;
+  font-size: 1.5rem;
   width: auto;
   text-align: left;
   width: 100%;
@@ -12,19 +9,13 @@
 .NavItem a {
   color: var(--secondary);
   text-decoration: none;
-}
-
-.NavItem:hover {
-  background: whitesmoke;
-  border-radius: 1rem;
-  cursor: pointer;
+  font-size: inherit;
 }
 
 @media (min-width: 768px) {
   .NavItem {
     font-size: 1.5rem;
     box-sizing: border-box;
-    margin: 0;
     display: flex;
     align-items: center;
     height: 100%;

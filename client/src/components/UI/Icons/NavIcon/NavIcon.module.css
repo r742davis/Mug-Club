@@ -1,16 +1,26 @@
 .NavIcon {
   padding: 1rem 0 1rem 2rem;
   display: flex;
+  font-size: inherit;
 }
 
 .NavIcon div {
   margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  font-size: inherit;
+  width: 20px;
+  justify-content: center;
 }
+
+.NavIcon p {
+  font-size: inherit;  
+}
+
 
 @media (min-width: 768px) {
   .NavIcon {
     display: flex;
-    font-size: inherit;
     align-items: center;
     margin-left: 0;
     padding-left: 1rem;
