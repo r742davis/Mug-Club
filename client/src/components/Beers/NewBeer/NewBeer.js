@@ -1,6 +1,8 @@
 import React from "react";
-import Grow from "@material-ui/core/Grow";
 import classes from "../../../css/Modals.module.css";
+import Button from "../../UI/Button/Button";
+
+import Grow from "@material-ui/core/Grow";
 import { typeMap } from "../../../lib/TypeMap";
 import swal from "@sweetalert/with-react";
 
@@ -46,9 +48,7 @@ class NewBeerModal extends React.Component {
         icon: "success",
         button: "Cool!",
       });
-      console.log("Fetching beers...");
       await this.props.fetchBeers();
-      this.props.closeModal();
     } catch (e) {
       console.error(e);
       swal({
@@ -146,19 +146,21 @@ class NewBeerModal extends React.Component {
                   </label>
                 </div>
                 <div className={classes.ButtonContainer}>
-                  <input
-                    type="submit"
-                    value="Submit"
-                    onClick={(e) => this.handleSubmit(e)}
-                    className={classes.EditButton}
-                  />
-                  <input
-                    type="submit"
-                    value="Cancel"
-                    onClick={() => this.props.closeModal()}
-                    className={classes.CancelButton}
-                    formNoValidate
-                  />
+                  <Button
+                    buttonType="Submit"
+                    clicked={(e) => {
+                      this.handleSubmit(e);
+                      this.props.closeModal()
+                    }}
+                  >
+                    Submit
+                  </Button>
+                  <Button
+                    buttonType="Cancel"
+                    clicked={() => this.props.closeModal()}
+                  >
+                    Cancel
+                  </Button>
                 </div>
               </form>
             </div>

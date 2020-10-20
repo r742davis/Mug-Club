@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "../../../css/Account.module.css";
+import classes from "./Account.module.css";
 
 const account = (props) => (
   <div className={classes.AccountContainer}>

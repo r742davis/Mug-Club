@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "../../css/Search.module.css";
+import classes from "./SearchDashboard.module.css";
 import Customer from "../Customers/Customer/Customer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -11,16 +11,16 @@ import PropTypes from "prop-types";
 import { openModal, deleteCustomer } from "../../store/actions/index";
 const uniqid = require("uniqid");
 
-class SearchComponent extends React.Component {
+class SearchDashboard extends React.Component {
   state = {
     search: "",
   };
 
-  static propTypes = {
-    customers: PropTypes.array.isRequired,
-    loading: PropTypes.bool.isRequired,
-    auth: PropTypes.object.isRequired,
-  };
+  // static propTypes = {
+  //   customers: PropTypes.array.isRequired,
+  //   loading: PropTypes.bool.isRequired,
+  //   auth: PropTypes.object.isRequired,
+  // };
 
   updateSearch = (event) => {
     this.setState({ search: event.target.value });
@@ -146,4 +146,4 @@ const mapStateToProps = ({ auth, customers: { customers, loading } }) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchDashboard);

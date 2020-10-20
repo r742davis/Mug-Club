@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "../../../css/Backdrop.module.css";
+import classes from "./Backdrop.module.css";
 
 import { connect } from "react-redux";
 import { closeModal, closeNav } from "../../../store/actions/index";

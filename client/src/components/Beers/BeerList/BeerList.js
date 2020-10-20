@@ -1,9 +1,7 @@
 import React from "react";
-import classes from "../../../css/Modals.module.css";
-import styles from "../../../css/BeersList.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
-import Beer from "../Beer/Beer"
+import classes from "./BeerList.module.css";
+import SingleBeer from "../SingleBeer/SingleBeer";
+import Button from "../../UI/Button/Button";
 
 import { connect } from "react-redux";
 import { openModal, closeModal } from "../../../store/actions/index";
@@ -13,7 +11,6 @@ const BeerList = (props) => {
   const [unchecked, setUnchecked] = React.useState([-1]);
 
   const handleToggle = (beer) => () => {
-    console.log(beer)
     const currentIndex = checked.indexOf(beer);
     const newChecked = [...checked];
     if (currentIndex === -1) {
@@ -22,7 +19,6 @@ const BeerList = (props) => {
       newChecked.splice(currentIndex, 1);
     }
     setChecked(newChecked);
-    console.log(checked)
 
     if (beer.finished === true) {
       const currentIndex = unchecked.indexOf(beer);
@@ -34,58 +30,35 @@ const BeerList = (props) => {
       }
       setUnchecked(newChecked);
     }
-    console.log(unchecked);
   };
-
-  const checkForIcon = (beer) => {
-    if (
-      (checked.indexOf(beer) !== -1 && !beer.finished) ||
-      (beer.finished && unchecked.indexOf(beer) !== -1) || beer.finished 
-      ) {
-      return (
-        <span className={styles.CheckIcon}>
-          <FontAwesomeIcon icon={faCheckCircle} />
-        </span>
-      );
-    }
-  };
-
-  React.useEffect(() => {
-    console.log(checked, unchecked)
-  }, [checked, unchecked])
 
   const mappedBeers = props.beers.map((beer) => (
-    <Beer
-      {...beer}
-      styles={styles}
+    <SingleBeer
+      beerDetails={beer}
       checked={checked}
       complete={handleToggle(beer)}
-      checkForIcon={checkForIcon(beer)}
+      unchecked={unchecked}
     />
   ));
 
   return (
     <>
-      <ul className={styles.ListContainer}>{mappedBeers}</ul>
-      <div className={classes.ButtonContainer}>
-        <input
-          type="submit"
-          value="Submit"
-          onClick={(e) => props.handleSubmit(e, checked)}
-          className={classes.EditButton}
-        />
-        <input
-          type="submit"
-          value="Cancel"
-          onClick={() => props.closeModal()}
-          className={classes.CancelButton}
-        />
+      <ul className={classes.ListContainer}>{mappedBeers}</ul>
+      <div className={classes.Buttons}>
+        <Button
+          buttonType="Submit"
+          clicked={(e) => props.handleSubmit(e, checked)}
+        >
+          Submit
+        </Button>
+        <Button buttonType="Cancel" clicked={() => props.closeModal()}>
+          Cancel
+        </Button>
       </div>
     </>
   );
-}
+};
 
 const mapDispatchToProps = { openModal, closeModal };
-
 
 export default connect(null, mapDispatchToProps)(BeerList);

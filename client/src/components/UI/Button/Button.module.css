@@ -1,0 +1,47 @@
+.Button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 2rem;
+  padding: 1rem;
+  margin: 1rem;
+  font-weight: bold;
+}
+
+.Button:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.Submit {
+  color: var(--secondary);
+}
+
+.Cancel {
+  color: var(--delete);
+}
+
+@media (min-width: 768px) {
+  .Submit {
+    color: var(--input-text);
+    transition: 0.25s;
+  }
+
+  .Submit:hover {
+    color: var(--secondary);
+    transition: 0.25s;
+  }
+
+  .Cancel {
+    color: var(--input-text);
+    transition: 0.25s;
+  }
+
+  .Cancel:hover {
+    color: var(--delete);
+    transition: 0.25s;
+  }
+}

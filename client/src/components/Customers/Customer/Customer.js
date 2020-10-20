@@ -1,10 +1,10 @@
 import React from "react";
-import classes from "../../../css/Customer.module.css";
+import classes from "./Customer.module.css";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
-import Delete from "../../UI/Icons/Delete/Delete";
-import Edit from "../../UI/Icons/Edit/Edit";
+import DeleteIcon from "../../UI/Icons/DeleteIcon/DeleteIcon";
+import EditIcon from "../../UI/Icons/EditIcon/EditIcon";
 
 const customer = ({
   completed,
@@ -40,8 +40,8 @@ const customer = ({
       </h2>
     </span>
     <span className={classes.ButtonContainer}>
-      <Edit edit={openModal} />
-      <Delete delete={deleteCustomer} />
+      <EditIcon edit={openModal} />
+      <DeleteIcon delete={deleteCustomer} />
     </span>
   </div>
 );

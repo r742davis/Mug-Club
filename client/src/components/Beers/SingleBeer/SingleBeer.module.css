@@ -1,0 +1,67 @@
+.SingleBeer {
+  width: 95%;
+  height: 6rem;
+  margin: 0.25rem 0 0.25rem 0;
+  background: #f0d3d7;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+@media (max-width: 600px) {
+  .SingleBeer {
+    height: 5rem;
+  }
+}
+
+.SingleBeer:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: 0.2s;
+}
+
+.SingleBeerPicture {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 5rem;
+  margin-left: 1rem;
+}
+@media (max-width: 600px) {
+  .SingleBeerPicture {
+    height: 3rem;
+    width: 3rem;
+  }
+}
+
+.SingleBeerName {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  color: #505050;
+}
+.SingleBeerName h1 {
+  font-size: 1rem;
+  font-weight: 300;
+}
+.SingleBeerName h2 {
+  font-size: 1.6rem;
+}
+@media (max-width: 600px) {
+  .SingleBeerName {
+    width: 175px;
+  }
+}
+
+.Completed {
+  background: var(--secondary-light);
+}
+.CheckIcon {
+  font-size: 2.5rem;
+  height: 100%;
+  width: 100%;
+  color: white; }
+  @media (max-width: 600px) {
+    .CheckIcon {
+      font-size: 2rem; } }

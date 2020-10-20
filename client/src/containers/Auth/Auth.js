@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "../../css/LoginContainer.module.css";
+import classes from "./Auth.module.css";
 import Register from "../../components/Auth/Register/Register";
 import LoginComponent from "../../components/Auth/Login/LoginComponent";
 import PasswordReset from "../../components/Auth/Password/ResetPassword/PasswordReset";

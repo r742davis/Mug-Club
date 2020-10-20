@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "../../../css/BeerDisplay.module.css";
+import classes from "./BeerDashboard.module.css";
 import Spinner from "../../UI/Spinner/Spinner";
 
 import List from "@material-ui/core/List";

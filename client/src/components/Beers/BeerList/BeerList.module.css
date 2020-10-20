@@ -1,0 +1,36 @@
+.ListContainer {
+  width: 300px;
+  height: 300px;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  background: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow-y: auto;
+  border: 2px solid var(--input-border);
+  border-radius: 0.5rem; }
+  .ListContainer::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem; }
+  .ListContainer::-webkit-scrollbar-thumb {
+    background: var(--secondary); }
+  .ListContainer::-webkit-scrollbar-track {
+    background: var(--secondary-light); }
+  .ListContainer {
+    scrollbar-face-color: var(--secondary);
+    scrollbar-track-color: var(--secondary-light); }
+  @media (max-width: 600px) {
+    .ListContainer {
+      height: 200px; } }
+
+.FinishedCheckbox {
+  display: none; }
+
+.Buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+

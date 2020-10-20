@@ -1,6 +1,8 @@
 import React from "react";
 import classes from "../../../css/Modals.module.css";
-import Delete from "../../UI/Icons/Delete/Delete";
+import DeleteIcon from "../../UI/Icons/DeleteIcon/DeleteIcon";
+import Button from "../../UI/Button/Button";
+
 import { typeMap } from "../../../lib/TypeMap";
 import Grow from "@material-ui/core/Grow";
 import swal from "@sweetalert/with-react";
@@ -209,21 +211,25 @@ class EditBeer extends React.Component {
                   </label>
                 </div>
                 <div className={classes.ButtonContainer}>
-                  <input
-                    type="submit"
-                    value="Submit"
-                    onClick={(e) => this.handleSubmit(e)}
-                    className={classes.EditButton}
-                  />
-                  <input
-                    type="submit"
-                    value="Cancel"
-                    onClick={() => this.props.closeModal()}
-                    className={classes.CancelButton}
-                  />
+                <Button
+                    buttonType="Submit"
+                    clicked={(e) => {
+                      this.handleSubmit(e);
+                      this.props.closeModal()
+                    }}
+                  >
+                    Submit
+                  </Button>
+                  <Button
+                    buttonType="Cancel"
+                    clicked={() => this.props.closeModal()}
+                  >
+                    Cancel
+                  </Button>
+                  
                 </div>
               </form>
-              <Delete delete={this.deleteBeerAlert} />
+              <DeleteIcon delete={this.deleteBeerAlert} />
             </div>
           </div>
         </Grow>

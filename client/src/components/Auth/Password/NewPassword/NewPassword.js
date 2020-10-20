@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "../../../../css/LoginContainer.module.css";
+import classes from "../../../../containers/Auth/Auth.module.css";
 import Error from "../../../UI/Error/Error";
 // import { closePasswordReset } from "../store/actions/index";
 

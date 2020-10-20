@@ -1,5 +1,5 @@
 import React from "react";
-import SearchComponent from "../../components/Search/SearchComponent";
+import SearchDashboard from "../../components/Search/SearchDashboard";
 
 import { connect } from "react-redux";
 import { loadUser, fetchCustomers } from "../../store/actions/index";
@@ -28,7 +28,7 @@ class Search extends React.Component {
   };
 
   render() {
-    return <SearchComponent />;
+    return <SearchDashboard />;
   }
 }
 

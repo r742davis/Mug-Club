@@ -1,6 +1,8 @@
 import React from "react";
-import Grow from "@material-ui/core/Grow";
 import classes from "../../../css/Modals.module.css";
+import Button from "../../UI/Button/Button";
+
+import Grow from "@material-ui/core/Grow";
 import swal from "@sweetalert/with-react";
 
 import { connect } from "react-redux";
@@ -136,19 +138,21 @@ class NewCustomer extends React.Component {
                   </label>
                 </div>
                 <div className={classes.ButtonContainer}>
-                  <input
-                    type="submit"
-                    value="Submit"
-                    onClick={(e) => this.handleSubmit(e)}
-                    className={classes.EditButton}
-                  />
-                  <input
-                    type="submit"
-                    value="Cancel"
-                    onClick={() => this.props.closeModal()}
-                    className={classes.CancelButton}
-                    formNoValidate
-                  />
+                <Button
+                    buttonType="Submit"
+                    clicked={(e) => {
+                      this.handleSubmit(e);
+                      this.props.closeModal()
+                    }}
+                  >
+                    Submit
+                  </Button>
+                  <Button
+                    buttonType="Cancel"
+                    clicked={() => this.props.closeModal()}
+                  >
+                    Cancel
+                  </Button>
                 </div>
               </form>
             </div>

@@ -86,6 +86,7 @@ class Layout extends React.Component {
 
     const links = this.state.navLinks.map((navLink) => (
       <NavItem
+        key={navLink.details.text}
         link={navLink.link}
         closeNav={navLink.actions.closeNav}
         openModal={navLink.actions.openModal}

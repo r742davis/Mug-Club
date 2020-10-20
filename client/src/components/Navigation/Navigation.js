@@ -4,9 +4,9 @@ import BurgerNav from "./BurgerNav/BurgerNav";
 import Logo from "../UI/Logo/Logo";
 
 const navigation = ({ navOpen, renderedLinks, open, close }) => {
-  let attachedClasses = [classes.List, classes.Close];
+  let attachedClasses = [classes.List, classes.Closed];
   if (navOpen) {
-    attachedClasses = [classes.List, classes.Open];
+    attachedClasses = [classes.List, classes.Opened];
   }
   return (
     <nav className={classes.Navbar}>
