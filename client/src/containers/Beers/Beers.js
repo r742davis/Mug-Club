@@ -1,5 +1,5 @@
 import React from "react";
-import BeerDisplay from "../../components/Beers/BeerDisplay/BeerDisplay";
+import BeerDashboard from "../../components/Beers/BeerDashboard/BeerDashboard";
 import { connect } from "react-redux";
 import { loadUser, fetchBeers } from "../../store/actions/index";
 
@@ -25,7 +25,7 @@ class Beers extends React.Component {
     }
   };
   render() {
-    return <BeerDisplay />;
+    return <BeerDashboard />;
   }
 }
 
